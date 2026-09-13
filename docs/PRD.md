@@ -4,7 +4,7 @@
 
 | Document status | Version / date | Phase |
 |---|---|---|
-| Phase 1 approved | v0.1 • 13 September 2026 | PRD only |
+| Phase 1 approved | v0.2 • 13 September 2026 | PRD only |
 
 <table>
 <colgroup>
@@ -19,6 +19,13 @@
 </table>
 
 **Target platform:** Waveshare ESP32-P4-NANO + Displayman KD068HDFID009-C009A
+
+### Revision history
+
+| Version | Date | Change |
+|---|---|---|
+| v0.1 | 13 September 2026 | Initial Phase 1 PRD approved and committed. |
+| v0.2 | 13 September 2026 | Recorded Displayman engineering confirmation that the supplied two-lane initialization file, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module; narrowed the remaining uncertainty to the 600-to-480 source mapping and unconfirmed DSI transport parameters. |
 
 ## 1. Executive summary
 
@@ -45,7 +52,7 @@ The recommended architecture uses a protected 24 V input, a 5 V / 3 A system buc
 <tbody>
 <tr class="odd">
 <td><p><strong>Blocking finding: DSI rate / pixel format</strong></p>
-<p>The supplied timing config is 600 × 1280 total active pixels at a 55 MHz pixel clock, two lanes, and 60 Hz. RGB888 requires at least 660 Mb/s per lane before packet overhead; packed RGB666 requires 495 Mb/s per lane. The panel D-PHY table’s 2×UI range (4–25 ns) appears to imply roughly 80–500 Mb/s, conflicting with RGB888. Displayman must confirm pixel format, video mode, and supported lane bit rate. The PCB will nevertheless be designed for at least 1.5 Gb/s per lane, consistent with the ESP32-P4 transmitter capability.</p></td>
+<p>Displayman engineering has confirmed that the supplied 600 × 1280 source/configuration timing is correct for the exact module, but has not specified the DSI transport parameters or explained its mapping to the 480 × 1280 physical glass. Assuming the stated 55 MHz value is the host DPI pixel clock and configured source pixels are transported as RGB888, the raw payload is 660 Mb/s per lane before packet overhead; packed RGB666 would be 495 Mb/s per lane. The panel D-PHY table’s 2×UI range (4–25 ns) appears to imply roughly 80–500 Mb/s, conflicting with the RGB888 case. Displayman must still confirm pixel format, video mode, clock behavior, and supported lane bit rate. The PCB will nevertheless be designed for at least 1.5 Gb/s per lane, consistent with the ESP32-P4 transmitter capability.</p></td>
 </tr>
 </tbody>
 </table>
@@ -102,7 +109,7 @@ Prototype target: indoor laboratory use, 0–50 °C ambient, non-condensing, pol
 
 ## 3. Source basis and interpretation rules
 
-Requirements are derived from the three supplied files and current manufacturer documentation. Supplied files are identified by SHA-256 so later revisions cannot be silently substituted.
+Requirements are derived from the three supplied files, written manufacturer correspondence, and current manufacturer documentation. Supplied files are identified by SHA-256 so later revisions cannot be silently substituted.
 
 | **ID** | **Source**                          | **Revision / identity**                                           | **Use and precedence**                                                                                               |
 |--------|-------------------------------------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
@@ -112,6 +119,7 @@ Requirements are derived from the three supplied files and current manufacturer 
 | S4     | ESP32-P4 Series Datasheet v0.7      | Espressif, 2026-07-14                                             | Current SoC limits, GPIO/strapping information.                                                                      |
 | S5     | ESP-IDF MIPI DSI LCD API            | Current online documentation checked 2026-09-13                   | DSI host configuration model, lane count/rate, DPI timing fields.                                                    |
 | S6     | ESP32-P4 Hardware Design Guidelines | Current online documentation checked 2026-09-13                   | MIPI implementation guidance; Nano already implements the SoC-side D-PHY support circuitry.                          |
+| S7     | Displayman email from Anson Ho      | Received 2026-09-13; reports confirmation from Displayman engineering | Confirms S2, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module. Does not define the 600-to-480 source mapping or DSI transport parameters. |
 
 ### 3.1 Interpretation rules
 
@@ -142,9 +150,9 @@ Requirements are derived from the three supplied files and current manufacturer 
 | **Characteristic**  | **Required / observed value**                                                                                                             | **Basis**           |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | Panel               | Displayman KD068HDFID009-C009A; 6.75 in IPS, normally black                                                                               | S1 pp. 3–5          |
-| Native glass        | 480 RGB × 1280 visible pixels                                                                                                             | S1; S2 comment      |
-| Configured raster   | 600 × 1280, with 60 black columns inserted at both left and right                                                                         | S2                  |
-| Timing              | H: 600 active + 4 sync + 40 back porch + 40 front porch = 684 total V: 1280 active + 4 sync + 20 back porch + 36 front porch = 1340 total | S2                  |
+| Physical glass      | 480 RGB × 1280 visible pixels                                                                                                             | S1; S2 comment      |
+| Vendor source configuration | 600 × 1280 using `RSOX(600)`; confirmed correct for this exact module. The mapping of 600 horizontal source positions to the 480-pixel glass remains unresolved. | S2; S7              |
+| Timing              | H: 600 configured source positions + 4 sync + 40 back porch + 40 front porch = 684 total; V: 1280 active + 4 sync + 20 back porch + 36 front porch = 1340 total | S2; S7              |
 | Pixel clock / frame | 55 MHz; derived 55,000,000 ÷ (684 × 1340) = 60.007 Hz                                                                                     | S2 + calculation    |
 | Display controller  | GC9703C                                                                                                                                   | S1                  |
 | MIPI interface      | Two data lanes + differential clock                                                                                                       | S1/S2/S3            |
@@ -159,7 +167,7 @@ Requirements are derived from the three supplied files and current manufacturer 
 
 ### 4.1 DSI payload-rate calculation
 
-At a 55 MHz pixel clock on two lanes, the unencoded pixel payload is 660 Mb/s per lane for RGB888 (55 MHz × 24 ÷ 2) or 495 Mb/s per lane for packed RGB666 (55 MHz × 18 ÷ 2). Packet headers, blanking representation, and implementation margin raise the configured lane rate above the raw payload. Phase 2 shall not choose the final lane-rate setting until Displayman confirms the pixel format and D-PHY range.
+Assuming S2’s 55 MHz value is the host DPI pixel clock, two DSI lanes carry every configured source pixel, and the stream uses the stated native pixel packing, the unencoded payload is 660 Mb/s per lane for RGB888 (55 MHz × 24 ÷ 2) or 495 Mb/s per lane for packed RGB666 (55 MHz × 18 ÷ 2). These are conditional payload calculations, not confirmed operating settings. Packet headers, blanking transport, video mode, and implementation margin can raise the required lane rate above the raw payload. The unresolved 600-to-480 source mapping may affect implementation details but does not by itself identify the pixel format or lane rate. Phase 2 shall not choose the final DSI settings until Displayman confirms the pixel format, video mode, continuous/non-continuous clock behavior, lane bit rate, and valid D-PHY range.
 
 ### 4.2 Panel handling
 
@@ -524,7 +532,7 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 - Execute panel reset and initialization only after LCD_READY; maintain the 120 ms delays after reset release and Sleep Out as supplied.
 
-- Map the logical 600-pixel line to the 480-pixel glass by generating 60 black columns at each side exactly as S2 requests, unless Displayman clarifies a different source-window behavior.
+- Preserve the vendor-confirmed 600-pixel source configuration, including `RSOX(600)`, when implementing S2. The present 60-black-columns-per-side model is an interpretation, not a confirmed source-to-glass mapping; do not hard-code it as a manufacturer requirement until Displayman explains how the 600 horizontal source positions map to the 480-pixel glass. Validate the mapping with edge-marker and color-bar test patterns.
 
 - Initialize GT9271 with the documented reset/INT address selection; configure I²C at no more than 400 kHz.
 
@@ -532,7 +540,7 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 ### 13.2 Initialization-file acceptance
 
-The complete S2 byte sequence remains the authoritative starting point and shall be version-controlled by its SHA-256. Phase 2/firmware implementation shall produce a machine-readable diff or review report showing that every command byte and delay is represented. Apparent syntax errors shall be corrected only at the wrapper level; command payloads shall not be edited without documented evidence.
+The complete S2 byte sequence remains the authoritative starting point and shall be version-controlled by its SHA-256. S7 confirms that Displayman engineering considers this initialization file correct for the exact KD068HDFID009-C009A module; `RSOX(600)` shall therefore be preserved and shall not be treated as a likely typo or accidental value. Phase 2/firmware implementation shall produce a machine-readable diff or review report showing that every command byte and delay is represented. Apparent wrapper-syntax errors shall be corrected only at the wrapper level; command payloads shall not be edited without documented evidence. S7 does not resolve the wrapper-syntax artifacts, source-to-glass mapping, or DSI transport parameters.
 
 ### 13.3 Failure behavior
 
@@ -561,7 +569,7 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | **ID / severity** | **Question or conflict**                                                                                                  | **Current evidence**                                                                                                       | **Proposed disposition / owner**                                                                                          |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | UQ-01 BLOCKING    | What is the correct IOVCC absolute-maximum rating, and is 1.8 V nominal explicitly approved?                              | S1 abs max = 1.68 V; S1 DC table = 1.65–3.3 V, 1.8 V typ; S2 = 1.8 V.                                                      | Displayman to issue corrected value. Hardware defaults to 1.8 V but first power is prohibited until answered.             |
-| UQ-02 BLOCKING    | What pixel format and lane bit rate are required for the supplied two-lane timing? Is the D-PHY 2×UI 4–25 ns table valid? | RGB888 raw = 660 Mb/s/lane; packed RGB666 = 495 Mb/s/lane; table appears to cap near 500 Mb/s.                             | Displayman to confirm RGB888/RGB666, video mode, continuous clock, and min/max lane rate. ESP32 setting follows answer.   |
+| UQ-02 BLOCKING    | What pixel format, video mode, clock behavior, and lane bit rate are required for the supplied two-lane timing? Is the D-PHY 2×UI 4–25 ns table valid? | S7 confirms S2 is correct but provides none of these transport parameters. Under the assumptions in §4.1, RGB888 raw = 660 Mb/s/lane and packed RGB666 = 495 Mb/s/lane; the table appears to cap near 500 Mb/s. | Displayman to confirm RGB888/RGB666 or other format, video mode, continuous/non-continuous clock, min/max lane rate, and the valid D-PHY range. ESP32 settings follow the answer. |
 | UQ-03 BLOCKING    | What are LED-string VF min/max over current and temperature, and required driver headroom?                                | S1 gives 19.2 V typical only for internal 6S4P array.                                                                      | Displayman to provide limits; measure samples at 240 mA. Keep TPS92511 only if 21.6 V input leaves verified margin.       |
 | UQ-04 BLOCKING    | Does VDDI in the power diagram mean IOVCC, and is the stated shutdown order mandatory for hard unplug?                    | S1 pin name is IOVCC; sequence calls it VDDI and requires VCI off before it.                                               | Displayman to confirm. Baseline sequencer enforces IOVCC→VCI→reset and reverse.                                           |
 | UQ-05 BLOCKING    | What are the LCD and touch cable contact-side/orientation requirements at both ends?                                      | S1 names Molex 5051104096 for LCD and drawings imply contact sides; Nano connector MPN is absent.                          | Continuity-test actual Nano and inspect physical panel samples. Freeze connector/cable MPNs only after mock-up.           |
@@ -572,7 +580,7 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | UQ-10 MEDIUM      | Is 0x5D the desired default GT9271 address, and is INT push-pull/open-drain after initialization?                         | S1 documents both 0x5D and 0x14 selection but not board default or output type in the pin table.                           | Default 0x5D with conservative pull/buffer arrangement; confirm interrupt electrical mode.                                |
 | UQ-11 MEDIUM      | Which Nano mechanical arrangement, standoff pattern, and cable lengths are preferred?                                     | No enclosure or placement drawing was supplied.                                                                            | User to approve stack-on baseline or request side-by-side board before layout.                                            |
 | UQ-12 MEDIUM      | Are GPIO4/5/22/23/24 free in the intended firmware/BSP?                                                                   | They are exposed and not strapping pins, but application reservations are unknown.                                         | User/firmware owner to confirm; allocation remains configurable before schematic.                                         |
-| UQ-13 MEDIUM      | How exactly should 600 source pixels map to the 480-pixel glass?                                                          | S2 says source uses two 720-column ranges and requires 60 black columns on each side; wording is controller-tool-specific. | Validate with color-bar/edge-marker pattern; ask Displayman for source mapping explanation.                               |
+| UQ-13 MEDIUM      | What is the exact source-driver/source-to-glass mapping by which the confirmed `RSOX(600)` configuration drives the 480-pixel physical glass? | S2 uses `RSOX(600)` and controller-specific source ranges. S7 confirms the file is correct for this exact module but does not explain the disposition of the additional 120 horizontal source positions. The 60-black-columns-per-side model remains an interpretation, not an established fact. | Keep `RSOX(600)` unchanged; ask Displayman to explain the mapping and validate it with color-bar and edge-marker patterns. |
 | UQ-14 MEDIUM      | Which S2 syntax lines are transcription artifacts versus tool-specific grammar?                                           | File contains pseudo-code and malformed parentheses but payload appears structured.                                        | Normalize wrapper syntax only; preserve command bytes; request original vendor project/export if available.               |
 | A-01 ASSUMPTION   | Adapter characteristics                                                                                                   | User specified a standard 24 V DC wall adapter.                                                                            | Assume regulated 24 V ±10%, center-positive, 5.5 × 2.1 mm, ≥2 A, SELV/Class II. User to confirm regional supply and plug. |
 | A-02 ASSUMPTION   | Prototype environment                                                                                                     | User specified bench-development, not automotive production.                                                               | Use indoor 0–50 °C design target, supervised operation, no load-dump/automotive qualification.                            |
@@ -678,7 +686,7 @@ Send the following questions together, referencing KD068HDFID009-C009A and attac
 | 4      | The D-PHY table’s 2×UI range of 4–25 ns appears to limit the maximum rate to about 500 Mb/s. Is that table correct for this module? Please provide the supported min/max lane rate and continuous/non-continuous clock requirements.      |
 | 5      | Please provide LED backlight forward-voltage minimum and maximum at 240 mA total across temperature, required compliance/headroom, and confirm that 240 mA is the total current for the internal 6S4P array.                              |
 | 6      | Please confirm the 40-pin LCD and 8-pin touch FPC contact side, stiffener side, insertion direction, acceptable cable type, and recommended board-side mating connector/cable part numbers.                                               |
-| 7      | Please clarify the source-driver mapping described in the two-lane file: 480-pixel glass, configured as 600 pixels with 60 black columns at each side, and source ranges S181–S900 / S1501–S2220.                                         |
+| 7      | Displayman engineering has confirmed that the supplied two-lane initialization file, including `RSOX(600)`, is correct for KD068HDFID009-C009A. Please explain the exact source-driver/source-to-glass mapping between this 600-position horizontal source configuration and the 480-pixel physical glass, including the disposition of the additional 120 source positions and the meaning of source ranges S181–S900 / S1501–S2220. Please state whether the host must generate any black columns or whether the module/controller performs another mapping. |
 | 8      | Please provide the original machine-readable initialization export or corrected C-style sequence, including all delays, pixel format, DSI mode, and any required read-back or error-check step.                                           |
 | 9      | Please confirm GT9271 INT electrical type after initialization and the recommended default 7-bit address for this module.                                                                                                                 |
 
@@ -691,6 +699,8 @@ Send the following questions together, referencing KD068HDFID009-C009A and attac
 - S2 — KD068HDFID009 -2LANE initialization file (user supplied).
 
 - S3 — Waveshare ESP32-P4-NANO schematic, PDF created 25 October 2024 (user supplied).
+
+- S7 — Email from Anson Ho, Displayman (SZ) Technology Co., Ltd., received 13 September 2026; reports that Displayman engineering confirmed the supplied two-lane initialization file is correct for the exact KD068HDFID009-C009A module. This confirmation includes retaining `RSOX(600)` but does not explain the 600-to-480 mapping or supply the required DSI transport parameters.
 
 ### Manufacturer documentation checked 13 September 2026
 
