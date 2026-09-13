@@ -1,0 +1,54 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww17580\viewh18440\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+Dear Anson,\
+\
+Thank you for confirming with your engineering team that the supplied two-lane initialization file is correct for KD068HDFID009-C009A.\
+We are now finalizing the interface and power design for this exact module and need a few additional engineering confirmations:\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Please confirm the correct absolute-maximum rating for LCD IOVCC. The datasheet absolute-maximum table shows 1.68 V max, while the DC characteristics table allows 1.65\'963.3 V and the supplied initialization file specifies IOVCC = 1.8 V. Is 1.8 V nominal explicitly approved for KD068HDFID009-C009A?\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+In the LCD power-on/off sequence, does \'93VDDI\'94 refer to connector pin 3 IOVCC? Please also confirm the required power-up and power-down ordering/timing.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+For the supplied 600 \'d7 1280, 55 MHz, 2-lane configuration, please confirm:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls2\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+required DSI pixel format\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+required video mode\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+required lane bit rate\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+continuous or non-continuous clock\
+\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+supported minimum and maximum D-PHY lane rate\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+The datasheet D-PHY table gives 2\'d7UI = 4\'9625 ns. Please confirm whether this table is correct for this exact module.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Please provide the LED backlight forward-voltage minimum and maximum at 240 mA over temperature, and confirm that 240 mA is the total current for the internal 6S4P backlight array.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Please explain the source-driver/source-to-glass mapping between the confirmed RSOX(600) configuration and the 480-pixel physical glass. Specifically, what happens to the additional 120 horizontal source positions, and does the host need to generate any black columns?\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Please confirm the 40-pin LCD and 8-pin touch FPC contact-side/orientation requirements and recommended mating connector/cable configuration.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Please confirm the GT9271 INT electrical type after initialization and the recommended default 7-bit I2C address for this module.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\
+Thank you,\
+\
+Sy A.\
+}
