@@ -4,7 +4,7 @@
 
 | Document status | Version / date | Phase |
 |---|---|---|
-| Engineering revision pending approval | v0.3 • 14 September 2026 | PRD only |
+| Engineering revision pending approval | v0.4 • 14 September 2026 | PRD and non-blocking Phase-2 preparation only |
 
 <table>
 <colgroup>
@@ -27,12 +27,13 @@
 | v0.1 | 13 September 2026 | Initial Phase 1 PRD approved and committed. |
 | v0.2 | 13 September 2026 | Recorded Displayman engineering confirmation that the supplied two-lane initialization file, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module; narrowed the remaining uncertainty to the 600-to-480 source mapping and unconfirmed DSI transport parameters. |
 | v0.3 | 14 September 2026 | Incorporated Displayman's detailed engineering response: fixed 1.8 V IOVCC and 2.8 V VCI; recorded reset/shutdown timing, 16.8–19.8 V / 240 mA backlight limits, confirmed 600-to-480 host mapping, panel-side FPC orientation, and GT9271 INT type. Kept DSI open because the supplied rate is arithmetically impossible and recorded the non-blocking GT9271 address/source-range contradictions. Integrated the independently validated Phase 2 component/GPIO recommendations without beginning schematic capture. |
+| v0.4 | 14 September 2026 | Added protected nominal-12 V vehicle evaluation input, four-switch buck-boost conversion to the common 24 V-class bus, dual-source reverse blocking, safe-by-default Nano 5 V eFuse behavior, representative current estimates, vehicle brownout/recovery requirements, and an expanded power-state validation matrix. Automotive qualification remains explicitly out of scope; UQ-02 remains the schematic-release blocker. |
 
 ## 1. Executive summary
 
-This PRD defines a bench-development daughterboard that accepts a regulated 24 V wall-adapter input, powers the Waveshare ESP32-P4-NANO and the Displayman LCD/touch module, adapts the Nano’s 15-pin two-lane MIPI-DSI interface to the panel’s 40-pin LCD FPC, controls the GT9271 touch controller, and supplies a 240 mA constant-current backlight channel with ESP32-P4 PWM dimming.
+This PRD defines a development/evaluation daughterboard that accepts either a regulated 24 V wall-adapter input or a protected nominal-12 V vehicle input, powers the Waveshare ESP32-P4-NANO and the Displayman LCD/touch module, adapts the Nano’s 15-pin two-lane MIPI-DSI interface to the panel’s 40-pin LCD FPC, controls the GT9271 touch controller, and supplies a 240 mA constant-current backlight channel with ESP32-P4 PWM dimming.
 
-The recommended architecture uses a protected 24 V input, a 5 V / 3 A system buck rail for the Nano and local regulators, fixed 1.8 V IOVCC, fixed 2.8 V VCI, hardware-enforced reset/shutdown behavior, a 24 V-fed constant-current buck LED driver, low-capacitance ESD protection, and deliberately accessible debug points. It is an evaluation design—not an automotive-qualified product.
+The recommended architecture uses separately protected and reverse-blocked 24 V bench and nominal-12 V vehicle branches feeding one common 24 V-class internal bus, a 5 V / 3 A system buck rail for the Nano and local regulators, fixed 1.8 V IOVCC, fixed 2.8 V VCI, hardware-enforced reset/shutdown behavior, a 24 V-fed constant-current buck LED driver, low-capacitance ESD protection, and deliberately accessible debug points. It is an evaluation design—not an automotive-qualified product.
 
 <table>
 <colgroup>
@@ -78,7 +79,7 @@ STOP: Phase 2 schematic design has not started. Approval or requested modificati
 
 - Open-bench bring-up, firmware development, display characterization, touch integration, and thermal evaluation.
 
-- Powered from a regulated, center-positive 24 V DC wall adapter through a PCB barrel jack.
+- Powered from a regulated, center-positive 24 V DC wall adapter through a PCB barrel jack, from a nominal-12 V vehicle supply through a separate keyed connector, or with both connected.
 
 - One Waveshare ESP32-P4-NANO and one KD068HDFID009-C009A module per daughterboard.
 
@@ -88,7 +89,7 @@ STOP: Phase 2 schematic design has not started. Approval or requested modificati
 
 - 15-pin Nano DSI/I²C adapter, 40-pin LCD connector, and 8-pin touch connector.
 
-- 24 V input protection; 5 V, 3.3 V, and 1.8 V conversion; sequenced VCI/IOVCC/reset; Nano power feed.
+- Independent 24 V bench and nominal-12 V vehicle input protection, vehicle-to-24 V-class conversion, reverse-blocked source ORing, 5 V/3.3 V/1.8 V conversion, sequenced VCI/IOVCC/reset, and safe-by-default Nano power feed.
 
 - 240 mA total constant-current backlight drive and PWM dimming.
 
@@ -96,7 +97,7 @@ STOP: Phase 2 schematic design has not started. Approval or requested modificati
 
 ### 2.3 Explicit non-goals
 
-- Automotive qualification, load-dump immunity, ISO 7637-2/ISO 16750 compliance, AEC-Q component coverage, functional safety, production EMC certification, or sealed enclosure design.
+- Automotive qualification, a claim of ISO 7637-2/ISO 16750 compliance, comprehensive AEC-Q component coverage, functional safety, production EMC certification, or sealed-enclosure design. Vehicle-input evaluation and conservative transient protection are in scope, but qualification requires a defined harness/source impedance and laboratory validation.
 
 - A replacement for the ESP32-P4-NANO; Wi-Fi/C6, audio, camera, Ethernet, USB, and battery functions are outside this daughterboard’s scope.
 
@@ -106,7 +107,7 @@ STOP: Phase 2 schematic design has not started. Approval or requested modificati
 
 ### 2.4 Design life and environment
 
-Prototype target: indoor laboratory use, 0–50 °C ambient, non-condensing, pollution degree typical of office/lab equipment, natural convection, and supervised operation. Component ratings shall normally be −40–85 °C or wider so the board is not the immediate temperature limitation, but this does not qualify the assembly for automotive service.
+Prototype target: indoor laboratory and supervised in-vehicle evaluation, 0–50 °C ambient at board level, non-condensing, natural convection, and accessible service protection. Component ratings shall normally be −40–85 °C or wider so the board is not the immediate temperature limitation, but this does not qualify the assembly for automotive service.
 
 ## 3. Source basis and interpretation rules
 
@@ -199,8 +200,8 @@ The daughterboard is partitioned into five zones. This is the controlling Phase-
 
 | **Zone**                   | **Inputs**                | **Function**                                                                                 | **Outputs**                                |
 |----------------------------|---------------------------|----------------------------------------------------------------------------------------------|--------------------------------------------|
-| A. Protected input         | 24 V barrel               | Fuse, ideal-diode reverse protection, surge clamp, bulk/high-frequency filtering, power-good sensing | VIN_PROT_24V                         |
-| B. System power            | VIN_PROT_24V              | 60 V synchronous buck; isolated local display regulators                                     | SYS_5V_3A, TOUCH_3V3, LCD_IOVCC_1V8        |
+| A. Protected sources       | 24 V barrel + 12 V vehicle | Separate fuses, transient/reverse/OV protection, vehicle buck-boost, independent ideal-diode ORing | VIN_PROT_24V common bus |
+| B. System power            | VIN_PROT_24V              | Existing 60 V synchronous buck; isolated local display regulators; reverse-blocked Nano feed | SYS_5V_3A, TOUCH_3V3, LCD_IOVCC_1V8 |
 | C. Sequenced display logic | SYS_5V, LCD_PWR_EN        | Separately controlled VCI/IOVCC rails, reset wired-AND, early power-fail handling             | LCD_IOVCC, LCD_VCI, LCD_RESET_N, LCD_READY |
 | D. Video and touch         | Nano DSI/I²C + control GPIOs | Lane-preserving adapter, ESD, four-conductor powered-off isolation, GT9271 reset/address/interrupt | 40-pin LCD FPC, 8-pin touch FPC        |
 | E. Backlight               | VIN_PROT_24V, BL_PWM      | 65 V-class constant-current buck at 240 mA with disable/fault/current-test provisions         | LED_A, LED_K                               |
@@ -287,58 +288,117 @@ These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO
 | 7       | RST        | GPIO5 through switch plus hardware reset clamp; active low |
 | 8       | GND        | Ground                                           |
 
-## 7. Power architecture and sequencing
+## 7. Power architecture, source isolation, and sequencing
 
-### 7.1 Input and rail requirements
+### 7.1 Mandatory power-behavior requirements
 
-| **Rail**     | **Nominal / design target**      | **Consumers**                | **Requirement**                                                                                 |
-|--------------|----------------------------------|------------------------------|-------------------------------------------------------------------------------------------------|
-| VIN_ADAPTER  | 24 V nominal, ±10% accepted      | Input stage                  | Center-positive 5.5 × 2.1 mm adapter, ≥2 A, regulated, safety-approved.                         |
-| VIN_PROT_24V | ≈VIN after ideal-diode stage     | 5 V buck, LED driver         | Fused, reverse protected, surge clamped, filtered; no automotive transient claim.               |
-| SYS_5V_3A    | 5.0 V, 3 A continuous target     | Nano P1 pins 2/4, local LDOs | Ripple/noise compatible with Nano; current limit and thermal protection; removable feed jumper. |
-| TOUCH_3V3    | 3.3 V, ≥100 mA design capability | Touch and isolation switch   | Not tied to Nano ESP_3V3; switched, locally decoupled, and safely isolated when off.             |
-| LCD_IOVCC    | 1.8 V, ≥100 mA design capability | Panel pin 3                  | Fixed Displayman-approved voltage; sequence first; controlled discharge.                        |
-| LCD_VCI      | 2.8 V, ≥100 mA design capability | Panel pin 2                     | Fixed per S8 and S1 typical; separately regulated/switched after IOVCC.                           |
-| LED_CURRENT  | 240 mA total, ±5% initial target | Panel pins 31–32 / 39–40     | Constant current; default disabled; PWM controllable; never exceed 240 mA nominal setpoint.     |
+The following behaviors are requirements independent of the final controller implementation:
 
-### 7.2 Preliminary worst-case input budget
+- Accept regulated 24 V bench power at 21.6–26.4 V and nominal-12 V vehicle power through separate connectors. Either source may be absent or present, and simultaneous connection is legal.
 
-| **Load**               | **Output estimate**              | **Input estimate at 24 V** | **Basis / margin**                                     |
-|------------------------|----------------------------------|----------------------------|--------------------------------------------------------|
-| Nano + 5 V auxiliaries | 15 W at 5 V / 3 A design ceiling | ≈0.69 A at 90%             | Design allocation; actual Nano maximum to be measured. |
-| Backlight              | 4.61 W (19.2 V × 0.24 A)         | ≈0.21–0.23 A               | 90–95% LED-driver estimate.                            |
-| LCD/touch logic        | \<0.3 W expected                 | Included in 5 V conversion | 60 mA panel max + 13 mA touch typ; margin added.       |
-| Total design operating | ≈20 W                            | ≈0.95 A                    | Before transient and thermal margin.                   |
-| Specified adapter      | 48 W available                   | 24 V / 2 A minimum         | Approximately 2× operating-current margin.             |
+- Prevent DC or transition backfeed from the common internal bus into either source connector, from vehicle power into the bench input, from bench power into the vehicle converter, from Nano USB into daughterboard rails, and from daughterboard 5 V into USB VBUS.
 
-### 7.3 Required LCD power-up sequence
+- Treat Nano USB connection during 12 V or 24 V operation as normal. USB-only operation may power the Nano but shall leave the display, touch, backlight, and common high-voltage bus off.
 
-Hardware and firmware shall jointly implement the following conservative sequence. LM3880 remains a candidate, not a requirement; the final supervisor/sequencer topology must also complete a controlled shutdown from an isolated display hold-up node after adapter removal.
+- Force backlight off and panel reset asserted whenever the common bus, 5 V rail, or required display rails are invalid. Brownout or cranking may reboot the system, but shall not cause latch-up, rail overshoot, or an uncontrolled backlight pulse.
 
-| **Step** | **Action**                                              | **Minimum / target delay**                                         | **Enforcement**                                               |
-|----------|---------------------------------------------------------|--------------------------------------------------------------------|---------------------------------------------------------------|
-| 0        | Keep LCD_IOVCC, LCD_VCI, LCD_RESET_N, and backlight off | Until SYS_5V and required local control rails are valid             | Pull-downs + sequencer + firmware defaults                    |
-| 1        | Enable LCD_IOVCC (1.8 V)                                | After maintained supply is valid                                   | Hardware                                                      |
-| 2        | Enable LCD_VCI at 2.8 V                                 | 10 ms after IOVCC as a conservative implementation                 | Hardware                                                      |
-| 3        | Keep reset low after both rails stabilize               | ≥5 ms; rail rise times ≥10 µs per S1                               | Hardware reset clamp                                          |
-| 4        | Release panel reset after a ≥10 ms low interval         | S8 minimum pulse is 50 µs; S2 uses 10 ms                           | Hardware + GPIO4 open-drain command path                       |
-| 5        | Send reviewed GC9703C init table                        | ≥10 ms after reset release; retain S2's longer delays where present | Firmware                                                     |
-| 6        | Sleep Out (0x11), wait ≥120 ms, then Display On (0x29)  | S2/S8                                                              | Firmware                                                      |
-| 7        | Enable PWM from 0% and ramp brightness                  | After valid frames / display-on                                    | Firmware                                                      |
+- Isolate every cross-domain signal so an independently powered Nano cannot phantom-power LCD or touch circuitry and an energized display/touch domain cannot power an unpowered Nano through GPIO, I²C, RESET, INT, or DSI-adjacent logic.
 
-### 7.4 Required shutdown and hard-unplug behavior
+- Recover automatically and deterministically after a valid source returns. Recovery shall execute a complete rail/reset/init sequence; it shall not resume in the middle of panel initialization.
 
-- Normal software shutdown: PWM = 0; send Display Off 0x28 followed by Sleep In 0x10; wait at least 120 ms; assert panel reset; deassert LCD_PWR_EN.
+### 7.2 Preferred dual-input architecture
 
-- The LM3880 reverse sequence shall assert reset first, disable VCI at least 10 ms later, and disable IOVCC at least 10 ms after VCI. This exceeds S1’s reset-low-before-VCI requirement and preserves VCI-before-IOVCC order.
+The common downstream rail retains the existing net name `VIN_PROT_24V`. The 24 V→5 V, LCD logic, touch, and backlight blocks continue to use it unchanged.
 
-- An early power-fail detector referenced to VIN_PROT_24V shall deassert the sequencer while the local logic hold-up node still has energy. Phase 2 shall size the hold-up capacitance and isolation path from measured rail load and dropout so all three reverse steps complete on adapter removal.
+```mermaid
+flowchart LR
+  A["24 V bench"] --> B["Fuse + TVS + ideal diode"]
+  C["12 V vehicle"] --> D["Fuse + transient / reverse / OV protection"]
+  D --> E["4-switch buck-boost to 24 V"]
+  E --> F["Output ideal diode"]
+  B --> G["VIN_PROT_24V common bus"]
+  F --> G
+  G --> H["Existing 5 V, display and backlight blocks"]
+```
 
-- The display hold-up node shall exclude the Nano and backlight. Its capacitance, isolation, discharge paths, and supervisor thresholds shall guarantee reset assertion and rail shutdown even if firmware is unavailable. A software-only shutdown is not sufficient.
+A non-inverting, synchronous four-switch buck-boost is preferred for the vehicle stage. A boost-only stage is not selected: its direct input-to-output path cannot regulate an input excursion above the target bus and complicates isolation during a fast surge or a 24 V misconnection. SEPIC/flyback alternatives add loss, magnetics stress, or unnecessary isolation. The preferred controller is `LM5176QPWPRQ1`, an ACTIVE AEC-Q100 4.2–55 V controller, sized with external 100 V MOSFETs for 30 W continuous output capability.
 
-### 7.5 Nano power coexistence
+Each branch has independent reverse-current blocking. The bench `LM74700-Q1` ideal-diode stage remains. A second ideal-diode stage between the vehicle converter and `VIN_PROT_24V` prevents the common bus from driving the converter output. No current-sharing claim is made: when both sources are valid, the branch with the slightly higher delivered voltage supplies the load; both branches remain electrically safe.
 
-SYS_5V_3A feeds Nano header P1 pins 2 and 4 through a removable jumper or 0 Ω link. The Nano’s attached USB power-path circuitry must be verified against S3 and bench-tested for concurrent USB + daughterboard power. The DSI connector’s ESP_3V3 pins are references only and shall never be driven by the daughterboard.
+### 7.3 Vehicle-input operating envelope and protection
+
+| Condition | Required behavior |
+|---|---|
+| 9–18 V continuous at vehicle connector | Full-load regulation to nominal 24.0 V internal vehicle branch; verify thermals at 9 V and maximum system load. |
+| Approximately 7–9 V during crank | Converter may drop out or current-limit. Use hysteretic UVLO, nominally about 8.0 V rising / 7.0 V falling, so it does not chatter. Reboot is acceptable. |
+| Below UVLO, including deep crank | Vehicle converter off; backlight off; panel reset low; no excessive input current; automatic clean restart after the rising threshold and debounce delay. |
+| Above the accepted charging range | Adjustable front-end OV cutoff, provisional 20 V rising, disconnects the converter. Exact divider values and hysteresis are Phase-2 calculations. |
+| Positive/negative transients or reverse battery | Survive safely through fuse, bidirectional high-energy TVS, `LM74800-Q1` with back-to-back MOSFETs, input filter, and appropriately rated downstream parts. Qualification to a named ISO pulse is not claimed without a defined test plan. |
+| Accidental 24 V on vehicle connector | Front-end OV cutoff shall reject the input without energizing the converter; survival must be verified at 26.4 V before vehicle use. |
+
+Preferred branch order is keyed connector → 5 A time-delay/serviceable fuse → damped input filter → `SM8S24CA-Q` 24 V bidirectional high-energy TVS → `LM74800-Q1` common-source back-to-back 100 V N-MOSFET protection → `LM5176-Q1` converter → `LM74700-Q1` output ideal diode. TVS location and filter damping shall be finalized using the selected harness/source impedance so the protection FETs and controller stay within SOA and absolute maximum during clamping.
+
+### 7.4 Rail requirements
+
+| **Rail** | **Nominal / design target** | **Consumers** | **Requirement** |
+|---|---|---|---|
+| VIN_ADAPTER | 24 V nominal, ±10% | Bench branch | Center-positive 5.5 × 2.1/2.0 mm adapter interface, ≥2 A, regulated and safety-approved; final barrel dimensions verified physically. |
+| VIN_VEHICLE | 12 V nominal | Vehicle branch | Keyed/latched 2-pin input rated ≥8 A; full operation 9–18 V; deep-crank reboot permitted. |
+| VEH_24V | 24.0 V nominal, 30 W continuous design target | Vehicle source-OR input | Four-switch buck-boost output; independent OVP/current limit/PGOOD and output reverse blocking. |
+| VIN_PROT_24V | 21.6–26.4 V allowed common bus | 5 V buck, LED driver | Source-ORed, reverse-blocked, surge-protected internal bus. Existing downstream architecture uses this rail. |
+| SYS_5V_3A | 5.0 V, 3 A continuous target | Nano and local LDOs | Existing LM76003 architecture retained. Feed Nano through a true-reverse-blocking, current-limited eFuse; service jumper normally fitted. |
+| TOUCH_3V3 | 3.3 V, ≥100 mA | Touch/isolation | Not tied to Nano ESP_3V3; switched, locally decoupled, and isolated when off. |
+| LCD_IOVCC | 1.8 V, ≥100 mA | Panel pin 3 | Fixed Displayman-approved voltage; sequence first; controlled discharge. |
+| LCD_VCI | 2.8 V, ≥100 mA | Panel pin 2 | Fixed; separately switched after IOVCC. |
+| LED_CURRENT | 240 mA total, ±5% target | Panel LED pins | Constant current; default disabled; PWM controllable; no pulse above nominal setpoint. |
+
+### 7.5 Complete-system vehicle load and current budget
+
+The converter is sized for the whole system, not just the backlight. The conservative electrical ceiling is 15 W delivered by the 5 V rail plus 4.752 W LED output at the confirmed 19.8 V maximum, conversion losses, supervisors, and development margin. This yields approximately 22.2 W expected worst-case draw from `VIN_PROT_24V`; the vehicle converter is designed for 30 W continuous output.
+
+| Vehicle voltage | Assumed vehicle-stage efficiency | Input current at 22.2 W bus load | Input current at 30 W design capacity |
+|---:|---:|---:|---:|
+| 9.0 V | 88% | 2.80 A | 3.79 A |
+| 12.0 V | 90% | 2.06 A | 2.78 A |
+| 14.4 V | 92% | 1.68 A | 2.26 A |
+| 16.0 V | 92% | 1.51 A | 2.04 A |
+
+These are design estimates, not measured consumption. At the provisional 8 V turn-on threshold, 30 W at 85% would require about 4.41 A; therefore a 5 A time-delay fuse, ≥8 A connector, low-resistance protection path, and approximately 5 A input current limit are appropriate starting points. Full-load operation below 9 V is not required.
+
+### 7.6 Nano 5 V and USB coexistence
+
+The former removable-jumper-only concept is superseded. `SYS_5V_3A` shall feed Nano P1 pins 2/4 through an always-active true-reverse-current-blocking eFuse, provisionally `TPS259470ARPWR`, with approximately 3.2 A current limit, controlled inrush, fault indication, and no dependence on firmware. This blocks Nano/USB-derived 5 V from entering `SYS_5V_3A`. The removable jumper remains a labeled service disconnect, not an operating-mode selector.
+
+Blocking in the opposite direction—Nano `VCC_5V` toward laptop VBUS—depends on the Nano's onboard USB power-path MOSFET. S3 shows that MOSFET path, but Waveshare gives no explicit dual-source rating. Schematic release shall preserve the safe-by-default daughterboard eFuse implementation; prototype release additionally requires a four-quadrant backfeed test at the Nano USB connector. If the Nano path fails that test, the only robust fixes require access to USB VBUS ahead of the Nano path (board modification or a dedicated data-only/debug interface), because USB VBUS is not separately exposed on the Nano headers.
+
+The Nano DSI connector's ESP_3V3 pins remain sense/reference inputs only and shall never be driven.
+
+### 7.7 Required LCD power-up sequence
+
+Hardware and firmware shall jointly implement the following conservative sequence. LM3880 remains a candidate, not a requirement; the final supervisor/sequencer topology must also complete a controlled shutdown from an isolated display hold-up node after removal or switchover of the active source.
+
+| **Step** | **Action** | **Minimum / target delay** | **Enforcement** |
+|---|---|---|---|
+| 0 | Keep LCD_IOVCC, LCD_VCI, LCD_RESET_N, and backlight off | Until common bus and required local rails are valid | Pull-downs + sequencer + firmware defaults |
+| 1 | Enable LCD_IOVCC (1.8 V) | After maintained supply is valid | Hardware |
+| 2 | Enable LCD_VCI at 2.8 V | 10 ms after IOVCC, conservative target | Hardware |
+| 3 | Keep reset low after both rails stabilize | ≥5 ms; rail rise times ≥10 µs | Hardware reset clamp |
+| 4 | Release panel reset after ≥10 ms low | S8 minimum 50 µs; S2 uses 10 ms | Hardware + GPIO4 open-drain command |
+| 5 | Send reviewed GC9703C init table | ≥10 ms after reset release | Firmware |
+| 6 | Sleep Out 0x11, wait ≥120 ms, Display On 0x29 | S2/S8 | Firmware |
+| 7 | Enable PWM from 0% and ramp | After valid frames/display-on | Firmware |
+
+### 7.8 Shutdown, hard-unplug, and source-transition behavior
+
+- Normal shutdown: PWM = 0; send 0x28 then 0x10; wait ≥120 ms; assert reset; deassert LCD power.
+
+- Hardware reverse sequence asserts reset first, disables VCI at least 10 ms later, then disables IOVCC at least 10 ms after VCI.
+
+- Early-fail detection shall monitor the common bus and both branch PGOOD signals. A source handover that keeps `VIN_PROT_24V` above its valid threshold may continue without reset; any threshold crossing forces a full shutdown and later full reinitialization.
+
+- The display hold-up node excludes Nano and backlight. Final capacitance, isolation, discharge, and supervisor thresholds shall guarantee reset assertion and ordered rail removal even when firmware is unavailable.
+
+- Vehicle UVLO/OVLO, bench removal, USB insertion/removal, or a branch fault shall never bypass the hardware backlight disable. Firmware may only enable backlight when bus-valid, display-rail-valid, reset-released, and initialization-complete are all true.
 
 ## 8. MIPI-DSI electrical and PCB requirements
 
@@ -453,7 +513,11 @@ The module internally parallels four six-LED strings. S8 confirms that the daugh
 
 ### 11.1 Protection and filtering
 
-- Barrel input: 2 A fuse, LM74700-Q1 ideal-diode controller with a ≥60 V N-MOSFET selected by SOA/surge/thermal analysis, SMBJ30A TVS to ground after the fuse, and bulk + ceramic capacitors rated with adequate DC-bias margin. The ideal-diode stage preserves backlight headroom and blocks reverse current.
+- Bench input: 2 A fuse, LM74700-Q1 ideal-diode controller with a suitably rated N-MOSFET, SMBJ30A TVS, and bulk + ceramic capacitors. This branch retains the v0.3 architecture and blocks current toward the barrel connector.
+
+- Vehicle input: keyed ≥8 A connector, 5 A time-delay fuse, damped input filter, SM8S24CA-Q bidirectional high-energy TVS, LM74800-Q1 with back-to-back 100 V N-MOSFETs, and adjustable UVLO/OV cutoff. A separate output ideal diode prevents the common bus from driving the disabled converter.
+
+- Common bus: both source branches must be reverse-blocking under steady state, hot-plug, brownout, and fault conditions. Bulk capacitance shall not defeat branch isolation or exceed connector/fuse inrush limits.
 
 - Regulators and LED driver: local bypassing, short hot loops, exposed-pad thermal via arrays where required, and manufacturer-recommended input/output capacitor types and values.
 
@@ -465,7 +529,7 @@ The module internally parallels four six-LED strings. S8 confirms that the daugh
 
 | **Group**  | **Required labeled points**                                                                          |
 |------------|------------------------------------------------------------------------------------------------------|
-| Power      | VIN_RAW, VIN_PROT_24V, SYS_5V, TOUCH_3V3, LCD_IOVCC, LCD_VCI, GND near every group                   |
+| Power      | BENCH_24V_RAW, VEH_12V_RAW, VEH_PROT, VEH_24V, VIN_PROT_24V, SYS_5V, NANO_5V, TOUCH_3V3, LCD_IOVCC, LCD_VCI, GND near every group |
 | Sequencing | VIN_GOOD, LCD_PWR_EN, SEQ_FLAG1, SEQ_FLAG2, SEQ_FLAG3/LCD_READY, LCD_RESET_N                         |
 | Touch      | CTP_SCL, CTP_SDA, CTP_RESET_N, CTP_INT, CTP_3V3                                                      |
 | Backlight  | BL_PWM, BL_DIM, LED_A, LED_K, LED current measurement link                                           |
@@ -473,7 +537,7 @@ The module internally parallels four six-LED strings. S8 confirms that the daugh
 
 ### 11.3 Development controls
 
-- Nano 5 V feed isolation jumper/link.
+- Nano 5 V service-isolation jumper/link, normally fitted; TPS259470A true-reverse-blocking eFuse remains the default protection and operating control.
 
 - LCD power-enable override with OFF / MCU control positions; no forced-ON position that bypasses reset sequencing.
 
@@ -489,15 +553,15 @@ The module internally parallels four six-LED strings. S8 confirms that the daugh
 
 - Separate noisy power and quiet display-interface placement zones; use thermal copper and via arrays per IC datasheets.
 
-- Clearly mark pin 1, cable contact side, 24 V polarity, LED hazard, connector reference, rail voltage, jumper default, and board revision on silkscreen.
+- Clearly mark pin 1, cable contact side, both input polarities and voltage ranges, LED hazard, connector reference, rail voltage, jumper default, fuse rating, and board revision on silkscreen.
 
-- Place high-voltage-rated spacing suitable for 24 V SELV and 48.4 V clamped transients. This is not mains circuitry.
+- Place and space the vehicle transient clamp, protection FETs, converter hot loops, and common bus for their calculated peak voltage/current and heat flow. The board is neither mains circuitry nor an automotive-qualified ECU.
 
 - Use keyed/retained connectors where possible; FFC latches must remain reachable with the Nano installed.
 
 ### 11.5 KiCad readiness
 
-Phase 2 shall use hierarchical schematic sheets for Input Protection, 5 V Power, Display Rails & Sequencing, MIPI Adapter, Touch, Backlight, and Headers/Test. Net names in this PRD shall be retained. Every selected symbol/footprint must be checked against the manufacturer drawing, with pin numbers verified independently before PCB capture.
+Phase 2 shall use hierarchical schematic sheets for Bench Input, Vehicle Input & Buck-Boost, Source ORing, 5 V Power, Display Rails & Sequencing, MIPI Adapter, Touch, Backlight, and Headers/Test. Net names in this PRD shall be retained. Every selected symbol/footprint must be checked against the manufacturer drawing, with pin numbers verified independently before PCB capture.
 
 ## 12. Selected components and rationale
 
@@ -505,6 +569,14 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 | **Function**          | **Preferred manufacturer part number**          | **Key suitability**                                                 | **Status / rationale**                                                             |
 |-----------------------|-------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| Vehicle connector     | Molex 43045-0200 header + 43025-0200 housing | Keyed/latching 2-position Micro-Fit 3.0; 8.5 A/contact, −40 to 105 °C header rating | Provisional mechanical selection for evaluation harness; mating terminals and wire gauge selected for ≥5 A. |
+| Vehicle fuse          | 5 A time-delay/serviceable fuse, exact holder pending | Coordinates with 30 W stage and ~4.4 A current at 8 V threshold | Requirement fixed; exact fuse/holder remains a mechanical implementation choice after inrush simulation. |
+| Vehicle TVS           | Bourns SM8S24CA-Q | 24 V standoff, 38.9 V clamp class, 6.6 kW bidirectional, AEC-Q101 | Preferred high-energy clamp; large DO-218 footprint and pulse/fuse coordination must be validated. |
+| Vehicle protection    | TI LM74800QDRRRQ1 + two CSD19531Q5A | 3–65 V controller, reverse input to −65 V, reverse-current and adjustable OV protection; 100 V/6.4 mΩ FETs | ACTIVE controller/FETs; common-source back-to-back arrangement preferred. Final SOA/dVdt calculations required. |
+| Vehicle buck-boost    | TI LM5176QPWPRQ1 + four CSD19531Q5A | 4.2–55 V synchronous four-switch controller; 24 V/30 W target; 100 V external FETs | ACTIVE/AEC-Q100 controller. Simpler than newer I²C-heavy LM51772-Q1 and adequate for fixed output; magnetics/compensation final in Phase 2. |
+| Vehicle inductor      | Coilcraft XAL7030-682MEC class | 6.8 µH, 15 A typical saturation, 6.8 A 40 °C-rise Irms, shielded, AEC-Q200 | Provisional calculation anchor only; final L/value/package follows LM5176 loss and ripple design. |
+| Vehicle-output ORing  | TI LM74700-Q1 + CSD19531Q5A | Reverse-current block between VEH_24V and common bus | Independent of converter enable state; prevents bench-source backfeed. |
+| Nano 5 V eFuse        | TI TPS259470ARPWR | 2.7–23 V, 5.5 A, 28 mΩ typical, true reverse-current blocking, adjustable current/UV/OV and inrush | Replaces jumper-as-procedure approach; auto-retry variant with ~3.2 A limit is provisional. Service jumper retained. |
 | 24 V barrel jack      | Switchcraft RAPC722X                            | Right-angle through-hole, 24 V / 5 A, common 5.5 mm barrel family   | Preferred replacement for mismatched PJ-044AH; verify actual adapter inner/outer dimensions before footprint freeze. |
 | Input fuse            | Littelfuse 0451002.MRL                          | 2 A, 125 V, surface-mount fuse                                      | Selected; voltage margin above 24 V. I²t to be checked against measured inrush.    |
 | Reverse protection    | TI LM74700-Q1 + external ≥60 V N-MOSFET        | 3.2–65 V ideal-diode controller; reverse-current blocking           | Preferred over series Schottky to preserve LED-driver headroom; MOSFET selected during Phase 2 calculation. |
@@ -592,15 +664,18 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | UQ-05 HIGH        | What are the LCD and touch cable contact-side/orientation requirements at both ends?                                      | S8 confirms bottom-contact 40-pin and 8-pin module-side connections. Nano connector MPN/contact presentation remains undocumented. | Panel-side electrical requirement is closed. Continuity-test the actual Nano and inspect both physical flexes before footprint/placement freeze. |
 | UQ-06 HIGH        | Is Nano J1 pin 10 intentionally NC, and are pins 14/15 safe reference-only 3.3 V outputs?                                 | S3 shows pin 10 unlabeled; 14/15 tied to ESP_3V3.                                                                          | Verify with Waveshare and a powered-off continuity check. Do not drive ESP_3V3.                                           |
 | UQ-07 HIGH        | What is the maximum sustained and transient 5 V current of the exact Nano build?                                          | S3 shows 5 V input and onboard conversion but no board-level input-current rating.                                         | Allocate 3 A; measure boot, CPU/PSRAM load, C6 activity, USB, and peripherals before final fuse/thermal sizing.           |
-| UQ-08 HIGH        | Is concurrent USB and daughterboard 5 V power explicitly permitted?                                                       | S3 includes a USB-to-VCC_5V MOSFET path, but no operating statement was supplied.                                          | Default user instruction: isolate Nano 5 V jumper before USB-only power. Bench-test backfeed before allowing concurrency. |
+| UQ-08 NARROWED/HIGH | Does the Nano onboard USB-to-VCC_5V MOSFET guarantee zero reverse current from the externally driven 5 V header to laptop VBUS over all power transitions? | S3 shows a MOSFET power path but Waveshare provides no explicit dual-source guarantee; USB VBUS is not separately exposed at the headers. | Concurrent USB is a mandatory normal mode. Use TPS259470A from SYS_5V to NANO_5V for the Nano→daughterboard blocking direction; verify the Nano's opposite direction by four-quadrant voltage/current test before prototype release. If it fails, add a data-only debug path or modify the Nano USB boundary. |
 | UQ-09 CLOSED      | Does the panel accept one 240 mA total sink for the internal four parallel strings?                                       | S8 confirms 240 mA total and 60 mA per each of four parallel strings.                                                      | Set one 240 mA total current channel; validate temperature and uniformity on samples.                                      |
 | UQ-10 MEDIUM      | Is 0x5D the desired default GT9271 address, and what INT behavior applies?                                                | S8 confirms open-drain active-low INT after initialization and a 2–10 kΩ pull-up, but says 0x5D uses INT high during reset; S1 maps INT high to 0x14 and low to 0x5D. | Hardware supports both. Default provisionally to S1's 0x5D/INT-low timing, retry 0x14 only through a complete reset sequence, and confirm on the sample or through corrected vendor guidance. |
 | UQ-11 MEDIUM      | Which Nano mechanical arrangement, standoff pattern, and cable lengths are preferred?                                     | No enclosure or placement drawing was supplied.                                                                            | User to approve stack-on baseline or request side-by-side board before layout.                                            |
 | UQ-12 MEDIUM      | Are GPIO4/5/22/23/24 free in the intended firmware/BSP?                                                                   | They are exposed and not strapping pins, but application reservations are unknown.                                         | User/firmware owner to confirm; allocation remains configurable before schematic.                                         |
 | UQ-13 NARROWED    | Is the detailed source-channel numbering in S8 correct?                                                                    | S8 confirms H-active = 600 and internal masking of 60 host columns per side, so the host requirement is resolved. Its `S901–S1500` range spans 600 source outputs rather than the stated 180. | Implement the confirmed 600-wide transport/central 480-visible crop and validate with numbered-column patterns. Seek a corrected source-channel diagram, but this arithmetic defect does not block schematic capture. |
 | UQ-14 MEDIUM      | Which S2 syntax lines are transcription artifacts versus tool-specific grammar?                                           | File contains pseudo-code and malformed parentheses but payload appears structured.                                        | Normalize wrapper syntax only; preserve command bytes; request original vendor project/export if available.               |
+| UQ-15 HIGH        | Does the selected vehicle protection network survive the intended harness/source transient energy and recover without overstressing the TVS, FETs, fuse, or converter? | Component voltage ratings and topology are adequate on paper, but transient energy depends on vehicle/harness/source impedance and pulse duration. | Complete SPICE/reference-design checks, then bench-test defined positive/negative, reverse-polarity, crank, jump/miswire, and hot-plug cases. Do not claim ISO compliance from component ratings alone. |
+| UQ-16 MEDIUM      | What exact vehicle connector, fuse holder, cable gauge, and harness length will be used? | Micro-Fit 43045-0200/43025-0200 and 5 A protection are suitable evaluation defaults, but harness mechanics affect inrush, EMI, and TVS stress. | Use provisional parts for schematic planning; freeze only after the physical harness is selected/measured. This is not a DSI schematic-release blocker. |
 | A-01 ASSUMPTION   | Adapter characteristics                                                                                                   | User specified a standard 24 V DC wall adapter.                                                                            | Assume regulated 24 V ±10%, center-positive, 5.5 × 2.1 mm, ≥2 A, SELV/Class II. User to confirm regional supply and plug. |
-| A-02 ASSUMPTION   | Prototype environment                                                                                                     | User specified bench-development, not automotive production.                                                               | Use indoor 0–50 °C design target, supervised operation, no load-dump/automotive qualification.                            |
+| A-02 ASSUMPTION   | Prototype environment | User specified development/evaluation use, now including vehicle-power evaluation. | Use supervised 0–50 °C board-level evaluation; no production/qualification claim. |
+| A-03 ASSUMPTION   | Vehicle electrical envelope | No specific vehicle/harness was identified. | Design for full-load 9–18 V operation, hysteretic dropout below about 7–8 V, and OV rejection above about 20 V. Validate actual vehicle/harness waveforms before connection. |
 
 ## 15. Verification and acceptance plan
 
@@ -610,7 +685,7 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 
 - Schematic ERC; netlist cross-check against Sections 6 and 7; no NC panel pin connected.
 
-- Power-stage calculations at 21.6, 24.0, and 26.4 V; component stress at fault limits; thermal and derating review.
+- Power-stage calculations at bench 21.6/24.0/26.4 V and vehicle 9/12/14.4/16/18 V; common-bus ORing, converter loss, SOA, transient-clamp/fuse coordination, fault stress, thermal and derating review.
 
 - Controlled-impedance stack-up approved by fabricator; MIPI pair geometry and length report attached to layout review.
 
@@ -621,7 +696,9 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | **Stage**          | **Method**                                                                            | **Pass criteria**                                                             |
 |--------------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | 1\. Unpowered      | Continuity, resistance-to-ground, connector orientation, fuse and polarity inspection | No shorts; correct pin mapping; Nano 3.3 V not driven.                        |
-| 2\. Protected 24 V | Current-limited bench supply, no Nano/panel connected                                 | TVS not conducting at 26.4 V; correct polarity and low idle current.          |
+| 2\. Protected sources | Current-limited supplies, no Nano/panel; test bench and vehicle branches separately | Correct polarity, UV/OV/reverse behavior, low idle current, no cross-backfeed. |
+| 2a\. Source coexistence | Connect valid 12 V and 24 V together; hot-plug/remove each branch | Common bus stays bounded; inactive connector sees no reverse current; no unsafe current sharing. |
+| 2b\. Vehicle faults | Programmed dips, slow ramps, reverse input, 24 V misconnection, defined surge pulses | Safe cutoff/dropout, no overstress, backlight off, automatic deterministic recovery. |
 | 3\. Rails unloaded | Scope 5 V, 3.3 V, 1.8 V; toggle enables                                               | Within tolerance; stable; expected ripple; no overshoot above device limits.  |
 | 4\. Sequencing     | Four-channel scope on IOVCC, VCI, RESET, VIN_GOOD; plug/unplug and brownout           | Order and delays meet Section 7 in both directions, including abrupt removal. |
 | 5\. Nano           | Connect Nano with panel absent; exercise CPU/C6/USB loads                             | 5 V regulation, thermal, and no USB backfeed violation.                       |
@@ -632,7 +709,7 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 
 ### 15.3 Required instruments
 
-- Current-limited laboratory supply capable of 27 V and ≥2 A; calibrated DMM; ≥4-channel oscilloscope with suitable passive/differential probes.
+- Current-limited laboratory supplies capable of 0–30 V and ≥5 A for independent/simultaneous source tests; calibrated DMM; ≥4-channel oscilloscope with suitable passive/differential probes.
 
 - Electronic load or protected dummy LED load for current-driver validation before connecting the panel.
 
@@ -658,7 +735,10 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | Correct DSI routing                         | Section 8 controlled impedance, skew, reference, ESD, no stubs        | Fabricator stack-up + DRC + stress patterns  |
 | GT9271 I²C/reset/INT                        | Sections 6.4 and 9; 3.3 V, isolation, address sequence                | ID/address/interrupt/ten-point test          |
 | LCD rails and sequence                      | Section 7; fixed 1.8 V IOVCC, separately controlled VCI, reset clamp, hard-unplug hold-up | Four-channel oscilloscope capture |
-| 24 V wall adapter                           | Section 7.1 and selected barrel/protection parts                      | 21.6–26.4 V test; polarity/fault checks      |
+| 24 V wall adapter                           | Sections 7.2–7.4; retained barrel/protection branch                  | 21.6–26.4 V test; polarity/fault checks      |
+| 12 V vehicle evaluation input                | Sections 7.2–7.5; LM74800 + LM5176 four-switch branch                | 9–18 V load/thermal test; UV/OV/reverse/surge tests |
+| 12 V / 24 V coexistence                      | Independent ideal-diode branches into VIN_PROT_24V                   | Simultaneous-source and hot-transition matrix |
+| USB simultaneous operation                   | TPS259470A Nano feed plus Nano USB-path verification                  | USB-only/USB+bench/USB+vehicle backfeed tests |
 | Power Nano and LCD                          | 5 V / 3 A buck plus local LDOs and isolated Nano feed                 | Load, ripple, USB coexistence, thermal test  |
 | 240 mA / 16.8–19.8 V 6S4P backlight         | Section 10; TPS922053 buck with external precision sense and fault output | Dummy load then panel current/headroom test |
 | ESP PWM brightness                          | GPIO23 BL_PWM, default-off, initial 20 kHz fast/hybrid-dimming target | Duty sweep, flicker/linearity, reset default |
@@ -686,7 +766,7 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 <tbody>
 <tr class="odd">
 <td><p><strong>Phase 1 stop point</strong></p>
-<p>No schematic capture or KiCad implementation is authorized by this document until this v0.3 revision is approved and the entry checklist is complete. Engineering calculations used to evaluate candidate architectures may continue.</p></td>
+<p>No schematic capture or KiCad implementation is authorized by this document until this v0.4 revision is approved and the entry checklist is complete. Engineering calculations used to evaluate candidate architectures may continue.</p></td>
 </tr>
 </tbody>
 </table>

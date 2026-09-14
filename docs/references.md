@@ -58,6 +58,22 @@ Checked 2026-09-14.
 | Vishay | `SS5P6-M3/86A` | Original Schottky reverse protection | Corrected product link; electrically valid but no longer preferred | [SS5P5/SS5P6](https://www.vishay.com/en/product/88988/) |
 | Texas Instruments | `LM74700-Q1` plus external N-MOSFET | Recommended ideal-diode reverse protection | ACTIVE; 3.2–65 V, reverse-current blocking; datasheet Rev. G | [LM74700-Q1](https://www.ti.com/product/LM74700-Q1) |
 
+## Vehicle-input and source-isolation components
+
+Checked 2026-09-14. Automotive/AEC qualification of individual parts does not qualify the assembled evaluation board to ISO 7637 or ISO 16750.
+
+| Manufacturer | Part number / family | Function | Status / validation note | Source |
+|---|---|---|---|---|
+| Texas Instruments | `LM74800QDRRRQ1` / LM7480-Q1 | Vehicle reverse-polarity, reverse-current, inrush, and overvoltage control with back-to-back N-FETs | ACTIVE; AEC-Q100; 3–65 V, −65 V reverse input, WSON-12; datasheet Rev. C | [Product page](https://www.ti.com/product/LM7480-Q1), [datasheet](https://www.ti.com/lit/ds/symlink/lm7480-q1.pdf) |
+| Texas Instruments | `LM5176QPWPRQ1` | 12 V vehicle to nominal-24 V four-switch synchronous buck-boost controller | ACTIVE; AEC-Q100; 4.2–55 V operating, 60 V maximum, HTSSOP-28; datasheet Rev. B | [Product page](https://www.ti.com/product/LM5176-Q1), [datasheet](https://www.ti.com/lit/ds/symlink/lm5176-q1.pdf) |
+| Texas Instruments | `LM51772-Q1` | Newer four-switch comparison candidate | ACTIVE; 55 V, optional I²C, VQFN-40; not selected because its added complexity is unnecessary for a fixed 24 V rail | [Product page](https://www.ti.com/product/LM51772-Q1) |
+| Texas Instruments | `CSD19531Q5A` | Provisional 100 V N-MOSFET class for vehicle protection, conversion, and ORing | ACTIVE; 6.4 mΩ max at 10 V, 37 nC typical Qg, 5 × 6 mm SON | [Product page](https://www.ti.com/product/CSD19531Q5A), [datasheet](https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf) |
+| Texas Instruments | `TPS259470ARPWR` / TPS25947 | Nano 5 V current limiting, inrush control, and true reverse-current blocking | ACTIVE; 2.7–23 V, 5.5 A, 28 mΩ typical; datasheet Rev. C, May 2026 | [Product page](https://www.ti.com/product/TPS25947), [datasheet](https://www.ti.com/lit/ds/symlink/tps25947.pdf) |
+| Bourns | `SM8S24CA-Q` | Vehicle high-energy bidirectional TVS | Automotive/AEC-Q101 series; 24 V standoff, 38.9 V clamp class, 6.6 kW, DO-218; availability observed through authorized distribution | [Manufacturer datasheet](https://www.bourns.com/docs/product-datasheets/sm8s-q.pdf) |
+| Coilcraft | `XAL7030-682MEC` class | Provisional buck-boost inductor | Current AEC-Q200 shielded series; 6.8 µH, 15 A typical Isat, 6.8 A 40 °C-rise Irms; manufacturer showed orderable stock | [Manufacturer series page](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xal/xal7030/) |
+| Molex | `43045-0200` / `43025-0200` | Provisional keyed vehicle-evaluation connector pair | Micro-Fit 3.0, 2 circuits; header 8.5 A/contact, −40 to 105 °C, right-angle THT; not sealed/automotive-qualified | [Header](https://www.molex.com/en-us/products/part-detail/430450200), [housing](https://www.molex.com/en-us/products/part-detail/430250200) |
+| Littelfuse | 451 series, 5 A class | Compact vehicle-branch fuse comparison | Current series; exact 5 A time-delay/serviceable implementation remains a schematic/mechanical choice because 451 is very-fast acting | [Manufacturer series page](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/surface-mount-fuses/451) |
+
 ## Connectors and cables
 
 Checked 2026-09-14.
