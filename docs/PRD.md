@@ -4,7 +4,7 @@
 
 | Document status | Version / date | Phase |
 |---|---|---|
-| Phase 1 approved | v0.2 • 13 September 2026 | PRD only |
+| Engineering revision pending approval | v0.3 • 14 September 2026 | PRD only |
 
 <table>
 <colgroup>
@@ -13,7 +13,7 @@
 <tbody>
 <tr class="odd">
 <td><p><strong>Design decision</strong></p>
-<p>The daughterboard is technically plausible, but schematic capture must not begin until the blocking Displayman electrical ambiguities and cable-contact orientation are closed. This document specifies the intended architecture, requirements, selected components, verification plan, and approval gates; it intentionally does not provide a circuit schematic.</p></td>
+<p>The daughterboard is technically plausible. Displayman's 14 September 2026 response closes the IOVCC, VCI selection, power-sequence, backlight, source-mapping, touch-electrical, and panel-side FPC questions, but it leaves a mathematically inconsistent DSI transport specification. Schematic capture must not begin until the DSI rate/limit is corrected and the user approves this revision. This document intentionally does not provide a circuit schematic.</p></td>
 </tr>
 </tbody>
 </table>
@@ -26,12 +26,13 @@
 |---|---|---|
 | v0.1 | 13 September 2026 | Initial Phase 1 PRD approved and committed. |
 | v0.2 | 13 September 2026 | Recorded Displayman engineering confirmation that the supplied two-lane initialization file, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module; narrowed the remaining uncertainty to the 600-to-480 source mapping and unconfirmed DSI transport parameters. |
+| v0.3 | 14 September 2026 | Incorporated Displayman's detailed engineering response: fixed 1.8 V IOVCC and 2.8 V VCI; recorded reset/shutdown timing, 16.8–19.8 V / 240 mA backlight limits, confirmed 600-to-480 host mapping, panel-side FPC orientation, and GT9271 INT type. Kept DSI open because the supplied rate is arithmetically impossible and recorded the non-blocking GT9271 address/source-range contradictions. Integrated the independently validated Phase 2 component/GPIO recommendations without beginning schematic capture. |
 
 ## 1. Executive summary
 
 This PRD defines a bench-development daughterboard that accepts a regulated 24 V wall-adapter input, powers the Waveshare ESP32-P4-NANO and the Displayman LCD/touch module, adapts the Nano’s 15-pin two-lane MIPI-DSI interface to the panel’s 40-pin LCD FPC, controls the GT9271 touch controller, and supplies a 240 mA constant-current backlight channel with ESP32-P4 PWM dimming.
 
-The recommended architecture uses a protected 24 V input, a 5 V / 3 A system buck rail for the Nano and local regulators, separate 3.3 V and 1.8 V display rails, a three-stage hardware sequencer, a 24 V-fed constant-current buck LED driver, low-capacitance ESD protection, and deliberately accessible debug points. It is an evaluation design—not an automotive-qualified product.
+The recommended architecture uses a protected 24 V input, a 5 V / 3 A system buck rail for the Nano and local regulators, fixed 1.8 V IOVCC, fixed 2.8 V VCI, hardware-enforced reset/shutdown behavior, a 24 V-fed constant-current buck LED driver, low-capacitance ESD protection, and deliberately accessible debug points. It is an evaluation design—not an automotive-qualified product.
 
 <table>
 <colgroup>
@@ -39,8 +40,8 @@ The recommended architecture uses a protected 24 V input, a 5 V / 3 A system buc
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><p><strong>Blocking finding: IOVCC</strong></p>
-<p>The initialization file explicitly says VCI = 3.3 V and IOVCC = 1.8 V. The panel DC table allows IOVCC = 1.65–3.3 V with 1.8 V typical, but the absolute-maximum table says IOVCC max = 1.68 V. A 1.8 V nominal rail therefore exceeds the printed absolute maximum. The likely explanation is a datasheet transcription error, but the board must not be powered until Displayman confirms the corrected absolute-maximum rating in writing. The proposed hardware defaults to 1.8 V and makes any 3.3 V alternative a DNP-only engineering option.</p></td>
+<td><p><strong>Resolved finding: IOVCC</strong></p>
+<p>Displayman engineering has explicitly approved and recommended 1.8 V nominal IOVCC for this exact module and identified the printed 1.68 V absolute maximum as a datasheet typo; its response states an approximate true absolute maximum of 3.6 V. The design shall therefore use a fixed 1.8 V rail. The response describes the normal 1.8 V operating band as 1.65–1.95 V while also mentioning a 3.3 V upper DC tolerance; this does not authorize a switchable 3.3 V implementation, which is no longer required.</p></td>
 </tr>
 </tbody>
 </table>
@@ -52,7 +53,7 @@ The recommended architecture uses a protected 24 V input, a 5 V / 3 A system buc
 <tbody>
 <tr class="odd">
 <td><p><strong>Blocking finding: DSI rate / pixel format</strong></p>
-<p>Displayman engineering has confirmed that the supplied 600 × 1280 source/configuration timing is correct for the exact module, but has not specified the DSI transport parameters or explained its mapping to the 480 × 1280 physical glass. Assuming the stated 55 MHz value is the host DPI pixel clock and configured source pixels are transported as RGB888, the raw payload is 660 Mb/s per lane before packet overhead; packed RGB666 would be 495 Mb/s per lane. The panel D-PHY table’s 2×UI range (4–25 ns) appears to imply roughly 80–500 Mb/s, conflicting with the RGB888 case. Displayman must still confirm pixel format, video mode, clock behavior, and supported lane bit rate. The PCB will nevertheless be designed for at least 1.5 Gb/s per lane, consistent with the ESP32-P4 transmitter capability.</p></td>
+<p>Displayman now specifies RGB888, 600 × 1280 host active timing, 55 MHz, two lanes, continuous clock recommended, and an 80–500 Mb/s/lane D-PHY range, but also states that the required lane rate is 110 Mb/s/lane by multiplying 55 MHz by DDR. Those statements cannot all be true. At the derived 60.007 Hz frame rate, active RGB888 pixels alone require approximately 553 Mb/s/lane before packet overhead; a non-burst representation at the 55 MHz pixel clock requires 660 Mb/s/lane before overhead. Even the lower bound exceeds 500 Mb/s/lane, while 110 Mb/s/lane provides only 220 Mb/s aggregate. Displayman must provide the lane-bit-rate setting from a known-working host design and identify which stated parameter or limit is wrong. The PCB will be designed for at least 1.5 Gb/s/lane, consistent with the ESP32-P4 transmitter capability.</p></td>
 </tr>
 </tbody>
 </table>
@@ -61,11 +62,11 @@ The recommended architecture uses a protected 24 V input, a 5 V / 3 A system buc
 
 - Approve the architecture and requirements as the basis for Phase 2, subject to the gates in Section 14.
 
-- Obtain Displayman’s written answers to UQ-01 through UQ-05 before schematic release and first power.
+- Obtain Displayman’s corrected DSI lane-rate/limit answer before schematic release.
 
 - Confirm the daughterboard’s mechanical relationship to the Nano and desired cable lengths/contact orientation.
 
-- Confirm whether the prototype should expose optional 3.3 V IOVCC selection; the recommendation is to fit 1.8 V only and keep 3.3 V inaccessible without rework.
+- Use fixed 1.8 V IOVCC; do not expose a 3.3 V selection.
 
 ### Phase boundary
 
@@ -120,6 +121,7 @@ Requirements are derived from the three supplied files, written manufacturer cor
 | S5     | ESP-IDF MIPI DSI LCD API            | Current online documentation checked 2026-09-13                   | DSI host configuration model, lane count/rate, DPI timing fields.                                                    |
 | S6     | ESP32-P4 Hardware Design Guidelines | Current online documentation checked 2026-09-13                   | MIPI implementation guidance; Nano already implements the SoC-side D-PHY support circuitry.                          |
 | S7     | Displayman email from Anson Ho      | Received 2026-09-13; reports confirmation from Displayman engineering | Confirms S2, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module. Does not define the 600-to-480 source mapping or DSI transport parameters. |
+| S8     | Displayman email from Anson Ho      | Received 2026-09-14; repository PDF SHA-256 `76a9e533…d4d`          | Detailed answers for IOVCC, sequencing, DSI, backlight, source mapping, FPCs, and touch. Direct confirmations are controlling where internally coherent; contradictions remain explicitly open. |
 
 ### 3.1 Interpretation rules
 
@@ -137,13 +139,19 @@ Requirements are derived from the three supplied files, written manufacturer cor
 
 - S1 Section 3.1 is titled as a CTP pin description but contains the 40-pin LCM connector.
 
-- S1 alternates between IOVCC and VDDI in the power-sequence section; this PRD interprets VDDI as the LCD I/O rail IOVCC, pending confirmation.
+- S8 confirms that VDDI in the power-sequence section means connector pin 3 IOVCC.
 
 - S2 includes tool-specific pseudo-functions and malformed lines such as a missing parenthesis in a write_command call; it shall be normalized into a reviewed firmware table rather than compiled verbatim.
 
-- S1 gives only typical LED forward voltage and no min/max or cold-temperature value.
+- S8 supplies a 16.8–19.8 V backlight range at 240 mA total over temperature and confirms four parallel strings at 60 mA each.
 
-- S1’s apparent D-PHY rate limit conflicts with S2 if RGB888 is intended.
+- S8 confirms RGB888 and the S1 80–500 Mb/s/lane D-PHY range, but its proposed 110 Mb/s/lane rate cannot transport the stated timing. Active pixels alone require approximately 553 Mb/s/lane before overhead.
+
+- S2's header says VCI = 3.3 V, whereas S8's later power-up instruction specifies VCI = 2.8 V. Both are inside S1's 2.5–3.3 V operating range; this revision adopts S8's explicit 2.8 V instruction and S1's 2.8 V typical value for the board supply.
+
+- S8 says the preferred 7-bit touch address is 0x5D with INT high during reset; S1's timing diagrams assign INT high to 0x14 and INT low to 0x5D.
+
+- S8 confirms that the driver masks 60 dummy host columns on each side, but its detailed source-channel ranges contain an arithmetic inconsistency: `S901–S1500` spans 600 source outputs, not the stated 180. This does not alter the confirmed host requirement of H-active = 600.
 
 ## 4. Confirmed display and touch requirements
 
@@ -151,23 +159,31 @@ Requirements are derived from the three supplied files, written manufacturer cor
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | Panel               | Displayman KD068HDFID009-C009A; 6.75 in IPS, normally black                                                                               | S1 pp. 3–5          |
 | Physical glass      | 480 RGB × 1280 visible pixels                                                                                                             | S1; S2 comment      |
-| Vendor source configuration | 600 × 1280 using `RSOX(600)`; confirmed correct for this exact module. The mapping of 600 horizontal source positions to the 480-pixel glass remains unresolved. | S2; S7              |
-| Timing              | H: 600 configured source positions + 4 sync + 40 back porch + 40 front porch = 684 total; V: 1280 active + 4 sync + 20 back porch + 36 front porch = 1340 total | S2; S7              |
+| Vendor source configuration | Host H-active = 600 × 1280 using `RSOX(600)`; driver masks 60 dummy columns at each side to drive the 480 × 1280 physical glass. The host must transport a 600-wide active line but need not force the discarded columns black. | S2; S7; S8          |
+| Timing              | H: 600 configured source positions + 4 sync + 40 back porch + 40 front porch = 684 total; V: 1280 active + 4 sync + 20 back porch + 36 front porch = 1340 total | S2; S7; S8          |
 | Pixel clock / frame | 55 MHz; derived 55,000,000 ÷ (684 × 1340) = 60.007 Hz                                                                                     | S2 + calculation    |
 | Display controller  | GC9703C                                                                                                                                   | S1                  |
 | MIPI interface      | Two data lanes + differential clock                                                                                                       | S1/S2/S3            |
-| VCI                 | 3.3 V design target; S1 operating range 2.5–3.3 V, 2.8 V typ; S2 explicitly says 3.3 V                                                    | S1 §5.2; S2         |
-| IOVCC               | 1.8 V proposed; S1 operating range 1.65–3.3 V, 1.8 V typ; unresolved abs-max conflict                                                     | S1 §§5.1–5.2; S2    |
+| VCI                 | Fixed 2.8 V nominal per S8 and S1 typical. S2's older 3.3 V header value is within S1 limits but is not used for the board supply.               | S1 §5.2; S2; S8     |
+| IOVCC               | Fixed 1.8 V nominal; explicitly approved by Displayman. S8 identifies S1's 1.68 V absolute maximum as a typo and states approximately 3.6 V. | S1 §§5.1–5.2; S2; S8 |
 | LCD logic current   | 30 mA typical, 60 mA maximum (datasheet does not split rails)                                                                             | S1 §5.2             |
-| Backlight           | 24 white LEDs arranged 6S4P; 240 mA total typical; 19.2 V typical; constant-current drive                                                 | S1 §5.3 and circuit |
+| Backlight           | 24 white LEDs arranged 6S4P; 240 mA total (60 mA/string); 16.8 V min, 19.2 V typ, 19.8 V max over temperature; constant-current drive | S1 §5.3; S8         |
 | Touch controller    | Goodix GT9271; ten-point capacitive touch                                                                                                 | S1 §§2, 7           |
 | Touch supply        | 3.3 V target; 2.66–3.47 V allowed; 13 mA typical active                                                                                   | S1 §7.1             |
-| Touch bus           | I²C at up to 400 kHz; RESET active low; INT bidirectional during address selection                                                        | S1 §§3.2, 7.2–7.3   |
-| Touch addresses     | 7-bit 0x5D or 0x14 (datasheet also lists 8-bit 0xBA/0xBB and 0x28/0x29)                                                                   | S1 §7.3             |
+| Touch bus           | I²C at up to 400 kHz; RESET active low; INT bidirectional during address selection, then open-drain active-low with 2–10 kΩ pull-up to the powered touch domain | S1 §§3.2, 7.2–7.3; S8 |
+| Touch addresses     | 7-bit 0x5D or 0x14. S1 maps INT low during reset to 0x5D and INT high to 0x14; S8's opposite parenthetical is treated as a non-blocking contradiction pending sample test. | S1 §7.3; S8         |
 
 ### 4.1 DSI payload-rate calculation
 
-Assuming S2’s 55 MHz value is the host DPI pixel clock, two DSI lanes carry every configured source pixel, and the stream uses the stated native pixel packing, the unencoded payload is 660 Mb/s per lane for RGB888 (55 MHz × 24 ÷ 2) or 495 Mb/s per lane for packed RGB666 (55 MHz × 18 ÷ 2). These are conditional payload calculations, not confirmed operating settings. Packet headers, blanking transport, video mode, and implementation margin can raise the required lane rate above the raw payload. The unresolved 600-to-480 source mapping may affect implementation details but does not by itself identify the pixel format or lane rate. Phase 2 shall not choose the final DSI settings until Displayman confirms the pixel format, video mode, continuous/non-continuous clock behavior, lane bit rate, and valid D-PHY range.
+S8 confirms RGB888, H-active = 600, two lanes, a 55 MHz timing clock, and a derived frame rate of 60.007 Hz. The absolute lower bound using only active pixels is:
+
+`600 × 1280 × 60.007 × 24 ÷ 2 = 553.0 Mb/s/lane`
+
+If the 55 MHz DPI pixel stream is transported continuously, the raw rate is:
+
+`55 MHz × 24 ÷ 2 = 660 Mb/s/lane`
+
+Packet overhead and the selected video mode add margin. S8's 110 Mb/s/lane figure incorrectly equates twice the 55 MHz clock with the required payload rate, and even its stated 500 Mb/s/lane maximum is below the active-only lower bound. The D-PHY clock lane frequency is not interchangeable with the DPI pixel clock. Phase 2 shall not choose `lane_bit_rate_mbps` until Displayman supplies the setting from a known-working two-lane host and reconciles the 500 Mb/s/lane ceiling.
 
 ### 4.2 Panel handling
 
@@ -183,11 +199,11 @@ The daughterboard is partitioned into five zones. This is the controlling Phase-
 
 | **Zone**                   | **Inputs**                | **Function**                                                                                 | **Outputs**                                |
 |----------------------------|---------------------------|----------------------------------------------------------------------------------------------|--------------------------------------------|
-| A. Protected input         | 24 V barrel               | Fuse, reverse-polarity diode, surge clamp, bulk/high-frequency filtering, power-good sensing | VIN_PROT_24V                               |
-| B. System power            | VIN_PROT_24V              | 60 V synchronous buck; isolated local display regulators                                     | SYS_5V_3A, LCD_3V3, LCD_IOVCC_1V8          |
-| C. Sequenced display logic | LCD_3V3, LCD_PWR_EN       | Three-stage up/down sequencer, VCI load switch, reset wired-AND, early power-fail handling   | LCD_IOVCC, LCD_VCI, LCD_RESET_N, LCD_READY |
-| D. Video and touch         | Nano DSI/I²C + five GPIOs | Lane-preserving adapter, ESD, I²C domain isolation, GT9271 reset/address/interrupt           | 40-pin LCD FPC, 8-pin touch FPC            |
-| E. Backlight               | VIN_PROT_24V, BL_PWM      | 65 V constant-current buck at 240 mA with disable/current-test provisions                    | LED_A, LED_K                               |
+| A. Protected input         | 24 V barrel               | Fuse, ideal-diode reverse protection, surge clamp, bulk/high-frequency filtering, power-good sensing | VIN_PROT_24V                         |
+| B. System power            | VIN_PROT_24V              | 60 V synchronous buck; isolated local display regulators                                     | SYS_5V_3A, TOUCH_3V3, LCD_IOVCC_1V8        |
+| C. Sequenced display logic | SYS_5V, LCD_PWR_EN        | Separately controlled VCI/IOVCC rails, reset wired-AND, early power-fail handling             | LCD_IOVCC, LCD_VCI, LCD_RESET_N, LCD_READY |
+| D. Video and touch         | Nano DSI/I²C + control GPIOs | Lane-preserving adapter, ESD, four-conductor powered-off isolation, GT9271 reset/address/interrupt | 40-pin LCD FPC, 8-pin touch FPC        |
+| E. Backlight               | VIN_PROT_24V, BL_PWM      | 65 V-class constant-current buck at 240 mA with disable/fault/current-test provisions         | LED_A, LED_K                               |
 
 ### 5.1 Physical integration assumption
 
@@ -218,28 +234,28 @@ The following mapping is read directly from S3. Pin numbering and cable contact 
 | 11           | ESP_I2C_SCL (GPIO8) | Touch I²C SCL through isolation/ESD                          |
 | 12           | ESP_I2C_SDA (GPIO7) | Touch I²C SDA through isolation/ESD                          |
 | 13           | GND                 | Logic return / plane                                         |
-| 14           | ESP_3V3             | Nano-side logic reference only; do not parallel with LCD_3V3 |
-| 15           | ESP_3V3             | Nano-side logic reference only; do not parallel with LCD_3V3 |
+| 14           | ESP_3V3             | Nano-side logic reference only; do not parallel with TOUCH_3V3 |
+| 15           | ESP_3V3             | Nano-side logic reference only; do not parallel with TOUCH_3V3 |
 
 ### 6.2 Proposed control GPIO allocation
 
 | **Nano header** | **GPIO** | **Net**         | **Safe-state requirement**                                                           |
 |-----------------|----------|-----------------|--------------------------------------------------------------------------------------|
-| P1 pin 12       | GPIO4    | LCD_RESET_CMD_N | High impedance must leave panel reset asserted through hardware pull-down/wired-AND. |
+| P1 pin 10       | GPIO4    | LCD_RESET_CMD_N | High impedance must leave panel reset asserted through hardware pull-down/wired-AND. |
 | P1 pin 9        | GPIO5    | CTP_RESET_N     | High impedance must hold touch reset low until firmware takes control.               |
-| P1 pin 16       | GPIO22   | CTP_INT         | Bidirectional: output during address select, input interrupt afterward.              |
-| P1 pin 7        | GPIO23   | BL_PWM          | Default low; no backlight before display initialization.                             |
-| P1 pin 18       | GPIO24   | LCD_PWR_EN      | Default low; enables the hardware sequence only after firmware requests it.          |
+| P1 pin 14       | GPIO22   | CTP_INT         | Bidirectional: output during address select, input interrupt afterward.              |
+| P1 pin 5        | GPIO23   | BL_PWM          | Default low; no backlight before display initialization.                             |
+| P1 pin 11 or 13 | GPIO20 or GPIO21 | LCD_PWR_EN | Final choice after pinned BSP review; default low. Avoid GPIO24 because it is a default USB Serial/JTAG signal. |
 
-These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO38 \[S4\]. Phase 2 shall re-check them against the selected Nano hardware revision, board support package, and any user-reserved peripherals.
+These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO38 [S4]. The corrected P1 pin numbers above supersede the v0.2 labels. Phase 2 shall select GPIO20 or GPIO21 for `LCD_PWR_EN` after checking the pinned Nano BSP/application; GPIO24 shall remain available for its default USB Serial/JTAG function.
 
 ### 6.3 Panel 40-pin LCD connector
 
 | **Pins** | **Panel signal**      | **Board disposition**                                             |
 |----------|-----------------------|-------------------------------------------------------------------|
 | 1        | NC                    | No connection                                                     |
-| 2        | VCI                   | Sequenced switched 3.3 V                                          |
-| 3        | IOVCC                 | Sequenced 1.8 V default; DNP 3.3 V option only after approval     |
+| 2        | VCI                   | Sequenced fixed 2.8 V                                                |
+| 3        | IOVCC                 | Fixed sequenced 1.8 V                                              |
 | 4        | GND                   | Ground plane                                                      |
 | 5        | RESET                 | 1.8 V-domain reset, active low, wired hardware/firmware control   |
 | 6        | NC                    | No connection                                                     |
@@ -264,11 +280,11 @@ These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO
 |---------|------------|--------------------------------------------------|
 | 1       | GND        | Ground                                           |
 | 2       | NC         | No connection                                    |
-| 3       | VDD        | Filtered LCD_3V3; local decoupling               |
-| 4       | SCL        | I²C through translator/isolation and ESD         |
-| 5       | SDA        | I²C through translator/isolation and ESD         |
-| 6       | INT        | GPIO22; bidirectional; ESD and weak default bias |
-| 7       | RST        | GPIO5 plus hardware reset; active low            |
+| 3       | VDD        | Filtered TOUCH_3V3; local decoupling             |
+| 4       | SCL        | I²C through powered-off-protected switch and ESD |
+| 5       | SDA        | I²C through powered-off-protected switch and ESD |
+| 6       | INT        | GPIO22 through switch; bidirectional during address select, then open-drain active-low; 2–10 kΩ touch-side pull-up |
+| 7       | RST        | GPIO5 through switch plus hardware reset clamp; active low |
 | 8       | GND        | Ground                                           |
 
 ## 7. Power architecture and sequencing
@@ -278,11 +294,11 @@ These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO
 | **Rail**     | **Nominal / design target**      | **Consumers**                | **Requirement**                                                                                 |
 |--------------|----------------------------------|------------------------------|-------------------------------------------------------------------------------------------------|
 | VIN_ADAPTER  | 24 V nominal, ±10% accepted      | Input stage                  | Center-positive 5.5 × 2.1 mm adapter, ≥2 A, regulated, safety-approved.                         |
-| VIN_PROT_24V | ≈VIN less reverse diode drop     | 5 V buck, LED driver         | Fused, reverse protected, surge clamped, filtered; no automotive transient claim.               |
+| VIN_PROT_24V | ≈VIN after ideal-diode stage     | 5 V buck, LED driver         | Fused, reverse protected, surge clamped, filtered; no automotive transient claim.               |
 | SYS_5V_3A    | 5.0 V, 3 A continuous target     | Nano P1 pins 2/4, local LDOs | Ripple/noise compatible with Nano; current limit and thermal protection; removable feed jumper. |
-| LCD_3V3      | 3.3 V, ≥150 mA design capability | Touch, sequencer, VCI source | Not tied to Nano ESP_3V3; low-noise local regulation and test point.                            |
-| LCD_IOVCC    | 1.8 V, ≥100 mA design capability | Panel pin 3                  | Sequence first; default off; current-limited by LDO; voltage option locked pending UQ-01.       |
-| LCD_VCI      | 3.3 V, ≥100 mA design capability | Panel pin 2                  | Load-switched after IOVCC; controlled rise and quick discharge.                                 |
+| TOUCH_3V3    | 3.3 V, ≥100 mA design capability | Touch and isolation switch   | Not tied to Nano ESP_3V3; switched, locally decoupled, and safely isolated when off.             |
+| LCD_IOVCC    | 1.8 V, ≥100 mA design capability | Panel pin 3                  | Fixed Displayman-approved voltage; sequence first; controlled discharge.                        |
+| LCD_VCI      | 2.8 V, ≥100 mA design capability | Panel pin 2                     | Fixed per S8 and S1 typical; separately regulated/switched after IOVCC.                           |
 | LED_CURRENT  | 240 mA total, ±5% initial target | Panel pins 31–32 / 39–40     | Constant current; default disabled; PWM controllable; never exceed 240 mA nominal setpoint.     |
 
 ### 7.2 Preliminary worst-case input budget
@@ -297,28 +313,28 @@ These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO
 
 ### 7.3 Required LCD power-up sequence
 
-Hardware and firmware shall jointly implement this sequence, using a TI LM3880MF-1AA/NOPB three-rail sequencer with 10 ms steps as the baseline:
+Hardware and firmware shall jointly implement the following conservative sequence. LM3880 remains a candidate, not a requirement; the final supervisor/sequencer topology must also complete a controlled shutdown from an isolated display hold-up node after adapter removal.
 
 | **Step** | **Action**                                              | **Minimum / target delay**                                         | **Enforcement**                                               |
 |----------|---------------------------------------------------------|--------------------------------------------------------------------|---------------------------------------------------------------|
-| 0        | Keep LCD_IOVCC, LCD_VCI, LCD_RESET_N, and backlight off | Until SYS_5V and LCD_3V3 are valid                                 | Pull-downs + sequencer + firmware defaults                    |
-| 1        | Enable LCD_IOVCC (1.8 V)                                | LM3880 FLAG1 after 10 ms enable qualification                      | Hardware                                                      |
-| 2        | Enable LCD_VCI (3.3 V)                                  | 10 ms after FLAG1; both rail rise times ≥10 µs per S1              | Hardware                                                      |
-| 3        | Release hardware reset clamp                            | 10 ms after VCI enable; exceeds S1 ≥5 ms rail-to-reset requirement | LM3880 FLAG3                                                  |
-| 4        | Firmware drives reset low then high                     | Low ≥10 ms; high wait 120 ms before commands                       | GPIO4 via open-drain buffer; follows S2 and exceeds S1 minima |
-| 5        | Send reviewed GC9703C init table                        | After reset wait                                                   | Firmware                                                      |
-| 6        | Sleep Out (0x11), wait 120 ms, Display On (0x29)        | As supplied                                                        | Firmware                                                      |
+| 0        | Keep LCD_IOVCC, LCD_VCI, LCD_RESET_N, and backlight off | Until SYS_5V and required local control rails are valid             | Pull-downs + sequencer + firmware defaults                    |
+| 1        | Enable LCD_IOVCC (1.8 V)                                | After maintained supply is valid                                   | Hardware                                                      |
+| 2        | Enable LCD_VCI at 2.8 V                                 | 10 ms after IOVCC as a conservative implementation                 | Hardware                                                      |
+| 3        | Keep reset low after both rails stabilize               | ≥5 ms; rail rise times ≥10 µs per S1                               | Hardware reset clamp                                          |
+| 4        | Release panel reset after a ≥10 ms low interval         | S8 minimum pulse is 50 µs; S2 uses 10 ms                           | Hardware + GPIO4 open-drain command path                       |
+| 5        | Send reviewed GC9703C init table                        | ≥10 ms after reset release; retain S2's longer delays where present | Firmware                                                     |
+| 6        | Sleep Out (0x11), wait ≥120 ms, then Display On (0x29)  | S2/S8                                                              | Firmware                                                      |
 | 7        | Enable PWM from 0% and ramp brightness                  | After valid frames / display-on                                    | Firmware                                                      |
 
 ### 7.4 Required shutdown and hard-unplug behavior
 
-- Normal software shutdown: PWM = 0; Display Off 0x28; wait at least 10 ms; Sleep In 0x10; assert panel reset; deassert LCD_PWR_EN.
+- Normal software shutdown: PWM = 0; send Display Off 0x28 followed by Sleep In 0x10; wait at least 120 ms; assert panel reset; deassert LCD_PWR_EN.
 
 - The LM3880 reverse sequence shall assert reset first, disable VCI at least 10 ms later, and disable IOVCC at least 10 ms after VCI. This exceeds S1’s reset-low-before-VCI requirement and preserves VCI-before-IOVCC order.
 
 - An early power-fail detector referenced to VIN_PROT_24V shall deassert the sequencer while the local logic hold-up node still has energy. Phase 2 shall size the hold-up capacitance and isolation path from measured rail load and dropout so all three reverse steps complete on adapter removal.
 
-- If practical hold-up cannot guarantee the specified hard-off order at measured load, the design shall be blocked pending Displayman guidance; a software-only shutdown is not sufficient.
+- The display hold-up node shall exclude the Nano and backlight. Its capacitance, isolation, discharge paths, and supervisor thresholds shall guarantee reset assertion and rail shutdown even if firmware is unavailable. A software-only shutdown is not sufficient.
 
 ### 7.5 Nano power coexistence
 
@@ -367,11 +383,11 @@ The final ESP-IDF settings shall record: two lanes, confirmed lane bit rate, pix
 
 ### 9.1 Electrical interface
 
-- Power the module touch VDD from LCD_3V3. Do not assume a separately accessible VDDIO; the 8-pin interface exposes only VDD.
+- Power the module touch VDD from TOUCH_3V3. Do not assume a separately accessible VDDIO; the 8-pin interface exposes only VDD.
 
-- Use PCA9306DCTR between Nano ESP_3V3 I²C and the daughterboard touch 3.3 V domain. The level translator is used primarily for partial-power isolation and back-power prevention; both sides are nominally 3.3 V.
+- Use all four channels of TMUX1574DYYR between the Nano and touch domains for SCL, SDA, INT, and RESET. Power it from TOUCH_3V3 and enable it only when hardware confirms both domains valid. Translation is not required because both sides are nominally 3.3 V; powered-off isolation is the purpose.
 
-- Provide separate pull-ups on each PCA9306 side sized in Phase 2 for ≤400 kHz and the measured bus/cable capacitance. Provide series-damping placeholders close to the Nano-side connector.
+- Provide the S8-required 2–10 kΩ INT pull-up on the touch side. Size any I²C pull-ups only after accounting for the Nano's documented 2.2 kΩ pull-ups, module pull-ups, cable capacitance, and measured rise time; do not automatically parallel another strong Nano-side pair.
 
 - Protect SCL, SDA, INT, and RST at the external touch connector with TPD4E05U06DQAR. ESD placement takes precedence over convenient probing.
 
@@ -379,11 +395,11 @@ The final ESP-IDF settings shall record: two lanes, confirmed lane bit rate, pix
 
 ### 9.2 Default address and reset sequence
 
-Default to the 7-bit address 0x5D. Firmware shall hold CTP_INT low, assert CTP_RESET_N low for at least 100 µs after the touch supply is valid and the required post-power delay has elapsed, release reset, wait more than 5 ms, then wait at least 50 ms before releasing INT and reconfiguring it as an input. A firmware-selectable 0x14 procedure shall be retained for conflict testing, using INT high during reset as specified by S1.
+Default provisionally to the 7-bit address 0x5D using INT low during reset, as shown by S1's `0xBA/0xBB` timing diagram. Firmware shall assert RESET low for at least 100 µs after touch power is valid, drive INT to the address-select state, release RESET, wait more than 5 ms, then wait at least 50 ms before releasing INT and reconfiguring it as an input. Retain the 0x14 procedure using INT high. S8's statement that 0x5D uses INT high contradicts S1 and shall be checked on the real module; the hardware supports either selection.
 
 ### 9.3 Firmware behavior
 
-- Probe 0x5D first, then optionally 0x14 only after executing the corresponding documented reset sequence.
+- Probe the selected address after its complete reset sequence. If identification fails, execute the alternate address sequence once and log which address responds; do not merely probe the other address without re-strapping INT and resetting.
 
 - Do not interpret the listed 0xBA/0xBB or 0x28/0x29 values as 7-bit Linux/ESP-IDF addresses; they are 8-bit read/write address bytes.
 
@@ -395,7 +411,7 @@ Default to the 7-bit address 0x5D. Firmware shall hold CTP_INT low, assert CTP_R
 
 ### 10.1 Driver architecture
 
-Use TI TPS92511DDA, a 4.5–65 V, 500 mA constant-current buck LED driver with integrated switch and PWM/analog dimming. Feed panel LED+ from filtered VIN_PROT_24V and regulate total cathode current at panel LED−. Set the nominal current to 240 mA; the final IADJ resistor, inductor, switching frequency, and thermal copper are Phase-2 calculations using the confirmed LED voltage range.
+Use TI TPS922053DYYR, a current-production 4.5–65 V non-synchronous buck LED driver with an integrated 150 mΩ switch, external differential current sense, spread spectrum, fault output, and fast PWM/hybrid dimming. Feed panel LED+ from filtered VIN_PROT_24V and regulate the single 240 mA total return at panel LED−. A nominal 200 mV sense threshold gives an initial `R_SENSE = 0.200 / 0.240 = 0.833 Ω`; use a low-temperature-coefficient precision resistor and complete the tolerance, pulse, and thermal calculation in Phase 2.
 
 <table>
 <colgroup>
@@ -404,7 +420,7 @@ Use TI TPS92511DDA, a 4.5–65 V, 500 mA constant-current buck LED driver with i
 <tbody>
 <tr class="odd">
 <td><p><strong>Headroom condition</strong></p>
-<p>TPS92511 is a buck driver and therefore requires the LED-string forward voltage to remain sufficiently below the minimum protected input after cable, diode, switch, and ripple losses. Displayman provides only 19.2 V typical. If cold/max VF does not leave adequate headroom from a 21.6 V minimum adapter, the architecture must change to buck-boost or the permitted adapter range must change. This is a schematic-release blocker (UQ-03).</p></td>
+<p>S8 confirms 19.8 V maximum LED forward voltage at 240 mA over temperature. Against the 21.6 V minimum adapter this leaves 1.8 V gross headroom before the input path, switch, diode, sense resistor, inductor, ripple, and tolerance losses. TPS922053's 100 ns minimum off-time gives an ideal duty ceiling of 98% at 200 kHz or 97% at 300 kHz, so the buck approach is viable when combined with the low-loss ideal-diode input. Phase 2 shall select approximately 200–300 kHz and prove the completed worst-case voltage budget. Retain LT8391A-class four-switch buck-boost as a contingency only if that calculation or dummy-load test fails.</p></td>
 </tr>
 </tbody>
 </table>
@@ -413,7 +429,7 @@ Use TI TPS92511DDA, a 4.5–65 V, 500 mA constant-current buck LED driver with i
 
 - BL_PWM is active high and defaults low by hardware pull-down. No floating input may turn on the backlight.
 
-- Initial firmware target is 20 kHz PWM, subject to the TPS92511 requirement that PWM remain below one-tenth of switching frequency and to observed low-duty linearity/flicker.
+- Initial firmware target is 20 kHz PWM. TPS922053 specifies fast dimming and a 2,000:1 hybrid-dimming example at 20 kHz; final mode and frequency remain subject to measured low-duty linearity, flicker, audible behavior, and camera interaction.
 
 - Firmware shall clamp command range to 0–100%, start at 0%, and ramp after display-on. It shall never use current overdrive to obtain brightness.
 
@@ -431,13 +447,13 @@ Use TI TPS92511DDA, a 4.5–65 V, 500 mA constant-current buck LED driver with i
 
 ### 10.4 Parallel-string limitation
 
-The module internally parallels four six-LED strings. The daughterboard regulates only the 240 mA total and cannot observe individual string current sharing. Displayman must confirm that the internal module construction is intended for one external total-current sink at 240 mA.
+The module internally parallels four six-LED strings. S8 confirms that the daughterboard shall regulate one 240 mA total current, nominally 60 mA per internal string. The daughterboard cannot observe individual string current sharing, so sample testing shall still check temperature and luminance uniformity.
 
 ## 11. Protection, filtering, debug, and PCB implementation
 
 ### 11.1 Protection and filtering
 
-- Barrel input: 2 A fuse, 60 V / 5 A Schottky reverse-polarity protection, SMBJ30A TVS to ground after the fuse, and bulk + ceramic capacitors rated with adequate DC-bias margin.
+- Barrel input: 2 A fuse, LM74700-Q1 ideal-diode controller with a ≥60 V N-MOSFET selected by SOA/surge/thermal analysis, SMBJ30A TVS to ground after the fuse, and bulk + ceramic capacitors rated with adequate DC-bias margin. The ideal-diode stage preserves backlight headroom and blocks reverse current.
 
 - Regulators and LED driver: local bypassing, short hot loops, exposed-pad thermal via arrays where required, and manufacturer-recommended input/output capacitor types and values.
 
@@ -449,7 +465,7 @@ The module internally parallels four six-LED strings. The daughterboard regulate
 
 | **Group**  | **Required labeled points**                                                                          |
 |------------|------------------------------------------------------------------------------------------------------|
-| Power      | VIN_RAW, VIN_PROT_24V, SYS_5V, LCD_3V3, LCD_IOVCC, LCD_VCI, GND near every group                     |
+| Power      | VIN_RAW, VIN_PROT_24V, SYS_5V, TOUCH_3V3, LCD_IOVCC, LCD_VCI, GND near every group                   |
 | Sequencing | VIN_GOOD, LCD_PWR_EN, SEQ_FLAG1, SEQ_FLAG2, SEQ_FLAG3/LCD_READY, LCD_RESET_N                         |
 | Touch      | CTP_SCL, CTP_SDA, CTP_RESET_N, CTP_INT, CTP_3V3                                                      |
 | Backlight  | BL_PWM, BL_DIM, LED_A, LED_K, LED current measurement link                                           |
@@ -489,25 +505,26 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 | **Function**          | **Preferred manufacturer part number**          | **Key suitability**                                                 | **Status / rationale**                                                             |
 |-----------------------|-------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| 24 V barrel jack      | Same Sky PJ-044AH                               | Horizontal PCB jack; 5.5 × 2.1 mm class; 24 V / 5 A listing         | Selected for common bench adapters; verify drawing and plug fit before layout.     |
+| 24 V barrel jack      | Switchcraft RAPC722X                            | Right-angle through-hole, 24 V / 5 A, common 5.5 mm barrel family   | Preferred replacement for mismatched PJ-044AH; verify actual adapter inner/outer dimensions before footprint freeze. |
 | Input fuse            | Littelfuse 0451002.MRL                          | 2 A, 125 V, surface-mount fuse                                      | Selected; voltage margin above 24 V. I²t to be checked against measured inrush.    |
-| Reverse protection    | Vishay SS5P6-M3/86A                             | 60 V, 5 A Schottky                                                  | Selected for simple, visible bench behavior; thermal loss to be calculated.        |
+| Reverse protection    | TI LM74700-Q1 + external ≥60 V N-MOSFET        | 3.2–65 V ideal-diode controller; reverse-current blocking           | Preferred over series Schottky to preserve LED-driver headroom; MOSFET selected during Phase 2 calculation. |
 | Input TVS             | Littelfuse SMBJ30A                              | 30 V standoff, ≈48.4 V clamp class, 600 W                           | Selected for adapter-cable transients while remaining below 60/65 V IC ratings.    |
 | 24 V → 5 V buck       | Texas Instruments LM76003RNPR                   | 3.5–60 V, 3.5 A synchronous buck                                    | Active; adequate 5 V / 3 A target with protection and PGOOD.                       |
-| Local 3.3 V LDO       | Texas Instruments TLV75533PDBVR                 | 500 mA, enable, low-noise/low-IQ LDO                                | Active; ample LCD/touch/sequencer current and margin.                              |
+| Touch 3.3 V LDO       | Texas Instruments TLV75533PDBVR                 | 500 mA, enable, low-noise/low-IQ LDO                                | Active; ample touch/support current and margin; switched domain isolated from Nano. |
 | IOVCC 1.8 V LDO       | Texas Instruments TLV75518PDBVR                 | 500 mA, enable, fixed 1.8 V                                         | Active; default IOVCC source, sequencer controlled.                                |
-| VCI load switch       | Texas Instruments TPS22919DCKR                  | 1.6–5.5 V, 1.5 A, controlled rise, quick discharge                  | Active family; provides controlled 3.3 V VCI and turn-off discharge.               |
-| Rail sequencer        | Texas Instruments LM3880MF-1AA/NOPB             | Three open-drain flags; 10 ms up steps and reverse 10 ms down steps | Active/in stock; directly matches IOVCC → VCI → RESET ordering.                    |
+| VCI source            | Texas Instruments TLV75528PDBVR                | Fixed 2.8 V, 500 mA LDO                                             | Selected from S8's explicit instruction and S1's typical value.                     |
+| VCI load switch       | Texas Instruments TPS22919DCKR                  | 1.6–5.5 V, 1.5 A, controlled rise, quick discharge                  | Active family; provides controlled 2.8 V VCI ramp and turn-off discharge.           |
+| Rail sequencer        | LM3880MF-1AA/NOPB or discrete supervisor/logic  | Hardware-controlled flags with reverse shutdown capability          | Implementation choice; must meet S8 timing and complete shutdown from isolated hold-up after hard unplug. |
 | Power-fail supervisor | Texas Instruments TPS3808G01DBVR                | Adjustable 0.405 V sense, open-drain reset, programmable delay      | Selected to initiate early controlled shutdown; divider/hold-up values in Phase 2. |
 | LCD reset buffer      | Texas Instruments SN74LVC1G07DBVR               | Open-drain non-inverting buffer with partial-power-down support     | Selected for wired-AND reset control and 1.8 V pull-up domain.                     |
-| I²C domain isolation  | Texas Instruments PCA9306DCTR                   | Two-bit bidirectional I²C translator, up to 400 kHz                 | Active; isolates Nano ESP_3V3 from daughterboard touch rail when disabled.         |
+| Touch-domain isolation | Texas Instruments TMUX1574DYYR                 | Four powered-off-protected bidirectional channels, fail-safe control | Preferred for SCL/SDA/INT/RESET; enabled only when both 3.3 V domains are valid.   |
 | MIPI ESD              | Texas Instruments TPD6E05U06RVZR                | Six channels, ~0.5 pF, 5.5 V, up to 6 Gb/s class                    | Active; one part protects D0/D1/CLK conductors with low loading.                   |
 | Touch ESD             | Texas Instruments TPD4E05U06DQAR                | Four channels, ~0.5 pF, IEC ESD protection                          | Active; covers SCL/SDA/INT/RST.                                                    |
-| Backlight driver      | Texas Instruments TPS92511DDA                   | 4.5–65 V, up to 500 mA constant-current buck, PWM dimming           | Active/in stock; conditional on confirmed LED max VF/headroom.                     |
+| Backlight driver      | Texas Instruments TPS922053DYYR                 | 4.5–65 V, 150 mΩ integrated switch, external sense, fault output, fast PWM/hybrid dimming | Preferred for confirmed 16.8–19.8 V / 240 mA load; final 200–300 kHz design must prove worst-case headroom. |
 | Nano DSI connector    | Amphenol SFW15R-2STE1LF                         | 15-position, 1.00 mm, top-contact ZIF; active/in stock              | Provisional; cable type/contact side must mate the Nano’s actual connector.        |
-| Panel LCD connector   | Molex 505110-4096                               | 40-position, 0.50 mm, bottom-contact FD19                           | Selected because S1 explicitly identifies this part on the module drawing.         |
+| Panel LCD connector   | Molex 505110-4096                               | 40-position, 0.50 mm, bottom-contact FD19                           | Selected by S1 and consistent with S8's bottom-contact requirement; physical flex presentation still requires inspection. |
 | Panel LCD FFC         | Molex 0150200429 (76 mm) or 0150200431 (102 mm) | 40-way, 0.50 mm Premo-Flex class                                    | Provisional length/contact orientation; choose after mechanical mock-up.           |
-| Touch connector       | Hirose FH12-8S-0.5SH(55)                        | 8-position, 0.50 mm, bottom-contact ZIF                             | Provisional; verify FPC contact/stiffener side and insertion depth.                |
+| Touch connector       | Hirose FH12-8S-0.5SH(55)                        | 8-position, 0.50 mm, bottom-contact ZIF                             | Electrically consistent with S8; insertion direction and flex presentation still require sample inspection. |
 | Stacking sockets      | Samtec SSW-113-02-G-D (two)                     | 2×13, 2.54 mm female socket                                         | Provisional; stack height and Nano header geometry require confirmation.           |
 
 ### 12.1 Component selection policy
@@ -526,13 +543,13 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 - Initialize GPIO safe states before enabling the LCD sequence: LCD_PWR_EN = 0, LCD reset asserted, touch reset asserted, BL_PWM = 0.
 
-- Configure the ESP-IDF MIPI DSI bus for two lanes and the manufacturer-confirmed lane bit rate/pixel format; configure the DPI timing exactly as approved.
+- Configure the ESP-IDF MIPI DSI bus for two lanes, RGB888, continuous clock unless testing proves otherwise, and the final corrected lane bit rate; configure H-active = 600 and the S2 porches/timing. Do not use S8's uncorrected 110 Mb/s/lane value.
 
 - Translate S2 into a typed, bounds-checked command table with explicit command length and millisecond delays. Preserve byte order and document every normalized syntax repair.
 
 - Execute panel reset and initialization only after LCD_READY; maintain the 120 ms delays after reset release and Sleep Out as supplied.
 
-- Preserve the vendor-confirmed 600-pixel source configuration, including `RSOX(600)`, when implementing S2. The present 60-black-columns-per-side model is an interpretation, not a confirmed source-to-glass mapping; do not hard-code it as a manufacturer requirement until Displayman explains how the 600 horizontal source positions map to the 480-pixel glass. Validate the mapping with edge-marker and color-bar test patterns.
+- Preserve `RSOX(600)` and configure a 600-pixel-wide transport canvas. S8 confirms that the controller masks/discards 60 host columns at each side to produce the 480-pixel visible image; the discarded values need not be explicitly black. Map the intended 480-pixel application image into the center of the 600-wide transport buffer and clear the ignored columns deterministically during bring-up. Validate with numbered columns, edge markers, and color bars before relying on the crop.
 
 - Initialize GT9271 with the documented reset/INT address selection; configure I²C at no more than 400 kHz.
 
@@ -540,7 +557,7 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 ### 13.2 Initialization-file acceptance
 
-The complete S2 byte sequence remains the authoritative starting point and shall be version-controlled by its SHA-256. S7 confirms that Displayman engineering considers this initialization file correct for the exact KD068HDFID009-C009A module; `RSOX(600)` shall therefore be preserved and shall not be treated as a likely typo or accidental value. Phase 2/firmware implementation shall produce a machine-readable diff or review report showing that every command byte and delay is represented. Apparent wrapper-syntax errors shall be corrected only at the wrapper level; command payloads shall not be edited without documented evidence. S7 does not resolve the wrapper-syntax artifacts, source-to-glass mapping, or DSI transport parameters.
+The complete S2 byte sequence remains the authoritative starting point and shall be version-controlled by its SHA-256. S7 confirms that Displayman engineering considers this initialization file correct for the exact module, and S8 explains the host-visible 600-to-480 crop. `RSOX(600)` shall be preserved. Phase 2/firmware implementation shall produce a machine-readable diff or review report showing that every command byte and delay is represented. Apparent wrapper-syntax errors shall be corrected only at the wrapper level; command payloads shall not be edited without documented evidence. S8 does not resolve the wrapper-syntax artifacts and gives an unusable DSI lane-rate value, so those items remain open.
 
 ### 13.3 Failure behavior
 
@@ -568,19 +585,19 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 
 | **ID / severity** | **Question or conflict**                                                                                                  | **Current evidence**                                                                                                       | **Proposed disposition / owner**                                                                                          |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| UQ-01 BLOCKING    | What is the correct IOVCC absolute-maximum rating, and is 1.8 V nominal explicitly approved?                              | S1 abs max = 1.68 V; S1 DC table = 1.65–3.3 V, 1.8 V typ; S2 = 1.8 V.                                                      | Displayman to issue corrected value. Hardware defaults to 1.8 V but first power is prohibited until answered.             |
-| UQ-02 BLOCKING    | What pixel format, video mode, clock behavior, and lane bit rate are required for the supplied two-lane timing? Is the D-PHY 2×UI 4–25 ns table valid? | S7 confirms S2 is correct but provides none of these transport parameters. Under the assumptions in §4.1, RGB888 raw = 660 Mb/s/lane and packed RGB666 = 495 Mb/s/lane; the table appears to cap near 500 Mb/s. | Displayman to confirm RGB888/RGB666 or other format, video mode, continuous/non-continuous clock, min/max lane rate, and the valid D-PHY range. ESP32 settings follow the answer. |
-| UQ-03 BLOCKING    | What are LED-string VF min/max over current and temperature, and required driver headroom?                                | S1 gives 19.2 V typical only for internal 6S4P array.                                                                      | Displayman to provide limits; measure samples at 240 mA. Keep TPS92511 only if 21.6 V input leaves verified margin.       |
-| UQ-04 BLOCKING    | Does VDDI in the power diagram mean IOVCC, and is the stated shutdown order mandatory for hard unplug?                    | S1 pin name is IOVCC; sequence calls it VDDI and requires VCI off before it.                                               | Displayman to confirm. Baseline sequencer enforces IOVCC→VCI→reset and reverse.                                           |
-| UQ-05 BLOCKING    | What are the LCD and touch cable contact-side/orientation requirements at both ends?                                      | S1 names Molex 5051104096 for LCD and drawings imply contact sides; Nano connector MPN is absent.                          | Continuity-test actual Nano and inspect physical panel samples. Freeze connector/cable MPNs only after mock-up.           |
+| UQ-01 CLOSED      | What is the correct IOVCC absolute-maximum rating, and is 1.8 V nominal explicitly approved?                              | S8 explicitly approves/recommends 1.8 V and identifies S1's 1.68 V absolute maximum as a typo; stated true limit is approximately 3.6 V. | Use fixed 1.8 V; do not implement user-selectable 3.3 V IOVCC. Record S8 as the controlled correction until a revised datasheet exists. |
+| UQ-02 BLOCKING    | What lane bit rate is required for RGB888, 600 × 1280 H-active, 55 MHz timing over two lanes, and what is the true D-PHY maximum? | S8 says RGB888, 110 Mb/s/lane, and 80–500 Mb/s/lane. Active-only math requires ≈553 Mb/s/lane before overhead; continuous pixel transport requires 660 Mb/s/lane before overhead. | Displayman must provide the `lane_bit_rate_mbps` or equivalent from a known-working host and identify which rate/clock/limit is wrong. Do not use 110 Mb/s/lane. |
+| UQ-03 CLOSED      | What are LED-string VF min/max over current and temperature, and required driver headroom?                                | S8 gives 16.8 V minimum, 19.2 V typical, and 19.8 V maximum at 240 mA over temperature.                                  | Use TPS922053 buck with ideal-diode input and approximately 200–300 kHz target; prove the final 21.6 V worst-case loss budget and retain buck-boost only as contingency. |
+| UQ-04 CLOSED      | What VCI voltage and reset/rail ordering apply?                                                                              | S8 confirms VDDI = IOVCC, specifies 1.8 V IOVCC and 2.8 V VCI, reset low through ramp, ≥5 ms rail-stable delay, ≥50 µs reset pulse, and ≥120 ms normal shutdown wait. S1 permits 2.8 V VCI and shows conservative rail ordering. | Use 2.8 V VCI and conservative IOVCC→VCI→reset power-up, reset→VCI→IOVCC power-down, early fail detection, and isolated hold-up. The older S2 3.3 V header value is documented but does not block this safe implementation. |
+| UQ-05 HIGH        | What are the LCD and touch cable contact-side/orientation requirements at both ends?                                      | S8 confirms bottom-contact 40-pin and 8-pin module-side connections. Nano connector MPN/contact presentation remains undocumented. | Panel-side electrical requirement is closed. Continuity-test the actual Nano and inspect both physical flexes before footprint/placement freeze. |
 | UQ-06 HIGH        | Is Nano J1 pin 10 intentionally NC, and are pins 14/15 safe reference-only 3.3 V outputs?                                 | S3 shows pin 10 unlabeled; 14/15 tied to ESP_3V3.                                                                          | Verify with Waveshare and a powered-off continuity check. Do not drive ESP_3V3.                                           |
 | UQ-07 HIGH        | What is the maximum sustained and transient 5 V current of the exact Nano build?                                          | S3 shows 5 V input and onboard conversion but no board-level input-current rating.                                         | Allocate 3 A; measure boot, CPU/PSRAM load, C6 activity, USB, and peripherals before final fuse/thermal sizing.           |
 | UQ-08 HIGH        | Is concurrent USB and daughterboard 5 V power explicitly permitted?                                                       | S3 includes a USB-to-VCC_5V MOSFET path, but no operating statement was supplied.                                          | Default user instruction: isolate Nano 5 V jumper before USB-only power. Bench-test backfeed before allowing concurrency. |
-| UQ-09 HIGH        | Does the panel accept one 240 mA total sink for the internal four parallel strings?                                       | S1 shows 6S4P and lists IF = 240 mA but does not explicitly say total/module current.                                      | Displayman confirmation; baseline interprets 240 mA as total module current.                                              |
-| UQ-10 MEDIUM      | Is 0x5D the desired default GT9271 address, and is INT push-pull/open-drain after initialization?                         | S1 documents both 0x5D and 0x14 selection but not board default or output type in the pin table.                           | Default 0x5D with conservative pull/buffer arrangement; confirm interrupt electrical mode.                                |
+| UQ-09 CLOSED      | Does the panel accept one 240 mA total sink for the internal four parallel strings?                                       | S8 confirms 240 mA total and 60 mA per each of four parallel strings.                                                      | Set one 240 mA total current channel; validate temperature and uniformity on samples.                                      |
+| UQ-10 MEDIUM      | Is 0x5D the desired default GT9271 address, and what INT behavior applies?                                                | S8 confirms open-drain active-low INT after initialization and a 2–10 kΩ pull-up, but says 0x5D uses INT high during reset; S1 maps INT high to 0x14 and low to 0x5D. | Hardware supports both. Default provisionally to S1's 0x5D/INT-low timing, retry 0x14 only through a complete reset sequence, and confirm on the sample or through corrected vendor guidance. |
 | UQ-11 MEDIUM      | Which Nano mechanical arrangement, standoff pattern, and cable lengths are preferred?                                     | No enclosure or placement drawing was supplied.                                                                            | User to approve stack-on baseline or request side-by-side board before layout.                                            |
 | UQ-12 MEDIUM      | Are GPIO4/5/22/23/24 free in the intended firmware/BSP?                                                                   | They are exposed and not strapping pins, but application reservations are unknown.                                         | User/firmware owner to confirm; allocation remains configurable before schematic.                                         |
-| UQ-13 MEDIUM      | What is the exact source-driver/source-to-glass mapping by which the confirmed `RSOX(600)` configuration drives the 480-pixel physical glass? | S2 uses `RSOX(600)` and controller-specific source ranges. S7 confirms the file is correct for this exact module but does not explain the disposition of the additional 120 horizontal source positions. The 60-black-columns-per-side model remains an interpretation, not an established fact. | Keep `RSOX(600)` unchanged; ask Displayman to explain the mapping and validate it with color-bar and edge-marker patterns. |
+| UQ-13 NARROWED    | Is the detailed source-channel numbering in S8 correct?                                                                    | S8 confirms H-active = 600 and internal masking of 60 host columns per side, so the host requirement is resolved. Its `S901–S1500` range spans 600 source outputs rather than the stated 180. | Implement the confirmed 600-wide transport/central 480-visible crop and validate with numbered-column patterns. Seek a corrected source-channel diagram, but this arithmetic defect does not block schematic capture. |
 | UQ-14 MEDIUM      | Which S2 syntax lines are transcription artifacts versus tool-specific grammar?                                           | File contains pseudo-code and malformed parentheses but payload appears structured.                                        | Normalize wrapper syntax only; preserve command bytes; request original vendor project/export if available.               |
 | A-01 ASSUMPTION   | Adapter characteristics                                                                                                   | User specified a standard 24 V DC wall adapter.                                                                            | Assume regulated 24 V ±10%, center-positive, 5.5 × 2.1 mm, ≥2 A, SELV/Class II. User to confirm regional supply and plug. |
 | A-02 ASSUMPTION   | Prototype environment                                                                                                     | User specified bench-development, not automotive production.                                                               | Use indoor 0–50 °C design target, supervised operation, no load-dump/automotive qualification.                            |
@@ -640,21 +657,21 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | Adapt Nano 15-pin two-lane DSI to panel FPC | Sections 6.1 and 6.3; exact lane/polarity map and selected connectors | Pin audit + continuity + display test        |
 | Correct DSI routing                         | Section 8 controlled impedance, skew, reference, ESD, no stubs        | Fabricator stack-up + DRC + stress patterns  |
 | GT9271 I²C/reset/INT                        | Sections 6.4 and 9; 3.3 V, isolation, address sequence                | ID/address/interrupt/ten-point test          |
-| LCD rails and sequence                      | Section 7; separate IOVCC/VCI and LM3880 reverse sequence             | Four-channel oscilloscope capture            |
+| LCD rails and sequence                      | Section 7; fixed 1.8 V IOVCC, separately controlled VCI, reset clamp, hard-unplug hold-up | Four-channel oscilloscope capture |
 | 24 V wall adapter                           | Section 7.1 and selected barrel/protection parts                      | 21.6–26.4 V test; polarity/fault checks      |
 | Power Nano and LCD                          | 5 V / 3 A buck plus local LDOs and isolated Nano feed                 | Load, ripple, USB coexistence, thermal test  |
-| 240 mA / ~19.2 V 6S4P backlight             | Section 10; TPS92511DDA conditional buck design                       | Dummy load then panel current/headroom test  |
-| ESP PWM brightness                          | GPIO23 BL_PWM, default-off, initial 20 kHz target                     | Duty sweep, flicker/linearity, reset default |
+| 240 mA / 16.8–19.8 V 6S4P backlight         | Section 10; TPS922053 buck with external precision sense and fault output | Dummy load then panel current/headroom test |
+| ESP PWM brightness                          | GPIO23 BL_PWM, default-off, initial 20 kHz fast/hybrid-dimming target | Duty sweep, flicker/linearity, reset default |
 | Protection/filtering/decoupling/test        | Section 11 and component table                                        | Inspection, fault test, ripple/ESD review    |
 | Bench-development board                     | Section 2 scope; jumpers, test points, no automotive claim            | Design review and labeling                   |
-| Identify conflicts/assumptions              | Section 14, especially UQ-01 through UQ-05                            | Written closure before schematic release     |
+| Identify conflicts/assumptions              | Section 14, especially remaining blocker UQ-02                         | Written closure before schematic release     |
 | Real/current components                     | Section 12 with MPNs and manufacturer-source checks                   | Lifecycle/stock recheck at procurement       |
 
 ### 16.1 Phase-2 entry checklist
 
 - User approves this PRD or returns a marked set of changes.
 
-- UQ-01, UQ-02, UQ-03, UQ-04, and UQ-05 are answered with evidence.
+- UQ-02 is closed with an internally coherent lane-rate/limit correction. UQ-01, UQ-03, and UQ-04 are already closed; the panel-side portion of UQ-05 is closed.
 
 - Mechanical architecture and GPIO allocation are approved.
 
@@ -669,26 +686,22 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 <tbody>
 <tr class="odd">
 <td><p><strong>Phase 1 stop point</strong></p>
-<p>No schematic capture, passive-value calculation, or KiCad implementation is authorized by this document until the review and entry checklist are complete.</p></td>
+<p>No schematic capture or KiCad implementation is authorized by this document until this v0.3 revision is approved and the entry checklist is complete. Engineering calculations used to evaluate candidate architectures may continue.</p></td>
 </tr>
 </tbody>
 </table>
 
-## 17. Manufacturer question package
+## 17. Manufacturer follow-up package
 
-Send the following questions together, referencing KD068HDFID009-C009A and attaching the exact S1/S2 revisions. Request answers from Displayman engineering rather than sales shorthand.
+S8 answered the original package. Send only the remaining corrections below, referencing the exact KD068HDFID009-C009A, S1, S2, and S8. Do not resend questions that S8 resolved.
 
-| **\#** | **Question to Displayman**                                                                                                                                                                                                                |
-|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1      | Please confirm the correct absolute-maximum rating for LCD IOVCC. Page 12 says 1.68 V max, while the DC table allows up to 3.3 V and the supplied two-lane file says IOVCC = 1.8 V. Is 1.8 V nominal approved for this exact module?      |
-| 2      | Please confirm that VDDI in the power-on/off diagram is the same physical rail as connector pin 3 IOVCC, and confirm the required power-up and power-down order/timing.                                                                   |
-| 3      | For the supplied 600 × 1280, 55 MHz, two-lane timing, what DSI pixel format is required (RGB888, packed RGB666, loosely packed RGB666, or another format), what video mode is required, and what lane bit rate should the host configure? |
-| 4      | The D-PHY table’s 2×UI range of 4–25 ns appears to limit the maximum rate to about 500 Mb/s. Is that table correct for this module? Please provide the supported min/max lane rate and continuous/non-continuous clock requirements.      |
-| 5      | Please provide LED backlight forward-voltage minimum and maximum at 240 mA total across temperature, required compliance/headroom, and confirm that 240 mA is the total current for the internal 6S4P array.                              |
-| 6      | Please confirm the 40-pin LCD and 8-pin touch FPC contact side, stiffener side, insertion direction, acceptable cable type, and recommended board-side mating connector/cable part numbers.                                               |
-| 7      | Displayman engineering has confirmed that the supplied two-lane initialization file, including `RSOX(600)`, is correct for KD068HDFID009-C009A. Please explain the exact source-driver/source-to-glass mapping between this 600-position horizontal source configuration and the 480-pixel physical glass, including the disposition of the additional 120 source positions and the meaning of source ranges S181–S900 / S1501–S2220. Please state whether the host must generate any black columns or whether the module/controller performs another mapping. |
-| 8      | Please provide the original machine-readable initialization export or corrected C-style sequence, including all delays, pixel format, DSI mode, and any required read-back or error-check step.                                           |
-| 9      | Please confirm GT9271 INT electrical type after initialization and the recommended default 7-bit address for this module.                                                                                                                 |
+| **\#** | **Question to Displayman** |
+|--------|-----------------------------|
+| 1 | For RGB888, H-active = 600, V-active = 1280, approximately 60.007 Hz, and two data lanes, active pixels alone require `600 × 1280 × 60.007 × 24 ÷ 2 ≈ 553 Mb/s/lane` before packet overhead. A continuous 55 MHz pixel stream requires 660 Mb/s/lane before overhead. Therefore 110 Mb/s/lane cannot carry the stated video, and even the stated 500 Mb/s/lane maximum is too low. Please provide the actual **data-lane bit-rate setting in Mb/s per lane** from a known-working two-lane host design and identify whether the 55 MHz clock, RGB888 format, 500 Mb/s maximum, or another stated parameter is incorrect. Please distinguish the DPI pixel clock, D-PHY clock-lane frequency, and DDR data-lane bit rate. |
+| 2 | For record consistency, please confirm that S8's 2.8 V VCI instruction supersedes the S2 header's 3.3 V test value. The board will use 2.8 V, which is S1's typical value and lies inside its operating range. Please also confirm whether IOVCC and VCI may rise together or must be ordered, and whether power-down requires VCI to fall before IOVCC after RESET is low. This clarification is not required to implement the conservative sequence. |
+| 3 | S1's GT9271 timing diagrams map INT high during reset to 7-bit address 0x14 (`0x28/0x29`) and INT low to 0x5D (`0xBA/0xBB`), but S8 says 0x5D uses INT high. Please confirm the correct INT level for each 7-bit address. |
+| 4 | S8 says source lines `S1–S180` and `S901–S1500` represent 180 dummy subpixels on each side, but `S901–S1500` contains 600 source outputs. The host-side 600-wide/60-column-per-side crop is understood; please provide a corrected source-channel range or diagram for the record. This item is not a schematic blocker. |
+| 5 | If available, please provide the original machine-readable initialization export or corrected C-style sequence, including exact delays and any required read-back/error check. Command payload bytes will otherwise be preserved from S2. |
 
 ## 18. References
 
@@ -702,12 +715,14 @@ Send the following questions together, referencing KD068HDFID009-C009A and attac
 
 - S7 — Email from Anson Ho, Displayman (SZ) Technology Co., Ltd., received 13 September 2026; reports that Displayman engineering confirmed the supplied two-lane initialization file is correct for the exact KD068HDFID009-C009A module. This confirmation includes retaining `RSOX(600)` but does not explain the 600-to-480 mapping or supply the required DSI transport parameters.
 
-### Manufacturer documentation checked 13 September 2026
+- S8 — Email from Anson Ho, Displayman (SZ) Technology Co., Ltd., received 14 September 2026; detailed engineering response stored as `docs/design-notes/Re- Displayman | Datasheet & Evaluation Units for KD068HDFID009-C009A.pdf`, SHA-256 `76a9e53303412ff29189debf72a1f4c5dcf495e249f0ce86e32092063407ed4d`.
+
+### Manufacturer documentation checked through 14 September 2026
 
 **Espressif:** [ESP32-P4 Series Datasheet](https://documentation.espressif.com/esp32-p4_datasheet_en.html); [ESP-IDF MIPI DSI LCD API](https://docs.espressif.com/projects/esp-idf/en/stable/esp32p4/api-reference/peripherals/lcd/dsi_lcd.html); [ESP32-P4 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32p4/schematic-checklist-esp32p4.html)
 
-**Texas Instruments:** [LM76003](https://www.ti.com/product/LM76003); [TPS92511](https://www.ti.com/product/TPS92511); [LM3880](https://www.ti.com/product/LM3880); [TPS3808](https://www.ti.com/product/TPS3808); [TPS22919](https://www.ti.com/product/TPS22919); [TLV755P](https://www.ti.com/product/TLV755P); [PCA9306](https://www.ti.com/product/PCA9306); [SN74LVC1G07](https://www.ti.com/product/SN74LVC1G07); [TPD6E05U06](https://www.ti.com/product/TPD6E05U06); [TPD4E05U06](https://www.ti.com/product/TPD4E05U06)
+**Texas Instruments:** [LM76003](https://www.ti.com/product/LM76003); [TPS922053](https://www.ti.com/product/TPS922053); [LM74700-Q1](https://www.ti.com/product/LM74700-Q1); [LM3880](https://www.ti.com/product/LM3880); [TPS3808](https://www.ti.com/product/TPS3808); [TPS22919](https://www.ti.com/product/TPS22919); [TLV755P](https://www.ti.com/product/TLV755P); [TMUX1574](https://www.ti.com/product/TMUX1574); [SN74LVC1G07](https://www.ti.com/product/SN74LVC1G07); [TPD6E05U06](https://www.ti.com/product/TPD6E05U06); [TPD4E05U06](https://www.ti.com/product/TPD4E05U06)
 
-**Connectors and protection:** [Molex 505110-4096](https://www.molex.com/en-us/products/part-detail/5051104096); [Amphenol SFW15R-2STE1LF](https://www.amphenol-cs.com/product/sfw15r2ste1lf.html); [Hirose FH12-8S-0.5SH(55)](https://www.hirose.com/product/p/CL0586-0744-5-55); [Same Sky PJ-044AH](https://www.sameskydevices.com/product/interconnect/connectors/dc-power-connectors/jacks/pj-044ah); [Littelfuse SMBJ series](https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj); [Vishay SS5P6](https://www.vishay.com/en/product/88721/)
+**Connectors and protection:** [Molex 505110-4096](https://www.molex.com/en-us/products/part-detail/5051104096); [Amphenol SFW15R-2STE1LF](https://www.amphenol-cs.com/product/sfw15r2ste1lf.html); [Hirose FH12-8S-0.5SH(55)](https://www.hirose.com/product/p/CL0586-0744-5-55); [Switchcraft RAPC722X](https://www.switchcraft.com/right-angle-pc-mount-dc-power-jack-pin-size-0-080-2-0mm-open-frame/rapc722x/); [Littelfuse SMBJ series](https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj); [Vishay SS5P6](https://www.vishay.com/en/product/88988/)
 
 *Authorized-distributor stock is a procurement snapshot, not a design guarantee. Manufacturer electrical data—not distributor summaries—controls electrical design.*

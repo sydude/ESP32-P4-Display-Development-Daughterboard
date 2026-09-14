@@ -2,20 +2,18 @@
 
 **Project:** ESP32-P4 Displayman Development Daughterboard  
 **Date:** 2026-09-14  
-**Controlling specification:** `docs/PRD.md`, revision 0.2  
-**Status:** preparation only — not a schematic release
+**Controlling specification:** `docs/PRD.md`, revision 0.3 pending approval
+**Status:** vendor-response analysis complete — not a schematic release
 
 ## 1. Scope and release boundary
 
-This note records the non-blocking work completed while awaiting Displayman's answers. It validates the current Phase 1 component candidates and architecture against the supplied module/Nano documents and current manufacturer documentation. It also identifies corrections and recommended substitutions for Phase 2.
+This note records the non-blocking work completed before and after Displayman's 14 September 2026 response (S8). It validates the Phase 1 component candidates and architecture against the supplied module/Nano documents, written vendor evidence, and current manufacturer documentation. Section 15 records the response disposition and supersedes earlier statements that a now-answered item is still awaiting Displayman.
 
 No schematic symbols, nets, footprints, PCB geometry, or other KiCad design content were added. The existing files under `hardware/kicad/` remain the canonical blank project and were inspected read-only.
 
-The following remain prohibited until the blocking vendor information is received and reviewed:
+The following remain prohibited until Displayman corrects the remaining DSI blocker and PRD v0.3 is approved:
 
-- applying power to the LCD IOVCC pin;
 - freezing the DSI host transport settings;
-- freezing the buck-versus-buck-boost backlight choice;
 - releasing the schematic or beginning PCB layout.
 
 ## 2. Executive disposition
@@ -24,14 +22,14 @@ The following remain prohibited until the blocking vendor information is receive
 |---|---|---|
 | 24 V input | The protection concept is sound, but the selected barrel jack is mechanically inconsistent with the PRD input requirement and the Schottky diode unnecessarily consumes voltage headroom. | Replace the jack candidate; prefer an ideal-diode controller and N-MOSFET over the series Schottky. Retain fuse and SMBJ30A subject to final inrush/transient calculations. |
 | 24 V to 5 V | LM76003 remains suitable and active. Its 3.5 A rating gives 0.5 A / 16.7% current margin over the 3 A design target. | Retain LM76003RNPR and perform the manufacturer design-flow, thermal, loop, and input/output-capacitor calculations during capture. |
-| LCD/touch rails | TLV755P and TPS22919 remain electrically suitable. The IOVCC voltage itself remains blocked by UQ-01. | Retain as candidates; keep IOVCC physically unpopulated or inhibited until written approval. Give touch its own switched 3.3 V domain. |
-| Sequencing | The required order is valid, but LM3880 is an implementation candidate, not a complete hard-unplug solution. | Add early input-fail detection, an isolated hold-up node, active rail discharge, and hardware reset/backlight clamps. Select the sequencer only after vendor timings are known. |
+| LCD/touch rails | S8 closes IOVCC at fixed 1.8 V, specifies 2.8 V VCI, and confirms touch VDD may be 2.8–3.3 V. S2's 3.3 V VCI header value is also within S1 limits, but S8 and S1 typical support 2.8 V. | Retain TLV75518 for IOVCC, select TLV75528 for VCI, and retain TLV75533 for TOUCH_3V3. |
+| Sequencing | S8 confirms VDDI = IOVCC, reset-low behavior, ≥5 ms rail-stable delay, and ≥120 ms normal shutdown wait. It does not remove the need for hard-unplug hardware. | Retain conservative IOVCC→VCI→reset ordering and reverse shutdown, plus early input-fail detection, isolated hold-up, active discharge, and hardware reset/backlight clamps. |
 | USB/backfeed | The Nano contains a USB-to-`VCC_5V` MOSFET path, but its documentation does not authorize arbitrary dual-source operation. USB can keep Nano GPIOs live while all display rails are off. | Add a removable isolation jumper and reverse-blocking/switching in the daughterboard-to-Nano 5 V feed; design all cross-domain signals for Nano-only power. |
-| Backlight | TPS92511 is active and electrically valid only when `VLED,max` leaves adequate buck compliance at the protected 21.6 V minimum input. The current typical condition has only 2.4 V gross margin before input-path and switching losses. | Retain TPS92511 as the preferred low-complexity branch only if UQ-03 passes the stated inequality. Use LT8391A four-switch synchronous buck-boost as the technically valid fallback. |
-| DSI | The logical mapping is confirmed from the Nano schematic. Current Espressif routing limits are stricter than several provisional PRD targets. | Route straight-through with no swaps, stubs, AC coupling, or common-mode choke; use 100 ohm differential impedance, <=10 mil within-pair skew, <=30 mil pair-to-pair skew, continuous ground, and return vias at transitions. |
+| Backlight | S8 confirms 16.8–19.8 V at 240 mA total. Buck operation is viable but only has 1.8 V gross headroom at the 21.6 V minimum adapter. TPS92511's current tolerance is also wider than the PRD's ±5% target. | Prefer TPS922053DYYR with external precision sense, ideal-diode input, and approximately 200–300 kHz operation. Retain LT8391A only as a contingency if the completed loss budget fails. |
+| DSI | Mapping/routing remain confirmed. S8 specifies RGB888 and 600-wide active timing but gives an impossible 110 Mb/s/lane value and repeats a 500 Mb/s/lane ceiling below the active-only requirement. | Keep all PCB rules. Do not freeze `lane_bit_rate_mbps`; require a known-working host setting and corrected limit from Displayman. |
 | Touch | PCA9306 alone does not satisfy the full no-backpower requirement: it covers only SCL/SDA and depends on EN being low at every invalid power state. | Replace the baseline with a four-channel powered-off-protected switch such as TMUX1574, gated by both-domain-valid logic, for SCL/SDA/INT/RESET. Retain the open-drain reset clamp where useful. |
 | GPIOs | The selected GPIO numbers exist and are not strapping pins, but three PRD header-pin labels are wrong. GPIO24 also conflicts with the ESP32-P4 default USB Serial/JTAG function. | Correct header pins before capture. Move `LCD_PWR_EN` from GPIO24 to an unused exposed GPIO, provisionally GPIO20 or GPIO21 after firmware/BSP confirmation. |
-| Connectors | The panel and touch connector specifications can be validated. The Nano connector family is plausible, but its exact on-board MPN is absent from the Waveshare schematic. | Retain Molex 505110-4096 and Hirose FH12-8S-0.5SH(55). Keep Nano FFC/contact orientation and board stack height open until physical inspection. |
+| Connectors | S8 confirms bottom-contact 40-pin LCD and 8-pin touch interfaces. The Nano connector family is plausible, but its exact on-board MPN is absent from the Waveshare schematic. | Retain Molex 505110-4096 and Hirose FH12-8S-0.5SH(55). Keep only Nano FFC/contact presentation and physical placement open until inspection. |
 
 ## 3. Requirements versus implementation choices
 
@@ -41,9 +39,9 @@ The requirements below remain controlling even where a different implementation 
 |---|---|---|
 | Accept a regulated, center-positive 24 V +/-10% wall adapter and tolerate accidental reverse polarity. | PJ-044AH, fuse, SS5P6, SMBJ30A | Requirement retained. Connector and reverse-protection components should change. |
 | Produce a robust 5 V / 3 A rail for the Nano and local regulators. | LM76003 | Requirement and candidate retained. |
-| Apply IOVCC, then VCI, then release reset; reverse the order at shutdown. | LM3880, TPS22919, TPS3808, reset buffer | Sequence retained. Specific sequencer and timing remain choices pending UQ-01/UQ-04. |
+| Apply IOVCC, then VCI, then release reset; assert reset and remove VCI/IOVCC safely at shutdown. | LM3880, TPS22919, TPS3808, reset buffer | Sequence retained. Fixed 1.8 V IOVCC and 2.8 V VCI are resolved; the exact sequencer remains an implementation choice. |
 | Prevent current injection between Nano and touch domains in every legal power state. | PCA9306 on SCL/SDA | Requirement retained. PCA9306 implementation is not sufficient by itself; isolate all four conductors. |
-| Supply 240 mA constant current and PWM dimming without overdriving the module. | TPS92511 buck | Requirement retained. Buck selection is conditional on UQ-03; buck-boost is the fallback. |
+| Supply 240 mA constant current and PWM dimming without overdriving the module. | TPS922053 buck | Requirement retained. S8 closes the load limits; TPS922053 is preferred and buck-boost is retained only as a failed-headroom contingency. |
 | Maintain a low-discontinuity two-lane DSI channel. | Straight-through mapping, optional series footprints, TPD6E05U06 | Requirement retained. ESD part retained; optional resistors may be used only as inline flow-through footprints with negligible stubs. |
 
 ## 4. Component revalidation
@@ -58,18 +56,20 @@ Lifecycle labels below are manufacturer labels observed on 2026-09-14. Distribut
 | Ideal-diode alternative — TI `LM74700-Q1` | ACTIVE; 3.2–65 V controller in 6/8-pin SOT-23; 20 mV forward-drop regulation and reverse-current blocking. | Well matched to 24 V, preserves backlight headroom, and prevents reverse current toward the adapter. | **Recommended substitution** for SS5P6. Select a >=60 V MOSFET with SOA, surge, thermal, and gate ratings checked in Phase 2.[^3] |
 | Input TVS — Littelfuse `SMBJ30A` | Current SMBJ family; 30 V standoff, 33.3–36.8 V breakdown, about 48.4 V maximum clamp at specified surge current, 600 W DO-214AA. | 26.4 V normal maximum is below standoff; published clamp remains below the 65 V absolute ceiling of the main power ICs. This is bench protection, not an automotive qualification claim. | Retain. Verify real source impedance, pulse energy, fuse coordination, and PCB thermal path. |
 | 5 V buck — TI `LM76003RNPR` | ACTIVE; 3.5–60 V operating, 65 V maximum, 3.5 A, 30-pin 6 x 4 mm WQFN; PGOOD and adjustable soft start.[^4] | 26.4 V maximum input has 33.6 V operating-range margin; 3 A target has 0.5 A margin. | Retain. Use a 50 V-rated input-capacitor system with DC-bias margin and verify junction temperature at 5 V/3 A. |
-| 3.3 V LDO — TI `TLV75533PDBVR` | ACTIVE; fixed 3.3 V, 500 mA, SOT-23-5; soft start, output discharge, current limit.[^5] | Panel 60 mA maximum plus touch 13 mA typical gives about 0.124 W nominal dissipation from 5 V; a 150 mA design load gives about 0.255 W. | Retain, but split or switch the touch branch so touch can be off without backfeed. Recalculate with all support loads. |
-| Provisional IOVCC LDO — TI `TLV75518PDBVR` | ACTIVE; fixed 1.8 V, 500 mA, SOT-23-5 with output discharge. | Capacity is ample for the panel's unsplit 60 mA maximum. Voltage cannot be approved while S1's 1.68 V absolute maximum conflicts with its 1.8 V nominal data. | Retain only as provisional/DNP. Do not populate or enable until UQ-01 is answered. |
+| Touch 3.3 V LDO — TI `TLV75533PDBVR` | ACTIVE; fixed 3.3 V, 500 mA, SOT-23-5; soft start, output discharge, current limit.[^5] | Ample for the 13 mA typical touch load plus support margin. | Retain on a separately switchable TOUCH_3V3 domain. |
+| IOVCC LDO — TI `TLV75518PDBVR` | ACTIVE; fixed 1.8 V, 500 mA, SOT-23-5 with output discharge. | Capacity is ample for the panel's unsplit 60 mA maximum. S8 explicitly approves 1.8 V and corrects the printed absolute maximum. | **Retain and fix at 1.8 V.** Do not provide a user-selectable 3.3 V option. |
+| VCI LDO — TI `TLV75528PDBVR` | ACTIVE/production; fixed 2.8 V, 500 mA, SOT-23-5 with output discharge.[^5] | Matches S8's explicit VCI instruction and S1's typical value; ample for the panel's unsplit 60 mA maximum. | **Select as the VCI source**, followed by the controlled TPS22919 switch. |
 | VCI switch — TI `TPS22919DCKR` | ACTIVE; 1.6–5.5 V, 1.5 A, 90 mOhm typical, SC70-6, controlled rise and adjustable quick-output discharge.[^6] | More than adequate current and useful for deterministic discharge. | Retain. Select QOD resistor and capacitance against confirmed power-down timing. |
-| Sequencer — TI `LM3880MF-1AA/NOPB` | ACTIVE family and exact 6-pin SOT-23 orderable; fixed three-stage behavior. | Orders flags, including reverse sequence, but cannot preserve sequencing after its own supply collapses and does not itself sense 24 V early. | Keep as candidate, not requirement. Freeze after UQ-04 and hold-up calculation; discrete supervisor/logic may be more flexible. |
+| Sequencer — TI `LM3880MF-1AA/NOPB` | ACTIVE family and exact 6-pin SOT-23 orderable; fixed three-stage behavior. | Orders flags, including reverse sequence, but cannot preserve sequencing after its own supply collapses and does not itself sense 24 V early. | Keep as candidate, not requirement. Freeze after the hold-up calculation; discrete supervisor/logic may be more flexible. |
 | Power-fail supervisor — TI `TPS3808G01DBVR` | ACTIVE; adjustable 0.405 V sense, open-drain reset, programmable delay, SOT-23-6. | Suitable when powered from the maintained low-voltage node. It cannot connect directly to 24 V; use a divider and verify pin ratings. | Retain the function; select the exact supervisor with the hold-up/discharge design. |
 | Reset buffer — TI `SN74LVC1G07DBVR` | ACTIVE; SOT-23-5 open-drain buffer, overvoltage-tolerant I/O, Ioff partial-power/back-drive protection.[^7] | Suitable for a wired-AND reset clamp pulled up to the destination rail. | Retain where a one-way reset clamp is needed. Do not use it to isolate bidirectional INT. |
 | I2C translator — TI `PCA9306DCTR` | ACTIVE VSSOP-8 pass-FET translator. High impedance requires EN low; only SCL/SDA are covered. | It does not guarantee no backpower across all four touch conductors, and two 3.3 V domains do not require translation. | **Replace as baseline.** |
 | Touch-domain switch — TI `TMUX1574DYYR` or `TMUX1574PWR` | ACTIVE; 1.5–5.5 V, four bidirectional SPDT channels, powered-off protection to 3.6 V, fail-safe controls, 2 ohm typical on-resistance.[^8] | One device disconnects SCL, SDA, INT, and RESET and tolerates Nano-side signals while its touch-domain supply is off. | **Recommended substitution** for PCA9306, using one throw/channel and hardware enable only when both 3.3 V domains are valid. |
 | MIPI ESD — TI `TPD6E05U06RVZR` | ACTIVE; six channels, 14-USON flow-through package, 0.47 pF typical I/O capacitance, up to 6 Gb/s class.[^9] | Channel count covers clock plus two data pairs. Loading is suitable if placement/ground return are excellent. | Retain adjacent to panel connector. |
 | Touch ESD — TI `TPD4E05U06DQAR` | ACTIVE; four channels, 10-USON flow-through package, 0.5 pF typical. | Correct conductor count for SCL/SDA/INT/RESET. | Retain adjacent to touch connector, on connector side of isolation. |
-| Buck LED driver — TI `TPS92511DDA` | ACTIVE; 4.5–65 V buck, <=500 mA, exposed-pad HSOIC-8, 50–500 kHz, typically +/-3.6% current accuracy. TI lists newer buck-only parts.[^10] | Ratings fit, but topology is conditional on unknown `VLED,max`. Its about 6 us example DIM pulse makes 20 kHz poor for deep dimming. | Retain conditionally. Start firmware validation nearer 1 kHz if used, then tune for flicker/camera behavior. |
-| Buck-boost fallback — ADI `LT8391A` | Recommended for new designs; 4–60 V input, 0–60 V output, synchronous four-switch single-inductor LED controller, 600 kHz–2 MHz, PWM dimming.[^11] | Regulates with input above, below, or equal to LED voltage. More complex and uses four external MOSFETs. | Use as the valid fallback if UQ-03 fails the buck criterion. Do not lock until vendor data arrive. |
+| Original buck LED driver — TI `TPS92511DDA` | ACTIVE; 4.5–65 V buck, <=500 mA, exposed-pad HSOIC-8. Its 249 mA nominal test condition spans 233–268 mA over temperature, wider than the project's ±5% target.[^10] | The topology fits S8's voltage range, but current accuracy and deep-dimming performance are weaker than a current-generation alternative. | **Replace as baseline.** Retain only as a prototype fallback with a deliberately derated current setpoint. |
+| Preferred buck LED driver — TI `TPS922053DYYR` | ACTIVE/production; 4.5–65 V, integrated 150 mΩ switch, 100 ns minimum off-time, external 200 mV differential sense, fault output, spread spectrum, and fast/hybrid PWM dimming.[^19] | At 240 mA, 0.833 Ω nominal sense resistance and the ±3% threshold allow the ±5% system target with a precision resistor. A 200–300 kHz target provides high-duty margin for 19.8 V from the protected 21.6 V minimum input. | **Recommended selection.** Complete loss, inductor, diode, sense-tolerance, compensation, thermal, and fault calculations during Phase 2. |
+| Buck-boost fallback — ADI `LT8391A` | Recommended for new designs; 4–60 V input, 0–60 V output, synchronous four-switch single-inductor LED controller, 600 kHz–2 MHz, PWM dimming.[^11] | Regulates with input above, below, or equal to LED voltage. More complex and uses four external MOSFETs. | Retain only if the completed TPS922053 worst-case budget or dummy-load test cannot regulate 19.8 V at minimum protected input. |
 | Nano DSI connector — Amphenol `SFW15R-2STE1LF` | ACTIVE; 15 position, 1.00 mm, top-contact, side-entry SMT ZIF, 2.7 mm high.[^12] | Matches documented count/pitch. Waveshare S3 omits fitted MPN and contact orientation. | Keep provisional; physical inspection/continuity mandatory. |
 | Panel LCD connector — Molex `505110-4096` | 40 circuits, 0.50 mm, bottom contact, front flip, right-angle SMT, 1.90 mm mated height; manufacturer page has limited catalog information.[^13] | Matches the exact part named by Displayman's drawing. | Retain. Final orientation depends on panel FPC presentation/placement. |
 | Panel FFC — Molex `0150200429` / `0150200431` | Both 40-circuit, 0.50 mm, type-A same-side-contact; lengths 76 and 102 mm; 0.5 A/contact.[^14] | Electrically compatible. Same-side contacts are documented; length/end presentation are mechanical choices. | Retain as mock-up candidates; do not order production quantity before fit check. |
@@ -101,16 +101,16 @@ Divide the 5 V rail logically into:
 
 Keeping Nano transient load off `DISPLAY_HOLDUP_5V` makes hard-unplug sequencing practical without storing energy for the full 3 A system.
 
-### 5.3 LCD VCI, provisional IOVCC, and touch rails
+### 5.3 Confirmed LCD and touch rails
 
-- `LCD_IOVCC` remains separate and sequenced; proposed 1.8 V remains blocked by UQ-01.
-- `LCD_VCI` remains switched 3.3 V after IOVCC. TPS22919 controlled rise/discharge supports deterministic sequencing.
-- `TOUCH_3V3` should be separately switchable, not an always-on synonym for `LCD_3V3`, establishing a defined off state during Nano USB-only power.
+- `LCD_IOVCC` remains separate, fixed at the S8-approved 1.8 V, and sequenced.
+- `LCD_VCI` is fixed at 2.8 V using TLV75528 and remains separately switched after IOVCC. This follows S8's explicit instruction and S1's typical value; the older S2 3.3 V header value remains documented but is within S1's allowed range and does not block the safer nominal selection.
+- `TOUCH_3V3` should be separately switchable, establishing a defined off state during Nano USB-only power.
 - S1 does not split its 60 mA maximum between VCI and IOVCC. Size both LCD paths for the PRD's >=100 mA requirement and measure actual current at bring-up.
 
 ### 5.4 Sequencing and hard unplug
 
-Required order remains: validate maintained supply; enable IOVCC; enable VCI after delay; release hardware reset; initialize in firmware; enable backlight last. Shutdown reverses LCD order and forces backlight off immediately.
+Conservative order remains: validate maintained supply; enable 1.8 V IOVCC; enable VCI after delay; hold reset low until both rails have been stable for at least 5 ms; release reset after at least a 10 ms low interval; initialize in firmware; enable backlight last. Normal shutdown forces backlight off, sends 0x28 then 0x10, waits at least 120 ms, asserts reset, then removes VCI and IOVCC. Hard unplug still requires the hardware path below.
 
 A reliable hard-unplug implementation needs:
 
@@ -124,7 +124,7 @@ LM3880 orders outputs while powered but cannot create the energy needed to compl
 - 60 mA load: `C >= 800 uF`
 - 100 mA load: `C >= 1333 uF`
 
-This demonstrates why hold-up excludes Nano/backlight. Final capacitance, ESR, temperature derating, regulator dropout, and timing depend on UQ-04 and measured load. A nominal 1000–1500 uF is a bench starting range, not a released value.
+This demonstrates why hold-up excludes Nano/backlight. Final capacitance, ESR, temperature derating, regulator dropout, and timing depend on measured load. A nominal 1000–1500 uF is a bench starting range, not a released value.
 
 ### 5.5 USB and backfeed state model
 
@@ -139,17 +139,17 @@ Nano DSI pins 14/15 are `ESP_3V3` references and must never be driven.
 
 ## 6. Backlight architecture and calculations
 
-S1 gives 240 mA and 19.2 V typical, so `PLED,typ = 19.2 V x 0.240 A = 4.608 W`. Before protection/switch loss, gross buck headroom at minimum input is only `21.6 - 19.2 = 2.4 V`.
+S8 confirms 240 mA total, with `VLED,min = 16.8 V`, `VLED,typ = 19.2 V`, and `VLED,max = 19.8 V` over temperature. `PLED,typ = 19.2 V x 0.240 A = 4.608 W`. Before protection and converter losses, worst-case buck headroom at minimum input is `21.6 - 19.8 = 1.8 V`.
 
-TPS92511 remains acceptable only if the completed worst-case inequality passes:
+Use TPS922053DYYR as the preferred buck. At 200 kHz, its 100 ns minimum off-time gives an ideal maximum duty near 98%; at 300 kHz it is near 97%. The completed worst-case inequality remains:
 
-`VLED,max(cold, 240 mA) + Vdriver_required + Vinput_path_drop + Vcable_drop + Vripple_margin <= 21.6 V`
+`19.8 V + Vdriver/conduction + Vinput_path + Vcable + Vripple/tolerance <= 21.6 V`
 
-The ideal diode improves the result versus a series Schottky but cannot establish compliance without `VLED,max`. If it fails or margin is inadequate, use a non-inverting four-switch buck-boost. LT8391A is valid because it regulates when input is above, below, or equal to the LED string.[^11]
+The LM74700 ideal-diode input and TPS922053's low switch resistance materially improve the margin. If the calculation or dummy-load test fails, use the LT8391A four-switch buck-boost branch; it is not a pin-compatible contingency and requires its own design.[^11]
 
-The choice can be finalized immediately when Displayman supplies LED Vf min/max at 240 mA over temperature, confirmation that 240 mA is total module current, and any required compliance/PWM restriction.
+At the nominal 200 mV sense threshold, `R_SENSE = 0.200 / 0.240 = 0.833 ohm`. The threshold's ±3% limit plus a precision resistor supports the project's ±5% target, unlike TPS92511's wider full-temperature current spread.
 
-PWM validation narrowed another internal issue. TPS92511 documents an approximately 6 us DIM pulse example at 500 kHz switching. A 20 kHz period is 50 us, so 6 us corresponds to about 12% duty; at 1 kHz it is about 0.6%. If TPS92511 is retained, begin near 1 kHz and optimize after measuring current pulses, flicker, audible behavior, and camera interaction. Do not treat 20 kHz as finalized.
+TPS922053 supports fast PWM and hybrid dimming, including a manufacturer 2,000:1 example at 20 kHz. The original 20 kHz firmware target is reasonable with the new baseline, subject to measured current pulses, low-duty linearity, flicker, audible behavior, and camera interaction.
 
 ## 7. MIPI-DSI validation
 
@@ -192,7 +192,7 @@ Optional series footprints may remain only when genuinely inline and included in
 
 S3 shows no separate Nano-side DSI ESD. The complete channel includes Nano PCB/FFC, daughterboard connector/PCB, and panel FFC, so keep the adapter route very short.
 
-UQ-02 remains fully open. Conditional payloads remain useful: RGB888 at the assumed 55 MHz host pixel clock is about 660 Mb/s/lane raw; packed RGB666 is about 495 Mb/s/lane. Protocol overhead, blanking transport, and actual mode remain unconfirmed.
+S8 confirms RGB888, H-active = 600, two lanes, continuous clock recommended, and video-mode support, but UQ-02 remains blocking because its rate answer is impossible. At the S2-derived 60.007 Hz frame rate, active pixels alone require about 553 Mb/s/lane before overhead. A continuous 55 MHz RGB888 stream is 660 Mb/s/lane before overhead. S8's 110 Mb/s/lane and stated 500 Mb/s/lane maximum are both insufficient. Obtain the actual data-lane bit-rate setting from a known-working host; do not confuse the DPI pixel clock with D-PHY clock-lane frequency.
 
 ## 8. GT9271 touch-domain validation
 
@@ -208,6 +208,8 @@ Recommended architecture:
 - add only pull-ups proven necessary after measurement, because the Nano already has pull-ups.
 
 This is simpler than an I2C translator plus separate INT/RESET isolation and preserves bidirectional INT.[^8]
+
+S8 confirms that INT becomes open-drain active-low after initialization and requires a 2–10 kohm pull-up to the powered touch domain. It recommends 0x5D but incorrectly associates that address with INT high during reset; S1's timing diagrams map INT low to 7-bit 0x5D (`0xBA/0xBB`) and INT high to 0x14 (`0x28/0x29`). Hardware shall support both. Firmware shall provisionally use S1's 0x5D/INT-low sequence, then repeat the full reset sequence for 0x14 if identification fails.
 
 S3 also shows GPIO8/SCL and GPIO7/SDA shared with onboard ES8311 and CSI, 2.2 kohm pull-ups in the CSI block, and 22 pF shunts near the codec. Therefore do not add another strong Nano-side pull-up pair; audit total capacitance; check any module pull-ups; and scope VOL/rise time at 100 and 400 kHz.
 
@@ -237,9 +239,9 @@ Recommendation: retain GPIO4/5/22/23 with corrected P1 pins; move `LCD_PWR_EN` f
 |---|---|---|
 | 24 V | PJ-044AH mismatch confirmed. RAPC722X is 24 V/5 A, right-angle through-hole, 2.0 mm center-pin family; manufacturer lists compatible 2.1 mm plug products.[^1] | Measure/read actual adapter outer/inner size and confirm center-positive. 5.5 x 2.1 and 5.5 x 2.5 are both common. |
 | Nano DSI | 15 positions/1.00 mm in S3; Amphenol candidate is active/top-contact.[^12] | Fitted MPN, exposed-contact side, pin-1 view, cable type A/B, insertion direction, length. |
-| Panel LCD | S1 names Molex 5051104096; manufacturer confirms 40 positions, 0.50 mm, bottom contact.[^13] | Board face/cable bend, pin 1, contact exposure on sample. |
+| Panel LCD | S1 names Molex 5051104096; the connector manufacturer and S8 confirm 40 positions, 0.50 mm, bottom contact.[^13] | Board face/cable bend, pin 1, contact exposure on sample. |
 | Panel FFC | Candidates are 40 way, 0.50 mm, type A same-side, 76/102 mm.[^14] | Select length after mock-up; verify installed mating orientation. |
-| Touch | 8 positions/0.50 mm; FH12 candidate is bottom-contact, 0.3 mm FPC, front ZIF.[^15] | Actual thickness, contact/stiffener side, insertion depth, bend radius. |
+| Touch | S8 confirms 8 positions/0.50 mm and bottom contact; FH12 candidate is bottom-contact, 0.3 mm FPC, front ZIF.[^15] | Actual thickness, insertion direction/depth, bend radius, and board-side flex presentation. |
 | Nano headers | 2 x 13/2.54 mm topology; SSW family available.[^16] | Pin length, board gap, underside clearance, standoffs, keepouts. |
 
 ## 11. Schematic organization and net naming plan
@@ -250,7 +252,7 @@ Suggested sheets: `00_system`, `10_input_power`, `20_5v_power`, `30_display_powe
 
 Canonical net plan:
 
-- power: `VIN_ADAPTER_24V`, `VIN_PROT_24V`, `SYS_5V`, `DISPLAY_HOLDUP_5V`, `NANO_5V`, `LCD_3V3`, `TOUCH_3V3`, `LCD_IOVCC`, `LCD_VCI`
+- power: `VIN_ADAPTER_24V`, `VIN_PROT_24V`, `SYS_5V`, `DISPLAY_HOLDUP_5V`, `NANO_5V`, `TOUCH_3V3`, `LCD_IOVCC`, `LCD_VCI`
 - valid/enable: `VIN_GOOD`, `SYS_5V_GOOD`, `NANO_3V3_VALID`, `TOUCH_3V3_VALID`, `DISPLAY_PWR_EN`, `BL_HW_ENABLE`
 - control: `LCD_RESET_N`, `LCD_RESET_CMD_N`, `CTP_RESET_N`, `CTP_INT`, `BL_PWM`
 - DSI: `DSI_D0_P/N`, `DSI_D1_P/N`, `DSI_CLK_P/N`
@@ -272,29 +274,30 @@ Canonical net plan:
 - corrected Vishay reference;
 - established a valid four-switch buck-boost fallback;
 - established why hard unplug needs stored energy isolated from Nano/backlight;
-- narrowed PWM: 20 kHz is not the default if deep TPS92511 dimming is required.
+- selected TPS922053 over TPS92511 so the 240 mA ±5% target and 20 kHz dimming target are both supportable.
 
-### 12.2 Blocked specifically on Displayman
+### 12.2 Displayman-response disposition
 
-- **UQ-01:** corrected IOVCC absolute maximum and approved operating voltage.
-- **UQ-02:** DSI pixel format, video/burst mode, lane rate, clock behavior, D-PHY range.
-- **UQ-03/UQ-09:** LED Vf limits over temperature, compliance margin, total-current confirmation.
-- **UQ-04:** VDDI/IOVCC identity and mandatory sequence/timing.
-- **UQ-10:** GT9271 INT type and preferred address, if available.
-- **UQ-13:** confirmed 600-source to 480-glass mapping.
-- original machine-readable initialization export/delay semantics, if available.
+- **UQ-01 CLOSED:** fixed 1.8 V IOVCC is approved; 1.68 V absolute maximum is identified as a typo.
+- **UQ-02 STILL BLOCKING:** RGB888/mode/continuous-clock guidance is narrowed, but 110 Mb/s/lane and the stated 500 Mb/s/lane ceiling cannot carry the confirmed timing.
+- **UQ-03/UQ-09 CLOSED:** 16.8–19.8 V at 240 mA total, 60 mA per internal string.
+- **UQ-04 CLOSED:** use S8's 2.8 V VCI instruction and S1's conservative IOVCC→VCI→reset / reverse shutdown ordering, with hardware hold-up for hard unplug.
+- **UQ-05 NARROWED:** panel/touch bottom-contact requirements are confirmed; Nano-side physical presentation remains sample-dependent.
+- **UQ-10 NARROWED/NON-BLOCKING:** open-drain active-low INT is confirmed; the address-strap polarity conflicts with S1, but hardware and firmware can support/test both.
+- **UQ-13 HOST REQUIREMENT CLOSED:** use H-active = 600 and let the driver discard 60 columns per side. The detailed source-channel ranges remain arithmetically inconsistent but do not block the schematic.
+- **UQ-14 OPEN/NON-BLOCKING:** original machine-readable initialization export and wrapper/delay semantics remain desirable.
 
 Vendor connector recommendations may help, but final board-facing orientation still requires sample verification.
 
-### 12.3 Decisions available immediately after vendor response
+### 12.3 Decisions now finalized or ready
 
-1. approve/reject and set IOVCC regulator;
-2. choose sequencer/delays and calculate hold-up;
-3. set exact ESP-IDF DSI format/mode/clock/lane rate;
-4. retain TPS92511 or use LT8391A-class buck-boost;
-5. set LED current network, PWM range, and protections;
-6. finalize touch reset/address defaults and biasing;
-7. make a targeted PRD implementation revision, then authorize capture.
+1. fix IOVCC at 1.8 V using TLV75518;
+2. use RGB888, 600 × 1280 H-active/V-active timing, and continuous clock as the initial mode, but leave lane rate blocked;
+3. use TPS922053DYYR buck, approximately 200–300 kHz, 0.833 ohm nominal sense, and 20 kHz PWM as the Phase 2 baseline;
+4. design GT9271 INT as open-drain active-low with a 2–10 kohm touch-side pull-up and support both reset-selected addresses;
+5. retain conservative rail sequencing plus isolated hard-unplug hold-up;
+6. retain bottom-contact panel/touch connectors, subject to sample presentation and insertion-direction checks;
+7. use the corrected Nano header mappings and move `LCD_PWR_EN` away from GPIO24.
 
 ## 13. Actions requiring owner physical input
 
@@ -303,7 +306,7 @@ Vendor connector recommendations may help, but final board-facing orientation st
 - measure Nano header pin length, board spacing, mounting holes, and underside clearance;
 - choose stack-on versus side-by-side arrangement and cable lengths after a paper/3D mock-up.
 
-No immediate owner electrical-design decision is required while Displayman's reply is pending.
+No owner electrical-design decision is required to resolve the remaining DSI or VCI contradictions; those require Displayman. The physical actions above remain necessary before footprint/placement freeze.
 
 ## 14. Sources
 
@@ -325,3 +328,10 @@ No immediate owner electrical-design decision is required while Displayman's rep
 [^16]: Samtec, [SSW connector family/configuration](https://www.samtec.com/products/ssw-113-02-g-d-ll), checked 2026-09-14.
 [^17]: Espressif Systems, [ESP32-P4 Series Datasheet v0.7](https://documentation.espressif.com/esp32-p4_datasheet_en.html), 2026-07-14.
 [^18]: Espressif Systems, [ESP32-P4 Hardware Design Guidelines v1.9](https://documentation.espressif.com/esp-hardware-design-guidelines/en/latest/esp32p4/esp-hardware-design-guidelines-en-master-esp32p4.pdf), 2026-07-21.
+[^19]: Texas Instruments, [TPS922052/TPS922053/TPS922054/TPS922055 datasheet Rev. B](https://www.ti.com/product/TPS922053), February 2025; product/orderability checked 2026-09-14.
+
+## 15. Displayman response evidence
+
+S8 is the email from Anson Ho received 2026-09-14 and stored in the repository as `docs/design-notes/Re- Displayman | Datasheet & Evaluation Units for KD068HDFID009-C009A.pdf`, SHA-256 `76a9e53303412ff29189debf72a1f4c5dcf495e249f0ce86e32092063407ed4d`.
+
+The direct confirmations adopted into PRD v0.3 are: fixed 1.8 V IOVCC; VDDI means connector pin 3 IOVCC; reset-low and shutdown delays; RGB888 and 600-wide active transport; 16.8–19.8 V / 240 mA total backlight; internal 60-column-per-side masking; bottom-contact LCD/touch FPCs; and open-drain active-low touch INT. The DSI arithmetic, VCI nominal voltage, GT9271 address-strap parenthetical, and detailed source-channel range are retained as explicit contradictions rather than being inferred away.

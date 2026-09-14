@@ -10,6 +10,7 @@ This index records source documents and manufacturer links used by the project. 
 | S2 | Displayman | `KD068HDFID009 -2LANE.txt` initialization file | SHA-256 `81ec9ab8…e6872c` | External source; not committed |
 | S3 | Waveshare | `ESP32-P4-NANO-schematic.pdf` | PDF created 2024-10-25; SHA-256 `1e57b31f…10de1` | External source; not committed |
 | S7 | Displayman, Anson Ho | Email reporting Displayman engineering confirmation that S2, including `RSOX(600)`, is correct for exact module | Received 2026-09-13 | External correspondence; summarized in PRD v0.2 |
+| S8 | Displayman, Anson Ho | Detailed engineering response covering IOVCC, sequence, DSI, backlight, mapping, FPCs, and GT9271 | Received 2026-09-14; SHA-256 `76a9e53303412ff29189debf72a1f4c5dcf495e249f0ce86e32092063407ed4d` | User deliberately committed [email-chain PDF](design-notes/Re-%20Displayman%20%7C%20Datasheet%20%26%20Evaluation%20Units%20for%20KD068HDFID009-C009A.pdf); analyzed in PRD v0.3 |
 
 Abbreviated hashes match `docs/PRD.md`. Full hashes should be retained in controlled project records if the source package is deliberately archived.
 
@@ -31,17 +32,18 @@ Checked 2026-09-14. Status is the manufacturer product-page status where shown. 
 | Manufacturer | Part number / family | Function | Status / document | Source |
 |---|---|---|---|---|
 | Texas Instruments | `LM76003RNPR` | 24 V to 5 V buck | ACTIVE; datasheet Rev. A | [LM76003](https://www.ti.com/product/LM76003) |
-| Texas Instruments | `TLV75533PDBVR`, `TLV75518PDBVR` | 3.3 V / provisional 1.8 V LDOs | ACTIVE; datasheet Rev. D | [TLV755P](https://www.ti.com/product/TLV755P) |
+| Texas Instruments | `TLV75533PDBVR`, `TLV75528PDBVR`, `TLV75518PDBVR` | Touch 3.3 V / VCI 2.8 V / IOVCC 1.8 V LDOs | ACTIVE/production; datasheet Rev. D | [TLV755P](https://www.ti.com/product/TLV755P) |
 | Texas Instruments | `TPS22919DCKR` | VCI load switch | ACTIVE; datasheet Rev. B | [TPS22919](https://www.ti.com/product/TPS22919) |
 | Texas Instruments | `LM3880MF-1AA/NOPB` | Candidate three-stage sequencer | ACTIVE; fixed-function candidate | [LM3880](https://www.ti.com/product/LM3880) |
 | Texas Instruments | `TPS3808G01DBVR` | Candidate power-fail supervisor | ACTIVE | [TPS3808](https://www.ti.com/product/TPS3808) |
 | Texas Instruments | `SN74LVC1G07DBVR` | Open-drain reset buffer with Ioff | ACTIVE; datasheet Rev. AG | [SN74LVC1G07](https://www.ti.com/product/SN74LVC1G07) |
-| Texas Instruments | `PCA9306DCTR` | Original I2C translator candidate | ACTIVE; not preferred after power-state review | [PCA9306](https://www.ti.com/product/PCA9306) |
+| Texas Instruments | `PCA9306DCTR` | Original I2C translator candidate | ACTIVE; superseded because it does not isolate INT/RESET | [PCA9306](https://www.ti.com/product/PCA9306) |
 | Texas Instruments | `TMUX1574DYYR` / `TMUX1574PWR` | Recommended four-channel powered-off-protected touch switch | ACTIVE; datasheet Rev. C | [TMUX1574](https://www.ti.com/product/TMUX1574) |
 | Texas Instruments | `TPD6E05U06RVZR` | Six-channel MIPI ESD | ACTIVE; TPDxE05U06 family | [TPD6E05U06](https://www.ti.com/product/TPD6E05U06) |
 | Texas Instruments | `TPD4E05U06DQAR` | Four-channel touch ESD | ACTIVE; TPDxE05U06 family | [TPD4E05U06](https://www.ti.com/product/TPD4E05U06) |
-| Texas Instruments | `TPS92511DDA` | Conditional buck backlight driver | ACTIVE; datasheet Rev. A; newer buck-only devices listed | [TPS92511](https://www.ti.com/product/TPS92511) |
-| Analog Devices | `LT8391A` | Four-switch buck-boost LED fallback | Recommended for new designs; datasheet Rev. A | [Product page](https://www.analog.com/en/products/lt8391a.html), [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/lt8391a.pdf) |
+| Texas Instruments | `TPS92511DDA` | Original buck backlight candidate | ACTIVE; superseded as baseline because full-temperature current spread is wider than project ±5% target | [TPS92511](https://www.ti.com/product/TPS92511) |
+| Texas Instruments | `TPS922053DYYR` | Preferred 240 mA buck backlight driver | ACTIVE/production; datasheet Rev. B; 4.5–65 V, external 200 mV current sense, 100 ns minimum off-time, fast/hybrid PWM | [TPS922053](https://www.ti.com/product/TPS922053), [datasheet](https://www.ti.com/lit/ds/symlink/tps922053.pdf) |
+| Analog Devices | `LT8391A` | Four-switch buck-boost LED contingency | Recommended for new designs; datasheet Rev. A; use only if completed buck headroom validation fails | [Product page](https://www.analog.com/en/products/lt8391a.html), [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/lt8391a.pdf) |
 
 ## Input protection
 
