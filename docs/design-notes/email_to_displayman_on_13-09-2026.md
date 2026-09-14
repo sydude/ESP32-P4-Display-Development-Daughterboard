@@ -8,14 +8,14 @@ We are now finalizing the interface and power design for this exact module and n
 - For the supplied 600 × 1280, 55 MHz, 2-lane configuration, please confirm:
 	- required DSI pixel format
 	- required video mode
-required lane bit rate
-continuous or non-continuous clock
-supported minimum and maximum D-PHY lane rate
-The datasheet D-PHY table gives 2×UI = 4–25 ns. Please confirm whether this table is correct for this exact module.
-Please provide the LED backlight forward-voltage minimum and maximum at 240 mA over temperature, and confirm that 240 mA is the total current for the internal 6S4P backlight array.
-Please explain the source-driver/source-to-glass mapping between the confirmed RSOX(600) configuration and the 480-pixel physical glass. Specifically, what happens to the additional 120 horizontal source positions, and does the host need to generate any black columns?
-Please confirm the 40-pin LCD and 8-pin touch FPC contact-side/orientation requirements and recommended mating connector/cable configuration.
-Please confirm the GT9271 INT electrical type after initialization and the recommended default 7-bit I2C address for this module.
+	- required lane bit rate
+	- continuous or non-continuous clock
+	- supported minimum and maximum D-PHY lane rate
+- The datasheet D-PHY table gives 2×UI = 4–25 ns. Please confirm whether this table is correct for this exact module.
+- Please provide the LED backlight forward-voltage minimum and maximum at 240 mA over temperature, and confirm that 240 mA is the total current for the internal 6S4P backlight array.
+- Please explain the source-driver/source-to-glass mapping between the confirmed RSOX(600) configuration and the 480-pixel physical glass. Specifically, what happens to the additional 120 horizontal source positions, and does the host need to generate any black columns?
+- Please confirm the 40-pin LCD and 8-pin touch FPC contact-side/orientation requirements and recommended mating connector/cable configuration.
+- Please confirm the GT9271 INT electrical type after initialization and the recommended default 7-bit I2C address for this module.
 
 
 Thank you,
