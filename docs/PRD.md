@@ -4,7 +4,7 @@
 
 | Document status | Version / date | Phase |
 |---|---|---|
-| Engineering revision pending approval | v0.4 • 14 September 2026 | PRD and non-blocking Phase-2 preparation only |
+| Schematic-readiness revision pending approval | v0.5 • 15 September 2026 | Documentation/status reconciliation only |
 
 <table>
 <colgroup>
@@ -13,7 +13,7 @@
 <tbody>
 <tr class="odd">
 <td><p><strong>Design decision</strong></p>
-<p>The daughterboard is technically plausible. Displayman's 14 September 2026 response closes the IOVCC, VCI selection, power-sequence, backlight, source-mapping, touch-electrical, and panel-side FPC questions, but it leaves a mathematically inconsistent DSI transport specification. Schematic capture must not begin until the DSI rate/limit is corrected and the user approves this revision. This document intentionally does not provide a circuit schematic.</p></td>
+<p>The daughterboard is ready to enter Phase 2 schematic capture once the user separately authorizes it. Displayman's 15 September 2026 response and timing screenshot confirm a 46–60 Hz operating range and independently reproduce the 600 × 1280, 55 MHz PCLK timing. The exact D-PHY HS lane rate and authoritative GC9703C maximum remain unresolved, but they do not select a daughterboard component or alter the required passive channel capability; UQ-02 is therefore a firmware/prototype bring-up item rather than a schematic-release blocker. This document intentionally does not provide a circuit schematic.</p></td>
 </tr>
 </tbody>
 </table>
@@ -28,6 +28,7 @@
 | v0.2 | 13 September 2026 | Recorded Displayman engineering confirmation that the supplied two-lane initialization file, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module; narrowed the remaining uncertainty to the 600-to-480 source mapping and unconfirmed DSI transport parameters. |
 | v0.3 | 14 September 2026 | Incorporated Displayman's detailed engineering response: fixed 1.8 V IOVCC and 2.8 V VCI; recorded reset/shutdown timing, 16.8–19.8 V / 240 mA backlight limits, confirmed 600-to-480 host mapping, panel-side FPC orientation, and GT9271 INT type. Kept DSI open because the supplied rate is arithmetically impossible and recorded the non-blocking GT9271 address/source-range contradictions. Integrated the independently validated Phase 2 component/GPIO recommendations without beginning schematic capture. |
 | v0.4 | 14 September 2026 | Added protected nominal-12 V vehicle evaluation input, four-switch buck-boost conversion to the common 24 V-class bus, dual-source reverse blocking, safe-by-default Nano 5 V eFuse behavior, representative current estimates, vehicle brownout/recovery requirements, and an expanded power-state validation matrix. Automotive qualification remains explicitly out of scope; UQ-02 remains the schematic-release blocker. |
+| v0.5 | 15 September 2026 | Added Displayman's 15 September email and LCD timing screenshot as S9; confirmed the 46–60 Hz usable range and that 55 MHz is LCD PCLK; separated confirmed timing from unverified HS-rate claims; reclassified UQ-02 as firmware/prototype bring-up verification; and completed a whole-PRD schematic-readiness and owner-action review. The v0.4 vehicle/bench/USB power architecture is unchanged. |
 
 ## 1. Executive summary
 
@@ -53,8 +54,8 @@ The recommended architecture uses separately protected and reverse-blocked 24 V 
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><p><strong>Blocking finding: DSI rate / pixel format</strong></p>
-<p>Displayman now specifies RGB888, 600 × 1280 host active timing, 55 MHz, two lanes, continuous clock recommended, and an 80–500 Mb/s/lane D-PHY range, but also states that the required lane rate is 110 Mb/s/lane by multiplying 55 MHz by DDR. Those statements cannot all be true. At the derived 60.007 Hz frame rate, active RGB888 pixels alone require approximately 553 Mb/s/lane before packet overhead; a non-burst representation at the 55 MHz pixel clock requires 660 Mb/s/lane before overhead. Even the lower bound exceeds 500 Mb/s/lane, while 110 Mb/s/lane provides only 220 Mb/s aggregate. Displayman must provide the lane-bit-rate setting from a known-working host design and identify which stated parameter or limit is wrong. The PCB will be designed for at least 1.5 Gb/s/lane, consistent with the ESP32-P4 transmitter capability.</p></td>
+<td><p><strong>Resolved for schematic entry; open for DSI bring-up</strong></p>
+<p>Displayman confirms RGB888, 600 × 1280 host-active timing, a 55 MHz LCD PCLK reference, two lanes, continuous clock recommended, and approximately 46–60 Hz operation. S9 independently reproduces the timing and identifies 55 MHz as PCLK, not D-PHY HS lane rate. The earlier 110 Mb/s/lane calculation is arithmetically incompatible with RGB888 transport, while the earlier 500 Mb/s/lane maximum has not been substantiated by an authoritative GC9703C source. Neither value shall control the design. The exact known-working HS rate, authoritative controller maximum, and best ESP32-P4 setting remain firmware/prototype parameters. The passive daughterboard channel shall be designed for at least 1.5 Gb/s/lane, matching the ESP32-P4 host capability.</p></td>
 </tr>
 </tbody>
 </table>
@@ -63,15 +64,15 @@ The recommended architecture uses separately protected and reverse-blocked 24 V 
 
 - Approve the architecture and requirements as the basis for Phase 2, subject to the gates in Section 14.
 
-- Obtain Displayman’s corrected DSI lane-rate/limit answer before schematic release.
+- Carry UQ-02 into firmware/prototype bring-up; do not use 110 Mb/s/lane or 500 Mb/s/lane as a PCB design specification.
 
-- Confirm the daughterboard’s mechanical relationship to the Nano and desired cable lengths/contact orientation.
+- Complete the physical connector, cable, and stacking checks before footprint/placement freeze; they do not block schematic capture.
 
 - Use fixed 1.8 V IOVCC; do not expose a 3.3 V selection.
 
 ### Phase boundary
 
-STOP: Phase 2 schematic design has not started. Approval or requested modifications to this PRD are required first.
+STOP: Phase 2 schematic design has not started in this task. Separate user authorization is still required before capture begins.
 
 ## 2. Scope, use case, and non-goals
 
@@ -123,6 +124,7 @@ Requirements are derived from the three supplied files, written manufacturer cor
 | S6     | ESP32-P4 Hardware Design Guidelines | Current online documentation checked 2026-09-13                   | MIPI implementation guidance; Nano already implements the SoC-side D-PHY support circuitry.                          |
 | S7     | Displayman email from Anson Ho      | Received 2026-09-13; reports confirmation from Displayman engineering | Confirms S2, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module. Does not define the 600-to-480 source mapping or DSI transport parameters. |
 | S8     | Displayman email from Anson Ho      | Received 2026-09-14; repository PDF SHA-256 `76a9e533…d4d`          | Detailed answers for IOVCC, sequencing, DSI, backlight, source mapping, FPCs, and touch. Direct confirmations are controlling where internally coherent; contradictions remain explicitly open. |
+| S9     | Displayman email and LCD timing screenshot from Anson Ho | Received 2026-09-15; repository Markdown SHA-256 `8823097d…89f4`; image SHA-256 `0e07dbba…97d3` | Confirms strict 60 FPS is unnecessary, approximately 46–60 Hz is usable subject to proper operation, and lower refresh may be used for host bandwidth. Screenshot independently shows 600 × 1280, HBP/HFP/HSW = 40/40/4, VBP/VFP/VSW = 20/36/4, and `LCD_PCLK = 55` MHz. It does not supply a D-PHY HS lane rate or controller limit. |
 
 ### 3.1 Interpretation rules
 
@@ -146,7 +148,9 @@ Requirements are derived from the three supplied files, written manufacturer cor
 
 - S8 supplies a 16.8–19.8 V backlight range at 240 mA total over temperature and confirms four parallel strings at 60 mA each.
 
-- S8 confirms RGB888 and the S1 80–500 Mb/s/lane D-PHY range, but its proposed 110 Mb/s/lane rate cannot transport the stated timing. Active pixels alone require approximately 553 Mb/s/lane before overhead.
+- S8's proposed 110 Mb/s/lane rate cannot transport its confirmed RGB888 timing; it incorrectly treats twice the 55 MHz LCD PCLK as total DSI transport. S9 explicitly identifies 55 MHz as LCD PCLK and does not repeat or validate 110 Mb/s/lane.
+
+- S1/S8 state 80–500 Mb/s/lane, but no authoritative independent GC9703C source has been located to substantiate 500 Mb/s/lane as a controlling controller limit. It remains unverified—not disproven—and shall not constrain PCB capability or be represented as an established GC9703C specification.
 
 - S2's header says VCI = 3.3 V, whereas S8's later power-up instruction specifies VCI = 2.8 V. Both are inside S1's 2.5–3.3 V operating range; this revision adopts S8's explicit 2.8 V instruction and S1's 2.8 V typical value for the board supply.
 
@@ -162,7 +166,7 @@ Requirements are derived from the three supplied files, written manufacturer cor
 | Physical glass      | 480 RGB × 1280 visible pixels                                                                                                             | S1; S2 comment      |
 | Vendor source configuration | Host H-active = 600 × 1280 using `RSOX(600)`; driver masks 60 dummy columns at each side to drive the 480 × 1280 physical glass. The host must transport a 600-wide active line but need not force the discarded columns black. | S2; S7; S8          |
 | Timing              | H: 600 configured source positions + 4 sync + 40 back porch + 40 front porch = 684 total; V: 1280 active + 4 sync + 20 back porch + 36 front porch = 1340 total | S2; S7; S8          |
-| Pixel clock / frame | 55 MHz; derived 55,000,000 ÷ (684 × 1340) = 60.007 Hz                                                                                     | S2 + calculation    |
+| Pixel clock / frame | Reference `LCD_PCLK` = 55 MHz; derived 55,000,000 ÷ (684 × 1340) = 60.007 Hz. Displayman permits approximately 46–60 Hz subject to proper display operation. | S2; S9; calculation |
 | Display controller  | GC9703C                                                                                                                                   | S1                  |
 | MIPI interface      | Two data lanes + differential clock                                                                                                       | S1/S2/S3            |
 | VCI                 | Fixed 2.8 V nominal per S8 and S1 typical. S2's older 3.3 V header value is within S1 limits but is not used for the board supply.               | S1 §5.2; S2; S8     |
@@ -176,7 +180,7 @@ Requirements are derived from the three supplied files, written manufacturer cor
 
 ### 4.1 DSI payload-rate calculation
 
-S8 confirms RGB888, H-active = 600, two lanes, a 55 MHz timing clock, and a derived frame rate of 60.007 Hz. The absolute lower bound using only active pixels is:
+S8 confirms RGB888, H-active = 600, and two lanes. S9 independently confirms the 55 MHz value is LCD PCLK and permits approximately 46–60 Hz operation. At the 55 MHz reference timing, the derived frame rate is 60.007 Hz. The active-pixel lower bound at that point is:
 
 `600 × 1280 × 60.007 × 24 ÷ 2 = 553.0 Mb/s/lane`
 
@@ -184,7 +188,9 @@ If the 55 MHz DPI pixel stream is transported continuously, the raw rate is:
 
 `55 MHz × 24 ÷ 2 = 660 Mb/s/lane`
 
-Packet overhead and the selected video mode add margin. S8's 110 Mb/s/lane figure incorrectly equates twice the 55 MHz clock with the required payload rate, and even its stated 500 Mb/s/lane maximum is below the active-only lower bound. The D-PHY clock lane frequency is not interchangeable with the DPI pixel clock. Phase 2 shall not choose `lane_bit_rate_mbps` until Displayman supplies the setting from a known-working two-lane host and reconciles the 500 Mb/s/lane ceiling.
+At 46 Hz, the corresponding active-pixel lower bound is approximately `423.9 Mb/s/lane`. Packet overhead and the selected video mode increase the required serialized rate; blanking transport differs between burst and non-burst operation. Therefore these calculations bound plausible configurations but do not establish the exact D-PHY setting.
+
+S8's 110 Mb/s/lane figure incorrectly equates twice the 55 MHz LCD PCLK with the required RGB888 payload rate. Its stated 500 Mb/s/lane maximum is unverified and shall not be treated as a controlling GC9703C limit. Conversely, this analysis does not independently prove that the controller supports 660 Mb/s/lane or any other particular rate. Firmware/prototype bring-up shall choose and validate an ESP32-P4 `lane_bit_rate_mbps` consistent with the confirmed timing and observed panel synchronization. The schematic and PCB shall not be designed around either 110 or 500 Mb/s/lane.
 
 ### 4.2 Panel handling
 
@@ -246,9 +252,9 @@ The following mapping is read directly from S3. Pin numbering and cable contact 
 | P1 pin 9        | GPIO5    | CTP_RESET_N     | High impedance must hold touch reset low until firmware takes control.               |
 | P1 pin 14       | GPIO22   | CTP_INT         | Bidirectional: output during address select, input interrupt afterward.              |
 | P1 pin 5        | GPIO23   | BL_PWM          | Default low; no backlight before display initialization.                             |
-| P1 pin 11 or 13 | GPIO20 or GPIO21 | LCD_PWR_EN | Final choice after pinned BSP review; default low. Avoid GPIO24 because it is a default USB Serial/JTAG signal. |
+| P1 pin 11       | GPIO20   | LCD_PWR_EN | Baseline selection; default low. Avoid GPIO24 because it is a default USB Serial/JTAG signal; GPIO21/P1 pin 13 remains the documented alternate if the pinned application reserves GPIO20. |
 
-These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO38 [S4]. The corrected P1 pin numbers above supersede the v0.2 labels. Phase 2 shall select GPIO20 or GPIO21 for `LCD_PWR_EN` after checking the pinned Nano BSP/application; GPIO24 shall remain available for its default USB Serial/JTAG function.
+These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO38 [S4]. The corrected P1 pin numbers above supersede the v0.2 labels. Phase 2 shall use GPIO20 for `LCD_PWR_EN` and verify it against the pinned Nano BSP/application during capture; GPIO21 is the documented alternate. GPIO24 shall remain available for its default USB Serial/JTAG function.
 
 ### 6.3 Panel 40-pin LCD connector
 
@@ -437,7 +443,7 @@ Hardware and firmware shall jointly implement the following conservative sequenc
 
 ### 8.4 DSI configuration acceptance
 
-The final ESP-IDF settings shall record: two lanes, confirmed lane bit rate, pixel-clock source, RGB pixel format, video/burst mode, horizontal and vertical timing, and any continuous-clock requirement. The design is not accepted solely because a static image appears; it must pass color bars, checkerboard, moving gradients, all-white/all-black, and at least a two-hour error-free run across the intended brightness range.
+The schematic may proceed without a preselected HS lane rate because it contains no rate-dependent bridge or controller and the passive channel is specified for at least 1.5 Gb/s/lane. Firmware/prototype bring-up shall record and validate: two lanes, selected lane bit rate, pixel-clock source, RGB888 format, video/burst mode, horizontal and vertical timing, refresh rate, and continuous-clock behavior. Begin with the S9 reference timing and continuous clock; if synchronization or bandwidth requires adjustment, evaluate the manufacturer-permitted approximately 46–60 Hz range without changing the confirmed 600 × 1280 host-active geometry or S2 command sequence. The design is not accepted solely because a static image appears; it must pass color bars, checkerboard, numbered-column/cropping patterns, moving gradients, all-white/all-black, and at least a two-hour error-free run across the intended brightness range.
 
 ## 9. GT9271 touch requirements
 
@@ -615,7 +621,7 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 - Initialize GPIO safe states before enabling the LCD sequence: LCD_PWR_EN = 0, LCD reset asserted, touch reset asserted, BL_PWM = 0.
 
-- Configure the ESP-IDF MIPI DSI bus for two lanes, RGB888, continuous clock unless testing proves otherwise, and the final corrected lane bit rate; configure H-active = 600 and the S2 porches/timing. Do not use S8's uncorrected 110 Mb/s/lane value.
+- Configure the ESP-IDF MIPI DSI bus for two lanes, RGB888, continuous clock initially, and H-active = 600 with the S2/S9 porch timing. Select and validate the HS lane rate during prototype bring-up; do not use S8's 110 Mb/s/lane or its unverified 500 Mb/s/lane value as an established setting or limit.
 
 - Translate S2 into a typed, bounds-checked command table with explicit command length and millisecond delays. Preserve byte order and document every normalized syntax repair.
 
@@ -629,7 +635,7 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 
 ### 13.2 Initialization-file acceptance
 
-The complete S2 byte sequence remains the authoritative starting point and shall be version-controlled by its SHA-256. S7 confirms that Displayman engineering considers this initialization file correct for the exact module, and S8 explains the host-visible 600-to-480 crop. `RSOX(600)` shall be preserved. Phase 2/firmware implementation shall produce a machine-readable diff or review report showing that every command byte and delay is represented. Apparent wrapper-syntax errors shall be corrected only at the wrapper level; command payloads shall not be edited without documented evidence. S8 does not resolve the wrapper-syntax artifacts and gives an unusable DSI lane-rate value, so those items remain open.
+The complete S2 byte sequence remains the authoritative starting point and shall be version-controlled by its SHA-256. S7 confirms that Displayman engineering considers this initialization file correct for the exact module, S8 explains the host-visible 600-to-480 crop, and S9 independently reproduces the 600 × 1280 / 55 MHz timing. `RSOX(600)` shall be preserved. Phase 2/firmware implementation shall produce a machine-readable diff or review report showing that every command byte and delay is represented. Apparent wrapper-syntax errors shall be corrected only at the wrapper level; command payloads shall not be edited without documented evidence. The wrapper-syntax artifacts and best working DSI lane-rate setting remain bring-up items.
 
 ### 13.3 Failure behavior
 
@@ -649,8 +655,8 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><p><strong>Approval gate</strong></p>
-<p>Items marked BLOCKING must be closed before schematic release. Manufacturer confirmation means written confirmation tied to the exact KD068HDFID009-C009A module revision, not an inference from a similar panel or a generic GC9703C datasheet.</p></td>
+<td><p><strong>Schematic-dependency rule</strong></p>
+<p>An item blocks schematic capture only if its answer can materially change electrical safety, absolute-maximum compliance, power or isolation topology, rail sequencing, connector/header pin mapping, DSI physical connectivity, backlight requirements, component selection, GPIO allocation, or schematic nets. Mechanical, footprint, firmware, and prototype-validation items remain open in their assigned phase. No open item in this revision meets the schematic-blocker test.</p></td>
 </tr>
 </tbody>
 </table>
@@ -658,17 +664,17 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | **ID / severity** | **Question or conflict**                                                                                                  | **Current evidence**                                                                                                       | **Proposed disposition / owner**                                                                                          |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | UQ-01 CLOSED      | What is the correct IOVCC absolute-maximum rating, and is 1.8 V nominal explicitly approved?                              | S8 explicitly approves/recommends 1.8 V and identifies S1's 1.68 V absolute maximum as a typo; stated true limit is approximately 3.6 V. | Use fixed 1.8 V; do not implement user-selectable 3.3 V IOVCC. Record S8 as the controlled correction until a revised datasheet exists. |
-| UQ-02 BLOCKING    | What lane bit rate is required for RGB888, 600 × 1280 H-active, 55 MHz timing over two lanes, and what is the true D-PHY maximum? | S8 says RGB888, 110 Mb/s/lane, and 80–500 Mb/s/lane. Active-only math requires ≈553 Mb/s/lane before overhead; continuous pixel transport requires 660 Mb/s/lane before overhead. | Displayman must provide the `lane_bit_rate_mbps` or equivalent from a known-working host and identify which rate/clock/limit is wrong. Do not use 110 Mb/s/lane. |
+| UQ-02 OPEN / BRING-UP | What exact HS lane rate did Displayman's known-working host use, what is the authoritative GC9703C maximum, and which ESP32-P4 setting gives best operation? | S8 confirms RGB888, 600 × 1280, two lanes, and continuous-clock recommendation but gives an invalid 110 Mb/s/lane calculation and an independently unverified 500 Mb/s/lane ceiling. S9 confirms 55 MHz is LCD PCLK, the exact porches, and approximately 46–60 Hz operation. Active-only bounds are ≈423.9 Mb/s/lane at 46 Hz and ≈553.0 Mb/s/lane at 60.007 Hz; a continuous 55 MHz RGB888 stream is 660 Mb/s/lane before overhead. | Not a schematic blocker: no bridge/component selection depends on the value, and the passive channel is required to support at least the ESP32-P4's 1.5 Gb/s/lane capability. Firmware shall select and validate the working rate/refresh/mode on the prototype. Do not design around 110 or 500 Mb/s/lane. |
 | UQ-03 CLOSED      | What are LED-string VF min/max over current and temperature, and required driver headroom?                                | S8 gives 16.8 V minimum, 19.2 V typical, and 19.8 V maximum at 240 mA over temperature.                                  | Use TPS922053 buck with ideal-diode input and approximately 200–300 kHz target; prove the final 21.6 V worst-case loss budget and retain buck-boost only as contingency. |
 | UQ-04 CLOSED      | What VCI voltage and reset/rail ordering apply?                                                                              | S8 confirms VDDI = IOVCC, specifies 1.8 V IOVCC and 2.8 V VCI, reset low through ramp, ≥5 ms rail-stable delay, ≥50 µs reset pulse, and ≥120 ms normal shutdown wait. S1 permits 2.8 V VCI and shows conservative rail ordering. | Use 2.8 V VCI and conservative IOVCC→VCI→reset power-up, reset→VCI→IOVCC power-down, early fail detection, and isolated hold-up. The older S2 3.3 V header value is documented but does not block this safe implementation. |
-| UQ-05 HIGH        | What are the LCD and touch cable contact-side/orientation requirements at both ends?                                      | S8 confirms bottom-contact 40-pin and 8-pin module-side connections. Nano connector MPN/contact presentation remains undocumented. | Panel-side electrical requirement is closed. Continuity-test the actual Nano and inspect both physical flexes before footprint/placement freeze. |
-| UQ-06 HIGH        | Is Nano J1 pin 10 intentionally NC, and are pins 14/15 safe reference-only 3.3 V outputs?                                 | S3 shows pin 10 unlabeled; 14/15 tied to ESP_3V3.                                                                          | Verify with Waveshare and a powered-off continuity check. Do not drive ESP_3V3.                                           |
-| UQ-07 HIGH        | What is the maximum sustained and transient 5 V current of the exact Nano build?                                          | S3 shows 5 V input and onboard conversion but no board-level input-current rating.                                         | Allocate 3 A; measure boot, CPU/PSRAM load, C6 activity, USB, and peripherals before final fuse/thermal sizing.           |
-| UQ-08 NARROWED/HIGH | Does the Nano onboard USB-to-VCC_5V MOSFET guarantee zero reverse current from the externally driven 5 V header to laptop VBUS over all power transitions? | S3 shows a MOSFET power path but Waveshare provides no explicit dual-source guarantee; USB VBUS is not separately exposed at the headers. | Concurrent USB is a mandatory normal mode. Use TPS259470A from SYS_5V to NANO_5V for the Nano→daughterboard blocking direction; verify the Nano's opposite direction by four-quadrant voltage/current test before prototype release. If it fails, add a data-only debug path or modify the Nano USB boundary. |
+| UQ-05 OPEN / FOOTPRINT | What are the LCD and touch cable contact-side/orientation requirements at both ends?                                      | S8 confirms bottom-contact 40-pin and 8-pin module-side connections. Nano connector MPN/contact presentation remains undocumented. | Panel-side electrical requirement is closed. Continuity-test the actual Nano and inspect both physical flexes before footprint/placement freeze. |
+| UQ-06 OPEN / PROTOTYPE | Is Nano J1 pin 10 intentionally NC, and are pins 14/15 safe reference-only 3.3 V outputs?                                 | S3 shows pin 10 unlabeled; 14/15 tied to ESP_3V3.                                                                          | Capture pin 10 as NC and pins 14/15 as sense/reference-only, never driven. Verify with Waveshare or powered-off continuity before prototype connection; no active schematic function depends on them. |
+| UQ-07 OPEN / BRING-UP | What is the maximum sustained and transient 5 V current of the exact Nano build?                                          | S3 shows 5 V input and onboard conversion but no board-level input-current rating.                                         | The conservative 3 A architecture is sufficient for capture. Measure boot, CPU/PSRAM load, C6 activity, USB, and peripherals before final protection/thermal validation. |
+| UQ-08 OPEN / PROTOTYPE | Does the Nano onboard USB-to-VCC_5V MOSFET guarantee zero reverse current from the externally driven 5 V header to laptop VBUS over all power transitions? | S3 shows a MOSFET power path but Waveshare provides no explicit dual-source guarantee; USB VBUS is not separately exposed at the headers. | Concurrent USB is a mandatory normal mode. Use TPS259470A from SYS_5V to NANO_5V for the Nano→daughterboard blocking direction; verify the Nano's opposite direction by four-quadrant voltage/current test before prototype release. If it fails, use the documented data-only/Nano USB-boundary modification contingency. |
 | UQ-09 CLOSED      | Does the panel accept one 240 mA total sink for the internal four parallel strings?                                       | S8 confirms 240 mA total and 60 mA per each of four parallel strings.                                                      | Set one 240 mA total current channel; validate temperature and uniformity on samples.                                      |
 | UQ-10 MEDIUM      | Is 0x5D the desired default GT9271 address, and what INT behavior applies?                                                | S8 confirms open-drain active-low INT after initialization and a 2–10 kΩ pull-up, but says 0x5D uses INT high during reset; S1 maps INT high to 0x14 and low to 0x5D. | Hardware supports both. Default provisionally to S1's 0x5D/INT-low timing, retry 0x14 only through a complete reset sequence, and confirm on the sample or through corrected vendor guidance. |
 | UQ-11 MEDIUM      | Which Nano mechanical arrangement, standoff pattern, and cable lengths are preferred?                                     | No enclosure or placement drawing was supplied.                                                                            | User to approve stack-on baseline or request side-by-side board before layout.                                            |
-| UQ-12 MEDIUM      | Are GPIO4/5/22/23/24 free in the intended firmware/BSP?                                                                   | They are exposed and not strapping pins, but application reservations are unknown.                                         | User/firmware owner to confirm; allocation remains configurable before schematic.                                         |
+| UQ-12 NARROWED / SCHEMATIC REVIEW | Are GPIO4/5/22/23 and baseline GPIO20 free in the pinned firmware/BSP? | They are exposed and not strapping pins. GPIO24 was removed because it is the default USB Serial/JTAG D− pin; GPIO21 is an available alternate to GPIO20. | Capture GPIO20 as the `LCD_PWR_EN` baseline and run the pinned-BSP conflict check during schematic review. This is an engineering verification within Phase 2, not an owner preference or pre-capture blocker. |
 | UQ-13 NARROWED    | Is the detailed source-channel numbering in S8 correct?                                                                    | S8 confirms H-active = 600 and internal masking of 60 host columns per side, so the host requirement is resolved. Its `S901–S1500` range spans 600 source outputs rather than the stated 180. | Implement the confirmed 600-wide transport/central 480-visible crop and validate with numbered-column patterns. Seek a corrected source-channel diagram, but this arithmetic defect does not block schematic capture. |
 | UQ-14 MEDIUM      | Which S2 syntax lines are transcription artifacts versus tool-specific grammar?                                           | File contains pseudo-code and malformed parentheses but payload appears structured.                                        | Normalize wrapper syntax only; preserve command bytes; request original vendor project/export if available.               |
 | UQ-15 HIGH        | Does the selected vehicle protection network survive the intended harness/source transient energy and recover without overstressing the TVS, FETs, fuse, or converter? | Component voltage ratings and topology are adequate on paper, but transient energy depends on vehicle/harness/source impedance and pulse duration. | Complete SPICE/reference-design checks, then bench-test defined positive/negative, reverse-polarity, crank, jump/miswire, and hot-plug cases. Do not claim ISO compliance from component ratings alone. |
@@ -717,7 +723,7 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 
 ### 15.4 Release criteria
 
-- All BLOCKING UQs closed and recorded; no requirement waived verbally.
+- No open item fails the schematic-dependency rule; all deferred items have an explicit firmware, mechanical, footprint, or prototype-validation owner.
 
 - All rails and sequences measured on a real prototype, including hard-unplug behavior.
 
@@ -744,20 +750,20 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | ESP PWM brightness                          | GPIO23 BL_PWM, default-off, initial 20 kHz fast/hybrid-dimming target | Duty sweep, flicker/linearity, reset default |
 | Protection/filtering/decoupling/test        | Section 11 and component table                                        | Inspection, fault test, ripple/ESD review    |
 | Bench-development board                     | Section 2 scope; jumpers, test points, no automotive claim            | Design review and labeling                   |
-| Identify conflicts/assumptions              | Section 14, especially remaining blocker UQ-02                         | Written closure before schematic release     |
+| Identify conflicts/assumptions              | Section 14; UQ-02 explicitly retained as a bring-up parameter          | Dependency classification + prototype record |
 | Real/current components                     | Section 12 with MPNs and manufacturer-source checks                   | Lifecycle/stock recheck at procurement       |
 
 ### 16.1 Phase-2 entry checklist
 
 - User approves this PRD or returns a marked set of changes.
 
-- UQ-02 is closed with an internally coherent lane-rate/limit correction. UQ-01, UQ-03, and UQ-04 are already closed; the panel-side portion of UQ-05 is closed.
+- No true schematic-release blocker remains. UQ-02 is intentionally open for firmware/prototype validation; UQ-01, UQ-03, and UQ-04 are closed, and the panel-side electrical portion of UQ-05 is closed.
 
-- Mechanical architecture and GPIO allocation are approved.
+- GPIO allocation is checked against the pinned BSP during schematic review; provisional GPIO20/GPIO21 selection does not prevent capture from starting.
 
-- Exact Nano and panel samples are available for connector/contact-side verification.
+- Exact Nano/panel samples and mechanical architecture are required before footprint/PCB placement freeze, not before schematic capture.
 
-- Final adapter specification is agreed.
+- Final adapter plug and vehicle-harness mechanics are required before footprint/PCB placement freeze; electrical requirements and provisional connector families are sufficient for capture.
 
 <table>
 <colgroup>
@@ -766,18 +772,18 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 <tbody>
 <tr class="odd">
 <td><p><strong>Phase 1 stop point</strong></p>
-<p>No schematic capture or KiCad implementation is authorized by this document until this v0.4 revision is approved and the entry checklist is complete. Engineering calculations used to evaluate candidate architectures may continue.</p></td>
+<p>This v0.5 review finds the project technically ready to begin Phase 2 schematic capture, but this task does not authorize or begin it. KiCad implementation remains stopped until the user gives separate approval. Footprint/placement freeze and prototype release retain their own physical and validation gates.</p></td>
 </tr>
 </tbody>
 </table>
 
-## 17. Manufacturer follow-up package
+## 17. Optional manufacturer follow-up / bring-up information
 
-S8 answered the original package. Send only the remaining corrections below, referencing the exact KD068HDFID009-C009A, S1, S2, and S8. Do not resend questions that S8 resolved.
+S8 and S9 answer enough to begin hardware capture. The questions below remain useful for firmware records and prototype efficiency, but none is a schematic-release gate. Do not resend questions that S8/S9 resolved.
 
 | **\#** | **Question to Displayman** |
 |--------|-----------------------------|
-| 1 | For RGB888, H-active = 600, V-active = 1280, approximately 60.007 Hz, and two data lanes, active pixels alone require `600 × 1280 × 60.007 × 24 ÷ 2 ≈ 553 Mb/s/lane` before packet overhead. A continuous 55 MHz pixel stream requires 660 Mb/s/lane before overhead. Therefore 110 Mb/s/lane cannot carry the stated video, and even the stated 500 Mb/s/lane maximum is too low. Please provide the actual **data-lane bit-rate setting in Mb/s per lane** from a known-working two-lane host design and identify whether the 55 MHz clock, RGB888 format, 500 Mb/s maximum, or another stated parameter is incorrect. Please distinguish the DPI pixel clock, D-PHY clock-lane frequency, and DDR data-lane bit rate. |
+| 1 | For the known-working two-lane RGB888 host, please provide the actual **D-PHY HS data-lane bit-rate setting in Mb/s per lane**, video-mode/burst setting, and clock-mode setting. Please also identify an authoritative source for any claimed GC9703C maximum. S9 establishes that 55 MHz is LCD PCLK and that approximately 46–60 Hz is usable; neither 110 nor 500 Mb/s/lane will be treated as an established hardware setting/limit without coherent supporting data. |
 | 2 | For record consistency, please confirm that S8's 2.8 V VCI instruction supersedes the S2 header's 3.3 V test value. The board will use 2.8 V, which is S1's typical value and lies inside its operating range. Please also confirm whether IOVCC and VCI may rise together or must be ordered, and whether power-down requires VCI to fall before IOVCC after RESET is low. This clarification is not required to implement the conservative sequence. |
 | 3 | S1's GT9271 timing diagrams map INT high during reset to 7-bit address 0x14 (`0x28/0x29`) and INT low to 0x5D (`0xBA/0xBB`), but S8 says 0x5D uses INT high. Please confirm the correct INT level for each 7-bit address. |
 | 4 | S8 says source lines `S1–S180` and `S901–S1500` represent 180 dummy subpixels on each side, but `S901–S1500` contains 600 source outputs. The host-side 600-wide/60-column-per-side crop is understood; please provide a corrected source-channel range or diagram for the record. This item is not a schematic blocker. |
@@ -797,9 +803,13 @@ S8 answered the original package. Send only the remaining corrections below, ref
 
 - S8 — Email from Anson Ho, Displayman (SZ) Technology Co., Ltd., received 14 September 2026; detailed engineering response stored as `docs/design-notes/Re- Displayman | Datasheet & Evaluation Units for KD068HDFID009-C009A.pdf`, SHA-256 `76a9e53303412ff29189debf72a1f4c5dcf495e249f0ce86e32092063407ed4d`.
 
-### Manufacturer documentation checked through 14 September 2026
+- S9 — Follow-up email from Anson Ho, Displayman (SZ) Technology Co., Ltd., received 15 September 2026, plus reference LCD timing screenshot; stored as `docs/design-notes/email response from displayman on 9-15-2026.md` (SHA-256 `8823097df6d8f23fd516d2b6e0f963860ce33b882156e1e74eb6324d2f1189f4`) and `docs/design-notes/email response from displayman on 9-15-2026 [IMAGE].jpg` (SHA-256 `0e07dbbabf7c044b3f3cbf885d786e36a1ac6d44cc7af4ac6fe7aa517a8977d3`).
+
+### Manufacturer documentation checked through 15 September 2026
 
 **Espressif:** [ESP32-P4 Series Datasheet](https://documentation.espressif.com/esp32-p4_datasheet_en.html); [ESP-IDF MIPI DSI LCD API](https://docs.espressif.com/projects/esp-idf/en/stable/esp32p4/api-reference/peripherals/lcd/dsi_lcd.html); [ESP32-P4 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32p4/schematic-checklist-esp32p4.html)
+
+**Display corroboration:** [Displayman bar-type product listing](https://displayman.com/bar-type-tft-lcd-displays/) for exact C009A identity/interface; [KD068HDFID009 third-party family listing](https://en.tft-tft.com/product/1658-KD068HDFID009-6.8-inch-480x1280-2-Lane-MIPI-interface-GC9703C-Bar-Type-TFT-high-brightness-IPS-LCD-Module.html); [KD068HDFID020 sibling listing](https://www.tft-tft.com/product/detail?id=899) for the related GC9703C 3/4-lane platform. The latter two are corroborative only and do not establish an HS lane-rate limit.
 
 **Texas Instruments:** [LM76003](https://www.ti.com/product/LM76003); [TPS922053](https://www.ti.com/product/TPS922053); [LM74700-Q1](https://www.ti.com/product/LM74700-Q1); [LM3880](https://www.ti.com/product/LM3880); [TPS3808](https://www.ti.com/product/TPS3808); [TPS22919](https://www.ti.com/product/TPS22919); [TLV755P](https://www.ti.com/product/TLV755P); [TMUX1574](https://www.ti.com/product/TMUX1574); [SN74LVC1G07](https://www.ti.com/product/SN74LVC1G07); [TPD6E05U06](https://www.ti.com/product/TPD6E05U06); [TPD4E05U06](https://www.ti.com/product/TPD4E05U06)
 

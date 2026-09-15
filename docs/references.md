@@ -11,12 +11,13 @@ This index records source documents and manufacturer links used by the project. 
 | S3 | Waveshare | `ESP32-P4-NANO-schematic.pdf` | PDF created 2024-10-25; SHA-256 `1e57b31f…10de1` | External source; not committed |
 | S7 | Displayman, Anson Ho | Email reporting Displayman engineering confirmation that S2, including `RSOX(600)`, is correct for exact module | Received 2026-09-13 | External correspondence; summarized in PRD v0.2 |
 | S8 | Displayman, Anson Ho | Detailed engineering response covering IOVCC, sequence, DSI, backlight, mapping, FPCs, and GT9271 | Received 2026-09-14; SHA-256 `76a9e53303412ff29189debf72a1f4c5dcf495e249f0ce86e32092063407ed4d` | User deliberately committed [email-chain PDF](design-notes/Re-%20Displayman%20%7C%20Datasheet%20%26%20Evaluation%20Units%20for%20KD068HDFID009-C009A.pdf); analyzed in PRD v0.3 |
+| S9 | Displayman, Anson Ho | Follow-up email and reference LCD timing screenshot | Received 2026-09-15; email SHA-256 `8823097df6d8f23fd516d2b6e0f963860ce33b882156e1e74eb6324d2f1189f4`; screenshot SHA-256 `0e07dbbabf7c044b3f3cbf885d786e36a1ac6d44cc7af4ac6fe7aa517a8977d3` | User deliberately committed [email text](design-notes/email%20response%20from%20displayman%20on%209-15-2026.md) and [timing screenshot](design-notes/email%20response%20from%20displayman%20on%209-15-2026%20%5BIMAGE%5D.jpg) in `e98d2188f5f2b2ff797b6d45c06f2300e67c91f1`; analyzed in PRD v0.5 |
 
 Abbreviated hashes match `docs/PRD.md`. Full hashes should be retained in controlled project records if the source package is deliberately archived.
 
 ## Platform and board documentation
 
-Checked 2026-09-14.
+Checked through 2026-09-15.
 
 | Manufacturer | Document | Revision / date | Source |
 |---|---|---|---|
@@ -24,6 +25,18 @@ Checked 2026-09-14.
 | Espressif Systems | ESP32-P4 Hardware Design Guidelines | v1.9, 2026-07-21 | [Manufacturer PDF](https://documentation.espressif.com/esp-hardware-design-guidelines/en/latest/esp32p4/esp-hardware-design-guidelines-en-master-esp32p4.pdf) |
 | Espressif Systems | ESP-IDF MIPI DSI LCD API | Current online documentation | [Manufacturer documentation](https://docs.espressif.com/projects/esp-idf/en/stable/esp32p4/api-reference/peripherals/lcd/dsi_lcd.html) |
 | Waveshare | ESP32-P4-NANO product documentation | Current online documentation; S3 remains the electrical source | [Manufacturer documentation](https://www.waveshare.com/wiki/ESP32-P4-NANO) |
+
+## Display-module corroboration and evidence limits
+
+Checked 2026-09-15. These public listings are secondary to the exact-module datasheet, initialization file, and direct Displayman correspondence. They support product identity/family plausibility only and do not establish a GC9703C HS lane-rate limit.
+
+| Evidence class | Source | Supported observation | Explicit limitation |
+|---|---|---|---|
+| Manufacturer public listing | Displayman, KD068HDFID009-C009A | Exact module is listed as 480 × 1280, two-lane MIPI display, I²C touch, GT9271 | Does not publish D-PHY HS operating rate or controller maximum; [manufacturer page](https://displayman.com/bar-type-tft-lcd-displays/) |
+| Third-party exact-family listing | Startek/TFT-TFT, KD068HDFID009 | Base module is listed as GC9703C, 480 × 1280, two-lane MIPI, 40-pin, 6S4P/19.2 V/240 mA | Not a substitute for exact C009A controlled documentation; [product page](https://en.tft-tft.com/product/1658-KD068HDFID009-6.8-inch-480x1280-2-Lane-MIPI-interface-GC9703C-Bar-Type-TFT-high-brightness-IPS-LCD-Module.html) |
+| Third-party sibling-module listing | Startek/TFT-TFT, KD068HDFID020 | Closely related 480 × 1280 / 60.19 × 160.51 mm GC9703C platform is offered with 3/4-lane MIPI | Sibling evidence only; cannot prove C009A rate capability; [product page](https://www.tft-tft.com/product/detail?id=899) |
+
+No authoritative independent GC9703C datasheet or manufacturer source substantiating the previously stated 500 Mb/s/lane maximum was located in this review. Accordingly, 500 Mb/s/lane is recorded as an unverified claim, not as a controller specification; absence of corroboration is not proof of a higher limit.
 
 ## Power, sequencing, and interface components
 
