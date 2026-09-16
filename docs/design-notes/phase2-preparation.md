@@ -3,19 +3,19 @@
 **Project:** ESP32-P4 Displayman Development Daughterboard  
 **Date:** 2026-09-15
 
-**Controlling specification:** `docs/PRD.md`, revision 0.5 pending approval
+**Controlling specification:** `docs/PRD.md`, approved revision 0.5
 
-**Status:** documentation reconciled; no true schematic-release blocker identified — capture still requires separate user authorization
+**Status:** Phase 2 schematic captured on 2026-09-16 under separate authorization; independent review required before PCB layout
 
 ## 1. Scope and release boundary
 
 This note records the non-blocking work completed around Displayman's 14 and 15 September 2026 responses (S8 and S9). It validates the Phase 1 component candidates and architecture against the supplied module/Nano documents, written vendor evidence, and current manufacturer documentation. Section 15 preserves both responses as separate historical evidence items.
 
-No schematic symbols, nets, footprints, PCB geometry, or other KiCad design content were added. The existing files under `hardware/kicad/` remain the canonical blank project and were inspected read-only.
+This note originally recorded the non-blocking preparation before schematic authorization. Section 16 records the subsequent authorized Phase 2 capture. The existing files under `hardware/kicad/` remain canonical and the existing PCB file remains unpopulated.
 
-The following remain prohibited in this task:
+The following remain prohibited until separately authorized:
 
-- beginning or releasing schematic capture without separate user authorization;
+- releasing the schematic without independent review;
 - freezing the DSI host transport settings before prototype validation;
 - beginning PCB layout or freezing footprints before the physical actions in Section 13B.
 
@@ -53,20 +53,20 @@ The requirements below remain controlling even where a different implementation 
 
 ## 4. Component revalidation
 
-Lifecycle labels below are manufacturer labels observed on 2026-09-14. Distributor stock is deliberately not treated as a design guarantee.
+Lifecycle labels below are manufacturer labels observed through 2026-09-16. Distributor stock is deliberately not treated as a design guarantee. The final populated values are detailed in `schematic-calculations.md` and `hardware/BOM.csv`.
 
 | Function / present MPN | Manufacturer status and package check | Electrical/suitability result | Recommendation |
 |---|---|---|---|
-| Vehicle connector — Molex `43045-0200` / `43025-0200` | Current manufacturer pages; keyed/latching 2-circuit Micro-Fit 3.0. Header is right-angle THT, 3.00 mm pitch, −40 to 105 °C, 8.5 A/contact. | Ample for the calculated 4.41 A at 8 V/30 W threshold. Connector is not sealed or automotive-qualified. | Use as evaluation default; freeze terminals, wire gauge, and harness length after physical selection.[^20] |
-| Vehicle protection — TI `LM74800QDRRRQ1` | ACTIVE; AEC-Q100, 3–65 V, −65 V reverse input, WSON-12, back-to-back N-FET control, adjustable OV cutoff and reverse-current blocking.[^21] | Covers reverse battery, controlled disconnect, and source isolation ahead of the converter. | Select with common-source 100 V FETs; complete dV/dt, SOA, and surge calculations. |
+| Vehicle connector — Molex `43045-0218` / `43025-0200` | Current manufacturer pages; keyed/latching 2-circuit Micro-Fit 3.0. Selected header is vertical SMT, 3.00 mm pitch. | Ample for the calculated 4.41 A at 8 V/30 W threshold. Connector is not sealed or automotive-qualified. | Selected as evaluation default; freeze terminals, wire gauge, and harness length after physical selection.[^20] |
+| Vehicle protection — TI `LM74800QDRRRQ1` | ACTIVE; AEC-Q100, 3–65 V, −65 V reverse input, WSON-12, back-to-back N-FET control, adjustable OV cutoff and reverse-current blocking.[^21] | Covers reverse battery, controlled disconnect, and source isolation ahead of the converter. | Captured with common-drain 100 V FETs for the defined TVS-protected evaluation input; independent review and controlled surge testing remain required. |
 | Vehicle TVS — Bourns `SM8S24CA-Q` | Current automotive-grade/AEC-Q101 family; bidirectional 24 V standoff, 38.9 V maximum clamp class, 6.6 kW DO-218.[^22] | High energy is appropriate for evaluation, and bidirectional behavior avoids forward conduction under reverse battery. Large footprint and harness-dependent stress remain. | Preferred clamp. It does not establish ISO compliance; coordinate with fuse/filter/source impedance. |
-| Vehicle converter — TI `LM5176QPWPRQ1` | ACTIVE; AEC-Q100, 4.2–55 V operating, 60 V maximum, HTSSOP-28, synchronous four-switch, UVLO/current limit/PGOOD/OVP.[^23] | Regulates 24 V when input is below/equal/above target and avoids the uncontrolled pass-through weakness of a boost-only stage. 30 W is modest for an external-FET controller. | **Select as preferred architecture.** LM51772-Q1 is newer but its 40-pin/I²C feature set is unnecessary for a fixed 24 V evaluation rail. |
-| Protection/converter FET — TI `CSD19531Q5A` | ACTIVE; catalog, 100 V, 6.4 mΩ maximum at 10 V, 37 nC typical Qg, 5 × 6 mm SON, −55 to 150 °C.[^24] | Voltage and conduction margin are suitable starting points at approximately 5 A peak input. Switching and SOA losses remain layout/operating-point dependent. | Use as provisional common FET class for protection/ORing and converter calculations; exact count/alternate may change after loss model. |
-| Vehicle inductor — Coilcraft `XAL7030-682MEC` class | Current/in-stock manufacturer listing; shielded AEC-Q200 series, 6.8 µH, 15 A typical Isat, 6.8 A 40 °C-rise Irms, −40 to 125 °C ambient.[^25] | Plausible thermal/current margin for the 30 W stage without excessive footprint. | Calculation anchor, not locked value; finalize from LM5176 ripple/loss/compensation design. |
+| Vehicle converter — TI `LM5176QPWPRQ1` | ACTIVE; AEC-Q100, 4.2–55 V operating, 60 V maximum, HTSSOP-28, synchronous four-switch, UVLO/current limit/PGOOD/OVP.[^23] | Regulates 24 V when input is below/equal/above target and avoids the uncontrolled pass-through weakness of a boost-only stage. 30 W is modest for an external-FET controller. | Selected at approximately 300 kHz; final loop and thermal response require prototype validation. |
+| Protection/converter FET — TI `CSD19531Q5A` | ACTIVE; catalog, 100 V, 6.4 mΩ maximum at 10 V, 37 nC typical Qg, 5 × 6 mm SON, −55 to 150 °C.[^24] | Voltage and conduction margin are suitable at the calculated current. Switching and SOA losses remain layout/operating-point dependent. | Selected for protection, converter, and source-ORing positions; validate switching loss and temperature on hardware. |
+| Vehicle inductor — Coilcraft `XAL7070-153MEC` | Current shielded molded series; 15 µH and 10.1 A saturation-rating class.[^25] | Provides margin over the LM5176 5–7 A boost peak-limit range. | Selected; validate copper/core temperature at 9 V/30 W. |
 | Vehicle output ideal diode — TI `LM74700-Q1` + 100 V FET | ACTIVE; 3.2–65 V, fast reverse-current blocking, SOT-23.[^3] | Prevents bench 24 V from driving the vehicle converter output even when the converter is off. | Add independently of input protection. |
-| Nano feed eFuse — TI `TPS259470ARPWR` | ACTIVE; datasheet Rev. C (May 2026), 2.7–23 V, 5.5 A, 28.2 mΩ typical at 3 A, integrated back-to-back FETs and reverse-current block under all conditions.[^26] | Current limit, inrush control, UV/OV monitoring, and Nano→SYS_5V blocking in one 2 × 2 mm QFN. | **Replace jumper-as-procedure strategy.** Set about 3.2 A, auto-retry; retain jumper only as service disconnect. |
+| Nano feed eFuse — TI `TPS259470ARPWR` | ACTIVE; datasheet Rev. C (May 2026), 2.7–23 V, 5.5 A, 28.2 mΩ typical at 3 A, integrated back-to-back FETs and reverse-current block under all conditions.[^26] | Current limit, inrush control, UV/OV monitoring, and Nano→SYS_5V blocking in one 2 × 2 mm QFN. | Selected at approximately 3.18 A; jumper retained only as service disconnect. |
 | Barrel jack — Same Sky `PJ-044AH` | Manufacturer identifies a vertical through-hole, 2.0 x 6.5 mm, 5 A jack. | It is not the 5.5 x 2.1 mm-class horizontal jack stated in PRD section 12. | **Substitute.** Switchcraft `RAPC722X` is the leading 24 V/5 A right-angle through-hole candidate for the common 5.5 mm barrel family, but verify the actual adapter plug before footprint freeze.[^1] |
-| Fuse — Littelfuse `0451002.MRL` | Current 451-series surface-mount, 2 A/125 V very-fast-acting fuse. | Voltage rating is ample. A very-fast fuse can nuisance-open on bulk-capacitor inrush. | Retain provisionally; freeze after LM76003 soft-start, total bulk capacitance, adapter surge, and fuse time-current/I2t are calculated. |
+| Fuse — Littelfuse `0451002.MRL` | Current 451-series surface-mount, 2 A/125 V very-fast-acting fuse. | Voltage rating is ample. The selected downstream soft starts and limited local bulk reduce bench-plug inrush; time-current behavior still requires testing. | Selected for the 24 V bench branch; verify nuisance-opening margin during hot-plug tests. |
 | Reverse protection — Vishay `SS5P6-M3/86A` | Correct manufacturer family is product 88988; 60 V, 5 A, TO-277A Schottky. The existing reference URL points to the wrong Vishay product. | Electrically valid but dissipates heat and reduces the already small buck-LED headroom. | Prefer `LM74700-Q1` plus a suitably rated low-RDS(on) N-MOSFET. Keep SS5P6 as a low-complexity fallback.[^2] |
 | Ideal-diode alternative — TI `LM74700-Q1` | ACTIVE; 3.2–65 V controller in 6/8-pin SOT-23; 20 mV forward-drop regulation and reverse-current blocking. | Well matched to 24 V, preserves backlight headroom, and prevents reverse current toward the adapter. | **Recommended substitution** for SS5P6. Select a >=60 V MOSFET with SOA, surge, thermal, and gate ratings checked in Phase 2.[^3] |
 | Input TVS — Littelfuse `SMBJ30A` | Current SMBJ family; 30 V standoff, 33.3–36.8 V breakdown, about 48.4 V maximum clamp at specified surge current, 600 W DO-214AA. | 26.4 V normal maximum is below standoff; published clamp remains below the 65 V absolute ceiling of the main power ICs. This is bench protection, not an automotive qualification claim. | Retain. Verify real source impedance, pulse energy, fuse coordination, and PCB thermal path. |
@@ -75,15 +75,15 @@ Lifecycle labels below are manufacturer labels observed on 2026-09-14. Distribut
 | IOVCC LDO — TI `TLV75518PDBVR` | ACTIVE; fixed 1.8 V, 500 mA, SOT-23-5 with output discharge. | Capacity is ample for the panel's unsplit 60 mA maximum. S8 explicitly approves 1.8 V and corrects the printed absolute maximum. | **Retain and fix at 1.8 V.** Do not provide a user-selectable 3.3 V option. |
 | VCI LDO — TI `TLV75528PDBVR` | ACTIVE/production; fixed 2.8 V, 500 mA, SOT-23-5 with output discharge.[^5] | Matches S8's explicit VCI instruction and S1's typical value; ample for the panel's unsplit 60 mA maximum. | **Select as the VCI source**, followed by the controlled TPS22919 switch. |
 | VCI switch — TI `TPS22919DCKR` | ACTIVE; 1.6–5.5 V, 1.5 A, 90 mOhm typical, SC70-6, controlled rise and adjustable quick-output discharge.[^6] | More than adequate current and useful for deterministic discharge. | Retain. Select QOD resistor and capacitance against confirmed power-down timing. |
-| Sequencer — TI `LM3880MF-1AA/NOPB` | ACTIVE family and exact 6-pin SOT-23 orderable; fixed three-stage behavior. | Orders flags, including reverse sequence, but cannot preserve sequencing after its own supply collapses and does not itself sense 24 V early. | Keep as candidate, not requirement. Freeze after the hold-up calculation; discrete supervisor/logic may be more flexible. |
+| Sequencer — TI `LM3880MF-1AA/NOPB` | ACTIVE family and exact 6-pin SOT-23 orderable; fixed three-stage behavior. | Orders flags, including reverse sequence; separate early 24 V sensing and isolated hold-up keep it powered during hard unplug. | Selected with 10 ms stages and 6800 µF logic-only hold-up; verify timing on hardware. |
 | Power-fail supervisor — TI `TPS3808G01DBVR` | ACTIVE; adjustable 0.405 V sense, open-drain reset, programmable delay, SOT-23-6. | Suitable when powered from the maintained low-voltage node. It cannot connect directly to 24 V; use a divider and verify pin ratings. | Retain the function; select the exact supervisor with the hold-up/discharge design. |
 | Reset buffer — TI `SN74LVC1G07DBVR` | ACTIVE; SOT-23-5 open-drain buffer, overvoltage-tolerant I/O, Ioff partial-power/back-drive protection.[^7] | Suitable for a wired-AND reset clamp pulled up to the destination rail. | Retain where a one-way reset clamp is needed. Do not use it to isolate bidirectional INT. |
 | I2C translator — TI `PCA9306DCTR` | ACTIVE VSSOP-8 pass-FET translator. High impedance requires EN low; only SCL/SDA are covered. | It does not guarantee no backpower across all four touch conductors, and two 3.3 V domains do not require translation. | **Replace as baseline.** |
-| Touch-domain switch — TI `TMUX1574DYYR` or `TMUX1574PWR` | ACTIVE; 1.5–5.5 V, four bidirectional SPDT channels, powered-off protection to 3.6 V, fail-safe controls, 2 ohm typical on-resistance.[^8] | One device disconnects SCL, SDA, INT, and RESET and tolerates Nano-side signals while its touch-domain supply is off. | **Recommended substitution** for PCA9306, using one throw/channel and hardware enable only when both 3.3 V domains are valid. |
+| Touch-domain switch — TI `TMUX1574PWR` | ACTIVE; 1.5–5.5 V, four bidirectional SPDT channels, powered-off protection to 3.6 V, fail-safe controls, 2 ohm typical on-resistance.[^8] | One device disconnects SCL, SDA, INT, and RESET and tolerates Nano-side signals while its touch-domain supply is off. | Selected using one throw/channel and hardware enable only when both 3.3 V domains are valid. |
 | MIPI ESD — TI `TPD6E05U06RVZR` | ACTIVE; six channels, 14-USON flow-through package, 0.47 pF typical I/O capacitance, up to 6 Gb/s class.[^9] | Channel count covers clock plus two data pairs. Loading is suitable if placement/ground return are excellent. | Retain adjacent to panel connector. |
 | Touch ESD — TI `TPD4E05U06DQAR` | ACTIVE; four channels, 10-USON flow-through package, 0.5 pF typical. | Correct conductor count for SCL/SDA/INT/RESET. | Retain adjacent to touch connector, on connector side of isolation. |
 | Original buck LED driver — TI `TPS92511DDA` | ACTIVE; 4.5–65 V buck, <=500 mA, exposed-pad HSOIC-8. Its 249 mA nominal test condition spans 233–268 mA over temperature, wider than the project's ±5% target.[^10] | The topology fits S8's voltage range, but current accuracy and deep-dimming performance are weaker than a current-generation alternative. | **Replace as baseline.** Retain only as a prototype fallback with a deliberately derated current setpoint. |
-| Preferred buck LED driver — TI `TPS922053DYYR` | ACTIVE/production; 4.5–65 V, integrated 150 mΩ switch, 100 ns minimum off-time, external 200 mV differential sense, fault output, spread spectrum, and fast/hybrid PWM dimming.[^19] | At 240 mA, 0.833 Ω nominal sense resistance and the ±3% threshold allow the ±5% system target with a precision resistor. A 200–300 kHz target provides high-duty margin for 19.8 V from the protected 21.6 V minimum input. | **Recommended selection.** Complete loss, inductor, diode, sense-tolerance, compensation, thermal, and fault calculations during Phase 2. |
+| Preferred buck LED driver — TI `TPS922053DYYR` | ACTIVE/production; 4.5–65 V, integrated 150 mΩ switch, 100 ns minimum off-time, external 200 mV differential sense, fault output, spread spectrum, and fast/hybrid PWM dimming.[^19] | At 240 mA, 0.833 Ω nominal sense resistance and the ±3% threshold allow the ±5% system target with a precision resistor. A 300 kHz target provides high-duty margin for 19.8 V from the protected 21.6 V minimum input. | Selected with 0.825 Ω effective sense and Vishay `IHLP6767GZER680M11` 68 µH. Its 4.5 A typical saturation current exceeds the driver's 3.6 A maximum current-limit threshold; narrow voltage headroom remains a dummy-load test gate. |
 | Buck-boost fallback — ADI `LT8391A` | Recommended for new designs; 4–60 V input, 0–60 V output, synchronous four-switch single-inductor LED controller, 600 kHz–2 MHz, PWM dimming.[^11] | Regulates with input above, below, or equal to LED voltage. More complex and uses four external MOSFETs. | Retain only if the completed TPS922053 worst-case budget or dummy-load test cannot regulate 19.8 V at minimum protected input. |
 | Nano DSI connector — Amphenol `SFW15R-2STE1LF` | ACTIVE; 15 position, 1.00 mm, top-contact, side-entry SMT ZIF, 2.7 mm high.[^12] | Matches documented count/pitch. Waveshare S3 omits fitted MPN and contact orientation. | Keep provisional; physical inspection/continuity mandatory. |
 | Panel LCD connector — Molex `505110-4096` | 40 circuits, 0.50 mm, bottom contact, front flip, right-angle SMT, 1.90 mm mated height; manufacturer page has limited catalog information.[^13] | Matches the exact part named by Displayman's drawing. | Retain. Final orientation depends on panel FPC presentation/placement. |
@@ -109,11 +109,11 @@ At the bench extremes, `VIN_PROT_24V` remains 21.6–26.4 V. The vehicle convert
 | Isolated flyback | Regulates and isolates | Unnecessary loss at 30 W | Larger transformer/EMI burden | Rejected |
 | Four-switch synchronous buck-boost | Regulates below, at, and above 24 V with controlled faults | External-FET losses optimizable | More FETs/area, mature design flow | **Preferred** |
 
-LM5176-Q1 is selected over newer LM51772-Q1: both are ACTIVE and automotive-rated, while LM5176's fixed-function HTSSOP-28 avoids unnecessary I²C/40-pin complexity. Switching frequency, inductor, compensation, FETs, current shunt, and capacitors remain schematic-stage choices.
+LM5176-Q1 is selected over newer LM51772-Q1: both are ACTIVE and automotive-rated, while LM5176's fixed-function HTSSOP-28 avoids unnecessary I²C/40-pin complexity. The captured values are 300 kHz, XAL7070-153MEC 15 µH, CSD19531Q5A FETs, 20 mΩ PWM shunt, and the compensation/capacitor network documented in `schematic-calculations.md`.
 
 ### 5.3 Vehicle protection chain
 
-Preferred order: keyed ≥8 A connector → 5 A time-delay/serviceable fuse → damped differential input filter (optional common-mode choke only after EMI testing) → SM8S24CA-Q bidirectional TVS → LM74800-Q1 common-source back-to-back 100 V N-FETs → LM5176-Q1 24 V/30 W converter → LM74700-Q1 output ideal diode → `VIN_PROT_24V`.
+Captured order: keyed Micro-Fit connector → 5 A serviceable MINI fuse → damped differential input filter → SM8S24CA-Q bidirectional TVS → LM74800-Q1 common-drain back-to-back 100 V N-FETs → LM5176-Q1 24 V/30 W converter → LM74700-Q1 output ideal diode → `VIN_PROT_24V`. The common-drain arrangement is specific to this defined, TVS-protected evaluation input and remains an explicit independent-review point.
 
 Full-load target is 9–18 V. Provisional UVLO is about 8.0 V rising / 7.0 V falling; provisional OV cutoff is about 20 V rising. Deep crank may reboot: hardware first disables backlight/asserts reset, then removes rails; a stable return triggers a complete init.
 
@@ -131,9 +131,9 @@ A ~38.9 V TVS clamp leaves about 16 V to the controller's 55 V operating ceiling
 
 | Vehicle input | Assumed η | At 22.2 W bus load | At 30 W design capacity |
 |---:|---:|---:|---:|
-| 9.0 V | 88% | 2.80 A | 3.79 A |
-| 12.0 V | 90% | 2.06 A | 2.78 A |
-| 14.4 V | 92% | 1.68 A | 2.26 A |
+| 9.0 V | 86% | 2.87 A | 3.88 A |
+| 12.0 V | 88% | 2.10 A | 2.84 A |
+| 14.4 V | 90% | 1.71 A | 2.31 A |
 | 16.0 V | 92% | 1.51 A | 2.04 A |
 | 8.0 V threshold | 85% | 3.26 A | 4.41 A |
 
@@ -167,7 +167,7 @@ The opposite direction, daughterboard 5 V toward USB VBUS, is controlled by the 
 | 0 | 1 | 0 | Daughterboard | Allowed after bus valid | Vehicle isolated from bench/USB. |
 | 0 | 1 | 1 | Powered | Allowed after bus valid | No HV backfeed; Nano USB test required. |
 | 1 | 0 | 0 | Daughterboard | Allowed after bus valid | Bench isolated from vehicle. |
-| 1 | 0 | 1 | Powered | Allowed after bus valid | eFuse blocks Nano→SYS_5V; Nano path blocks toward VBUS. |
+| 1 | 0 | 1 | Powered | Allowed after bus valid | eFuse blocks Nano→SYS_5V; the Nano's separate header-to-USB-VBUS behavior still requires the S3-defined prototype measurement. |
 | 1 | 1 | 0 | Daughterboard | Allowed after bus valid | Higher HV source wins; other blocks. |
 | 1 | 1 | 1 | Powered | Allowed after bus valid | Mandatory simultaneous-source stress case. |
 
@@ -308,13 +308,11 @@ Recommendation: retain GPIO4/5/22/23 with corrected P1 pins; move `LCD_PWR_EN` f
 | Touch | S8 confirms 8 positions/0.50 mm and bottom contact; FH12 candidate is bottom-contact, 0.3 mm FPC, front ZIF.[^15] | Actual thickness, insertion direction/depth, bend radius, and board-side flex presentation. |
 | Nano headers | 2 x 13/2.54 mm topology; SSW family available.[^16] | Pin length, board gap, underside clearance, standoffs, keepouts. |
 
-## 11. Schematic organization and net naming plan
+## 11. Implemented schematic organization and net naming
 
-This is a plan only; KiCad remains blank.
+The captured hierarchy is: root, `01_bench_input`, `02_vehicle_protection`, `03_vehicle_buckboost`, `04_source_oring`, `05_system_5v`, `06_display_power_sequence`, `07_mipi_panel`, `08_touch`, `09_backlight`, and `10_headers_debug`. `schematic-review.md` gives the page-by-page audit.
 
-Suggested sheets: `00_system`, `10_bench_input`, `11_vehicle_input_buckboost`, `12_source_oring`, `20_5v_power`, `30_display_power`, `40_mipi_dsi`, `50_touch`, `60_backlight`, `70_headers_debug`.
-
-Canonical net plan:
+Implemented canonical nets include:
 
 - power: `VIN_ADAPTER_24V`, `VIN_VEHICLE_12V`, `VEH_PROT`, `VEH_24V`, `VIN_PROT_24V`, `SYS_5V`, `DISPLAY_HOLDUP_5V`, `NANO_5V`, `TOUCH_3V3`, `LCD_IOVCC`, `LCD_VCI`
 - valid/enable: `BENCH_VALID`, `VEH_VALID`, `VEH_CONV_PGOOD`, `VIN_GOOD`, `SYS_5V_GOOD`, `NANO_3V3_VALID`, `TOUCH_3V3_VALID`, `DISPLAY_PWR_EN`, `BL_HW_ENABLE`
@@ -370,14 +368,14 @@ Vendor connector recommendations may help, but final board-facing orientation st
 
 ### 12.4 Schematic-readiness audit
 
-| Dependency area | Status before schematic capture | Remaining work and correct phase |
+| Dependency area | Capture disposition | Remaining work and correct phase |
 |---|---|---|
-| Electrical safety / absolute maxima | Ready | Fixed 1.8 V IOVCC, 2.8 V VCI, 240 mA backlight limit, protected inputs, and derating requirements are established. Complete numerical component stress calculations during capture. |
+| Electrical safety / absolute maxima | Implemented | Fixed 1.8 V IOVCC, 2.8 V VCI, 240 mA backlight limit, protected inputs, and derating requirements are established. Numerical stress calculations are in `schematic-calculations.md`; prototype validation remains. |
 | Power architecture / source isolation | Ready | v0.4 architecture is preserved: LM74800-Q1 + LM5176-Q1 vehicle path, independently reverse-blocked bench/vehicle outputs, LM76003 system supply, and TPS259470A Nano feed. Validate faults and transitions on prototype. |
-| Rail sequencing / hard unplug | Ready | Required ordering, reset clamps, early power-fail, active discharge, and isolated hold-up topology are defined. Select exact timing components and capacitance during capture, then measure on prototype. |
+| Rail sequencing / hard unplug | Implemented | Reset clamps, 19.24 V-class early-fail threshold, active discharge, LM3880 timing, and 6800 µF isolated hold-up are captured; measure on prototype. |
 | LCD/touch/Nano electrical mapping | Ready | Pin maps are documented. Remaining exposed-contact, cable-face, and stack geometry checks gate footprint/placement freeze only. |
 | MIPI physical connectivity | Ready | Straight-through lane/polarity mapping, 100-ohm differential requirement, return-path rules, no-stub policy, and ≥1.5 Gb/s/lane channel capability are fixed. UQ-02 is firmware/prototype tuning. |
-| Backlight requirements / topology | Ready | 16.8–19.8 V, 240 mA and TPS922053 buck baseline are established. Complete worst-case headroom/loss calculation during capture; use the documented buck-boost contingency only if it fails. |
+| Backlight requirements / topology | Implemented with validation gate | TPS922053, 0.825 Ω sense, and a 68 µH inductor rated above the maximum switch current limit are captured. The worst-case headroom calculation is narrow; use the documented buck-boost contingency only if dummy-load validation fails. |
 | Touch isolation | Ready | Four-conductor powered-off isolation and deterministic reset/address support are defined. Address polarity and module-side clamp/pull-up behavior are prototype measurements. |
 | GPIO allocation | Ready | Corrected header pins are known; use GPIO20/P1 pin 11 for `LCD_PWR_EN`, with GPIO21/P1 pin 13 as the alternate, and perform the pinned BSP audit during schematic review. This does not require owner preference. |
 | Mechanical / footprint | Not yet frozen | Samples, cable presentation, adapter plug, vehicle harness, board arrangement, and standoffs must be resolved before footprint/placement freeze. |
@@ -443,12 +441,12 @@ No owner electrical-design decision is required for the converter, protection, O
 [^17]: Espressif Systems, [ESP32-P4 Series Datasheet v0.7](https://documentation.espressif.com/esp32-p4_datasheet_en.html), 2026-07-14.
 [^18]: Espressif Systems, [ESP32-P4 Hardware Design Guidelines v1.9](https://documentation.espressif.com/esp-hardware-design-guidelines/en/latest/esp32p4/esp-hardware-design-guidelines-en-master-esp32p4.pdf), 2026-07-21.
 [^19]: Texas Instruments, [TPS922052/TPS922053/TPS922054/TPS922055 datasheet Rev. B](https://www.ti.com/product/TPS922053), February 2025; product/orderability checked 2026-09-14.
-[^20]: Molex, [43045-0200 PCB header](https://www.molex.com/en-us/products/part-detail/430450200) and [43025-0200 housing](https://www.molex.com/en-us/products/part-detail/430250200), checked 2026-09-14.
+[^20]: Molex, [43045-0218 PCB header](https://www.molex.com/en-us/products/part-detail/430450218) and [43025-0200 housing](https://www.molex.com/en-us/products/part-detail/430250200), checked 2026-09-16.
 [^21]: Texas Instruments, [LM7480-Q1 datasheet Rev. C](https://www.ti.com/product/LM7480-Q1), ACTIVE status and product data checked 2026-09-14.
 [^22]: Bourns, [SM8S-Q high-power automotive TVS datasheet](https://www.bourns.com/docs/product-datasheets/sm8s-q.pdf), checked 2026-09-14.
 [^23]: Texas Instruments, [LM5176-Q1 datasheet Rev. B](https://www.ti.com/product/LM5176-Q1), ACTIVE status and product data checked 2026-09-14; [LM51772-Q1](https://www.ti.com/product/LM51772-Q1) comparison checked the same date.
 [^24]: Texas Instruments, [CSD19531Q5A datasheet Rev. B](https://www.ti.com/product/CSD19531Q5A), ACTIVE status and product data checked 2026-09-14.
-[^25]: Coilcraft, [XAL7030 series](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xal/xal7030/), part data/orderability checked 2026-09-14.
+[^25]: Coilcraft, [XAL7070 series](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xal/xal7070/), part data/orderability checked 2026-09-16.
 [^26]: Texas Instruments, [TPS25947 datasheet Rev. C](https://www.ti.com/product/TPS25947), ACTIVE status and May 2026 data checked 2026-09-14.
 
 ## 15. Displayman response evidence
@@ -465,3 +463,23 @@ S9 is the follow-up email received 2026-09-15 and committed in `e98d2188f5f2b2ff
 S9 states that strict 60 FPS is unnecessary, approximately 46–60 Hz is acceptable subject to proper display operation, and refresh may be lowered if host bandwidth is limited. The screenshot independently shows `LCD_WIDTH 600`, `LCD_HEIGHT 1280`, HBP/HFP/HSW `40/40/4`, VBP/VFP/VSW `20/36/4`, and `LCD_PCLK 55` MHz. This strengthens the timing record and identifies 55 MHz as LCD PCLK, but it does not establish a D-PHY HS rate or GC9703C maximum.
 
 Independent corroboration is deliberately lower precedence than S1/S2/S7–S9: Displayman's public product listing identifies the exact C009A as a 480 × 1280 two-lane MIPI/GT9271 module; a third-party product listing identifies the KD068HDFID009 base module as GC9703C/two-lane MIPI; and a closely related KD068HDFID020 family listing identifies GC9703C with 3/4-lane MIPI on the same 480 × 1280 / 60.19 × 160.51 mm active-area platform. These support family plausibility only. They do not establish the exact module's HS limit or substitute for prototype validation.
+
+## 16. Phase 2 schematic implementation status
+
+Schematic capture was separately authorized and completed on 2026-09-16. The canonical root sheet now contains ten hierarchical sheets covering bench input, vehicle protection and conversion, source ORing, the system/Nano 5 V paths, display sequencing, MIPI, touch, backlight, and Nano headers/debug. The canonical PCB file was not modified.
+
+Implementation selections and refinements made during detailed capture are:
+
+- LM74800-Q1 with common-drain CSD19531Q5A back-to-back FETs on the TVS-protected vehicle input;
+- LM5176-Q1 at approximately 300 kHz, XAL7070-153MEC 15 µH, 20 mΩ PWM shunt, and the required external BAT46W bootstrap charging diodes;
+- independent LM74700-Q1/CSD19531Q5A bench and vehicle output ideal-diode branches;
+- LM76003 at the 500 kHz default with XAL7070-103MEC 10 µH and a 5.016 V nominal output;
+- TPS259470A at approximately 3.18 A current limit as the normal, reverse-blocked Nano feed; the jumper is only a service disconnect;
+- 6800 µF logic-only hold-up with a 19.24 V-class early bus-fail threshold, LM3880 sequencing, fixed 1.8/2.8/3.3 V rails, and partial-power-safe reset clamps;
+- a passive, straight-through six-lane-conductor DSI channel with inline 0201 links and TPD6E05U06 ESD;
+- TMUX1574PWR isolation of all four touch signals with hardware enable only when both domains are valid;
+- TPS922053 at 300 kHz, 0.825 Ω effective current sense, and Vishay `IHLP6767GZER680M11` 68 µH. The 242.4 mA nominal current, worst-normal-corner ripple, maximum current-limit margin, and narrow minimum-input/max-LED-voltage headroom are documented for independent review and dummy-load validation.
+
+`hardware/BOM.csv` contains 219 populated/DNP component rows plus its header. Detailed calculations and the state matrix are in `schematic-calculations.md`; connector/pin audits and pre-layout closure items are in `schematic-review.md`.
+
+KiCad 9.0.9 netlist and eleven-page PDF exports pass. ERC reports zero errors and ten warnings, all of which identify exact manufacturer-specific footprints intentionally deferred until physical verification. No known electrical schematic issue remains unresolved; the design stops here for independent review. DSI settings, GT9271 address behavior, Nano USB reverse-current measurement, hard-unplug timing, compensation, backlight headroom, thermals, and source-transition performance remain prototype-validation items rather than hidden assumptions.

@@ -1,0 +1,220 @@
+Reference,Value,Manufacturer,MPN,Footprint,DNP,Sheet,Description
+J101,RAPC722X 24V BENCH,Switchcraft,RAPC722X,Phase2:Switchcraft_RAPC722X_RightAngle,POP,Bench 24 V Input,5.5 mm OD bench barrel jack; footprint verify before PCB freeze
+F101,2A FAST,Littelfuse,0451002.MRL,Fuse:Fuse_1206_3216Metric,POP,Bench 24 V Input,125 V fast acting input fuse
+D101,SMBJ30A,Littelfuse,SMBJ30A,Diode_SMD:D_SMB,POP,Bench 24 V Input,600 W unidirectional TVS
+C101,100nF 100V X7R,,,Capacitor_SMD:C_0603_1608Metric,POP,Bench 24 V Input,
+C102,10uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,Bench 24 V Input,
+C103,47uF 50V,,,Capacitor_SMD:CP_Elec_8x10,POP,Bench 24 V Input,
+TP101,BENCH_24V_RAW,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Bench 24 V Input,Labeled test point
+TP102,BENCH_FUSED_24V,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Bench 24 V Input,Labeled test point
+TP103,GND,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Bench 24 V Input,Labeled test point
+J201,VEHICLE 12V,Molex,43045-0218,Connector_Molex:Molex_Micro-Fit_3.0_43045-0218_2x01-1MP_P3.00mm_Vertical,POP,Vehicle Input Protection,2-circuit vertical Micro-Fit 3.0 SMT header; sealing not claimed
+F201,5A TIME DELAY,Littelfuse / Keystone,0297005.WXNV / 3568,Fuse:Fuseholder_Blade_Mini_Keystone_3568,POP,Vehicle Input Protection,5 A MINI blade fuse in Keystone 3568 holder
+L201,2.2uH 8A,Bourns,SRP1038A-2R2M,Inductor_SMD:L_Bourns_SRP1038C_10.0x10.0mm,POP,Vehicle Input Protection,Shielded AEC-Q200 input filter inductor
+C201,100nF 100V,,,Capacitor_SMD:C_0603_1608Metric,POP,Vehicle Input Protection,
+C202,22uF 50V X7R,,,Capacitor_SMD:C_1210_3225Metric,POP,Vehicle Input Protection,
+C203,100uF 50V,,,Capacitor_SMD:CP_Elec_10x10,POP,Vehicle Input Protection,
+R201,1.0R 2W,,,Resistor_SMD:R_2512_6332Metric,POP,Vehicle Input Protection,Series damping leg
+C204,10uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,Vehicle Input Protection,
+D201,SM8S24CA-Q,Bourns,SM8S24CA-Q,Phase2:Bourns_DO-218AB,POP,Vehicle Input Protection,6.6 kW bidirectional vehicle TVS
+U201,LM74800QDRRRQ1,Texas Instruments,LM74800QDRRRQ1,Phase2:Texas_DRR0012A_WSON-12_3x3mm_P0.5mm_EP1.2x2.5mm,POP,Vehicle Input Protection,"Reverse-battery, ideal-diode, OV and back-to-back disconnect controller"
+Q201,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,Vehicle Input Protection,100 V N-channel MOSFET
+Q202,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,Vehicle Input Protection,100 V N-channel MOSFET
+C205,100nF 100V,,,Capacitor_SMD:C_0603_1608Metric,POP,Vehicle Input Protection,
+C206,100nF 100V,,,Capacitor_SMD:C_0603_1608Metric,POP,Vehicle Input Protection,
+R202,56.2k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,Vehicle Input Protection,
+R203,10.0k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,Vehicle Input Protection,
+R204,100k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,Vehicle Input Protection,
+R205,6.49k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,Vehicle Input Protection,
+TP201,VEH_12V_RAW,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Vehicle Input Protection,Labeled test point
+TP202,VEH_PROT,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Vehicle Input Protection,Labeled test point
+U301,LM5176QPWPRQ1,Texas Instruments,LM5176QPWPRQ1,Phase2:Texas_PWP0029_HTSSOP-28-EP,POP,LM5176 Vehicle Buck-Boost,"300 kHz four-switch buck-boost controller, 24 V/30 W"
+Q301,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,LM5176 Vehicle Buck-Boost,100 V N-channel MOSFET
+Q302,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,LM5176 Vehicle Buck-Boost,100 V N-channel MOSFET
+Q303,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,LM5176 Vehicle Buck-Boost,100 V N-channel MOSFET
+Q304,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,LM5176 Vehicle Buck-Boost,100 V N-channel MOSFET
+L301,15uH,Coilcraft,XAL7070-153MEC,Inductor_SMD:L_Coilcraft_XAL7070-XXX,POP,LM5176 Vehicle Buck-Boost,Shielded AEC-Q200 buck-boost inductor; 10.1 A saturation rating
+R301,20mR 1% 2W,,,Resistor_SMD:R_2512_6332Metric,POP,LM5176 Vehicle Buck-Boost,"Current-limit shunt, 6 A nominal boost peak limit"
+R302,100R,,,Resistor_SMD:R_0402_1005Metric,POP,LM5176 Vehicle Buck-Boost,
+R309,100R,,,Resistor_SMD:R_0402_1005Metric,POP,LM5176 Vehicle Buck-Boost,
+C301,47pF C0G,,,Capacitor_SMD:C_0402_1005Metric,POP,LM5176 Vehicle Buck-Boost,
+R303,27.4k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+R304,93.1k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+C302,270pF C0G,,,Capacitor_SMD:C_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+C303,100nF,,,Capacitor_SMD:C_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+R305,15.0k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+C304,82nF X7R,,,Capacitor_SMD:C_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+C305,270pF C0G,,,Capacitor_SMD:C_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+R306,580k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+R307,20.0k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+C306,1uF 16V,,,Capacitor_SMD:C_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+C307,100nF,,,Capacitor_SMD:C_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+C308,100nF,,,Capacitor_SMD:C_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+D301,BAT46W-E3-08,Vishay,BAT46W-E3-08,Diode_SMD:D_SOD-123,POP,LM5176 Vehicle Buck-Boost,100 V Schottky bootstrap diode for buck-side high gate
+D302,BAT46W-E3-08,Vishay,BAT46W-E3-08,Diode_SMD:D_SOD-123,POP,LM5176 Vehicle Buck-Boost,100 V Schottky bootstrap diode for boost-side high gate
+C309,220uF 35V,,,Capacitor_SMD:CP_Elec_10x12.5,POP,LM5176 Vehicle Buck-Boost,
+C310,22uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,LM5176 Vehicle Buck-Boost,
+C311,220uF 35V,,,Capacitor_SMD:CP_Elec_10x12.5,POP,LM5176 Vehicle Buck-Boost,
+C312,22uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,LM5176 Vehicle Buck-Boost,
+C313,22uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,LM5176 Vehicle Buck-Boost,
+R308,47k,,,Resistor_SMD:R_0603_1608Metric,POP,LM5176 Vehicle Buck-Boost,
+TP301,VEH_24V,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,LM5176 Vehicle Buck-Boost,Labeled test point
+TP302,VEH_PGOOD,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,LM5176 Vehicle Buck-Boost,Labeled test point
+U401,LM74700QDBVRQ1,Texas Instruments,LM74700QDBVRQ1,Package_TO_SOT_SMD:SOT-23-6,POP,Source ORing,"Ideal-diode controller, reverse-current blocking"
+Q401,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,Source ORing,100 V N-channel MOSFET
+C401,100nF 25V,,,Capacitor_SMD:C_0603_1608Metric,POP,Source ORing,
+C405,22nF 100V,,,Capacitor_SMD:C_0603_1608Metric,POP,Source ORing,
+C407,100nF 50V,,,Capacitor_SMD:C_0603_1608Metric,POP,Source ORing,
+U402,LM74700QDBVRQ1,Texas Instruments,LM74700QDBVRQ1,Package_TO_SOT_SMD:SOT-23-6,POP,Source ORing,"Ideal-diode controller, reverse-current blocking"
+Q402,CSD19531Q5A,Texas Instruments,CSD19531Q5A,Package_SON:Texas_DQK,POP,Source ORing,100 V N-channel MOSFET
+C402,100nF 25V,,,Capacitor_SMD:C_0603_1608Metric,POP,Source ORing,
+C406,22nF 100V,,,Capacitor_SMD:C_0603_1608Metric,POP,Source ORing,
+C408,100nF 50V,,,Capacitor_SMD:C_0603_1608Metric,POP,Source ORing,
+R401,0R,,,Resistor_SMD:R_2512_6332Metric,POP,Source ORing,Branch current-measure link
+R402,0R,,,Resistor_SMD:R_2512_6332Metric,POP,Source ORing,Branch current-measure link
+C403,220uF 50V,,,Capacitor_SMD:CP_Elec_10x12.5,POP,Source ORing,
+C404,10uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,Source ORing,
+TP401,VIN_PROT_24V,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Source ORing,Labeled test point
+TP402,BENCH_OR_24V,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Source ORing,Labeled test point
+TP403,VEH_OR_24V,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Source ORing,Labeled test point
+U501,LM76003RNPR,Texas Instruments,LM76003RNPR,Package_DFN_QFN:Texas_RNP0030B_WQFN-30-1EP_4x6mm_P0.5mm_EP1.8x4.5mm_ThermalVias,POP,System 5 V and Nano Feed,500 kHz 5 V/3 A synchronous buck
+L501,10uH,Coilcraft,XAL7070-103MEC,Inductor_SMD:L_Coilcraft_XAL7070-XXX,POP,System 5 V and Nano Feed,Isat >=5.5 A shielded inductor
+C501,470nF,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,
+C502,2.2uF 10V,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,
+C503,1uF 10V,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,
+C504,22nF,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,
+R501,100k 0.1%,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+R502,24.9k 0.1%,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+R503,1.00M 1%,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+R504,68.1k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+C505,4.7uF 100V,,,Capacitor_SMD:C_1210_3225Metric,POP,System 5 V and Nano Feed,
+C506,4.7uF 100V,,,Capacitor_SMD:C_1210_3225Metric,POP,System 5 V and Nano Feed,
+C507,47nF 100V,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,
+C508,22uF 10V,,,Capacitor_SMD:C_1210_3225Metric,POP,System 5 V and Nano Feed,
+C509,22uF 10V,,,Capacitor_SMD:C_1210_3225Metric,POP,System 5 V and Nano Feed,
+C510,22uF 10V,,,Capacitor_SMD:C_1210_3225Metric,POP,System 5 V and Nano Feed,
+C511,22uF 10V,,,Capacitor_SMD:C_1210_3225Metric,POP,System 5 V and Nano Feed,
+U502,TPS259470ARPWR,Texas Instruments,TPS259470ARPWR,Phase2:Texas_RPW0010A_HotRod_QFN-10_2x2mm_P0.45mm,POP,System 5 V and Nano Feed,True reverse-current blocking Nano feed eFuse
+R505,549R 1%,,,Resistor_SMD:R_0603_1608Metric,DNP,System 5 V and Nano Feed,DNP 6.07 A laboratory option only
+R506,1.05k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,Populated current limit resistor: about 3.18 A
+C512,10nF,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,About 5 ms 5 V output rise
+C513,1uF 10V,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,Local TPS25947 input bypass
+C514,1uF 10V,,,Capacitor_SMD:C_0603_1608Metric,POP,System 5 V and Nano Feed,Local TPS25947 controlled output capacitance
+R507,100k,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+R508,26.7k,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+J501,SERVICE LINK 5V,,,Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm,POP,System 5 V and Nano Feed,Normally closed service/current-measure disconnect
+R509,47k,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+R510,47k,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+R511,100k,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+R512,100k,,,Resistor_SMD:R_0603_1608Metric,POP,System 5 V and Nano Feed,
+TP501,SYS_5V_3A,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,System 5 V and Nano Feed,Labeled test point
+TP502,NANO_5V,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,System 5 V and Nano Feed,Labeled test point
+TP503,SYS5_PGOOD,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,System 5 V and Nano Feed,Labeled test point
+TP504,NANO_EFUSE_FLT,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,System 5 V and Nano Feed,Labeled test point
+D601,SS34-E3/57T,Vishay,SS34-E3/57T,Diode_SMD:D_SMA,POP,Display Rails and Sequencing,Hold-up reverse isolation
+R601,3.3R 2W PULSE,,,Resistor_SMD:R_2512_6332Metric,POP,Display Rails and Sequencing,"Hold-up capacitor inrush limiter, about 1.4 A initial"
+C601,6800uF 10V,,,Phase2:CP_Elec_6800uF_10V,POP,Display Rails and Sequencing,Display-only hard-unplug hold-up; body size frozen before PCB placement
+U601,TPS3808G01DBVR,Texas Instruments,TPS3808G01DBVR,Package_TO_SOT_SMD:SOT-23-6,POP,Display Rails and Sequencing,Early common-bus failure supervisor
+R602,1.00M 1%,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+R603,21.5k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+C602,100pF C0G,,,Capacitor_SMD:C_0603_1608Metric,POP,Display Rails and Sequencing,
+R604,47k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+U602,LM3880MF-1AA/NOPB,Texas Instruments,LM3880MF-1AA/NOPB,Package_TO_SOT_SMD:SOT-23-6,POP,Display Rails and Sequencing,10 ms 1-2-3 / 3-2-1 rail sequencer
+R605,10k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+R606,47k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+D602,1N4148W,,,Diode_SMD:D_SOD-123,POP,Display Rails and Sequencing,VIN_GOOD clamps sequencer enable low on bus failure
+R607,47k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+R608,47k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+R609,47k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+U603,TLV75518PDBVR,Texas Instruments,TLV75518PDBVR,Package_TO_SOT_SMD:SOT-23-5,POP,Display Rails and Sequencing,500 mA fixed LDO for LCD_IOVCC
+U604,TLV75528PDBVR,Texas Instruments,TLV75528PDBVR,Package_TO_SOT_SMD:SOT-23-5,POP,Display Rails and Sequencing,500 mA fixed LDO for LCD_VCI_RAW
+U605,TPS22919DCKR,Texas Instruments,TPS22919DCKR,Package_TO_SOT_SMD:SOT-363_SC-70-6,POP,Display Rails and Sequencing,VCI sequenced load switch with quick output discharge
+C603,1uF 10V,,,Capacitor_SMD:C_0603_1608Metric,POP,Display Rails and Sequencing,
+C604,2.2uF 6.3V,,,Capacitor_SMD:C_0603_1608Metric,POP,Display Rails and Sequencing,
+C605,2.2uF 6.3V,,,Capacitor_SMD:C_0603_1608Metric,POP,Display Rails and Sequencing,
+C606,4.7uF 6.3V,,,Capacitor_SMD:C_0603_1608Metric,POP,Display Rails and Sequencing,
+U606,SN74LVC1G07DBVR,Texas Instruments,SN74LVC1G07DBVR,Package_TO_SOT_SMD:SOT-23-5,POP,Display Rails and Sequencing,Partial-power-down open-drain reset clamp
+U607,SN74LVC1G07DBVR,Texas Instruments,SN74LVC1G07DBVR,Package_TO_SOT_SMD:SOT-23-5,POP,Display Rails and Sequencing,Partial-power-down open-drain reset clamp
+U608,SN74LVC1G07DBVR,Texas Instruments,SN74LVC1G07DBVR,Package_TO_SOT_SMD:SOT-23-5,POP,Display Rails and Sequencing,Partial-power-down open-drain reset clamp
+R610,10k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+R611,100k,,,Resistor_SMD:R_0603_1608Metric,POP,Display Rails and Sequencing,
+TP601,VIN_GOOD,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Display Rails and Sequencing,Labeled test point
+TP602,SEQ_FLAG1,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Display Rails and Sequencing,Labeled test point
+TP603,SEQ_FLAG2,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Display Rails and Sequencing,Labeled test point
+TP604,SEQ_FLAG3,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Display Rails and Sequencing,Labeled test point
+TP605,LCD_IOVCC,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Display Rails and Sequencing,Labeled test point
+TP606,LCD_VCI,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Display Rails and Sequencing,Labeled test point
+TP607,LCD_RESET_N,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Display Rails and Sequencing,Labeled test point
+J701,NANO DSI 15P,Amphenol ICC,SFW15R-2STE1LF,Phase2:Amphenol_SFW15R-2STE1LF,POP,MIPI DSI and LCD Connector,Nano-facing top-contact provisional connector
+J702,DISPLAYMAN LCD 40P,Molex,505110-4096,Phase2:Molex_505110-4096,POP,MIPI DSI and LCD Connector,Exact Displayman-specified bottom-contact panel connector
+R701,0R 0201,,,Resistor_SMD:R_0201_0603Metric,POP,MIPI DSI and LCD Connector,
+R702,0R 0201,,,Resistor_SMD:R_0201_0603Metric,POP,MIPI DSI and LCD Connector,
+R703,0R 0201,,,Resistor_SMD:R_0201_0603Metric,POP,MIPI DSI and LCD Connector,
+R704,0R 0201,,,Resistor_SMD:R_0201_0603Metric,POP,MIPI DSI and LCD Connector,
+R705,0R 0201,,,Resistor_SMD:R_0201_0603Metric,POP,MIPI DSI and LCD Connector,
+R706,0R 0201,,,Resistor_SMD:R_0201_0603Metric,POP,MIPI DSI and LCD Connector,
+U701,TPD6E05U06RVZR,Texas Instruments,TPD6E05U06RVZR,Phase2:Texas_RVZ0014A_USON-14,POP,MIPI DSI and LCD Connector,0.5 pF six-channel panel-side MIPI ESD clamp
+U801,TLV75533PDBVR,Texas Instruments,TLV75533PDBVR,Package_TO_SOT_SMD:SOT-23-5,POP,GT9271 Touch Interface,500 mA fixed LDO for TOUCH_3V3
+C801,1uF 10V,,,Capacitor_SMD:C_0603_1608Metric,POP,GT9271 Touch Interface,
+C802,4.7uF 6.3V,,,Capacitor_SMD:C_0603_1608Metric,POP,GT9271 Touch Interface,
+Q801,MMBT3904,onsemi,MMBT3904LT1G,Package_TO_SOT_SMD:SOT-23,POP,GT9271 Touch Interface,Nano-powered detector: isolation enabled only when Nano 3.3 V exists
+R801,100k,,,Resistor_SMD:R_0603_1608Metric,POP,GT9271 Touch Interface,
+R802,100k,,,Resistor_SMD:R_0603_1608Metric,POP,GT9271 Touch Interface,
+U802,TMUX1574PWR,Texas Instruments,TMUX1574PWR,Package_SO:TSSOP-16_4.4x5mm_P0.65mm,POP,GT9271 Touch Interface,Four-channel powered-off-protected touch-domain isolation switch
+C803,100nF,,,Capacitor_SMD:C_0603_1608Metric,POP,GT9271 Touch Interface,
+R803,4.7k,,,Resistor_SMD:R_0603_1608Metric,POP,GT9271 Touch Interface,
+R804,100k,,,Resistor_SMD:R_0603_1608Metric,POP,GT9271 Touch Interface,
+U803,TPD4E05U06DQAR,Texas Instruments,TPD4E05U06DQAR,Package_SON:USON-10_2.5x1.0mm_P0.5mm,POP,GT9271 Touch Interface,Four-channel touch connector ESD clamp
+J801,GT9271 TOUCH 8P,Hirose,FH12-8S-0.5SH(55),Connector_FFC-FPC:Hirose_FH12-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal,POP,GT9271 Touch Interface,Bottom-contact touch FPC connector
+TP801,TOUCH_3V3,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,GT9271 Touch Interface,Labeled test point
+TP802,CTP_SCL,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,GT9271 Touch Interface,Labeled test point
+TP803,CTP_SDA,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,GT9271 Touch Interface,Labeled test point
+TP804,CTP_INT,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,GT9271 Touch Interface,Labeled test point
+TP805,CTP_RESET_N,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,GT9271 Touch Interface,Labeled test point
+U901,TPS922053DYYR,Texas Instruments,TPS922053DYYR,Phase2:Texas_DYY0014A_TSOT-23-14,POP,240 mA Backlight,300 kHz 240 mA buck LED driver
+C901,10uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,240 mA Backlight,
+C902,100nF 100V,,,Capacitor_SMD:C_0603_1608Metric,POP,240 mA Backlight,
+C903,1uF 10V,,,Capacitor_SMD:C_0603_1608Metric,POP,240 mA Backlight,
+D901,SS2H10-E3/52T,Vishay,SS2H10-E3/52T,Diode_SMD:D_SMA,POP,240 mA Backlight,100 V 2 A Schottky catch diode
+L901,68uH,Vishay,IHLP6767GZER680M11,Inductor_SMD:L_Vishay_IHLP-6767,POP,240 mA Backlight,Shielded 68 uH LED buck inductor; 6.1 A heat-rated / 4.5 A saturation typical
+R901,1.65R 0.1%,,,Resistor_SMD:R_1206_3216Metric,POP,240 mA Backlight,Half of 0.825 ohm LED sense network
+R902,1.65R 0.1%,,,Resistor_SMD:R_1206_3216Metric,POP,240 mA Backlight,Half of 0.825 ohm LED sense network
+R903,100R,,,Resistor_SMD:R_0603_1608Metric,POP,240 mA Backlight,CSP Kelvin/noise filter resistor
+C904,1nF 50V,,,Capacitor_SMD:C_0603_1608Metric,POP,240 mA Backlight,
+C905,2.2uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,240 mA Backlight,LED ripple capacitor across the module string
+R904,83k 1%,,,Resistor_SMD:R_0603_1608Metric,POP,240 mA Backlight,
+C906,1nF,,,Capacitor_SMD:C_0603_1608Metric,POP,240 mA Backlight,
+R905,100R,,,Resistor_SMD:R_0603_1608Metric,POP,240 mA Backlight,
+C907,1nF,,,Capacitor_SMD:C_0603_1608Metric,DNP,240 mA Backlight,DNP alternate series compensation branch
+R906,0R,,,Resistor_SMD:R_0603_1608Metric,POP,240 mA Backlight,Direct LED-cathode undervoltage/open-load sense
+R907,1.00M,,,Resistor_SMD:R_0603_1608Metric,DNP,240 mA Backlight,DNP UVP loading/tuning option
+R908,47k,,,Resistor_SMD:R_0603_1608Metric,POP,240 mA Backlight,FAULT pull-up local to LED-driver VCC; no touch-rail phantom-power path
+R909,100k,,,Resistor_SMD:R_0603_1608Metric,POP,240 mA Backlight,
+U902,SN74LVC1G11DCKR,Texas Instruments,SN74LVC1G11DCKR,Package_TO_SOT_SMD:SOT-363_SC-70-6,POP,240 mA Backlight,Three-condition hardware backlight enable gate
+J901,BL HARD DISABLE,,,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,POP,240 mA Backlight,Normally fitted hardware backlight disable shunt
+R910,0R LED CURRENT LINK,,,Resistor_SMD:R_2512_6332Metric,POP,240 mA Backlight,Populated removable link for controlled current measurement
+TP901,BL_PWM,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,240 mA Backlight,Labeled test point
+TP902,BL_DIM,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,240 mA Backlight,Labeled test point
+TP903,LED_A,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,240 mA Backlight,Labeled test point
+TP904,LED_K,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,240 mA Backlight,Labeled test point
+TP905,BL_FAULT_N,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,240 mA Backlight,Labeled test point
+FB901,600R@100MHz 1A,Murata,BLM18KG601SN1D,Inductor_SMD:L_0603_1608Metric,POP,240 mA Backlight,Panel LED anode EMI bead; verify DC loss/headroom
+C908,10uF 50V,,,Capacitor_SMD:C_1210_3225Metric,POP,240 mA Backlight,
+J1001,NANO P1 2x13,Samtec,SSW-113-02-G-D,Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical,POP,Nano Headers and Debug,Nano stack header; only source-confirmed used pins assigned
+J1002,NANO P2 2x13,Samtec,SSW-113-02-G-D,Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical,POP,Nano Headers and Debug,Nano stack header; no signals required by this daughterboard
+R1001,100k,,,Resistor_SMD:R_0603_1608Metric,POP,Nano Headers and Debug,
+R1002,100k,,,Resistor_SMD:R_0603_1608Metric,POP,Nano Headers and Debug,
+R1003,100k,,,Resistor_SMD:R_0603_1608Metric,POP,Nano Headers and Debug,
+R1004,100k,,,Resistor_SMD:R_0603_1608Metric,POP,Nano Headers and Debug,
+R1005,47k,,,Resistor_SMD:R_0603_1608Metric,DNP,Nano Headers and Debug,DNP weak default; firmware drives address strap
+D1001,GREEN,Lite-On,LTST-C191KGKT,LED_SMD:LED_0603_1608Metric,POP,Nano Headers and Debug,
+R1006,10k,,,Resistor_SMD:R_0603_1608Metric,POP,Nano Headers and Debug,
+D1002,GREEN,Lite-On,LTST-C191KGKT,LED_SMD:LED_0603_1608Metric,POP,Nano Headers and Debug,
+R1007,2.2k,,,Resistor_SMD:R_0603_1608Metric,POP,Nano Headers and Debug,
+J1003,DEBUG HEADER,Samtec,TSW-105-07-G-D,Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical,POP,Nano Headers and Debug,Low-speed development/debug access
+TP1001,LCD_PWR_EN,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Nano Headers and Debug,Labeled test point
+TP1002,LCD_RESET_CMD_N,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Nano Headers and Debug,Labeled test point
+TP1003,BL_PWM,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Nano Headers and Debug,Labeled test point
+TP1004,CTP_RESET_N_NANO,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Nano Headers and Debug,Labeled test point
+TP1005,CTP_INT_NANO,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Nano Headers and Debug,Labeled test point
+TP1006,GND,,,TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm,POP,Nano Headers and Debug,Labeled test point

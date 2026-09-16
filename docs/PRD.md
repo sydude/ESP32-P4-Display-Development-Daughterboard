@@ -4,7 +4,7 @@
 
 | Document status | Version / date | Phase |
 |---|---|---|
-| Schematic-readiness revision pending approval | v0.5 • 15 September 2026 | Documentation/status reconciliation only |
+| Approved Phase 1 / schematic baseline | v0.5 • 15 September 2026 | Approved for Phase 2 capture; implementation records are maintained in `docs/design-notes/` |
 
 <table>
 <colgroup>

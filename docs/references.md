@@ -40,7 +40,7 @@ No authoritative independent GC9703C datasheet or manufacturer source substantia
 
 ## Power, sequencing, and interface components
 
-Checked 2026-09-14. Status is the manufacturer product-page status where shown. Inclusion does not authorize schematic capture or substitution; `docs/PRD.md` remains controlling and `docs/design-notes/phase2-preparation.md` records recommendations.
+Checked through 2026-09-16. Status is the manufacturer product-page status where shown. `docs/PRD.md` remains controlling; the populated selections and calculations are recorded in `docs/design-notes/schematic-calculations.md`.
 
 | Manufacturer | Part number / family | Function | Status / document | Source |
 |---|---|---|---|---|
@@ -50,12 +50,16 @@ Checked 2026-09-14. Status is the manufacturer product-page status where shown. 
 | Texas Instruments | `LM3880MF-1AA/NOPB` | Candidate three-stage sequencer | ACTIVE; fixed-function candidate | [LM3880](https://www.ti.com/product/LM3880) |
 | Texas Instruments | `TPS3808G01DBVR` | Candidate power-fail supervisor | ACTIVE | [TPS3808](https://www.ti.com/product/TPS3808) |
 | Texas Instruments | `SN74LVC1G07DBVR` | Open-drain reset buffer with Ioff | ACTIVE; datasheet Rev. AG | [SN74LVC1G07](https://www.ti.com/product/SN74LVC1G07) |
+| Texas Instruments | `SN74LVC1G11DCKR` | Three-input hardware backlight-enable gate | ACTIVE; partial-power-down/Ioff behavior | [SN74LVC1G11](https://www.ti.com/product/SN74LVC1G11) |
 | Texas Instruments | `PCA9306DCTR` | Original I2C translator candidate | ACTIVE; superseded because it does not isolate INT/RESET | [PCA9306](https://www.ti.com/product/PCA9306) |
 | Texas Instruments | `TMUX1574DYYR` / `TMUX1574PWR` | Recommended four-channel powered-off-protected touch switch | ACTIVE; datasheet Rev. C | [TMUX1574](https://www.ti.com/product/TMUX1574) |
 | Texas Instruments | `TPD6E05U06RVZR` | Six-channel MIPI ESD | ACTIVE; TPDxE05U06 family | [TPD6E05U06](https://www.ti.com/product/TPD6E05U06) |
 | Texas Instruments | `TPD4E05U06DQAR` | Four-channel touch ESD | ACTIVE; TPDxE05U06 family | [TPD4E05U06](https://www.ti.com/product/TPD4E05U06) |
 | Texas Instruments | `TPS92511DDA` | Original buck backlight candidate | ACTIVE; superseded as baseline because full-temperature current spread is wider than project ±5% target | [TPS92511](https://www.ti.com/product/TPS92511) |
 | Texas Instruments | `TPS922053DYYR` | Preferred 240 mA buck backlight driver | ACTIVE/production; datasheet Rev. B; 4.5–65 V, external 200 mV current sense, 100 ns minimum off-time, fast/hybrid PWM | [TPS922053](https://www.ti.com/product/TPS922053), [datasheet](https://www.ti.com/lit/ds/symlink/tps922053.pdf) |
+| Vishay | `IHLP6767GZER680M11` | Selected 68 µH backlight inductor | IHLP-6767GZ-11 commercial low-DCR series; 6.1 A heat-rated and 4.5 A typical saturation current; manufacturer product page/datasheet checked 2026-09-16 | [Manufacturer product page](https://www.vishay.com/en/product/34282/) |
+| Vishay | `SS2H10-E3/52T`, `SS34-E3/57T`, `BAT46W-E3-08` | Backlight catch diode, hold-up diode, and LM5176 bootstrap diodes | Current manufacturer families; 100 V bootstrap/catch selections preserve voltage margin | [SS2H10](https://www.vishay.com/en/product/88961/), [SS34](https://www.vishay.com/en/product/88751/), [BAT46W](https://www.vishay.com/en/product/85662/) |
+| Murata | `BLM18KG601SN1D` | Backlight-anode EMI bead | 0603, 600 Ω at 100 MHz, 1 A class; headroom/temperature to be verified on prototype | [Manufacturer page](https://www.murata.com/en-us/products/productdetail?partno=BLM18KG601SN1%23) |
 | Analog Devices | `LT8391A` | Four-switch buck-boost LED contingency | Recommended for new designs; datasheet Rev. A; use only if completed buck headroom validation fails | [Product page](https://www.analog.com/en/products/lt8391a.html), [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/lt8391a.pdf) |
 
 ## Input protection
@@ -73,7 +77,7 @@ Checked 2026-09-14.
 
 ## Vehicle-input and source-isolation components
 
-Checked 2026-09-14. Automotive/AEC qualification of individual parts does not qualify the assembled evaluation board to ISO 7637 or ISO 16750.
+Checked through 2026-09-16. Automotive/AEC qualification of individual parts does not qualify the assembled evaluation board to ISO 7637 or ISO 16750.
 
 | Manufacturer | Part number / family | Function | Status / validation note | Source |
 |---|---|---|---|---|
@@ -83,13 +87,14 @@ Checked 2026-09-14. Automotive/AEC qualification of individual parts does not qu
 | Texas Instruments | `CSD19531Q5A` | Provisional 100 V N-MOSFET class for vehicle protection, conversion, and ORing | ACTIVE; 6.4 mΩ max at 10 V, 37 nC typical Qg, 5 × 6 mm SON | [Product page](https://www.ti.com/product/CSD19531Q5A), [datasheet](https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf) |
 | Texas Instruments | `TPS259470ARPWR` / TPS25947 | Nano 5 V current limiting, inrush control, and true reverse-current blocking | ACTIVE; 2.7–23 V, 5.5 A, 28 mΩ typical; datasheet Rev. C, May 2026 | [Product page](https://www.ti.com/product/TPS25947), [datasheet](https://www.ti.com/lit/ds/symlink/tps25947.pdf) |
 | Bourns | `SM8S24CA-Q` | Vehicle high-energy bidirectional TVS | Automotive/AEC-Q101 series; 24 V standoff, 38.9 V clamp class, 6.6 kW, DO-218; availability observed through authorized distribution | [Manufacturer datasheet](https://www.bourns.com/docs/product-datasheets/sm8s-q.pdf) |
-| Coilcraft | `XAL7030-682MEC` class | Provisional buck-boost inductor | Current AEC-Q200 shielded series; 6.8 µH, 15 A typical Isat, 6.8 A 40 °C-rise Irms; manufacturer showed orderable stock | [Manufacturer series page](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xal/xal7030/) |
-| Molex | `43045-0200` / `43025-0200` | Provisional keyed vehicle-evaluation connector pair | Micro-Fit 3.0, 2 circuits; header 8.5 A/contact, −40 to 105 °C, right-angle THT; not sealed/automotive-qualified | [Header](https://www.molex.com/en-us/products/part-detail/430450200), [housing](https://www.molex.com/en-us/products/part-detail/430250200) |
-| Littelfuse | 451 series, 5 A class | Compact vehicle-branch fuse comparison | Current series; exact 5 A time-delay/serviceable implementation remains a schematic/mechanical choice because 451 is very-fast acting | [Manufacturer series page](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/surface-mount-fuses/451) |
+| Coilcraft | `XAL7070-153MEC`, `XAL7070-103MEC` | Selected 15 µH LM5176 and 10 µH LM76003 inductors | Current shielded molded series; selected values and current ratings checked in the manufacturer table | [Manufacturer series page](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xal/xal7070/) |
+| Bourns | `SRP1038A-2R2M` | Vehicle input-filter inductor | Shielded AEC-Q200 SRP1038A family; 2.2 µH, 8 A class | [Manufacturer product page](https://www.bourns.com/products/magnetic-products/power-inductors-smd-high-current-shielded/product/SRP1038A) |
+| Molex | `43045-0218` / `43025-0200` | Selected keyed vehicle-evaluation connector pair | Micro-Fit 3.0, two circuits; vertical SMT board header with mating receptacle; not sealed/automotive-qualified | [Header](https://www.molex.com/en-us/products/part-detail/430450218), [housing](https://www.molex.com/en-us/products/part-detail/430250200) |
+| Littelfuse / Keystone | `0297005.WXNV` / `3568` | Selected serviceable vehicle-branch fuse and PCB holder | 5 A MINI blade fuse in a through-hole PCB holder | [Littelfuse 297 series](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/automotive-passenger-car/blade-fuses/297), [Keystone 3568](https://www.keyelco.com/product.cfm/product_id/14138) |
 
 ## Connectors and cables
 
-Checked 2026-09-14.
+Checked through 2026-09-16.
 
 | Manufacturer | Part number | Function | Documented configuration | Source |
 |---|---|---|---|---|
