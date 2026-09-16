@@ -224,7 +224,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "Phase 2 / v0.1"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -639,6 +639,46 @@
     [
       "95ed5eda-07d0-4bd1-9d8d-498592ee8d01",
       "Root"
+    ],
+    [
+      "6714b3da-3157-413d-8f11-9851a901d2d4",
+      "Bench 24 V Input"
+    ],
+    [
+      "1d4521ca-6c38-481c-9fa7-4e3de0c09eef",
+      "Source ORing"
+    ],
+    [
+      "8b6ef911-5d0e-4fca-9e6d-554908c33bba",
+      "MIPI DSI and LCD Connector"
+    ],
+    [
+      "7f858e4f-9e5c-4d7a-a0d5-39c14bd6d2a6",
+      "Nano Headers and Debug"
+    ],
+    [
+      "727a183f-0b6e-49f8-a0a8-ae05d2cc866a",
+      "Vehicle Input Protection"
+    ],
+    [
+      "e592167d-9d4a-42a5-8a2d-64f533fc6e28",
+      "System 5 V and Nano Feed"
+    ],
+    [
+      "f4642e06-4281-406b-b1d3-2b0f1dde78d2",
+      "GT9271 Touch Interface"
+    ],
+    [
+      "00207795-46aa-422f-b084-d3919b27b11d",
+      "LM5176 Vehicle Buck-Boost"
+    ],
+    [
+      "37e96978-e519-43c0-95d1-ac36277a4296",
+      "Display Rails and Sequencing"
+    ],
+    [
+      "4ac51961-2d6a-4453-99db-e457a12033ee",
+      "240 mA Backlight"
     ]
   ],
   "text_variables": {},
