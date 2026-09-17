@@ -310,7 +310,7 @@ Recommendation: retain GPIO4/5/22/23 with corrected P1 pins; move `LCD_PWR_EN` f
 
 ## 11. Implemented schematic organization and net naming
 
-The captured hierarchy is: root, `01_bench_input`, `02_vehicle_protection`, `03_vehicle_buckboost`, `04_source_oring`, `05_system_5v`, `06_display_power_sequence`, `07_mipi_panel`, `08_touch`, `09_backlight`, and `10_headers_debug`. `schematic-review.md` gives the page-by-page audit.
+The hierarchy was subsequently consolidated during the maintainability/library-completion pass into root plus `01_power`, `02_display_power_backlight`, and `03_interfaces_nano`. The native KiCad files are now authoritative; `schematic-review.md` and `maintainability-library-review.md` give the current page-by-page and library audits.
 
 Implemented canonical nets include:
 
@@ -466,7 +466,7 @@ Independent corroboration is deliberately lower precedence than S1/S2/S7–S9: D
 
 ## 16. Phase 2 schematic implementation status
 
-Schematic capture was separately authorized and completed on 2026-09-16. The canonical root sheet now contains ten hierarchical sheets covering bench input, vehicle protection and conversion, source ORing, the system/Nano 5 V paths, display sequencing, MIPI, touch, backlight, and Nano headers/debug. The canonical PCB file was not modified.
+Schematic capture was separately authorized and completed on 2026-09-16. On 2026-09-17 the maintainability/library pass consolidated the canonical root hierarchy into three functional sheets covering power, display power/backlight, and interfaces/Nano. The canonical PCB file was not modified.
 
 Implementation selections and refinements made during detailed capture are:
 
@@ -480,6 +480,6 @@ Implementation selections and refinements made during detailed capture are:
 - TMUX1574PWR isolation of all four touch signals with hardware enable only when both domains are valid;
 - TPS922053 at 300 kHz, 0.825 Ω effective current sense, and Vishay `IHLP6767GZER680M11` 68 µH. The 242.4 mA nominal current, worst-normal-corner ripple, maximum current-limit margin, and narrow minimum-input/max-LED-voltage headroom are documented for independent review and dummy-load validation.
 
-`hardware/BOM.csv` contains 219 populated/DNP component rows plus its header. Detailed calculations and the state matrix are in `schematic-calculations.md`; connector/pin audits and pre-layout closure items are in `schematic-review.md`.
+`hardware/BOM.csv` contains 219 physical component rows plus its header: 215 POP and four DNP. Detailed calculations and the state matrix are in `schematic-calculations.md`; connector/pin audits and pre-layout closure items are in `schematic-review.md` and `maintainability-library-review.md`.
 
-KiCad 9.0.9 netlist and eleven-page PDF exports pass. ERC reports zero errors and ten warnings, all of which identify exact manufacturer-specific footprints intentionally deferred until physical verification. No known electrical schematic issue remains unresolved; the design stops here for independent review. DSI settings, GT9271 address behavior, Nano USB reverse-current measurement, hard-unplug timing, compensation, backlight headroom, thermals, and source-transition performance remain prototype-validation items rather than hidden assumptions.
+KiCad 10.0.6 netlist and four-page PDF exports pass. ERC reports zero errors and zero warnings, all 219 physical entries resolve to footprints, and all mounted-body entries resolve to a standard or project-local 3D model. A pre/post refactor comparison found the same 193 named nets with no non-`PWR` node-membership differences. No known electrical schematic issue was introduced by the cleanup; the design stops here for independent review. DSI settings, GT9271 address behavior, Nano USB reverse-current measurement, hard-unplug timing, compensation, backlight headroom, thermals, and source-transition performance remain prototype-validation items rather than hidden assumptions.

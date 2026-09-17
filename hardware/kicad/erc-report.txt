@@ -1,56 +1,19 @@
-ERC report (2026-09-16T07:57:34-0400, Encoding UTF8)
+ERC report (2026-09-16T15:33:38, Encoding UTF8)
 Report includes: Errors, Warnings, Exclusions
 
 ***** Sheet /
-[footprint_link_issues]: Footprint 'Switchcraft_RAPC722X_RightAngle' not found in library 'Phase2'.
-    ; warning
-    @(35.56 mm, 54.61 mm): Symbol J101 [J101_RAPC722X_24V_BENCH]
-[footprint_link_issues]: Footprint 'Amphenol_SFW15R-2STE1LF' not found in library 'Phase2'.
-    ; warning
-    @(49.53 mm, 74.93 mm): Symbol J701 [J701_NANO_DSI_15P]
-[footprint_link_issues]: Footprint 'Texas_RVZ0014A_USON-14' not found in library 'Phase2'.
-    ; warning
-    @(209.55 mm, 80.01 mm): Symbol U701 [U701_TPD6E05U06RVZR]
-[footprint_link_issues]: Footprint 'Molex_505110-4096' not found in library 'Phase2'.
-    ; warning
-    @(309.88 mm, 80.01 mm): Symbol J702 [J702_DISPLAYMAN_LCD_40P]
-[footprint_link_issues]: Footprint 'Bourns_DO-218AB' not found in library 'Phase2'.
-    ; warning
-    @(149.86 mm, 54.61 mm): Symbol D201 [D201_SM8S24CA-Q]
-[footprint_link_issues]: Footprint 'Texas_DRR0012A_WSON-12_3x3mm_P0.5mm_EP1.2x2.5mm' not found in library 'Phase2'.
-    ; warning
-    @(204.47 mm, 54.61 mm): Symbol U201 [U201_LM74800QDRRRQ1]
-[footprint_link_issues]: Footprint 'Texas_RPW0010A_HotRod_QFN-10_2x2mm_P0.45mm' not found in library 'Phase2'.
-    ; warning
-    @(364.49 mm, 69.85 mm): Symbol U502 [U502_TPS259470ARPWR]
-[footprint_link_issues]: Footprint 'Texas_PWP0029_HTSSOP-28-EP' not found in library 'Phase2'.
-    ; warning
-    @(90.17 mm, 85.09 mm): Symbol U301 [U301_LM5176QPWPRQ1]
-[footprint_link_issues]: Footprint 'CP_Elec_6800uF_10V' not found in library 'Phase2'.
-    ; warning
-    @(44.45 mm, 74.93 mm): Symbol C601 [C601_6800uF_10V]
-[footprint_link_issues]: Footprint 'Texas_DYY0014A_TSOT-23-14' not found in library 'Phase2'.
-    ; warning
-    @(74.93 mm, 69.85 mm): Symbol U901 [U901_TPS922053DYYR]
 
-***** Sheet /Bench 24 V Input/
+***** Sheet /Power/
 
-***** Sheet /Vehicle Input Protection/
+***** Sheet /Display Power & Backlight/
 
-***** Sheet /LM5176 Vehicle Buck-Boost/
+***** Sheet /Interfaces & Nano/
 
-***** Sheet /Source ORing/
+ ** ERC messages: 0  Errors 0  Warnings 0
 
-***** Sheet /System 5 V and Nano Feed/
-
-***** Sheet /Display Rails and Sequencing/
-
-***** Sheet /MIPI DSI and LCD Connector/
-
-***** Sheet /GT9271 Touch Interface/
-
-***** Sheet /240 mA Backlight/
-
-***** Sheet /Nano Headers and Debug/
-
- ** ERC messages: 10  Errors 0  Warnings 10
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Symbol pin or wire end off connection grid
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

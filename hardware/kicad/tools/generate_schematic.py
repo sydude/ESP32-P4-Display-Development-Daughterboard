@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""Generate the reviewed Phase-2 KiCad schematic hierarchy.
+"""Retired Phase-2 generator retained only as a historical implementation record.
 
-The generated symbols are self-contained in each schematic file so the project
-does not depend on a workstation-specific symbol table.  Pin numbers and names
-are taken from the controlling manufacturer data sheets.  Run from the repo
-root with Python 3; no third-party Python modules are required.
+The committed native three-sheet KiCad hierarchy is authoritative. This legacy
+script is deliberately blocked because running it would recreate the obsolete
+ten-sheet, label-only hierarchy and overwrite human-maintained schematic work.
 """
 
 from __future__ import annotations
+
+raise SystemExit(
+    "Retired generator: edit the committed native KiCad 10 schematic files. "
+    "See hardware/kicad/README.md."
+)
 
 import csv
 import math

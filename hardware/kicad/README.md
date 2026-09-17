@@ -1,37 +1,53 @@
 # Canonical KiCad project
 
-This directory contains the canonical KiCad project for the ESP32-P4 Displayman Development Daughterboard. The existing project names are preserved.
+This directory contains the canonical KiCad project for the ESP32-P4 Displayman Development Daughterboard. The existing project name is preserved.
 
-## Current phase
+## Design authority and phase boundary
 
-The schematic is populated for Phase 2 review as a root sheet plus ten hierarchical sheets. The PCB file remains the original unpopulated project; layout has not begun.
+The committed native three-sheet KiCad hierarchy is the authoritative editable design source. The earlier Python schematic generator is retained only as a blocked historical record: it exits before writing anything, so ordinary KiCad edits cannot diverge from or be overwritten by a second source of truth. The ten unreferenced legacy sheets are documented in `LEGACY_GENERATED_SHEETS.md` and are not part of the active project hierarchy.
 
-The generated schematic is reproducible from:
+The schematic is populated for independent Phase 2 electrical review. The PCB file remains the original unpopulated project; placement and layout have not begun.
 
-```sh
-python3 hardware/kicad/tools/generate_schematic.py
-```
+## Schematic organization
 
-The script validates physical pin sets, connector mappings, key IC pin/net assignments, unique references, and BOM generation before writing the KiCad files. Generated sheets and `Phase2.kicad_sym` are committed so the project opens without running the script. If a generated sheet is edited, update the generator as the authoritative source and regenerate the complete hierarchy.
+| Page | Sheet | Contents |
+|---:|---|---|
+| 1 | Root | Three-sheet project hierarchy and review boundary |
+| 2 | Power | Bench and vehicle inputs, LM7480-Q1, LM5176-Q1, source ORing, LM76003 and TPS25947 Nano feed |
+| 3 | Display Power & Backlight | Hold-up, power-fail/sequencing, 1.8/2.8/3.3 V rails, reset gating and TPS922053 backlight driver |
+| 4 | Interfaces & Nano | Nano headers/DSI, MIPI ESD and panel connector, touch isolation/ESD and debug/service interfaces |
 
-## Verification commands
+Ordinary local circuitry uses wires and junctions. Global labels are retained for named rails, cross-block controls and interface nets where direct wiring would reduce legibility.
 
-These checks were run with KiCad 9.0.9:
+## Libraries and portability
+
+- Supported editor/library generation: KiCad 10.
+- `Phase2.kicad_sym` is the project-local symbol library.
+- `Phase2.pretty` is the project-local footprint library.
+- `Phase2.3dshapes` contains project-owned manufacturer or dimension-controlled STEP models.
+- Project libraries use `${KIPRJMOD}` and standard KiCad libraries use `${KICAD10_FOOTPRINT_DIR}` / `${KICAD10_3DMODEL_DIR}`. No user-specific absolute path is required.
+
+The project-local footprints and models are committed. A clean checkout with KiCad 10 and its standard footprint/3D packages should open without remapping libraries.
+
+## Verification
+
+The final electrical hierarchy was checked with KiCad 10.0.6:
 
 ```sh
 kicad-cli sch export netlist -o /tmp/phase2.net "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch"
 kicad-cli sch export pdf -o /tmp/phase2.pdf "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch"
 kicad-cli sch erc --severity-all -o hardware/kicad/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch"
-kicad-cli sch erc --severity-error --exit-code-violations -o /tmp/phase2-errors.rpt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch"
 ```
 
-The current result is zero ERC errors and ten warnings. Every warning is an intentionally unresolved `Phase2:` footprint. See `docs/design-notes/schematic-review.md` and `Phase2.pretty/README.md` before PCB placement.
+The committed ERC report contains zero messages, errors or warnings. `endpoint_off_grid` is deliberately ignored: the generated-to-native transition used short, visually controlled off-grid wire doglegs to prevent unrelated labelled pin buses from becoming connected at crossings. Netlist comparison, not grid snapping, established equivalence; snapping those endpoints was tested and created genuine shorts. Do not normalize these coordinates mechanically. Any future edit should preserve connectivity and rerun ERC/netlist comparison.
+
+See `docs/design-notes/maintainability-library-review.md` for the inventory, footprint/3D coverage, connectivity proof, remaining physical checks and model provenance.
 
 ## Phase boundary
 
-Do not begin PCB layout until:
+Do not begin PCB placement or layout until:
 
 1. the schematic receives an independent electrical review;
-2. the physical connector/cable presentation is inspected;
-3. the ten custom manufacturer-specific footprints are created and checked;
+2. connector/flex presentation and Nano stack-up are physically verified;
+3. project-local land patterns receive an independent drawing/pad-number review; and
 4. the owner separately authorizes PCB layout.

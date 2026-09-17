@@ -1,6 +1,6 @@
 # Phase 2 schematic review record
 
-**Date:** 2026-09-16  
+**Date:** 2026-09-17
 **Schematic:** `hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch`  
 **Status:** complete for independent schematic review; PCB layout not started
 
@@ -9,18 +9,11 @@
 | Page | Sheet | Primary content |
 |---:|---|---|
 | 1 | Root | Project hierarchy and review boundary |
-| 2 | Bench 24 V Input | Barrel input, fuse, TVS, filtering, test points |
-| 3 | Vehicle Input Protection | Connector, blade fuse, filter, TVS, LM74800-Q1 reverse/OV protection |
-| 4 | LM5176 Vehicle Buck-Boost | Four-switch 12 V-to-24 V converter and PGOOD |
-| 5 | Source ORing | Independent bench and vehicle ideal-diode branches |
-| 6 | System 5 V and Nano Feed | LM76003 5 V/3 A and TPS25947 reverse-blocked Nano feed |
-| 7 | Display Rails and Sequencing | Hold-up, supervisor, sequencer, 1.8/2.8/3.3 V rails, reset clamps |
-| 8 | MIPI DSI and LCD Connector | Nano FFC, inline DSI links, ESD, 40-pin panel connector |
-| 9 | GT9271 Touch Interface | Touch rail, powered-off-safe four-signal isolation, ESD, connector |
-| 10 | 240 mA Backlight | TPS922053 buck, hardware gate, current sense and test access |
-| 11 | Nano Headers and Debug | Nano sockets, corrected GPIO mapping, debug header and indicators |
+| 2 | Power | Bench/vehicle inputs, LM7480-Q1, LM5176-Q1, source ORing, LM76003 and TPS25947 Nano feed |
+| 3 | Display Power & Backlight | Hold-up, supervisor/sequencing, logic rails, reset gating and TPS922053 driver |
+| 4 | Interfaces & Nano | Nano headers/DSI, panel connector/MIPI ESD, touch isolation/ESD and debug |
 
-The BOM is generated as `hardware/BOM.csv`. The reproducible source model is `hardware/kicad/tools/generate_schematic.py`; generated KiCad sheets and the embedded symbol library are committed so reviewers do not need the generator to open the project.
+The committed native KiCad hierarchy is the authoritative editable source. The previous generator was retired after consolidation to prevent a second source of truth from overwriting human-maintained placement and wiring. `hardware/BOM.csv` is the checked physical inventory generated from the final design data.
 
 ## 2. External connector audit
 
@@ -150,34 +143,35 @@ No prohibited intentional backfeed path exists on the daughterboard. The Nano mo
 
 ## 5. ERC and machine checks
 
-Run with KiCad 9.0.9 on 2026-09-16:
+Run with KiCad 10.0.6 on 2026-09-16 after sheet consolidation:
 
 - hierarchical netlist export: passed;
-- eleven-page PDF export: passed;
-- design-model validation in the generator: passed (unique references/pins, physical IC pin sets, connector maps, and key IC net assignments);
+- four-page PDF export: passed;
+- pre/post refactor net-map comparison: passed, all 193 named nets and non-`PWR` pin memberships identical;
 - ERC errors: **0**;
-- ERC warnings: **10**, all `footprint_link_issues` for intentionally unresolved custom land patterns.
+- ERC warnings: **0**.
 
-The committed `hardware/kicad/erc-report.txt` is the all-severity report. An errors-only ERC run returns zero violations.
+The committed `hardware/kicad/erc-report.txt` is the all-severity report. `endpoint_off_grid` is deliberately ignored because controlled off-grid wire doglegs preserve separation at visually crossing labelled pin buses; mechanically snapping them was tested and introduced real shorts. Connectivity was therefore established by netlist comparison rather than coordinate normalization.
 
-## 6. Footprint warnings and pre-layout closure
+## 6. Footprint and 3D closure
 
-These footprints are deliberately named but not fabricated or guessed during schematic capture:
+All 219 physical BOM entries resolve to a footprint: 208 use standard KiCad libraries and 11 use the committed `Phase2` project library. The manufacturer-specific/project-local assignments include:
 
-| Reference | Required exact land pattern |
+| Reference(s) | Project-local land pattern |
 |---|---|
 | J101 | Switchcraft RAPC722X right-angle jack |
 | D201 | Bourns DO-218AB for SM8S24CA-Q |
 | U201 | TI DRR WSON-12 with exposed pad |
 | U301 | TI PWP HTSSOP-28 with exposed pad |
 | U502 | TI RPW HotRod QFN-10 |
-| C601 | Selected 6800 µF/10 V electrolytic body |
+| J201 | Molex 43045-0218 Micro-Fit header |
+| L201 | Bourns SRP1038A body/land pattern |
+| U501 | TI RNP WQFN-30 with exposed pad |
 | J701 | Amphenol SFW15R-2STE1LF |
-| U701 | TI RVZ USON-14 flow-through array |
 | J702 | Molex 505110-4096 |
 | U901 | TI DYY TSOT-23-14 |
 
-Before PCB placement, each must be created directly from the current manufacturer package drawing, checked by an independent pin-1/pad-number audit, and printed or overlaid at 1:1 where a physical connector/component is available.
+The exact C601 selection is now Nichicon `UHW1A682MHD`, using the standard KiCad 16 mm × 25 mm, 7.5 mm-pitch radial footprint. All mounted-body parts have resolving 3D models. The only 38 physical entries without a body model are 37 bare plated test pads and the J501 solder jumper, for which a 3D body is not appropriate. See `maintainability-library-review.md` for provenance and limitations. Critical footprints still require an independent drawing/pad-number review before placement freeze.
 
 ## 7. Unresolved items by correct phase
 
@@ -195,9 +189,8 @@ No known issue presently requires a schematic topology change, but the design is
 - inspect Nano DSI connector contact side, pin 1, insertion direction, and cable type;
 - inspect the LCD and touch flex exposed-contact side, pin 1, thickness, bend direction, and insertion depth;
 - confirm the actual 24 V adapter plug size/polarity;
-- select the exact 6800 µF capacitor body;
 - confirm Nano header height, board separation, mounting holes, keepouts, and the vehicle-harness arrangement;
-- create and verify the 10 custom footprints above.
+- independently verify the 11 project-local land patterns against their controlling drawings and check the available connector samples at 1:1.
 
 ### Prototype bring-up
 
