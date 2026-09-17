@@ -1,26 +1,148 @@
 (kicad_sch
-  (version 20260306)
-  (generator "eeschema")
-  (generator_version "10.0")
-  (uuid c5f810bd-4f8d-4f31-8784-a9e3c72dfd6b)
-  (paper "A3")
-  (title_block (title "ESP32-P4 Displayman Development Daughterboard") (date "2026-09-16") (rev "Phase 2 / maintainability v0.2") (company "sydude/ESP32-P4-Display-Development-Daughterboard"))
-  (lib_symbols)
-  (text "PHASE 2 SCHEMATIC — PCB layout not started. Native KiCad files are authoritative." (at 20 20 0) (effects (font (size 1.8 1.8)) (justify left bottom)) (uuid 7efc7408-1855-4f41-ad64-f8a326e17b5f))
-  (sheet (at 30 40) (size 250 50) (stroke (width 0) (type solid)) (fill (color 0 0 0 0.0000)) (uuid 0aa64499-036f-4e58-839e-bda6729b9e69)
-    (property "Sheetname" "Power" (at 30 39.2 0) (effects (font (size 1.8 1.8)) (justify left bottom)))
-    (property "Sheetfile" "01_power.kicad_sch" (at 30 90.8 0) (effects (font (size 1.27 1.27)) (justify left top)))
-    (instances (project "ESP32-P4 Display Development Daughterboard" (path "/c5f810bd-4f8d-4f31-8784-a9e3c72dfd6b" (page "2"))))
-  )
-  (sheet (at 30 110) (size 250 50) (stroke (width 0) (type solid)) (fill (color 0 0 0 0.0000)) (uuid 92348f9c-be44-4f69-b932-3fc1928beb39)
-    (property "Sheetname" "Display Power & Backlight" (at 30 109.2 0) (effects (font (size 1.8 1.8)) (justify left bottom)))
-    (property "Sheetfile" "02_display_power_backlight.kicad_sch" (at 30 160.8 0) (effects (font (size 1.27 1.27)) (justify left top)))
-    (instances (project "ESP32-P4 Display Development Daughterboard" (path "/c5f810bd-4f8d-4f31-8784-a9e3c72dfd6b" (page "3"))))
-  )
-  (sheet (at 30 180) (size 250 50) (stroke (width 0) (type solid)) (fill (color 0 0 0 0.0000)) (uuid 5545efcd-a813-483a-b788-a1701266a8d4)
-    (property "Sheetname" "Interfaces & Nano" (at 30 179.2 0) (effects (font (size 1.8 1.8)) (justify left bottom)))
-    (property "Sheetfile" "03_interfaces_nano.kicad_sch" (at 30 230.8 0) (effects (font (size 1.27 1.27)) (justify left top)))
-    (instances (project "ESP32-P4 Display Development Daughterboard" (path "/c5f810bd-4f8d-4f31-8784-a9e3c72dfd6b" (page "4"))))
-  )
-  (sheet_instances (path "/" (page "1")))
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "c5f810bd-4f8d-4f31-8784-a9e3c72dfd6b")
+	(paper "A3")
+	(title_block
+		(title "ESP32-P4 Displayman Development Daughterboard")
+		(date "2026-09-16")
+		(rev "Phase 2 / maintainability v0.2")
+		(company "sydude/ESP32-P4-Display-Development-Daughterboard")
+		(comment 1 "© 2026 Sy Aryeh")
+		(comment 2 "Hardware license: see LICENSE.md")
+		(comment 3 "REV1 development hardware")
+	)
+	(lib_symbols)
+	(text "PHASE 2 SCHEMATIC — PCB layout not started. Native KiCad files are authoritative."
+		(exclude_from_sim no)
+		(at 20 20 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+			)
+			(justify left bottom)
+		)
+		(uuid "7efc7408-1855-4f41-ad64-f8a326e17b5f")
+	)
+	(sheet
+		(at 30 40)
+		(size 250 50)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "0aa64499-036f-4e58-839e-bda6729b9e69")
+		(property "Sheetname" "Power"
+			(at 30 39.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.8 1.8)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "01_power.kicad_sch"
+			(at 30 90.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+	)
+	(sheet
+		(at 30 180)
+		(size 250 50)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "5545efcd-a813-483a-b788-a1701266a8d4")
+		(property "Sheetname" "Interfaces & Nano"
+			(at 30 179.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.8 1.8)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "03_interfaces_nano.kicad_sch"
+			(at 30 230.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+	)
+	(sheet
+		(at 30 110)
+		(size 250 50)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "92348f9c-be44-4f69-b932-3fc1928beb39")
+		(property "Sheetname" "Display Power & Backlight"
+			(at 30 109.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.8 1.8)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "02_display_power_backlight.kicad_sch"
+			(at 30 160.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
 )

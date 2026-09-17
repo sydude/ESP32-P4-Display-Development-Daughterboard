@@ -224,7 +224,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "Phase 2 / v0.1"
+      "sch_revision": "Phase 2 / maintainability v0.2"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -620,7 +620,7 @@
     "meta": {
       "version": 1
     },
-    "page_layout_descr_file": "",
+    "page_layout_descr_file": "ESP32-P4-Display-Development-Daughterboard-A3.kicad_wks",
     "plot_directory": "",
     "reuse_designators": true,
     "subpart_first_id": 65,
@@ -641,44 +641,16 @@
       "Root"
     ],
     [
-      "6714b3da-3157-413d-8f11-9851a901d2d4",
-      "Bench 24 V Input"
+      "0aa64499-036f-4e58-839e-bda6729b9e69",
+      "Power"
     ],
     [
-      "1d4521ca-6c38-481c-9fa7-4e3de0c09eef",
-      "Source ORing"
+      "92348f9c-be44-4f69-b932-3fc1928beb39",
+      "Display Power & Backlight"
     ],
     [
-      "8b6ef911-5d0e-4fca-9e6d-554908c33bba",
-      "MIPI DSI and LCD Connector"
-    ],
-    [
-      "7f858e4f-9e5c-4d7a-a0d5-39c14bd6d2a6",
-      "Nano Headers and Debug"
-    ],
-    [
-      "727a183f-0b6e-49f8-a0a8-ae05d2cc866a",
-      "Vehicle Input Protection"
-    ],
-    [
-      "e592167d-9d4a-42a5-8a2d-64f533fc6e28",
-      "System 5 V and Nano Feed"
-    ],
-    [
-      "f4642e06-4281-406b-b1d3-2b0f1dde78d2",
-      "GT9271 Touch Interface"
-    ],
-    [
-      "00207795-46aa-422f-b084-d3919b27b11d",
-      "LM5176 Vehicle Buck-Boost"
-    ],
-    [
-      "37e96978-e519-43c0-95d1-ac36277a4296",
-      "Display Rails and Sequencing"
-    ],
-    [
-      "4ac51961-2d6a-4453-99db-e457a12033ee",
-      "240 mA Backlight"
+      "5545efcd-a813-483a-b788-a1701266a8d4",
+      "Interfaces & Nano"
     ]
   ],
   "text_variables": {},
