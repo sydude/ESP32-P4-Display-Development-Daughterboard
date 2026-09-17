@@ -17,7 +17,7 @@ The schematic is populated for independent Phase 2 electrical review. The PCB fi
 | 3 | Display Power & Backlight | Hold-up, power-fail/sequencing, 1.8/2.8/3.3 V rails, reset gating and TPS922053 backlight driver |
 | 4 | Interfaces & Nano | Nano headers/DSI, MIPI ESD and panel connector, touch isolation/ESD and debug/service interfaces |
 
-Ordinary local circuitry uses wires and junctions. Global labels are retained for named rails, cross-block controls and interface nets where direct wiring would reduce legibility.
+The post-audit sheets use ordinary-grid pin stubs and explicit net labels. This removes the former fragile near-coincident routes while retaining native editable KiCad symbols and the same hierarchy. The owner may perform a later aesthetic rearrangement, but every such change must preserve the netlist and pass ERC.
 
 ## Libraries and portability
 
@@ -39,15 +39,10 @@ kicad-cli sch export pdf -o /tmp/phase2.pdf "hardware/kicad/ESP32-P4 Display Dev
 kicad-cli sch erc --severity-all -o hardware/kicad/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch"
 ```
 
-The committed ERC report contains zero messages, errors or warnings. `endpoint_off_grid` is deliberately ignored: the generated-to-native transition used short, visually controlled off-grid wire doglegs to prevent unrelated labelled pin buses from becoming connected at crossings. Netlist comparison, not grid snapping, established equivalence; snapping those endpoints was tested and created genuine shorts. Do not normalize these coordinates mechanically. Any future edit should preserve connectivity and rerun ERC/netlist comparison.
+The committed ERC report contains zero messages, errors or warnings. `endpoint_off_grid` is enabled as an error and also reports zero findings. The audit correction replaced all intentional sub-grid/near-coincident separation with normal-grid geometry; a programmatic pin/net comparison found only the documented C203 relocation and added R206/C207/C607 networks. Any future edit must preserve connectivity and rerun ERC/netlist comparison.
 
 See `docs/design-notes/maintainability-library-review.md` for the inventory, footprint/3D coverage, connectivity proof, remaining physical checks and model provenance.
 
 ## Phase boundary
 
-Do not begin PCB placement or layout until:
-
-1. the schematic receives an independent electrical review;
-2. connector/flex presentation and Nano stack-up are physically verified;
-3. project-local land patterns receive an independent drawing/pad-number review; and
-4. the owner separately authorizes PCB layout.
+Do not begin PCB placement or layout until the owner separately authorizes it. Before placement/footprint freeze, connector/flex presentation and Nano stack-up must be physically verified and the project-local land patterns must receive a final drawing/pad-number check.

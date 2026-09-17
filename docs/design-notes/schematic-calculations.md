@@ -1,9 +1,10 @@
 # Phase 2 schematic calculations and design basis
 
 **Project:** ESP32-P4 Displayman Development Daughterboard  
-**Date:** 2026-09-16  
+**Date:** 2026-09-18
+
 **Controlling specification:** `docs/PRD.md` v0.5  
-**Schematic revision:** Phase 2 / v0.1
+**Schematic revision:** Phase 2 / audit correction v0.3
 
 ## 1. Scope
 
@@ -35,6 +36,36 @@ The 5 A MINI fuse, Micro-Fit connector, power MOSFETs, input filter, shunt, indu
 
 The protection cutoff deliberately allows normal charging voltage while rejecting gross overvoltage and accidental 24 V connection to the nominal-12 V port. The actual clamp current and TVS energy depend on the external source and harness impedance and remain a controlled test item.
 
+### 3.1 Reverse-battery-safe filter arrangement
+
+`C203`, the 100 µF polarized bulk capacitor, is now connected to `VEH_PROT`, downstream of both LM74800-controlled MOSFETs. A reversed battery therefore sees no substantial reverse voltage across a polarized capacitor. The unprotected `VEH_FILTER` node contains only reverse-tolerant MLCCs: `C201` 100 nF, `C202` 22 µF, and the `R201`/`C204` 1 Ω/10 µF series damping branch. The bidirectional TVS also remains upstream of the disconnect.
+
+For `L201 = 2.2 µH` and `C202 = 22 µF`, the undamped resonance is approximately:
+
+`f0 = 1 / (2π√(LC)) = 22.9 kHz`.
+
+The corresponding characteristic impedance is `√(L/C) = 0.316 Ω`. The 1 Ω damping resistor is about 3.2 times that value, and its 10 µF branch begins contributing at about `1 / (2πRC) = 15.9 kHz`. This remains a deliberately damped input network; final conducted-EMI optimization still requires the real harness/source impedance.
+
+### 3.2 LM74800 startup and inrush
+
+Capacitance charged through the HGATE-controlled `Q202` is:
+
+- `C203 = 100 µF`;
+- `C309 = 220 µF`;
+- `C310 = 22 µF`;
+- nominal total `COUT = 342 µF`;
+- worst positive tolerance, using +20% for all three, `COUT(max) = 410.4 µF`.
+
+This is the capacitance directly on `VEH_PROT`; the LM5176 output/common-bus bank is behind the switching stage and is not part of TI's HGATE dV/dt-capacitor formula. Its startup load is checked separately below.
+
+TI gives `CdV/dt = IHGATE × COUT / IINRUSH`. `C207 = 82 nF, 25 V, X7R` and `R206 = 10 kΩ` are therefore fitted from HGATE to OUT in the TI-recommended series network. At the 55 µA typical HGATE source current, nominal inrush is `55 µA × 342 µF / 82 nF = 0.229 A`. For the worst high-current corner, use 75 µA, `COUT(max) = 410.4 µF`, and an effective `C207(min) = 82 nF × 0.9 tolerance × 0.9 bias/aging = 66.4 nF`; this gives `IINRUSH(max) = 0.464 A`. The design target is therefore approximately 0.25 A nominal and no more than 0.5 A at the calculated worst corner.
+
+At the just-below-OV maximum input of 20 V, the high-current startup lasts approximately `410.4 µF × 20 V / 0.464 A = 17.7 ms`. The opposite tolerance corner (39 µA HGATE current and +10% C207) produces approximately 0.177 A for 46 ms. The direct-capacitance SOA checkpoints are therefore 20 V/0.47 A/18 ms and 20 V/0.18 A/46 ms. The capacitor-charging energy deposited in the controlled FET is approximately `½ × 410.4 µF × 20² = 0.082 J`.
+
+The LM5176 can begin its own soft start after `VEH_PROT` crosses its UVLO threshold, so that overlap is not assumed away. Its 100 nF SS capacitor gives 12.4–21.7 ms from the 6.35–3.75 µA data-sheet current range. In the fastest corner, the 264 µF converter-output bank plus approximately 249.6 µF common-bus bank requires about `513.6 µF × 24 V / 12.4 ms = 0.994 A` of output-capacitor charge. At the slow HGATE-ramp corner and 20 V source, the protected node reaches about 13.5 V as that fast soft start ends. Referred to the input at 85% efficiency, charging current is about 2.08 A; allowing the complete 30 W load instead gives 2.62 A. Adding 0.18 A of direct-capacitor current yields a conservative total source current of about 2.8 A, with Q202 then seeing about 6.5 V for no more than the remaining 15 ms of its ramp. Intermediate-ramp checkpoints are lower-energy (approximately 9.2 V/1.5 A/6 ms). These combined-load points and the two direct-capacitance points are comfortably inside the CSD19531Q5A single-pulse SOA in TI Figure 10. The dV/dt network therefore targets 0.25 A nominal/0.5 A worst for direct precharge; normal converter startup can raise total source current to approximately 2.8 A without exceeding the 5 A input path or Q202 SOA.
+
+`Q202` is the controlled linear-pass device; `Q201` is already enhanced as the ideal-diode FET before HGATE ramping, so it does not carry a worse linear-startup stress. Both FETs retain 100 V VDS rating against the 38.9 V-class TVS clamp plus layout overshoot. SOA shall still be confirmed by measuring Q202 VDS/current and case temperature on the prototype.
+
 ## 4. LM5176-Q1 four-switch converter
 
 `U301` converts the protected vehicle input to nominal 24 V.
@@ -52,6 +83,12 @@ The protection cutoff deliberately allows normal charging voltage while rejectin
 
 The optional average-current ISNS inputs are shorted at the output, disabling that loop. Cycle-by-cycle current limiting remains active through CS/CSG.
 
+The quantitative low-line check uses the required 9 V full-load boundary. At 9 V, 30 W, and 86% efficiency, average inductor current is 3.876 A. With 15 µH at 300 kHz, boost ripple is 1.25 A peak-to-peak and peak current is 4.50 A. With the shunt at +1% and the controller at its 100 mV minimum boost limit, the minimum limit is `100 mV / 20.2 mΩ = 4.95 A`, leaving 0.45 A or 10% margin. At the approximately 8.15 V LM74800 UVLO boundary, calculated peak current is 4.93 A, intentionally close to that minimum limit; current limiting or reboot during a crank dip is acceptable by requirement.
+
+The selected XAL7070-153MEC 10.1 A saturation-rating class remains above the 7 A maximum threshold corner. The nominal input bank after the protection FETs is 342 µF and the output bank is 220 µF plus two 22 µF ceramics. At 9 V the ideal capacitive output ripple is about 9.9 mV peak-to-peak before ESR and DC-bias effects. The boost-mode output-capacitor ripple-current estimate is 1.61 A RMS; the low-impedance ceramics carry most of the 300 kHz component, but capacitor temperature and current sharing remain prototype checks.
+
+For the worst normal 9 V boost point, `D = 0.625`, `ROUT = 19.2 Ω`, and the right-half-plane zero is about 28.6 kHz. The data-sheet limit of one-third that value is 9.55 kHz. Using the data-sheet small-signal approximation, the populated 15 kΩ/82 nF/270 pF network predicts approximately 1.13 kHz crossover, a 129 Hz compensation zero, and a 39.3 kHz high-frequency pole. This is conservative rather than fast, and no compensation change is justified before measurement. The power stage, MOSFET gate loss, and compensation were also checked over 9–18 V; 100 V MOSFETs and the 15 µH inductor retain voltage/current margin. Bode, load-step, efficiency, and 9 V/30 W thermal testing remain mandatory because the quick-start calculation cannot include PCB parasitics.
+
 ## 5. Source isolation and common bus
 
 The protected bench input and converted vehicle output each use an LM74700-Q1 plus a 100 V N-channel MOSFET. Each controller receives its own charge-pump and local anode/cathode bypassing. These branches implement reverse-blocked diode ORing into `VIN_PROT_24V`; they are not a current-sharing system.
@@ -63,6 +100,12 @@ Consequences:
 - either source may be connected first or removed first;
 - if both are present, the branch with the slightly higher effective voltage supplies the load and handover may cause a small bus transient;
 - all dependent enables treat a bus-valid loss as a reset/reinitialization event.
+
+### 5.1 Bench-input hot plug
+
+The 24 V barrel connection charges `C101`/`C102`/`C103` (57.1 µF nominal) and, once the bench ideal diode conducts, the common-bus capacitors `C403`, `C404`, `C505`, `C506`, `C507`, `C901`, and `C902` (about 249.6 µF nominal). The worst credible cold-plug total is therefore 306.7 µF nominal or 368 µF using +20% capacitance. At 26.4 V the maximum stored energy is about 0.128 J.
+
+The Littelfuse 0451002.MRL has a nominal melting I²t of 0.53 A²s. A regulated, current-limited 24 V adapter capped at 3 A charges the worst-case bank in approximately 3.24 ms and contributes about 0.029 A²s; even a 5 A current limit gives approximately 0.049 A²s. Both are at least an order of magnitude below nominal melting I²t. The present 2 A fuse/input architecture is therefore retained without a separate bench hot-swap IC. The barrel input is specified for a regulated wall adapter; an automotive battery or other uncontrolled low-impedance bulk source must not be connected there without external current limiting.
 
 ## 6. Common bus to 5 V and Nano isolation
 
@@ -89,15 +132,19 @@ The hardware is safe by default with USB connected. No user jumper sequence is r
 
 ## 7. Display hold-up, sequencing, and reset
 
-The logic-only hold-up path is isolated from the Nano and backlight by `D601`. `R601` limits initial charge current into `C601`:
+The logic-only hold-up path is isolated from the Nano, touch regulator, and backlight by `D601`. `R601` limits initial charge current into `C601`:
 
 - initial ideal charge current from 5 V through 3.3 Ω is about 1.5 A before diode/source resistance; the schematic note conservatively states about 1.4 A;
-- 6800 µF supplying 200 mA for 30 ms loses `0.2 × 0.03 / 0.0068 = 0.88 V`;
-- this stored energy supplies only sequencing, LCD logic, and touch circuitry. It is not intended to maintain the Nano or LED backlight.
+- the held load is the LCD 1.8 V IOVCC rail (60 mA maximum), the 2.8 V VCI rail (60 mA maximum until FLAG2 falls), and less than 2 mA conservatively reserved for both LDOs, LM3880, TPS3808, divider and reset logic;
+- the touch 3.3 V regulator is supplied from `SYS_5V_3A`, not `DISP_HOLD_5V`, and is not included in the stored-energy load;
+- `LM3880MF-1AA/NOPB` is the exact sequence-1 option: FLAG1→FLAG2→FLAG3 on startup and FLAG3→FLAG2→FLAG1 on shutdown. Each selected delay is 10 ms nominal and 11.5 ms maximum at +15%; the first shutdown interval also includes the approximately 0.4 ms timer overhead;
+- after VIN_GOOD falls, reset is therefore asserted within 11.9 ms, VCI is removed by 23.4 ms, and IOVCC is removed by 34.9 ms worst case.
 
-`U601` senses the common high-voltage bus through 1.00 MΩ / 21.5 kΩ. With a nominal 0.405 V threshold, the falling trip is approximately 19.24 V. This provides early warning before the 5 V regulator loses regulation.
+Worst stored charge is `122 mA × 23.4 ms + 62 mA × 11.5 ms = 3.57 mC`. Taking a conservative 4.85 V minimum 5 V rail, 0.55 V diode drop, 3.3 Ω +5% charge resistor, and 122 mA load gives about 3.88 V at C601 before the event. `C601 = 6800 µF` is retained: after -20% capacitance tolerance and 15% aging allowance its effective minimum is 4624 µF, giving 0.77 V total droop. Including 0.1 V ESR/transient allowance leaves approximately 3.0 V after FLAG1 falls. More importantly, the held node remains about 3.16 V when VCI must turn off, above the conservative 3.04 V needed for 2.8 V plus maximum LDO dropout. A 4700 µF part would be marginal at this corner; 6800 µF provides useful engineering margin without holding up the Nano.
 
-`U602` implements 10 ms IOVCC→VCI→reset enable ordering and reverse shutdown. The display enable is also hardware-clamped by `VIN_GOOD`; firmware cannot keep the display or backlight active after input validity is lost. The three SN74LVC1G07 open-drain stages form a wired-AND reset command with Ioff behavior, preventing an unpowered source from driving the panel reset rail.
+`U601` senses the common high-voltage bus through 1.00 MΩ / 21.5 kΩ. With the TPS3808G01 0.405 V nominal threshold, ±2% supervisor accuracy, ±1% resistors, and ±25 nA SENSE current, the calculated trip range is 18.47–20.04 V (19.24 V nominal). `C607 = 1 nF C0G` is fitted directly from SENSE to GND per TI's 1–10 nF recommendation; `C603 = 1 µF` remains the VDD bypass. This trip occurs far before the LM76003 can lose 5 V regulation and gives useful time to run the hardware shutdown from stored logic energy.
+
+`U602` implements IOVCC→VCI→reset enable ordering and reset→VCI→IOVCC shutdown. The display enable is also hardware-clamped by `VIN_GOOD`; firmware cannot keep the display or backlight active after input validity is lost. The three SN74LVC1G07 open-drain stages form a wired-AND reset command with Ioff behavior, preventing an unpowered source from driving the panel reset rail.
 
 Selected rails are:
 
@@ -108,7 +155,7 @@ Selected rails are:
 | `LCD_VCI` | TPS22919 | 2.8 V | Controlled switch and quick discharge |
 | `TOUCH_3V3` | TLV75533 | 3.3 V | Held off outside the valid display sequence |
 
-The 6800 µF value is a calculated prototype starting point. Oscilloscope verification must show reset asserted, VCI removed, and IOVCC removed in the required order during both commanded shutdown and abrupt source removal.
+Commanded and unexpected shutdown are different cases. For a commanded shutdown, firmware shall set PWM to zero, send DCS `0x28`, send `0x10`, wait at least 120 ms, and only then deassert the hardware display-power command. On unexpected source removal the Nano is not held up, so those DCS commands are not guaranteed. Hardware instead disables the backlight and asserts panel reset immediately, then removes VCI before IOVCC using C601's stored energy. Oscilloscope verification must demonstrate both paths separately.
 
 ## 8. Backlight driver
 
@@ -145,7 +192,7 @@ All four touch signals pass through a TMUX1574 powered from `TOUCH_3V3`. Its pow
 | Off | On | On | Off/On | Normal USB + vehicle development with the same isolation and Nano-path test requirement. |
 | On | On | On | Off/On | High-voltage branches remain isolated and Nano/header 5 V cannot feed `SYS_5V`; laptop-VBUS safety remains conditional on the Nano-path test below. |
 
-On removal of the active high-voltage source, `VIN_GOOD` falls first, hardware disables the backlight and asserts reset, and the isolated logic capacitor supports the reverse shutdown sequence. A later source insertion starts a full sequence; firmware must not assume state retention across the transition.
+On unexpected removal of the active high-voltage source, `VIN_GOOD` falls first, hardware disables the backlight and asserts reset, and the isolated logic capacitor supports the reverse shutdown sequence; the Nano is deliberately not held up to transmit DCS commands. A later source insertion starts a full sequence and firmware must not assume state retention. A commanded shutdown follows the DCS sequence and 120 ms wait specified in Section 7 before hardware rail removal.
 
 ## 11. Thermal and validation boundaries
 
@@ -153,7 +200,7 @@ On removal of the active high-voltage source, `VIN_GOOD` falls first, hardware d
 - LM76003: verify 5 V/3 A temperature with 26.4 V input and the actual copper area/airflow.
 - Backlight: verify switch, diode, inductor, bead, and sense-network temperature at 240 mA and worst LED voltage.
 - Protection: test source handover, reverse polarity, current limiting, hot plug, hard unplug, and controlled surge conditions with current-limited equipment.
-- Nano USB: measure both directions of VBUS current during USB-only, daughterboard-only, and hot-plug transitions with a current-limited USB source before connecting an unrestricted laptop. TPS25947 guarantees output-to-input blocking toward `SYS_5V`, but it cannot by itself prevent the intended forward `SYS_5V`→Nano feed from reaching laptop VBUS through an unspecified Nano onboard path. If the Nano fails this test, use a data-only/debug USB connection or modify the Nano-side USB power path; that function is not separately accessible on the daughterboard headers.
+- Nano USB: the published Waveshare schematic distinguishes Type-C `USB0_5V` from header/board `VCC_5V` and shows onboard power-path circuitry; it does not, however, give a conclusive reverse-current guarantee for every fitted power-path part and transition. Measure both directions of VBUS current during USB-only, daughterboard-only, and hot-plug transitions with a current-limited USB source before connecting an unrestricted laptop. TPS25947 guarantees output-to-input blocking toward `SYS_5V`, but it cannot by itself prevent the intended forward `SYS_5V`→Nano feed from reaching laptop VBUS through the Nano's onboard path. If the Nano fails this test, use a data-only/debug USB connection or modify the Nano-side USB power path; USB VBUS is not separately accessible on the daughterboard headers.
 - Compensation: measure LM5176 and TPS922053 loop/transient response; the populated networks are data-sheet-based starting values.
 
 No automotive qualification claim is made. All tests begin with current-limited supplies and the panel replaced by appropriate dummy loads.

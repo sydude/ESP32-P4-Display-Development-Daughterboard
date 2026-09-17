@@ -29,9 +29,9 @@ The root sheet remains the project hierarchy page. Its user-raised title text an
 
 ## 2. Electrical-equivalence controls
 
-- The pre-refactor and consolidated KiCad netlists each contain 193 named nets.
+- The pre-audit netlist contains 193 named nets; the corrected netlist contains 194 because the intentional `VEH_HGATE_DVDT` node was added.
 - A node-by-node comparison of all non-`PWR` references found zero differences in net membership.
-- All 219 BOM references remain present; no reference was added or removed.
+- All prior BOM references remain present. `R206`, `C207`, and `C607` were added by the independent-audit correction.
 - Component values and DNP states are unchanged.
 - External connector and Nano GPIO mappings remain those documented in `schematic-review.md`.
 - `U201` pin 10 (`VS`) was corrected from a `power_in` symbol-pin type to an ordinary input/sense pin. Its connected net did not change.
@@ -43,7 +43,7 @@ The only component-identification completion was C601: the formerly blank manufa
 
 KiCad 10.0.6 exported the four-page hierarchy and netlist successfully. The committed all-severity ERC report contains **0 messages, 0 errors and 0 warnings**.
 
-The project deliberately ignores `endpoint_off_grid`. During the generated-to-native conversion, short off-grid doglegs were used at visually crossing labelled pin buses so unrelated nets do not share endpoints. A trial that mechanically snapped these points to grid produced 17 genuine net merges/shorts, so it was reverted. The exact netlist comparison above is the controlling connectivity check. Future edits should preserve the named-net separation and rerun ERC and netlist comparison rather than mass-normalizing coordinates.
+The post-audit project enables `endpoint_off_grid` as an error. All former near-coincident doglegs were replaced with normal-grid pin stubs and explicit labels; no coordinate snapping was used to infer connectivity. A programmatic comparison showed only the documented C203 relocation and new R206/C207/C607 memberships. Future edits must preserve that separation and rerun ERC and the netlist comparison.
 
 Other intentionally ignored low-value checks are recorded in `erc-report.txt`: global label appearing once, four connection points joined, SPICE model issues and footprint-filter matching. None suppresses an active electrical error or warning in the committed report.
 
@@ -64,14 +64,14 @@ The redundant former `PWR202` was removed. No flag was used merely to hide an un
 
 ## 5. Physical-component inventory
 
-The regenerated BOM contains 219 physical entries: 215 populated and four DNP.
+The regenerated BOM contains 222 physical entries: 218 populated and four DNP.
 
 | Category | Count | Treatment |
 |---|---:|---|
-| Required for normal operation | 168 | Functional power, sequencing, display, touch, DSI, protection and interconnect parts. |
+| Required for normal operation | 171 | Functional power, sequencing, display, touch, DSI, protection and interconnect parts. |
 | Development/test/service | 47 | 37 test points; J501/J901 service links; R401/R402/R910 measurement links; J1003 debug header; D1001/D1002 indicators and R1006/R1007 series resistors. |
 | Optional/DNP | 4 | `R505`, `C907`, `R907`, `R1005`. |
-| **Total** | **219** | 215 POP + 4 DNP. |
+| **Total** | **222** | 218 POP + 4 DNP. |
 
 J501, J901, R401, R402 and R910 are categorized as service hardware but are normally fitted and electrically required in the circuit as drawn.
 
@@ -84,9 +84,9 @@ Recommended reductions for a later production-focused revision, **not implemente
 
 ## 6. Footprint coverage
 
-All 219 physical BOM entries resolve to a footprint:
+All 222 physical BOM entries resolve to a footprint:
 
-- 208 use standard KiCad 10 footprint libraries;
+- 211 use standard KiCad 10 footprint libraries;
 - 11 use the project-local `Phase2` library;
 - zero footprint links are unresolved.
 
@@ -110,7 +110,7 @@ A pin-set audit found all critical/custom symbol pins represented in their footp
 
 ## 7. 3D-model coverage and provenance
 
-Of the 219 physical entries, 181 mounted component instances resolve to a 3D body. The remaining 38 are 37 bare plated test pads and the J501 solder jumper, for which no mounted body exists or is useful. There are zero broken model paths and no mounted-body component lacking a model.
+Of the 222 physical entries, 184 mounted component instances resolve to a 3D body. The remaining 38 are 37 bare plated test pads and the J501 solder jumper, for which no mounted body exists or is useful. There are zero broken model paths and no mounted-body component lacking a model.
 
 Official manufacturer models committed locally:
 

@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "ESP32-P4 Displayman Development Daughterboard")
-		(date "2026-09-16")
-		(rev "Phase 2 / maintainability v0.2")
+		(date "2026-09-18")
+		(rev "Phase 2 / audit correction v0.3")
 		(company "sydude/ESP32-P4-Display-Development-Daughterboard")
 		(comment 1 "© 2026 Sy Aryeh")
 		(comment 2 "Hardware license: see LICENSE.md")

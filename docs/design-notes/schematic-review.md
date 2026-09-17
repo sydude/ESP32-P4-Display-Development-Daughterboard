@@ -1,8 +1,8 @@
 # Phase 2 schematic review record
 
-**Date:** 2026-09-17
+**Date:** 2026-09-18
 **Schematic:** `hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch`  
-**Status:** complete for independent schematic review; PCB layout not started
+**Status:** post-independent-audit electrical corrections complete; PCB layout not started
 
 ## 1. Hierarchy
 
@@ -27,7 +27,7 @@ The committed native KiCad hierarchy is the authoritative editable source. The p
 | `J201`, Molex 43045-0218 | 1 | `VEH_12V_RAW` | Vehicle-positive input |
 | `J201`, Molex 43045-0218 | 2 | GND | Vehicle return |
 
-The exact 24 V adapter plug dimensions and polarity marking remain a pre-layout procurement/physical check; the electrical polarity is fixed center-positive.
+The RAPC722X drawing fixes the board jack as a 5.5 mm-class barrel interface with a 2.0 mm center pin; the mating plug must be center-positive with compatible inner diameter. The exact purchased adapter plug remains a pre-layout procurement/fit check, not an electrical-schematic uncertainty.
 
 ### 2.2 Nano 15-pin DSI connector `J701`
 
@@ -48,7 +48,7 @@ The exact 24 V adapter plug dimensions and polarity marking remain a pre-layout 
 | 13 | GND | Logic return |
 | 14–15 | `NANO_3V3_REF` | Nano-side sense/reference only; never driven |
 
-The SFW15R-2STE1LF remains a provisional board connector until the fitted Nano connector and cable contact presentation are physically inspected.
+The Amphenol SFW15R-2STE1LF drawing confirms the daughterboard candidate is a 15-position, 1.00 mm, top-contact connector. The Waveshare schematic confirms electrical pin numbering but does not identify the Nano's fitted connector MPN/contact presentation. Available drawings and photos do not remove the need to inspect the Nano connector and choose the correct same-side/opposite-side FFC before placement freeze.
 
 ### 2.3 Displayman 40-pin LCD connector `J702`
 
@@ -139,23 +139,32 @@ The full state matrix is recorded in `schematic-calculations.md`. The reviewed i
 - hard-unplug logic energy is isolated from both the Nano and the backlight;
 - the backlight requires `VIN_GOOD`, `LCD_VCI`, firmware PWM, and a fitted hardware-enable shunt.
 
-No prohibited intentional backfeed path exists on the daughterboard. The Nano module's internal USB/header power path must still be measured with a current-limited USB source before an unrestricted laptop is used because Waveshare does not specify its reverse-current performance. Failure of that test requires a data-only/debug USB connection or a Nano-side power-path modification; the daughterboard cannot access USB VBUS separately through the Nano headers.
+No prohibited intentional backfeed path exists on the daughterboard. The published Waveshare schematic distinguishes Type-C `USB0_5V` from board/header `VCC_5V` and shows onboard power-path circuitry, so the Nano path is not undocumented. It does not establish guaranteed reverse-current behavior for every transition, however. The Nano module must still be measured with a current-limited USB source before an unrestricted laptop is used. Failure requires a data-only/debug USB connection or Nano-side power-path modification; the daughterboard cannot access USB VBUS separately through its headers.
+
+The vehicle-input audit made three intentional electrical changes:
+
+- moved polarized `C203` from unprotected `VEH_FILTER` to protected `VEH_PROT`;
+- added `R206`/`C207` (10 kΩ/82 nF) from LM74800 HGATE to OUT for calculated startup/inrush control;
+- added `C607` 1 nF from TPS3808 SENSE to GND.
+
+No approved converter, sequencing, DSI, touch-isolation, Nano-feed, or backlight topology was changed.
 
 ## 5. ERC and machine checks
 
-Run with KiCad 10.0.6 on 2026-09-16 after sheet consolidation:
+Run with KiCad 10.0.6 on 2026-09-18 after the audit correction:
 
 - hierarchical netlist export: passed;
 - four-page PDF export: passed;
-- pre/post refactor net-map comparison: passed, all 193 named nets and non-`PWR` pin memberships identical;
+- pre/post electrical net-map comparison: passed; the only pin-membership changes are the C203 move and new R206/C207/C607 networks listed above;
+- geometry-only comparison: passed; normal-grid redrawing caused no additional pin/net changes;
 - ERC errors: **0**;
 - ERC warnings: **0**.
 
-The committed `hardware/kicad/erc-report.txt` is the all-severity report. `endpoint_off_grid` is deliberately ignored because controlled off-grid wire doglegs preserve separation at visually crossing labelled pin buses; mechanically snapping them was tested and introduced real shorts. Connectivity was therefore established by netlist comparison rather than coordinate normalization.
+The committed `hardware/kicad/erc-report.txt` is the all-severity report. The former 622 near-coincident/off-grid endpoint violations were removed by replacing fragile long routes with ordinary-grid pin stubs and explicit net labels. `endpoint_off_grid` is enabled as an error and reports zero findings. This pass intentionally prioritizes robust electrical geometry; final owner schematic aesthetics may be adjusted later with netlist/ERC comparison.
 
 ## 6. Footprint and 3D closure
 
-All 219 physical BOM entries resolve to a footprint: 208 use standard KiCad libraries and 11 use the committed `Phase2` project library. The manufacturer-specific/project-local assignments include:
+All 222 physical BOM entries resolve to a footprint: 211 use standard KiCad libraries and 11 use the committed `Phase2` project library. The manufacturer-specific/project-local assignments include:
 
 | Reference(s) | Project-local land pattern |
 |---|---|
@@ -175,20 +184,21 @@ The exact C601 selection is now Nichicon `UHW1A682MHD`, using the standard KiCad
 
 ## 7. Unresolved items by correct phase
 
-### Independent schematic review
+### Schematic status after independent audit
 
-- recheck regulator/driver compensation and worst-case tolerances;
-- independently audit every IC pin and connector pin against the cited controlling source;
-- challenge the LM74800-Q1 common-drain protection assumption for the defined TVS-protected evaluation use case;
-- review the narrow TPS922053 headroom corner and contingency trigger.
+- LM74800 common-drain topology is retained for the defined TVS-protected REV1 evaluation input; R206/C207 control direct precharge to 0.23 A nominal/0.46 A worst corner, and the overlapping LM5176 soft-start/full-load bound remains about 2.8 A with Q202 inside SOA;
+- TPS3808 pinout, threshold range and recommended SENSE bypass are verified;
+- C601 is retained at 6800 µF using actual rail loads and worst-case LM3880 shutdown timing;
+- bench hot-plug/fuse I²t and LM5176 low-line/current-limit/compensation margins are calculated;
+- the TPS922053 narrow minimum-input/maximum-LED-voltage corner remains a prototype validation item, not a newly discovered schematic error.
 
-No known issue presently requires a schematic topology change, but the design is intentionally awaiting this independent review before PCB work.
+No known electrical issue requires another schematic topology change before PCB work.
 
 ### Before footprint or placement freeze
 
-- inspect Nano DSI connector contact side, pin 1, insertion direction, and cable type;
+- inspect Nano DSI connector contact side, pin 1, insertion direction, and choose the matching cable contact orientation;
 - inspect the LCD and touch flex exposed-contact side, pin 1, thickness, bend direction, and insertion depth;
-- confirm the actual 24 V adapter plug size/polarity;
+- confirm the actual 24 V adapter plug fits the RAPC722X 2.0 mm center pin/5.5 mm-class interface and is center-positive;
 - confirm Nano header height, board separation, mounting holes, keepouts, and the vehicle-harness arrangement;
 - independently verify the 11 project-local land patterns against their controlling drawings and check the available connector samples at 1:1.
 
@@ -204,6 +214,6 @@ No known issue presently requires a schematic topology change, but the design is
 
 ## 8. Owner actions
 
-There is no owner electrical-design action required before independent schematic review. Before PCB layout is frozen, the owner must supply or physically verify the connector/cable/stack details listed in Section 7. Those are mechanical facts, not unresolved electrical choices.
+There is no owner electrical-design action required before PCB placement begins. Before placement/footprint freeze, the owner must supply or physically verify the connector/cable/stack details listed in Section 7. Those are mechanical facts, not unresolved electrical choices.
 
 PCB layout is outside this phase and has not begun.

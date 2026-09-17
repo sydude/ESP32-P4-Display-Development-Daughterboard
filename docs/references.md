@@ -40,15 +40,15 @@ No authoritative independent GC9703C datasheet or manufacturer source substantia
 
 ## Power, sequencing, and interface components
 
-Checked through 2026-09-16. Status is the manufacturer product-page status where shown. `docs/PRD.md` remains controlling; the populated selections and calculations are recorded in `docs/design-notes/schematic-calculations.md`.
+Checked through 2026-09-18. Status is the manufacturer product-page status where shown. `docs/PRD.md` remains controlling; the populated selections and calculations are recorded in `docs/design-notes/schematic-calculations.md`.
 
 | Manufacturer | Part number / family | Function | Status / document | Source |
 |---|---|---|---|---|
 | Texas Instruments | `LM76003RNPR` | 24 V to 5 V buck | ACTIVE; datasheet Rev. A | [LM76003](https://www.ti.com/product/LM76003) |
 | Texas Instruments | `TLV75533PDBVR`, `TLV75528PDBVR`, `TLV75518PDBVR` | Touch 3.3 V / VCI 2.8 V / IOVCC 1.8 V LDOs | ACTIVE/production; datasheet Rev. D | [TLV755P](https://www.ti.com/product/TLV755P) |
 | Texas Instruments | `TPS22919DCKR` | VCI load switch | ACTIVE; datasheet Rev. B | [TPS22919](https://www.ti.com/product/TPS22919) |
-| Texas Instruments | `LM3880MF-1AA/NOPB` | Candidate three-stage sequencer | ACTIVE; fixed-function candidate | [LM3880](https://www.ti.com/product/LM3880) |
-| Texas Instruments | `TPS3808G01DBVR` | Candidate power-fail supervisor | ACTIVE | [TPS3808](https://www.ti.com/product/TPS3808) |
+| Texas Instruments | `LM3880MF-1AA/NOPB` | Three-stage display sequencer | ACTIVE/production; datasheet Rev. M; exact `-1AA` gives 1→2→3 startup and 3→2→1 shutdown with 10 ms nominal stages | [LM3880](https://www.ti.com/product/LM3880), [datasheet](https://www.ti.com/lit/ds/symlink/lm3880.pdf) |
+| Texas Instruments | `TPS3808G01DBVR` | Power-fail supervisor | ACTIVE/production; datasheet Rev. N; pinout, ±2% adjustable threshold, SENSE current and 1–10 nF bypass recommendation audited | [TPS3808](https://www.ti.com/product/TPS3808), [datasheet](https://www.ti.com/lit/ds/symlink/tps3808.pdf) |
 | Texas Instruments | `SN74LVC1G07DBVR` | Open-drain reset buffer with Ioff | ACTIVE; datasheet Rev. AG | [SN74LVC1G07](https://www.ti.com/product/SN74LVC1G07) |
 | Texas Instruments | `SN74LVC1G11DCKR` | Three-input hardware backlight-enable gate | ACTIVE; partial-power-down/Ioff behavior | [SN74LVC1G11](https://www.ti.com/product/SN74LVC1G11) |
 | Texas Instruments | `PCA9306DCTR` | Original I2C translator candidate | ACTIVE; superseded because it does not isolate INT/RESET | [PCA9306](https://www.ti.com/product/PCA9306) |
@@ -60,6 +60,9 @@ Checked through 2026-09-16. Status is the manufacturer product-page status where
 | Vishay | `IHLP6767GZER680M11` | Selected 68 µH backlight inductor | IHLP-6767GZ-11 commercial low-DCR series; 6.1 A heat-rated and 4.5 A typical saturation current; manufacturer product page/datasheet checked 2026-09-16 | [Manufacturer product page](https://www.vishay.com/en/product/34282/) |
 | Vishay | `SS2H10-E3/52T`, `SS34-E3/57T`, `BAT46W-E3-08` | Backlight catch diode, hold-up diode, and LM5176 bootstrap diodes | Current manufacturer families; 100 V bootstrap/catch selections preserve voltage margin | [SS2H10](https://www.vishay.com/en/product/88961/), [SS34](https://www.vishay.com/en/product/88751/), [BAT46W](https://www.vishay.com/en/product/85662/) |
 | Murata | `BLM18KG601SN1D` | Backlight-anode EMI bead | 0603, 600 Ω at 100 MHz, 1 A class; headroom/temperature to be verified on prototype | [Manufacturer page](https://www.murata.com/en-us/products/productdetail?partno=BLM18KG601SN1%23) |
+| KEMET | `C0603C823K3RACTU` | LM74800 82 nF/25 V/X7R HGATE dV/dt capacitor | Current 0603 X7R catalog part; selected in place of an obsolete Murata suffix found during the audit | [KEMET X7R SMD family datasheet](https://content.kemet.com/datasheets/KEM_C1002_X7R_SMD.pdf) |
+| Panasonic | `ERJ-3EKF1002V` | LM74800 10 kΩ/1% HGATE series resistor | Current general-purpose 0603 precision thick-film part | [Manufacturer part page](https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJ3EKF1002V) |
+| Murata | `GRM1885C1H102JA01D` | TPS3808 1 nF/50 V/C0G SENSE bypass | Current 0603 C0G catalog part | [Manufacturer product detail](https://pim.murata.com/en-us/pim/details/?partNum=GRM1885C1H102JA01D) |
 | Analog Devices | `LT8391A` | Four-switch buck-boost LED contingency | Recommended for new designs; datasheet Rev. A; use only if completed buck headroom validation fails | [Product page](https://www.analog.com/en/products/lt8391a.html), [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/lt8391a.pdf) |
 
 ## Input protection
@@ -70,7 +73,7 @@ Checked 2026-09-14.
 |---|---|---|---|---|
 | Same Sky | `PJ-044AH` | Original barrel-jack candidate | Manufacturer identifies 2.0 x 6.5 mm vertical through-hole; does not match PRD assumption | [Manufacturer page](https://www.sameskydevices.com/product/interconnect/connectors/dc-power-connectors/jacks/pj-044ah) |
 | Switchcraft | `RAPC722X` | Recommended barrel-jack candidate | 24 V, 5 A, right-angle through-hole, 2.0 mm center-pin family; project footprint checked against manufacturer PCB-layout drawing | [Manufacturer page](https://www.switchcraft.com/right-angle-pc-mount-dc-power-jack-pin-size-0-080-2-0mm-open-frame/rapc722x/), [drawing](https://www.switchcraft.com/assets/1/24/rapc722x_cd.pdf) |
-| Littelfuse | `0451002.MRL`, 451 series | Input fuse | 2 A / 125 V very-fast-acting candidate; inrush coordination required | [Manufacturer series page](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/surface-mount-fuses/451) |
+| Littelfuse | `0451002.MRL`, 451 series | Input fuse | 2 A / 125 V very-fast-acting; nominal melting I²t 0.53 A²s and 0.0367 Ω cold resistance; coordinated against calculated regulated-adapter hot plug | [Manufacturer series page](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/surface-mount-fuses/451) |
 | Littelfuse | `SMBJ30A`, SMBJ series | Input TVS | 30 V standoff / 600 W family | [Manufacturer page](https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj) |
 | Vishay | `SS5P6-M3/86A` | Original Schottky reverse protection | Corrected product link; electrically valid but no longer preferred | [SS5P5/SS5P6](https://www.vishay.com/en/product/88988/) |
 | Texas Instruments | `LM74700-Q1` plus external N-MOSFET | Recommended ideal-diode reverse protection | ACTIVE; 3.2–65 V, reverse-current blocking; datasheet Rev. G | [LM74700-Q1](https://www.ti.com/product/LM74700-Q1) |
