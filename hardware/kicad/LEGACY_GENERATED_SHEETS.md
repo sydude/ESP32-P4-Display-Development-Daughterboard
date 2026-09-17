@@ -1,1 +1,0 @@
-The deprecated generated schematic sheets have been archived in [`archive/legacy-generated-sheets/`](archive/legacy-generated-sheets/README.md).
