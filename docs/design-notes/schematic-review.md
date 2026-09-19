@@ -1,15 +1,15 @@
 # Phase 2 schematic review record
 
-**Date:** 2026-09-18
+**Date:** 2026-09-19
 **Schematic:** `hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch`  
-**Status:** post-independent-audit electrical corrections complete; PCB layout not started
+**Status:** single-source power simplification complete; PCB layout not started
 
 ## 1. Hierarchy
 
 | Page | Sheet | Primary content |
 |---:|---|---|
 | 1 | Root | Project hierarchy and review boundary |
-| 2 | Power | Bench/vehicle inputs, LM7480-Q1, LM5176-Q1, source ORing, LM76003 and TPS25947 Nano feed |
+| 2 | Power | Protected nominal-12 V input, LM7480-Q1, LM5176-Q1, `SYS_24V`, LM76003 and TPS25947 Nano feed |
 | 3 | Display Power & Backlight | Hold-up, supervisor/sequencing, logic rails, reset gating and TPS922053 driver |
 | 4 | Interfaces & Nano | Nano headers/DSI, panel connector/MIPI ESD, touch isolation/ESD and debug |
 
@@ -21,13 +21,10 @@ The committed native KiCad hierarchy is the authoritative editable source. The p
 
 | Connector | Pin | Net/function | Controlling-source disposition |
 |---|---:|---|---|
-| `J101`, Switchcraft RAPC722X | 1 | `BENCH_24V_RAW` | Center contact, positive bench input |
-| `J101`, Switchcraft RAPC722X | 2 | GND | Sleeve/return |
-| `J101`, Switchcraft RAPC722X | 3 | NC | Switched contact deliberately unused |
-| `J201`, Molex 43045-0218 | 1 | `VEH_12V_RAW` | Vehicle-positive input |
-| `J201`, Molex 43045-0218 | 2 | GND | Vehicle return |
+| `J201`, Molex 43045-0218 | 1 | `VEH_12V_RAW` | Positive input; vehicle source or regulated/current-limited nominal-12 V bench supply |
+| `J201`, Molex 43045-0218 | 2 | GND | Input return |
 
-The RAPC722X drawing fixes the board jack as a 5.5 mm-class barrel interface with a 2.0 mm center pin; the mating plug must be center-positive with compatible inner diameter. The exact purchased adapter plug remains a pre-layout procurement/fit check, not an electrical-schematic uncertainty.
+There is no dedicated 24 V bench connector. Bench development uses J201 and exercises the same protection and conversion path as vehicle operation.
 
 ### 2.2 Nano 15-pin DSI connector `J701`
 
@@ -114,7 +111,7 @@ The remaining header pins are captured explicitly: P1 pins 2 and 4 are `NANO_5V`
 | 3 | `VIN_GOOD` | 4 | `SEQ_FLAG1` |
 | 5 | `SEQ_FLAG2` | 6 | `SEQ_FLAG3` |
 | 7 | `LCD_RESET_N` | 8 | `BL_FAULT_N` |
-| 9 | `NANO_EFUSE_FLT` | 10 | `VEH_PGOOD` |
+| 9 | `NANO_EFUSE_FLT` | 10 | `SYS24_PGOOD` |
 
 ## 3. DSI electrical review
 
@@ -130,8 +127,7 @@ The remaining header pins are captured explicitly: P1 pins 2 and 4 are `NANO_5V`
 
 The full state matrix is recorded in `schematic-calculations.md`. The reviewed isolation boundaries are:
 
-- LM74700-Q1 on each high-voltage branch prevents bench/vehicle cross-feed;
-- LM74800-Q1 back-to-back FETs protect the vehicle connector from reverse battery and downstream reverse current;
+- LM74800-Q1 common-drain back-to-back FETs protect the 12 V connector from reverse battery and downstream reverse current;
 - TPS25947 integrated back-to-back FETs prevent Nano USB/header 5 V from raising `SYS_5V`; the opposite daughterboard-to-laptop direction passes through the Nano's own, separately specified onboard power path and requires the controlled prototype test below;
 - TMUX1574 powered-off protection isolates SCL, SDA, INT, and RESET whenever either touch/Nano domain is invalid;
 - SN74LVC1G07 reset clamps provide Ioff behavior and do not drive an unpowered panel rail;
@@ -141,22 +137,27 @@ The full state matrix is recorded in `schematic-calculations.md`. The reviewed i
 
 No prohibited intentional backfeed path exists on the daughterboard. The published Waveshare schematic distinguishes Type-C `USB0_5V` from board/header `VCC_5V` and shows onboard power-path circuitry, so the Nano path is not undocumented. It does not establish guaranteed reverse-current behavior for every transition, however. The Nano module must still be measured with a current-limited USB source before an unrestricted laptop is used. Failure requires a data-only/debug USB connection or Nano-side power-path modification; the daughterboard cannot access USB VBUS separately through its headers.
 
-The vehicle-input audit made three intentional electrical changes:
+The previous vehicle-input audit made three intentional electrical changes:
 
 - moved polarized `C203` from unprotected `VEH_FILTER` to protected `VEH_PROT`;
 - added `R206`/`C207` (10 kΩ/82 nF) from LM74800 HGATE to OUT for calculated startup/inrush control;
 - added `C607` 1 nF from TPS3808 SENSE to GND.
 
-No approved converter, sequencing, DSI, touch-isolation, Nano-feed, or backlight topology was changed.
+This simplification pass then made these intentional changes:
+
+- removed the dedicated J101/F101/D101/C101–C103 bench-input path;
+- removed both LM74700/Q401/Q402 branch controllers and their associated passives, links, test points, and 230 µF handover reservoir;
+- connected the LM5176 output directly to canonical `SYS_24V` and renamed `VEH_PGOOD` to `SYS24_PGOOD`;
+- retained the LM74800, LM5176, LM76003, TPS25947, sequencing, DSI, touch-isolation, Nano-feed, and TPS922053 topologies.
 
 ## 5. ERC and machine checks
 
-Run with KiCad 10.0.6 on 2026-09-18 after the audit correction:
+Run with KiCad 10.0.6 on 2026-09-19 after the single-source simplification:
 
 - hierarchical netlist export: passed;
 - four-page PDF export: passed;
-- pre/post electrical net-map comparison: passed; the only pin-membership changes are the C203 move and new R206/C207/C607 networks listed above;
-- geometry-only comparison: passed; normal-grid redrawing caused no additional pin/net changes;
+- pre/post electrical net-map comparison: passed; 25 physical references were intentionally removed, no references were added, and the only retained-pin changes are `VEH_24V`/`VIN_PROT_24V`→`SYS_24V` and `VEH_PGOOD`→`SYS24_PGOOD`;
+- DSI, touch, Nano GPIO, LCD sequencing, backlight-current programming, connector pinouts other than removed J101, and USB isolation have identical retained pin/net membership;
 - ERC errors: **0**;
 - ERC warnings: **0**.
 
@@ -164,11 +165,10 @@ The committed `hardware/kicad/erc-report.txt` is the all-severity report. The fo
 
 ## 6. Footprint and 3D closure
 
-All 222 physical BOM entries resolve to a footprint: 211 use standard KiCad libraries and 11 use the committed `Phase2` project library. The manufacturer-specific/project-local assignments include:
+All 197 physical BOM entries resolve to a footprint: 187 use standard KiCad libraries and 10 use the committed `Phase2` project library. The manufacturer-specific/project-local assignments include:
 
 | Reference(s) | Project-local land pattern |
 |---|---|
-| J101 | Switchcraft RAPC722X right-angle jack |
 | D201 | Bourns DO-218AB for SM8S24CA-Q |
 | U201 | TI DRR WSON-12 with exposed pad |
 | U301 | TI PWP HTSSOP-28 with exposed pad |
@@ -180,7 +180,7 @@ All 222 physical BOM entries resolve to a footprint: 211 use standard KiCad libr
 | J702 | Molex 505110-4096 |
 | U901 | TI DYY TSOT-23-14 |
 
-The exact C601 selection is now Nichicon `UHW1A682MHD`, using the standard KiCad 16 mm × 25 mm, 7.5 mm-pitch radial footprint. All mounted-body parts have resolving 3D models. The only 38 physical entries without a body model are 37 bare plated test pads and the J501 solder jumper, for which a 3D body is not appropriate. See `maintainability-library-review.md` for provenance and limitations. Critical footprints still require an independent drawing/pad-number review before placement freeze.
+The exact C601 selection is Nichicon `UHW1A682MHD`, using the standard KiCad 16 mm × 25 mm, 7.5 mm-pitch radial footprint. All mounted-body parts have resolving 3D models. The only 33 physical entries without a body model are 32 bare plated test pads and the J501 solder jumper, for which a 3D body is not appropriate. See `maintainability-library-review.md` for provenance and limitations. Critical footprints still require an independent drawing/pad-number review before placement freeze.
 
 ## 7. Unresolved items by correct phase
 
@@ -189,8 +189,8 @@ The exact C601 selection is now Nichicon `UHW1A682MHD`, using the standard KiCad
 - LM74800 common-drain topology is retained for the defined TVS-protected REV1 evaluation input; R206/C207 control direct precharge to 0.23 A nominal/0.46 A worst corner, and the overlapping LM5176 soft-start/full-load bound remains about 2.8 A with Q202 inside SOA;
 - TPS3808 pinout, threshold range and recommended SENSE bypass are verified;
 - C601 is retained at 6800 µF using actual rail loads and worst-case LM3880 shutdown timing;
-- bench hot-plug/fuse I²t and LM5176 low-line/current-limit/compensation margins are calculated;
-- the TPS922053 narrow minimum-input/maximum-LED-voltage corner remains a prototype validation item, not a newly discovered schematic error.
+- the former 24 V bench hot-plug path no longer exists; LM5176 low-line/current-limit/compensation margins are recalculated for 283.547 µF on `SYS_24V`;
+- TPS922053 has about 2.45 V conservative residual headroom at the 23.187 V minimum static `SYS_24V` setpoint and 19.8 V LED corner; regulation and temperature remain prototype validations, not a schematic blocker.
 
 No known electrical issue requires another schematic topology change before PCB work.
 
@@ -198,18 +198,17 @@ No known electrical issue requires another schematic topology change before PCB 
 
 - inspect Nano DSI connector contact side, pin 1, insertion direction, and choose the matching cable contact orientation;
 - inspect the LCD and touch flex exposed-contact side, pin 1, thickness, bend direction, and insertion depth;
-- confirm the actual 24 V adapter plug fits the RAPC722X 2.0 mm center pin/5.5 mm-class interface and is center-positive;
 - confirm Nano header height, board separation, mounting holes, keepouts, and the vehicle-harness arrangement;
-- independently verify the 11 project-local land patterns against their controlling drawings and check the available connector samples at 1:1.
+- independently verify the 10 project-local land patterns against their controlling drawings and check the available connector samples at 1:1.
 
 ### Prototype bring-up
 
 - tune/verify DSI HS lane rate, video mode, continuous clock, and refresh;
 - validate the 600-to-480 masking using test patterns;
 - test both GT9271 reset/address sequences and unpowered pin leakage;
-- validate 12 V/24 V/USB source transitions and reverse current;
+- validate 12 V/USB transitions and reverse current toward J201, `SYS_5V`, and laptop VBUS;
 - capture startup, commanded shutdown, and hard-unplug rail timing;
-- validate backlight regulation at 16.8–19.8 V equivalent LED voltage, 21.6–26.4 V bus input, temperature, and PWM range;
+- validate backlight regulation at 16.8–19.8 V equivalent LED voltage across the measured `SYS_24V` range, temperature, and PWM range;
 - measure converter loop response, efficiency, EMI, and thermal margins.
 
 ## 8. Owner actions

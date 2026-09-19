@@ -6,8 +6,8 @@
 	(paper "A1")
 	(title_block
 		(title "Display Power & Backlight")
-		(date "2026-09-18")
-		(rev "Phase 2 / audit correction v0.3")
+		(date "2026-09-19")
+		(rev "Phase 2 / single-source v0.4")
 		(company "ESP32-P4 Displayman Development Daughterboard")
 		(comment 1 "© 2026 Sy Aryeh")
 		(comment 2 "Hardware license: see LICENSE.md")
@@ -8138,7 +8138,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "83k FSET selects 300 kHz. 68 uH gives about 243 mApp ripple at 26.4 V; worst-normal peak about 371 mA."
+	(text "83k FSET selects 300 kHz. 68 uH is validated over the regulated SYS_24V range; see calculations."
 		(exclude_from_sim no)
 		(at 17.54 305.16 0)
 		(effects
@@ -15816,7 +15816,7 @@
 		)
 		(uuid "9ee520f3-ceff-41cf-8140-d316dbbb17f7")
 	)
-	(global_label "VIN_PROT_24V"
+	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 789.94 374.65 180)
 		(fields_autoplaced yes)
@@ -17108,7 +17108,7 @@
 		)
 		(uuid "f59f1803-4fab-4aea-a614-81e617a37dcd")
 	)
-	(global_label "VIN_PROT_24V"
+	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 20.32 430.53 180)
 		(fields_autoplaced yes)
@@ -17924,7 +17924,7 @@
 		)
 		(uuid "18eed99c-96a4-46a3-9884-be3eec52ba14")
 	)
-	(global_label "VIN_PROT_24V"
+	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 144.78 374.65 180)
 		(fields_autoplaced yes)
@@ -18094,7 +18094,7 @@
 		)
 		(uuid "c5c509c4-97db-44c6-92c0-9895dbf98c22")
 	)
-	(global_label "VIN_PROT_24V"
+	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 144.78 490.22 180)
 		(fields_autoplaced yes)
@@ -18638,7 +18638,7 @@
 		)
 		(uuid "b590caaa-f04d-4600-8c01-c26cf37af9e5")
 	)
-	(global_label "VIN_PROT_24V"
+	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 189.23 48.26 180)
 		(fields_autoplaced yes)
@@ -18944,7 +18944,7 @@
 		)
 		(uuid "7fc41145-d3b2-4580-9cce-79a948004825")
 	)
-	(global_label "VIN_PROT_24V"
+	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 144.78 317.5 180)
 		(fields_autoplaced yes)

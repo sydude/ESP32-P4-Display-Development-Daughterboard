@@ -40,7 +40,7 @@ No authoritative independent GC9703C datasheet or manufacturer source substantia
 
 ## Power, sequencing, and interface components
 
-Checked through 2026-09-18. Status is the manufacturer product-page status where shown. `docs/PRD.md` remains controlling; the populated selections and calculations are recorded in `docs/design-notes/schematic-calculations.md`.
+Checked through 2026-09-19. Status is the manufacturer product-page status where shown. `docs/PRD.md` remains controlling; the populated selections and calculations are recorded in `docs/design-notes/schematic-calculations.md`.
 
 | Manufacturer | Part number / family | Function | Status / document | Source |
 |---|---|---|---|---|
@@ -65,20 +65,7 @@ Checked through 2026-09-18. Status is the manufacturer product-page status where
 | Murata | `GRM1885C1H102JA01D` | TPS3808 1 nF/50 V/C0G SENSE bypass | Current 0603 C0G catalog part | [Manufacturer product detail](https://pim.murata.com/en-us/pim/details/?partNum=GRM1885C1H102JA01D) |
 | Analog Devices | `LT8391A` | Four-switch buck-boost LED contingency | Recommended for new designs; datasheet Rev. A; use only if completed buck headroom validation fails | [Product page](https://www.analog.com/en/products/lt8391a.html), [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/lt8391a.pdf) |
 
-## Input protection
-
-Checked 2026-09-14.
-
-| Manufacturer | Part number / family | Function | Validation note | Source |
-|---|---|---|---|---|
-| Same Sky | `PJ-044AH` | Original barrel-jack candidate | Manufacturer identifies 2.0 x 6.5 mm vertical through-hole; does not match PRD assumption | [Manufacturer page](https://www.sameskydevices.com/product/interconnect/connectors/dc-power-connectors/jacks/pj-044ah) |
-| Switchcraft | `RAPC722X` | Recommended barrel-jack candidate | 24 V, 5 A, right-angle through-hole, 2.0 mm center-pin family; project footprint checked against manufacturer PCB-layout drawing | [Manufacturer page](https://www.switchcraft.com/right-angle-pc-mount-dc-power-jack-pin-size-0-080-2-0mm-open-frame/rapc722x/), [drawing](https://www.switchcraft.com/assets/1/24/rapc722x_cd.pdf) |
-| Littelfuse | `0451002.MRL`, 451 series | Input fuse | 2 A / 125 V very-fast-acting; nominal melting I²t 0.53 A²s and 0.0367 Ω cold resistance; coordinated against calculated regulated-adapter hot plug | [Manufacturer series page](https://www.littelfuse.com/products/fuses-overcurrent-protection/fuses/surface-mount-fuses/451) |
-| Littelfuse | `SMBJ30A`, SMBJ series | Input TVS | 30 V standoff / 600 W family | [Manufacturer page](https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj) |
-| Vishay | `SS5P6-M3/86A` | Original Schottky reverse protection | Corrected product link; electrically valid but no longer preferred | [SS5P5/SS5P6](https://www.vishay.com/en/product/88988/) |
-| Texas Instruments | `LM74700-Q1` plus external N-MOSFET | Recommended ideal-diode reverse protection | ACTIVE; 3.2–65 V, reverse-current blocking; datasheet Rev. G | [LM74700-Q1](https://www.ti.com/product/LM74700-Q1) |
-
-## Vehicle-input and source-isolation components
+## Nominal-12 V input, protection, and conversion components
 
 Checked through 2026-09-16. Automotive/AEC qualification of individual parts does not qualify the assembled evaluation board to ISO 7637 or ISO 16750.
 
@@ -87,7 +74,7 @@ Checked through 2026-09-16. Automotive/AEC qualification of individual parts doe
 | Texas Instruments | `LM74800QDRRRQ1` / LM7480-Q1 | Vehicle reverse-polarity, reverse-current, inrush, and overvoltage control with back-to-back N-FETs | ACTIVE; AEC-Q100; 3–65 V, −65 V reverse input, WSON-12; datasheet Rev. C | [Product page](https://www.ti.com/product/LM7480-Q1), [datasheet](https://www.ti.com/lit/ds/symlink/lm7480-q1.pdf) |
 | Texas Instruments | `LM5176QPWPRQ1` | 12 V vehicle to nominal-24 V four-switch synchronous buck-boost controller | ACTIVE; AEC-Q100; 4.2–55 V operating, 60 V maximum, HTSSOP-28; datasheet Rev. B | [Product page](https://www.ti.com/product/LM5176-Q1), [datasheet](https://www.ti.com/lit/ds/symlink/lm5176-q1.pdf) |
 | Texas Instruments | `LM51772-Q1` | Newer four-switch comparison candidate | ACTIVE; 55 V, optional I²C, VQFN-40; not selected because its added complexity is unnecessary for a fixed 24 V rail | [Product page](https://www.ti.com/product/LM51772-Q1) |
-| Texas Instruments | `CSD19531Q5A` | Provisional 100 V N-MOSFET class for vehicle protection, conversion, and ORing | ACTIVE; 6.4 mΩ max at 10 V, 37 nC typical Qg, 5 × 6 mm SON | [Product page](https://www.ti.com/product/CSD19531Q5A), [datasheet](https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf) |
+| Texas Instruments | `CSD19531Q5A` | 100 V N-MOSFET for input protection and four-switch conversion | ACTIVE; 6.4 mΩ max at 10 V, 37 nC typical Qg, 5 × 6 mm SON; SOA checked for LM74800 ramp | [Product page](https://www.ti.com/product/CSD19531Q5A), [datasheet](https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf) |
 | Texas Instruments | `TPS259470ARPWR` / TPS25947 | Nano 5 V current limiting, inrush control, and true reverse-current blocking | ACTIVE; 2.7–23 V, 5.5 A, 28 mΩ typical; datasheet Rev. C, May 2026 | [Product page](https://www.ti.com/product/TPS25947), [datasheet](https://www.ti.com/lit/ds/symlink/tps25947.pdf) |
 | Bourns | `SM8S24CA-Q` | Vehicle high-energy bidirectional TVS | Automotive/AEC-Q101 series; 24 V standoff, 38.9 V clamp class, 6.6 kW, DO-218; package and recommended land pattern used for project footprint | [Manufacturer datasheet/drawing](https://www.bourns.com/docs/product-datasheets/sm8s-q.pdf) |
 | Coilcraft | `XAL7070-153MEC`, `XAL7070-103MEC` | Selected 15 µH LM5176 and 10 µH LM76003 inductors | Current shielded molded series; selected values and current ratings checked in the manufacturer table | [Manufacturer series page](https://www.coilcraft.com/en-us/products/power/shielded-inductors/molded-inductor/xal/xal7070/) |

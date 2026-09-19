@@ -6,8 +6,8 @@
 	(paper "A1")
 	(title_block
 		(title "Interfaces & Nano")
-		(date "2026-09-18")
-		(rev "Phase 2 / audit correction v0.3")
+		(date "2026-09-19")
+		(rev "Phase 2 / single-source v0.4")
 		(company "ESP32-P4 Displayman Development Daughterboard")
 		(comment 1 "© 2026 Sy Aryeh")
 		(comment 2 "Hardware license: see LICENSE.md")
@@ -1989,7 +1989,7 @@
 				(pin passive line
 					(at 12.7 -5.08 180)
 					(length 2.54)
-					(name "VEH_PGOOD"
+					(name "SYS24_PGOOD"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -13297,7 +13297,7 @@
 		)
 		(uuid "7e5085b7-f79f-446c-a9f6-4d6f1044cd7e")
 	)
-	(global_label "VIN_PROT_24V"
+	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 673.1 48.26 0)
 		(fields_autoplaced yes)
@@ -18125,7 +18125,7 @@
 		)
 		(uuid "a967948f-1b5f-4771-bfd3-5684358bd054")
 	)
-	(global_label "VEH_PGOOD"
+	(global_label "SYS24_PGOOD"
 		(shape bidirectional)
 		(at 730.25 302.26 0)
 		(fields_autoplaced yes)
