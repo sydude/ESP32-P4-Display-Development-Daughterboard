@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-19
 
-**Current baseline:** single-source power simplification from `cfd665b0e5988449339dfee1f44b3e2537bd2161`
+**Electrical baseline for this review:** the single-source power architecture developed from `cfd665b0e5988449339dfee1f44b3e2537bd2161`; subsequent canonical commits completed power simplification, footprint verification and mechanical-reference import. This hash is historical provenance, not the current canonical design baseline.
 
 **Scope:** schematic organization, graphical wiring, ERC hygiene, component inventory, footprint/3D completion and project portability
 
@@ -135,16 +135,11 @@ The simplified models intentionally represent the mechanical body/envelope and b
 
 ### Before independent schematic acceptance
 
-No owner action is required. The project still requires the planned independent electrical review before PCB authorization.
+No owner action is required. Subsequent canonical reviews completed the independent electrical, footprint and manufacturer-file mechanical audits; this section is retained as phase-history provenance.
 
 ### Before footprint/placement freeze
 
-The owner or layout reviewer must physically verify:
-
-- Nano 15-pin FFC contact side, pin 1, insertion direction and mating cable presentation;
-- Displayman 40-pin FPC and GT9271 8-pin flex exposed-contact side, pin 1, thickness, stiffener, insertion depth, bend direction and practical cable length;
-- Nano socket/header height, standoff, board separation, mounting-hole and enclosure-clearance needs;
-- connector/flex presentation and mating fit using the actual samples at 1:1; the independent project-local land-pattern drawing audit is complete.
+The owner or layout reviewer must complete the narrow sample checks in `mechanical-interface-verification.md`: Nano DSI physical pin 1/contact face, delivered LCD/touch tail pin-1 and stiffener presentation, exact socket mated height, and a 1:1 cutout/cable/harness mock-up. Manufacturer contact requirements, Nano outline/hole/header datums and the independent project-local land-pattern audit are complete.
 
 These are physical/mechanical facts, not unresolved electrical-design choices.
 

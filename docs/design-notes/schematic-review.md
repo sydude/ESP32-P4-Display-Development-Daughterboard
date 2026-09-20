@@ -45,7 +45,7 @@ There is no dedicated 24 V bench connector. Bench development uses J201 and exer
 | 13 | GND | Logic return |
 | 14–15 | `NANO_3V3_REF` | Nano-side sense/reference only; never driven |
 
-The Amphenol SFW15R-2STE1LF drawing confirms the daughterboard candidate is a 15-position, 1.00 mm, top-contact connector. The Waveshare schematic confirms electrical pin numbering but does not identify the Nano's fitted connector MPN/contact presentation. Available drawings and photos do not remove the need to inspect the Nano connector and choose the correct same-side/opposite-side FFC before placement freeze.
+The Amphenol SFW15R-2STE1LF drawing confirms the daughterboard part is a 15-position, 1.00 mm, top-contact connector. A section through the Waveshare STEP shows the Nano connector is bottom-contact. With J701 mounted on the daughterboard underside and both mouths facing the same direction, the no-twist stack route uses a Type-B/opposite-side-contact FFC and a 180° service loop. The Waveshare mechanical files do not encode physical pin 1, so the actual Nano still requires one powered-off pin-1/continuity/contact-face check before orientation is frozen. See `mechanical-interface-verification.md`.
 
 ### 2.3 Displayman 40-pin LCD connector `J702`
 
@@ -72,7 +72,7 @@ The Amphenol SFW15R-2STE1LF drawing confirms the daughterboard candidate is a 15
 | 33–38 | NC |
 | 39–40 | `LED_A` |
 
-The electrical numbering is fixed from the Displayman source. The board-facing physical orientation, pin-1 presentation, and cable bend remain pre-layout physical checks.
+The electrical numbering is fixed from the Displayman source. Displayman confirms a bottom-contact panel flex, matching the bottom-contact Molex connector. The exact delivered tail/receptacle termination, physical pin 1, stiffener and relaxed cable bend remain pre-layout sample checks. The provisional Molex Type-A cables are not direct mates to a bare panel flex tail.
 
 ### 2.4 GT9271 touch connector `J801`
 
@@ -87,7 +87,7 @@ The electrical numbering is fixed from the Displayman source. The board-facing p
 | 7 | `CTP_RESET_N` |
 | 8 | GND |
 
-The connector is the documented bottom-contact Hirose FH12-8S-0.5SH(55); sample flex presentation and thickness remain physical checks.
+The connector is the documented bottom-contact Hirose FH12-8S-0.5SH(55), matching Displayman's bottom-contact touch flex. Physical pin 1, stiffener, thickness, insertion depth and relaxed bend direction remain sample checks.
 
 ### 2.5 Nano headers and debug connector
 
@@ -194,12 +194,12 @@ The exact C601 selection is Nichicon `UHW1A682MHD`, using the standard KiCad 16 
 
 No known electrical issue requires another schematic topology change before PCB work.
 
-### Before footprint or placement freeze
+### Before placement freeze
 
-- inspect Nano DSI connector contact side, pin 1, insertion direction, and choose the matching cable contact orientation;
-- inspect the LCD and touch flex exposed-contact side, pin 1, thickness, bend direction, and insertion depth;
-- confirm Nano header height, board separation, mounting holes, keepouts, and the vehicle-harness arrangement;
-- check the available connector/flex samples at 1:1 to establish system cable presentation; the PCB land-pattern drawing audit itself is complete.
+- confirm the STEP-inferred Nano DSI bottom-contact face and physical pin 1; the baseline underside-J701 arrangement otherwise resolves to a Type-B cable;
+- inspect delivered LCD/touch physical pin 1, bare-tail/receptacle termination, thickness, stiffener, insertion depth and relaxed bend direction; their bottom-contact requirement is confirmed;
+- measure the exact socket's mated PCB separation and approve either USB/RJ45 cutouts or taller spacing, standoff hardware and J201 harness clearance;
+- check the connector/flex samples at 1:1 as specified in `mechanical-interface-verification.md`; the PCB land-pattern and manufacturer-file geometry audits are complete.
 
 ### Prototype bring-up
 

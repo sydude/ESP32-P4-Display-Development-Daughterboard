@@ -15,4 +15,4 @@ These committed KiCad 10 footprints cover manufacturer-specific packages and cas
 | `Texas_RNP0030B_WQFN-30-1EP_4x6mm_P0.5mm_EP1.8x4.5mm_ThermalVias` | KiCad/TI RNP0030B land pattern with exposed-pad thermal vias; local model link |
 | `Texas_RPW0010A_VQFN-HR-10_2x2mm` | TI RPW0010A package drawing |
 
-Manufacturer drawings remain controlling. Connector contact presentation and all critical custom land patterns require an independent review before placement freeze.
+Manufacturer drawings remain controlling. The independent project-local footprint review is complete; results and corrections are recorded in `docs/design-notes/project-local-footprint-verification.md`. Remaining system-level connector/cable presentation checks are recorded separately in `docs/design-notes/mechanical-interface-verification.md` and do not reopen the land-pattern audit.

@@ -137,12 +137,9 @@ Displayman confirms two lanes, RGB888, 600 × 1280 host-active timing, physical 
 
 ## 8. Connector and mechanical status
 
-Electrical pin maps for J201, Nano headers, J701 DSI, J702 LCD and J801 touch are frozen and independently checked. Available manufacturer drawings establish the selected board-side connector contact types. The following are physical placement/footprint-freeze checks, not schematic blockers:
+Electrical pin maps for J201, Nano headers, J701 DSI, J702 LCD and J801 touch are frozen and independently checked. The manufacturer-file audit in `mechanical-interface-verification.md` establishes the 50 × 50 mm Nano outline, Ø2.70 mm mounting pattern, exact 2×13 header grids, principal component envelopes and the selected board-side connector contact types. It also verifies the edited/rescaled KiCad `User.1` drawing as a visual working reference, not a placement authority.
 
-- inspect Nano DSI pin-1 presentation, latch side and fitted connector contact side;
-- select same-side or opposite-side 15-way FFC from the actual Nano/daughterboard presentation;
-- inspect Displayman LCD/touch flex pin 1, exposed-contact side, thickness, insertion depth and bend direction;
-- confirm Nano header height, standoff geometry, component keepouts and J201 harness exit.
+Physical checks remaining before placement freeze are limited to Nano DSI/P1 physical pin-1 presentation and confirmation of the STEP-inferred bottom-contact DSI, the exact socket's mated height, and the delivered LCD/touch flex pin-1/stiffener/termination presentation. The stack requires cutouts/notches over the 14.45 mm USB-A and 13.60 mm RJ45 envelopes or a separately verified taller separation. The baseline underside J701 arrangement uses a Type-B/opposite-side-contact 15-way FFC with a non-creased service loop.
 
 The removed RAPC722X footprint/model and 24 V plug-fit action no longer apply.
 

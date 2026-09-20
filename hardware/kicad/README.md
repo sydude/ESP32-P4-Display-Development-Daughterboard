@@ -6,7 +6,7 @@ This directory contains the canonical KiCad project for the ESP32-P4 Displayman 
 
 The committed native three-sheet KiCad hierarchy is the authoritative editable design source. The earlier Python schematic generator is retained only as a blocked historical record: it exits before writing anything, so ordinary KiCad edits cannot diverge from or be overwritten by a second source of truth. The ten unreferenced legacy sheets are documented in `LEGACY_GENERATED_SHEETS.md` and are not part of the active project hierarchy.
 
-The schematic is populated for independent Phase 2 electrical review. The PCB file remains the original unpopulated project; placement and layout have not begun.
+The schematic is populated for independent Phase 2 electrical review. The PCB remains unpopulated; its only added content is the locked, edited/rescaled Waveshare technical drawing on `User.1`. That derivative is a visual working reference, not production geometry. Placement and layout have not begun.
 
 ## Schematic organization
 
@@ -41,8 +41,8 @@ kicad-cli sch erc --severity-all -o hardware/kicad/erc-report.txt "hardware/kica
 
 The committed ERC report contains zero messages, errors or warnings. `endpoint_off_grid` is enabled as an error and also reports zero findings. Against baseline `cfd665b0`, the netlist comparison found exactly 25 intentionally removed physical references and the documented rail renames to `SYS_24V`/`SYS24_PGOOD`; every other retained pin/net membership is unchanged. Any future edit must preserve connectivity and rerun ERC/netlist comparison.
 
-See `docs/design-notes/maintainability-library-review.md` for the inventory and portability review, and `docs/design-notes/project-local-footprint-verification.md` for the final manufacturer-drawing audit, corrections, retained land-pattern rationale, model review and remaining physical connector checks.
+See `docs/design-notes/maintainability-library-review.md` for the inventory and portability review, `docs/design-notes/project-local-footprint-verification.md` for the completed manufacturer land-pattern audit, and `docs/design-notes/mechanical-interface-verification.md` for the Nano geometry, stacking, connector/cable conclusions and remaining physical checks.
 
 ## Phase boundary
 
-Do not begin PCB placement or layout until the owner separately authorizes it. The project-local land-pattern drawing/pad-number audit is complete. Before placement/mechanical freeze, connector/flex presentation and Nano stack-up must still be physically verified.
+Do not begin PCB placement or layout until the owner separately authorizes it. The project-local land-pattern audit and pre-layout manufacturer-file mechanical audit are complete. The narrow sample checks listed in `mechanical-interface-verification.md` remain prerequisites to placement/mechanical freeze.

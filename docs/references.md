@@ -84,16 +84,17 @@ Checked through 2026-09-16. Automotive/AEC qualification of individual parts doe
 
 ## Connectors and cables
 
-Checked through 2026-09-16.
+Checked through 2026-09-20.
 
 | Manufacturer | Part number | Function | Documented configuration | Source |
 |---|---|---|---|---|
 | Molex | `505110-4096` | Panel LCD connector | 40 position, 0.50 mm, bottom contact, front flip, 1.90 mm height; project footprint and official manufacturer STEP checked against sales drawing | [Manufacturer page](https://www.molex.com/en-us/products/part-detail/5051104096), [drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/505/505110/5051104096_sd.pdf), [manufacturer STEP archive](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/3dcadmodels/505/505110/5051104096_stp.zip) |
-| Molex | `0150200429` | Panel LCD FFC candidate | 40 circuit, 0.50 mm, type A same-side contacts, 76 mm | [Manufacturer page](https://www.molex.com/en-us/products/part-detail/150200429) |
-| Molex | `0150200431` | Panel LCD FFC candidate | 40 circuit, 0.50 mm, type A same-side contacts, 102 mm | [Manufacturer page](https://www.molex.com/en-us/products/part-detail/150200431) |
+| Molex | `0150200429` | Conditional panel LCD extension candidate | 40 circuit, 0.50 mm, type A same-side contacts, 76 mm; not a direct mate between J702 and a bare panel flex tail | [Manufacturer page](https://www.molex.com/en-us/products/part-detail/150200429) |
+| Molex | `0150200431` | Conditional panel LCD extension candidate | 40 circuit, 0.50 mm, type A same-side contacts, 102 mm; not a direct mate between J702 and a bare panel flex tail | [Manufacturer page](https://www.molex.com/en-us/products/part-detail/150200431) |
 | Amphenol Communications Solutions | `SFW15R-2STE1LF` | Nano DSI connector candidate | ACTIVE; 15 position, 1.00 mm, top contact, side-entry SMT ZIF; project footprint and official manufacturer STEP checked against drawing 10172241 Rev. A | [Manufacturer page](https://www.amphenol-cs.com/product/sfw15r2ste1lf.html), [drawing](https://cdn.amphenol-cs.com/media/wysiwyg/files/drawing/10172241.pdf), [manufacturer STEP archive](https://cdn.amphenol-cs.com/media/wysiwyg/files/3d/ssfw15r_2_4stlf.zip) |
 | Hirose Electric | `FH12-8S-0.5SH(55)` | Touch connector candidate | 8 position, 0.50 mm, bottom contact, front ZIF, 2.0 mm height | [Manufacturer page](https://www.hirose.com/product/p/CL0586-0744-5-55) |
 | Samtec | `SSW-113-02-G-D` family/configuration | Nano stacking sockets | 2 x 13, 2.54 mm; exact tail/body option remains mechanical | [Manufacturer family/configuration page](https://www.samtec.com/products/ssw-113-02-g-d-ll) |
+| Waveshare | ESP32-P4-NANO mechanical PDF/DXF/STEP dated 2026-03-31 | Nano outline, mounting holes, headers, component envelopes and stacking reference | Original files preserved under `hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/`; [manufacturer resources](https://docs.waveshare.com/ESP32-P4-NANO/Resources-And-Documents); validation in `docs/design-notes/mechanical-interface-verification.md` |
 
 Manufacturer electrical and mechanical documents control the design. Distributor availability is a procurement snapshot and must be rechecked before schematic freeze, prototype purchasing, and assembly release.
 

@@ -1,7 +1,9 @@
-Original manufacturer mechanical reference files from Waveshare.
+# Waveshare ESP32-P4-NANO mechanical references
 
-09/20/2026
-https://docs.waveshare.com/ESP32-P4-NANO/Resources-And-Documents
+Original manufacturer files downloaded 2026-09-20 from:
 
+<https://docs.waveshare.com/ESP32-P4-NANO/Resources-And-Documents>
 
-note that the original Waveshare files are preserved unchanged under hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/, while the KiCad user-layer geometry is a transformed derivative used only for layout reference.
+The PDF, DXF and STEP files in this directory are preserved manufacturer references and control Nano mechanical dimensions. Do not edit, rescale or replace them in place.
+
+The Nano technical drawing on the KiCad PCB `User.1` layer is an edited/rescaled derivative created for visual layout work. It is not an untouched DXF import and is not an authoritative placement datum. Its validation and known conversion artifacts are recorded in `docs/design-notes/mechanical-interface-verification.md`.
