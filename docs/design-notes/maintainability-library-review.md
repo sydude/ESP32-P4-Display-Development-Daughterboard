@@ -102,7 +102,7 @@ Project-local footprints:
 9. `Texas_RNP0030B_WQFN-30-1EP_4x6mm_P0.5mm_EP1.8x4.5mm_ThermalVias`
 10. `Texas_RPW0010A_VQFN-HR-10_2x2mm`
 
-The four local Bourns-inductor, Micro-Fit, TI PWP and TI RNP land patterns retain verified KiCad/manufacturer geometry but use local model links because the corresponding KiCad 10 model package did not contain the filename referenced by the stock footprint. The remaining manufacturer-specific patterns were created from the controlling package/connector drawings with courtyard, fabrication outline, silkscreen, pin-1 indication and paste/mask details as appropriate.
+The four local Bourns-inductor, Micro-Fit, TI PWP and TI RNP land patterns retain verified KiCad/manufacturer geometry but use local model links because the corresponding KiCad 10 model package did not contain the filename referenced by the stock footprint. The remaining manufacturer-specific patterns were created from the controlling package/connector drawings with courtyard, fabrication outline, silkscreen, pin-1 indication and paste/mask details as appropriate. The final independent, dimension-level audit and its corrections are recorded in `project-local-footprint-verification.md`.
 
 A pin-set audit found all critical/custom symbol pins represented in their footprint pad sets. The Micro-Fit footprint additionally has the intentional non-electrical `MP` mechanical hold-down pad.
 
@@ -121,7 +121,7 @@ Dimension-controlled simplified models committed locally where a redistributable
 - Molex 43045-0218 Micro-Fit header;
 - TI DRR0012E, DYY0014A, PWP0028V, RNP0030B and RPW0010A packages.
 
-The simplified models intentionally represent mechanical envelope, terminal locations and board height rather than decorative detail. The Molex model-download endpoint did not return a usable file during this pass, so its committed model follows the sales-drawing/verified-footprint envelope. Standard KiCad models cover the Nano stacking sockets/headers, touch FFC, fuse holder, large capacitors, ordinary inductors and common packages.
+The simplified models intentionally represent the mechanical body/envelope and board height rather than decorative detail; several omit fine terminal geometry. The Molex model-download endpoint did not return a usable file during this pass, so its committed model follows the sales-drawing/verified-footprint envelope. Standard KiCad models cover the Nano stacking sockets/headers, touch FFC, fuse holder, large capacitors, ordinary inductors and common packages.
 
 ## 8. Portability and source of truth
 
@@ -144,7 +144,7 @@ The owner or layout reviewer must physically verify:
 - Nano 15-pin FFC contact side, pin 1, insertion direction and mating cable presentation;
 - Displayman 40-pin FPC and GT9271 8-pin flex exposed-contact side, pin 1, thickness, stiffener, insertion depth, bend direction and practical cable length;
 - Nano socket/header height, standoff, board separation, mounting-hole and enclosure-clearance needs;
-- connector and critical custom land patterns by independent drawing audit and, where samples exist, a 1:1 physical overlay.
+- connector/flex presentation and mating fit using the actual samples at 1:1; the independent project-local land-pattern drawing audit is complete.
 
 These are physical/mechanical facts, not unresolved electrical-design choices.
 

@@ -180,7 +180,7 @@ All 197 physical BOM entries resolve to a footprint: 187 use standard KiCad libr
 | J702 | Molex 505110-4096 |
 | U901 | TI DYY TSOT-23-14 |
 
-The exact C601 selection is Nichicon `UHW1A682MHD`, using the standard KiCad 16 mm × 25 mm, 7.5 mm-pitch radial footprint. All mounted-body parts have resolving 3D models. The only 33 physical entries without a body model are 32 bare plated test pads and the J501 solder jumper, for which a 3D body is not appropriate. See `maintainability-library-review.md` for provenance and limitations. Critical footprints still require an independent drawing/pad-number review before placement freeze.
+The exact C601 selection is Nichicon `UHW1A682MHD`, using the standard KiCad 16 mm × 25 mm, 7.5 mm-pitch radial footprint. All mounted-body parts have resolving 3D models. The only 33 physical entries without a body model are 32 bare plated test pads and the J501 solder jumper, for which a 3D body is not appropriate. See `maintainability-library-review.md` for provenance and limitations. The ten project-local footprints completed their independent manufacturer-drawing/pad-number review on 2026-09-20; see `project-local-footprint-verification.md` for corrections and retained rationale.
 
 ## 7. Unresolved items by correct phase
 
@@ -199,7 +199,7 @@ No known electrical issue requires another schematic topology change before PCB 
 - inspect Nano DSI connector contact side, pin 1, insertion direction, and choose the matching cable contact orientation;
 - inspect the LCD and touch flex exposed-contact side, pin 1, thickness, bend direction, and insertion depth;
 - confirm Nano header height, board separation, mounting holes, keepouts, and the vehicle-harness arrangement;
-- independently verify the 10 project-local land patterns against their controlling drawings and check the available connector samples at 1:1.
+- check the available connector/flex samples at 1:1 to establish system cable presentation; the PCB land-pattern drawing audit itself is complete.
 
 ### Prototype bring-up
 

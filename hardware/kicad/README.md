@@ -41,8 +41,8 @@ kicad-cli sch erc --severity-all -o hardware/kicad/erc-report.txt "hardware/kica
 
 The committed ERC report contains zero messages, errors or warnings. `endpoint_off_grid` is enabled as an error and also reports zero findings. Against baseline `cfd665b0`, the netlist comparison found exactly 25 intentionally removed physical references and the documented rail renames to `SYS_24V`/`SYS24_PGOOD`; every other retained pin/net membership is unchanged. Any future edit must preserve connectivity and rerun ERC/netlist comparison.
 
-See `docs/design-notes/maintainability-library-review.md` for the inventory, footprint/3D coverage, connectivity proof, remaining physical checks and model provenance.
+See `docs/design-notes/maintainability-library-review.md` for the inventory and portability review, and `docs/design-notes/project-local-footprint-verification.md` for the final manufacturer-drawing audit, corrections, retained land-pattern rationale, model review and remaining physical connector checks.
 
 ## Phase boundary
 
-Do not begin PCB placement or layout until the owner separately authorizes it. Before placement/footprint freeze, connector/flex presentation and Nano stack-up must be physically verified and the project-local land patterns must receive a final drawing/pad-number check.
+Do not begin PCB placement or layout until the owner separately authorizes it. The project-local land-pattern drawing/pad-number audit is complete. Before placement/mechanical freeze, connector/flex presentation and Nano stack-up must still be physically verified.

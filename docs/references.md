@@ -99,11 +99,11 @@ Manufacturer electrical and mechanical documents control the design. Distributor
 
 ## Package, footprint and model sources
 
-Checked 2026-09-17 for the maintainability/library-completion pass. These links supplement the component electrical sources above; manufacturer package drawings remain controlling. Project-local simplified models reproduce the verified mechanical envelope and board interface where an exact redistributable model was unavailable.
+Checked through 2026-09-20 for the final project-local footprint audit. These links supplement the component electrical sources above; manufacturer package drawings remain controlling. Project-local simplified models reproduce the verified mechanical envelope and board interface where an exact redistributable model was unavailable. Detailed dimensions, intentional land-pattern departures, corrections and physical-verification boundaries are recorded in `docs/design-notes/project-local-footprint-verification.md`.
 
 | Manufacturer / source | Package or part | Use | Source |
 |---|---|---|---|
-| Texas Instruments | DRR0012E, PWP0028V, RNP0030B, RPW0010A and DYY0014A | Project-local IC footprints/models checked against package drawings included in the selected-device datasheets | [TI package search](https://www.ti.com/packaging/docs/searchtipackages.tsp) and the selected-device datasheets linked above |
+| Texas Instruments | DRR0012E (4224874 C11), PWP0028V (4230409 A01), RNP0030B (4222784 B09), RPW0010A (4225183 A08) and DYY0014A (4224643 D07) | Project-local IC footprints/models independently checked against the current package and stencil drawings included in the selected-device datasheets | [TI package search](https://www.ti.com/packaging/docs/searchtipackages.tsp) and the selected-device datasheets linked above |
 | Nichicon | `UHW1A682MHD` | Exact C601 selection; 6800 µF, 10 V, 16 mm × 25 mm body, 7.5 mm lead spacing | [Manufacturer UHW series page](https://www.nichicon.co.jp/english/products/aluminum_electrolytic_capacitors/uhw/) |
 | KiCad | KiCad 10 standard footprint and 3D-model libraries | Standard passives, headers/sockets, touch FFC, fuse holder and common packages; four local copies retain standard land geometry while repairing absent model linkage | [Official KiCad libraries](https://gitlab.com/kicad/libraries) |
 

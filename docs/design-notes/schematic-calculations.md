@@ -12,7 +12,7 @@
 
 This note records the component-value, electrical-margin, sequencing, and power-state calculations for the reviewed schematic. REV1 has one protected nominal-12 V external input; bench work uses a regulated/current-limited 12 V source at the same connector. It is the design basis for review, not a substitute for prototype measurements.
 
-The PCB has not been started. Manufacturer-specific land patterns called out in `schematic-review.md` remain intentionally unresolved until the physical interfaces are checked.
+The PCB has not been started. The project-local land patterns called out in `schematic-review.md` completed their manufacturer-drawing audit on 2026-09-20. The Nano/panel/touch flex presentation and other physical interface checks remain open and are intentionally separate from land-pattern correctness.
 
 ## 2. System load and vehicle-input budget
 
