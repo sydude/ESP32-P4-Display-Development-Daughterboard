@@ -39,9 +39,9 @@ kicad-cli sch export pdf -o /tmp/phase2.pdf "hardware/kicad/ESP32-P4 Display Dev
 kicad-cli sch erc --severity-all -o hardware/kicad/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch"
 ```
 
-The committed ERC report contains zero messages, errors or warnings. `endpoint_off_grid` is enabled as an error and also reports zero findings. Against baseline `cfd665b0`, the netlist comparison found exactly 25 intentionally removed physical references and the documented rail renames to `SYS_24V`/`SYS24_PGOOD`; every other retained pin/net membership is unchanged. Any future edit must preserve connectivity and rerun ERC/netlist comparison.
+The committed ERC report records the last native KiCad run before the Nano-header correction: zero messages, errors or warnings, with `endpoint_off_grid` enabled as an error. The subsequent chart-led P1/P2 correction was checked structurally and by an explicit connector-pin/net audit in an environment without `kicad-cli`; regenerate the native ERC report in KiCad 10 before placement authorization. The historical comparison against `cfd665b0` found exactly 25 intentionally removed physical references and the documented rail renames to `SYS_24V`/`SYS24_PGOOD`; that hash is provenance, not the current design baseline.
 
-See `docs/design-notes/maintainability-library-review.md` for the inventory and portability review, `docs/design-notes/project-local-footprint-verification.md` for the completed manufacturer land-pattern audit, and `docs/design-notes/mechanical-interface-verification.md` for the Nano geometry, stacking, connector/cable conclusions and remaining physical checks.
+See `docs/design-notes/maintainability-library-review.md` for the inventory and portability review, `docs/design-notes/project-local-footprint-verification.md` for the completed manufacturer land-pattern audit, `docs/design-notes/mechanical-interface-verification.md` for the Nano geometry and source validation, and `docs/design-notes/nano-interface-floorplanning-study.md` for the corrected header map, stacking comparison and preliminary area budget.
 
 ## Phase boundary
 

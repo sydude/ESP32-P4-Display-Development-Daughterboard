@@ -4,7 +4,7 @@
 
 | Document status | Version / date | Phase |
 |---|---|---|
-| Approved requirements / schematic baseline | v0.6 • 19 September 2026 | Phase 2 schematic architecture frozen for review; implementation records are maintained in `docs/design-notes/` |
+| Approved requirements / corrected schematic baseline | v0.7 • 21 September 2026 | Nano header mapping corrected; preliminary floorplanning complete; PCB placement/layout remains gated |
 
 <table>
 <colgroup>
@@ -30,6 +30,7 @@
 | v0.4 | 14 September 2026 | Added protected nominal-12 V vehicle evaluation input, four-switch buck-boost conversion to the common 24 V-class bus, dual-source reverse blocking, safe-by-default Nano 5 V eFuse behavior, representative current estimates, vehicle brownout/recovery requirements, and an expanded power-state validation matrix. Automotive qualification remains explicitly out of scope; UQ-02 remains the schematic-release blocker. |
 | v0.5 | 15 September 2026 | Added Displayman's 15 September email and LCD timing screenshot as S9; confirmed the 46–60 Hz usable range and that 55 MHz is LCD PCLK; separated confirmed timing from unverified HS-rate claims; reclassified UQ-02 as firmware/prototype bring-up verification; and completed a whole-PRD schematic-readiness and owner-action review. The v0.4 vehicle/bench/USB power architecture is unchanged. |
 | v0.6 | 19 September 2026 | Simplified REV1 to one protected nominal-12 V external input for both vehicle evaluation and bench development. Deleted the dedicated 24 V barrel path and LM74700 dual-source ORing; made the LM5176 output the canonical `SYS_24V` rail; and updated the power-state, tolerance, headroom, sequencing, test, component, and verification requirements. |
+| v0.7 | 21 September 2026 | Corrected the complete Waveshare Nano P1/P2 map from the official pinout chart with schematic cross-check; reassigned the five controls to GPIO20/21/22/23/32 on P1; made P2 electrically unused; and recorded the pre-layout area, stacking, elevated-header and top-side-J701 study. |
 
 ## 1. Executive summary
 
@@ -109,13 +110,14 @@ Requirements are derived from the three supplied files, written manufacturer cor
 |--------|-------------------------------------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | S1     | KD068HDFID009-C009A .pdf            | Displayman, v1.0, 2024-11-25 SHA-256 4c8394ac…03bcf               | Primary panel mechanical, pinout, electrical, MIPI, reset, power, touch, and backlight source.                       |
 | S2     | KD068HDFID009 -2LANE .txt           | SHA-256 81ec9ab8…e6872c                                           | Primary project-specific two-lane timing and command sequence. Treated as configuration data, not compilable source. |
-| S3     | ESP32-P4-NANO-schematic.pdf         | Waveshare schematic PDF created 2024-10-25 SHA-256 1e57b31f…10de1 | Primary Nano connector mapping, header power, and GPIO connectivity source.                                          |
+| S3     | ESP32-P4-NANO-schematic.pdf         | Waveshare schematic PDF created 2024-10-25 SHA-256 1e57b31f…10de1 | Authoritative Nano electrical cross-check; committed under `hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/`. |
 | S4     | ESP32-P4 Series Datasheet v0.7      | Espressif, 2026-07-14                                             | Current SoC limits, GPIO/strapping information.                                                                      |
 | S5     | ESP-IDF MIPI DSI LCD API            | Current online documentation checked 2026-09-13                   | DSI host configuration model, lane count/rate, DPI timing fields.                                                    |
 | S6     | ESP32-P4 Hardware Design Guidelines | Current online documentation checked 2026-09-13                   | MIPI implementation guidance; Nano already implements the SoC-side D-PHY support circuitry.                          |
 | S7     | Displayman email from Anson Ho      | Received 2026-09-13; reports confirmation from Displayman engineering | Confirms S2, including `RSOX(600)`, is correct for the exact KD068HDFID009-C009A module. Does not define the 600-to-480 source mapping or DSI transport parameters. |
 | S8     | Displayman email from Anson Ho      | Received 2026-09-14; repository PDF SHA-256 `76a9e533…d4d`          | Detailed answers for IOVCC, sequencing, DSI, backlight, source mapping, FPCs, and touch. Direct confirmations are controlling where internally coherent; contradictions remain explicitly open. |
 | S9     | Displayman email and LCD timing screenshot from Anson Ho | Received 2026-09-15; repository Markdown SHA-256 `8823097d…89f4`; image SHA-256 `0e07dbba…97d3` | Confirms strict 60 FPS is unnecessary, approximately 46–60 Hz is usable subject to proper operation, and lower refresh may be used for host bandwidth. Screenshot independently shows 600 × 1280, HBP/HFP/HSW = 40/40/4, VBP/VFP/VSW = 20/36/4, and `LCD_PCLK = 55` MHz. It does not supply a D-PHY HS lane rate or controller limit. |
+| S10 | Waveshare ESP32-P4-NANO Wiki pinout chart | Repository image SHA-256 `271259f8…b8f5d9` | Primary physical P1/P2 pin-position and GPIO-name source; use before the schematic when resolving header position. |
 
 ### 3.1 Interpretation rules
 
@@ -205,7 +207,7 @@ The daughterboard is partitioned into five zones. This is the controlling Phase-
 
 ### 5.1 Physical integration assumption
 
-The baseline is a stack-on daughterboard using the Nano’s two 2×13, 2.54 mm headers for 5 V, ground, and control GPIOs, plus a short 15-position FFC from the Nano DSI connector to the daughterboard. The panel then connects through its 40-position LCD and 8-position touch flexes. The manufacturer-file audit in `docs/design-notes/mechanical-interface-verification.md` establishes the Nano outline, mounting/header datums and static component envelopes. Daughterboard outline/cutouts, exact stack height, cable exit and moving/service keepouts remain provisional until the listed physical sample checks and mechanical arrangement approval.
+The electrical baseline uses Nano P1 for 5 V, ground and all five control GPIOs; P2 is electrically unused. The preferred overlap concept retains both 2×13, 2.54 mm interfaces, with P2 serving only as alignment/structural support, plus independent standoffs and a short 15-position FFC from the Nano DSI connector to the daughterboard. A P1-only side-stack with independent standoffs remains a viable alternative. The panel then connects through its 40-position LCD and 8-position touch flexes. The manufacturer-file audit in `docs/design-notes/mechanical-interface-verification.md` establishes the Nano outline, mounting/header datums and static component envelopes; `docs/design-notes/nano-interface-floorplanning-study.md` establishes the corrected electrical map and quantitative concept comparison. Daughterboard outline/cutouts, exact stack height, cable exit and moving/service keepouts remain provisional until the listed physical sample checks and mechanical arrangement approval.
 
 ### 5.2 Grounding
 
@@ -235,17 +237,17 @@ The following mapping is read directly from S3. Pin numbering and cable contact 
 | 14           | ESP_3V3             | Nano-side logic reference only; do not parallel with TOUCH_3V3 |
 | 15           | ESP_3V3             | Nano-side logic reference only; do not parallel with TOUCH_3V3 |
 
-### 6.2 Proposed control GPIO allocation
+### 6.2 Corrected control GPIO allocation
 
 | **Nano header** | **GPIO** | **Net**         | **Safe-state requirement**                                                           |
 |-----------------|----------|-----------------|--------------------------------------------------------------------------------------|
-| P1 pin 10       | GPIO4    | LCD_RESET_CMD_N | High impedance must leave panel reset asserted through hardware pull-down/wired-AND. |
-| P1 pin 9        | GPIO5    | CTP_RESET_N     | High impedance must hold touch reset low until firmware takes control.               |
-| P1 pin 14       | GPIO22   | CTP_INT         | Bidirectional: output during address select, input interrupt afterward.              |
-| P1 pin 5        | GPIO23   | BL_PWM          | Default low; no backlight before display initialization.                             |
-| P1 pin 11       | GPIO20   | LCD_PWR_EN | Baseline selection; default low. Avoid GPIO24 because it is a default USB Serial/JTAG signal; GPIO21/P1 pin 13 remains the documented alternate if the pinned application reserves GPIO20. |
+| P1 pin 15       | GPIO21   | LCD_RESET_CMD_N | High impedance must leave panel reset asserted through hardware pull-down/wired-AND. |
+| P1 pin 16       | GPIO22   | CTP_RESET_N     | High impedance must hold touch reset low until firmware takes control.               |
+| P1 pin 23       | GPIO32   | CTP_INT         | Bidirectional: output during address select, input interrupt afterward.              |
+| P1 pin 7        | GPIO23   | BL_PWM          | Default low; no backlight before display initialization.                             |
+| P1 pin 13       | GPIO20   | LCD_PWR_EN      | Default low; conflict-free ordinary GPIO on P1.                                      |
 
-These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO38 [S4]. The corrected P1 pin numbers above supersede the v0.2 labels. Phase 2 shall use GPIO20 for `LCD_PWR_EN` and verify it against the pinned Nano BSP/application during capture; GPIO21 is the documented alternate. GPIO24 shall remain available for its default USB Serial/JTAG function.
+These five GPIOs are established from S10 and cross-checked electrically against S3. They are not strapping pins and are outside the Nano's onboard I²C pair, pad-JTAG group, USB Serial/JTAG pairs and UART0/boot pins. GPIO33/P1-24 is the preferred spare alternate. The full audited maps and selection rationale are in `docs/design-notes/nano-interface-floorplanning-study.md`.
 
 ### 6.3 Panel 40-pin LCD connector
 
@@ -281,8 +283,8 @@ These GPIOs are exposed on S3 and are not among ESP32-P4 strapping GPIO34–GPIO
 | 3       | VDD        | Filtered TOUCH_3V3; local decoupling             |
 | 4       | SCL        | I²C through powered-off-protected switch and ESD |
 | 5       | SDA        | I²C through powered-off-protected switch and ESD |
-| 6       | INT        | GPIO22 through switch; bidirectional during address select, then open-drain active-low; 2–10 kΩ touch-side pull-up |
-| 7       | RST        | GPIO5 through switch plus hardware reset clamp; active low |
+| 6       | INT        | GPIO32 through switch; bidirectional during address select, then open-drain active-low; 2–10 kΩ touch-side pull-up |
+| 7       | RST        | GPIO22 through switch plus hardware reset clamp; active low |
 | 8       | GND        | Ground                                           |
 
 ## 7. Power architecture, source isolation, and sequencing
@@ -375,7 +377,7 @@ Hardware and firmware shall jointly implement the following conservative sequenc
 | 1 | Enable LCD_IOVCC (1.8 V) | After maintained supply is valid | Hardware |
 | 2 | Enable LCD_VCI at 2.8 V | 10 ms after IOVCC, conservative target | Hardware |
 | 3 | Keep reset low after both rails stabilize | ≥5 ms; rail rise times ≥10 µs | Hardware reset clamp |
-| 4 | Release panel reset after ≥10 ms low | S8 minimum 50 µs; S2 uses 10 ms | Hardware + GPIO4 open-drain command |
+| 4 | Release panel reset after ≥10 ms low | S8 minimum 50 µs; S2 uses 10 ms | Hardware + GPIO21 open-drain command |
 | 5 | Send reviewed GC9703C init table | ≥10 ms after reset release | Firmware |
 | 6 | Sleep Out 0x11, wait ≥120 ms, Display On 0x29 | S2/S8 | Firmware |
 | 7 | Enable PWM from 0% and ramp | After valid frames/display-on | Firmware |
@@ -578,11 +580,11 @@ These are the preferred Phase-2 design anchors. Supporting inductors, power resi
 | MIPI ESD              | Texas Instruments TPD6E05U06RVZR                | Six channels, ~0.5 pF, 5.5 V, up to 6 Gb/s class                    | Active; one part protects D0/D1/CLK conductors with low loading.                   |
 | Touch ESD             | Texas Instruments TPD4E05U06DQAR                | Four channels, ~0.5 pF, IEC ESD protection                          | Active; covers SCL/SDA/INT/RST.                                                    |
 | Backlight driver      | Texas Instruments TPS922053DYYR                 | 4.5–65 V, 150 mΩ integrated switch, external sense, fault output, fast PWM/hybrid dimming | Preferred for confirmed 16.8–19.8 V / 240 mA load; final 200–300 kHz design must prove worst-case headroom. |
-| Nano DSI connector    | Amphenol SFW15R-2STE1LF                         | 15-position, 1.00 mm, top-contact ZIF; active/in stock              | Appropriate for underside stack mounting; baseline same-direction mouth presentation to the STEP-inferred bottom-contact Nano connector uses a Type-B cable. Nano physical pin 1/contact face still requires inspection. |
+| Nano DSI connector    | Amphenol SFW15R-2STE1LF                         | 15-position, 1.00 mm, top-contact ZIF; active/in stock              | Reserve on daughterboard top with a radiused FFC pass-through. The preferred mouth-toward-slot S-bend uses a Type-B cable to the STEP-inferred bottom-contact Nano connector; physical pin 1/contact face still requires inspection. |
 | Panel LCD connector   | Molex 505110-4096                               | 40-position, 0.50 mm, bottom-contact FD19                           | Matches S8's bottom-contact panel flex; delivered tail pin 1/stiffener/termination still requires inspection. |
 | Panel LCD FFC         | Molex 0150200429 (76 mm) or 0150200431 (102 mm) | 40-way, 0.50 mm Type-A Premo-Flex                                   | Conditional extension candidates only; not direct mates to a bare integral panel flex tail. |
 | Touch connector       | Hirose FH12-8S-0.5SH(55)                        | 8-position, 0.50 mm, bottom-contact ZIF                             | Electrically consistent with S8; insertion direction and flex presentation still require sample inspection. |
-| Stacking sockets      | Samtec SSW-113-02-G-D (two)                     | 2×13, 2.54 mm female socket                                         | Provisional exact mounting/tail option; Nano header grid is confirmed, but mated stack height requires measurement. |
+| Stacking sockets      | Samtec ESW-113-33-G-D (overlap candidate)        | 2×13, 2.54 mm elevated female socket                                | Recommended ~18.63 mm overlap separation; ESW-113-23-G-D gives the ~16.09 mm minimum case. P2 is electrically unused and may be retained for mechanical support. Exact mated height requires sample verification. |
 
 ### 12.1 Component selection policy
 
@@ -646,14 +648,14 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 | UQ-02 OPEN / BRING-UP | What exact HS lane rate did Displayman's known-working host use, what is the authoritative GC9703C maximum, and which ESP32-P4 setting gives best operation? | S8 confirms RGB888, 600 × 1280, two lanes, and continuous-clock recommendation but gives an invalid 110 Mb/s/lane calculation and an independently unverified 500 Mb/s/lane ceiling. S9 confirms 55 MHz is LCD PCLK, the exact porches, and approximately 46–60 Hz operation. Active-only bounds are ≈423.9 Mb/s/lane at 46 Hz and ≈553.0 Mb/s/lane at 60.007 Hz; a continuous 55 MHz RGB888 stream is 660 Mb/s/lane before overhead. | Not a schematic blocker: no bridge/component selection depends on the value, and the passive channel is required to support at least the ESP32-P4's 1.5 Gb/s/lane capability. Firmware shall select and validate the working rate/refresh/mode on the prototype. Do not design around 110 or 500 Mb/s/lane. |
 | UQ-03 CLOSED      | What are LED-string VF min/max over current and temperature, and required driver headroom?                                | S8 gives 16.8 V minimum, 19.2 V typical, and 19.8 V maximum at 240 mA over temperature. The regulated `SYS_24V` minimum is 23.19 V before ripple/transient allowance. | Retain TPS922053 at 300 kHz; calculated worst-static gross headroom after the 0.20 V sense drop is 3.19 V, with about 2.45 V remaining after conservative conduction and ripple allowance. Validate on the prototype. |
 | UQ-04 CLOSED      | What VCI voltage and reset/rail ordering apply?                                                                              | S8 confirms VDDI = IOVCC, specifies 1.8 V IOVCC and 2.8 V VCI, reset low through ramp, ≥5 ms rail-stable delay, ≥50 µs reset pulse, and ≥120 ms normal shutdown wait. S1 permits 2.8 V VCI and shows conservative rail ordering. | Use 2.8 V VCI and conservative IOVCC→VCI→reset power-up, reset→VCI→IOVCC power-down, early fail detection, and isolated hold-up. The older S2 3.3 V header value is documented but does not block this safe implementation. |
-| UQ-05 NARROWED / PHYSICAL | What are the LCD, touch and Nano DSI physical pin-1/contact presentations? | S8 confirms bottom-contact 40-pin and 8-pin module flexes. A section through the Waveshare STEP shows a bottom-contact Nano DSI connector; selected top-contact J701 is compatible on the daughterboard underside and the baseline same-direction mouth arrangement uses a Type-B cable. Manufacturer mechanical files do not encode Nano physical pin 1 or the delivered panel-tail pin-1/stiffener details. | Inspect/continuity-check Nano J1 pin 1/contact face and inspect the exact LCD/touch tails before placement freeze; no connector-type or electrical-map change is indicated. |
+| UQ-05 NARROWED / PHYSICAL | What are the LCD, touch and Nano DSI physical pin-1/contact presentations? | S8 confirms bottom-contact 40-pin and 8-pin module flexes. A section through the Waveshare STEP shows a bottom-contact Nano DSI connector. Top-side top-contact J701 with its mouth toward the slot uses a Type-B cable through the radiused pass-through. Manufacturer files still do not encode Nano J1 physical pin 1 or delivered panel-tail details. | Inspect/continuity-check Nano J1 pin 1/contact face, mock the Type-B pass-through, and inspect the exact LCD/touch tails before placement freeze. |
 | UQ-06 OPEN / PROTOTYPE | Is Nano J1 pin 10 intentionally NC, and are pins 14/15 safe reference-only 3.3 V outputs?                                 | S3 shows pin 10 unlabeled; 14/15 tied to ESP_3V3.                                                                          | Capture pin 10 as NC and pins 14/15 as sense/reference-only, never driven. Verify with Waveshare or powered-off continuity before prototype connection; no active schematic function depends on them. |
 | UQ-07 OPEN / BRING-UP | What is the maximum sustained and transient 5 V current of the exact Nano build?                                          | S3 shows 5 V input and onboard conversion but no board-level input-current rating.                                         | The conservative 3 A architecture is sufficient for capture. Measure boot, CPU/PSRAM load, C6 activity, USB, and peripherals before final protection/thermal validation. |
 | UQ-08 OPEN / PROTOTYPE | Does the Nano onboard USB-to-VCC_5V MOSFET guarantee zero reverse current from the externally driven 5 V header to laptop VBUS over all power transitions? | S3 shows a MOSFET power path but Waveshare provides no explicit dual-source guarantee; USB VBUS is not separately exposed at the headers. | Concurrent USB is a mandatory normal mode. Use TPS259470A from SYS_5V to NANO_5V for the Nano→daughterboard blocking direction; verify the Nano's opposite direction by four-quadrant voltage/current test before prototype release. If it fails, use the documented data-only/Nano USB-boundary modification contingency. |
 | UQ-09 CLOSED      | Does the panel accept one 240 mA total sink for the internal four parallel strings?                                       | S8 confirms 240 mA total and 60 mA per each of four parallel strings.                                                      | Set one 240 mA total current channel; validate temperature and uniformity on samples.                                      |
 | UQ-10 MEDIUM      | Is 0x5D the desired default GT9271 address, and what INT behavior applies?                                                | S8 confirms open-drain active-low INT after initialization and a 2–10 kΩ pull-up, but says 0x5D uses INT high during reset; S1 maps INT high to 0x14 and low to 0x5D. | Hardware supports both. Default provisionally to S1's 0x5D/INT-low timing, retry 0x14 only through a complete reset sequence, and confirm on the sample or through corrected vendor guidance. |
-| UQ-11 NARROWED / PHYSICAL | Which exact socket height, cutout arrangement and cable lengths complete the stack? | Waveshare PDF/DXF/STEP establish a 50 × 50 mm board, four Ø2.70 mm holes, exact 2×13 grids and component envelopes. USB-A reaches +14.45 mm and RJ45 +13.60 mm above the Nano board plane, so an ordinary full-overlap low stack is not viable without cutouts or greater separation. | Measure the exact mated socket/PCB separation and approve cutouts or taller spacing using a 1:1 mock-up before layout. |
-| UQ-12 NARROWED / SCHEMATIC REVIEW | Are GPIO4/5/22/23 and baseline GPIO20 free in the pinned firmware/BSP? | They are exposed and not strapping pins. GPIO24 was removed because it is the default USB Serial/JTAG D− pin; GPIO21 is an available alternate to GPIO20. | Capture GPIO20 as the `LCD_PWR_EN` baseline and run the pinned-BSP conflict check during schematic review. This is an engineering verification within Phase 2, not an owner preference or pre-capture blocker. |
+| UQ-11 NARROWED / PHYSICAL | Which exact socket height, support and cable geometry complete the stack? | The natural overlap candidate is ESW-113-33-G-D at about 18.63 mm separation, giving 4.18 mm nominal clearance over USB-A; the 16.09 mm ESW-113-23 case is credible but tighter. A 145 × 100 mm conventional REV1 concept is recommended. | Mate the exact sockets, verify separation/insertion and standoffs, and mock the DSI pass-through before placement freeze. |
+| UQ-12 CLOSED / CORRECTED | Which Nano header pins and GPIOs carry the five controls? | The official Waveshare pinout chart and schematic establish P1-7/13/15/16/23 as GPIO23/20/21/22/32. All are non-strapping ordinary GPIOs with no Nano onboard load; restricted/onboard-use groups were deliberately avoided. | Use the corrected assignments in Section 6.2. P2 is electrically unnecessary; GPIO33/P1-24 is the spare alternate. |
 | UQ-13 NARROWED    | Is the detailed source-channel numbering in S8 correct?                                                                    | S8 confirms H-active = 600 and internal masking of 60 host columns per side, so the host requirement is resolved. Its `S901–S1500` range spans 600 source outputs rather than the stated 180. | Implement the confirmed 600-wide transport/central 480-visible crop and validate with numbered-column patterns. Seek a corrected source-channel diagram, but this arithmetic defect does not block schematic capture. |
 | UQ-14 MEDIUM      | Which S2 syntax lines are transcription artifacts versus tool-specific grammar?                                           | File contains pseudo-code and malformed parentheses but payload appears structured.                                        | Normalize wrapper syntax only; preserve command bytes; request original vendor project/export if available.               |
 | UQ-15 HIGH        | Does the selected vehicle protection network survive the intended harness/source transient energy and recover without overstressing the TVS, FETs, fuse, or converter? | Component voltage ratings and topology are adequate on paper, but transient energy depends on vehicle/harness/source impedance and pulse duration. | Complete SPICE/reference-design checks, then bench-test defined positive/negative, reverse-polarity, crank, jump/miswire, and hot-plug cases. Do not claim ISO compliance from component ratings alone. |
@@ -735,7 +737,7 @@ The complete S2 byte sequence remains the authoritative starting point and shall
 
 - No true schematic-release blocker remains. UQ-02 is intentionally open for firmware/prototype validation; UQ-01, UQ-03, and UQ-04 are closed, and the panel-side electrical portion of UQ-05 is closed.
 
-- GPIO allocation remains checked against the pinned BSP during schematic review; GPIO20 is captured and GPIO21 remains the documented alternate.
+- The corrected GPIO allocation is GPIO20/21/22/23/32 on P1; verify firmware initialization and safe states during bring-up.
 
 - Exact Nano/panel samples and mechanical architecture are required before footprint/PCB placement freeze, not before schematic capture.
 
@@ -773,7 +775,9 @@ S8 and S9 answer enough to begin hardware capture. The questions below remain us
 
 - S2 — KD068HDFID009 -2LANE initialization file (user supplied).
 
-- S3 — Waveshare ESP32-P4-NANO schematic, PDF created 25 October 2024 (user supplied).
+- S3 — Waveshare ESP32-P4-NANO schematic, PDF created 25 October 2024; committed under `hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/`.
+
+- S10 — Waveshare ESP32-P4-NANO Wiki GPIO/pinout chart; committed beside S3 and controlling for physical P1/P2 positions.
 
 - S7 — Email from Anson Ho, Displayman (SZ) Technology Co., Ltd., received 13 September 2026; reports that Displayman engineering confirmed the supplied two-lane initialization file is correct for the exact KD068HDFID009-C009A module. This confirmation includes retaining `RSOX(600)` but does not explain the 600-to-480 mapping or supply the required DSI transport parameters.
 
@@ -781,7 +785,7 @@ S8 and S9 answer enough to begin hardware capture. The questions below remain us
 
 - S9 — Follow-up email from Anson Ho, Displayman (SZ) Technology Co., Ltd., received 15 September 2026, plus reference LCD timing screenshot; stored as `docs/design-notes/email response from displayman on 9-15-2026.md` (SHA-256 `8823097df6d8f23fd516d2b6e0f963860ce33b882156e1e74eb6324d2f1189f4`) and `docs/design-notes/email response from displayman on 9-15-2026 [IMAGE].jpg` (SHA-256 `0e07dbbabf7c044b3f3cbf885d786e36a1ac6d44cc7af4ac6fe7aa517a8977d3`).
 
-### Manufacturer documentation checked through 15 September 2026
+### Manufacturer documentation checked through 21 September 2026
 
 **Espressif:** [ESP32-P4 Series Datasheet](https://documentation.espressif.com/esp32-p4_datasheet_en.html); [ESP-IDF MIPI DSI LCD API](https://docs.espressif.com/projects/esp-idf/en/stable/esp32p4/api-reference/peripherals/lcd/dsi_lcd.html); [ESP32-P4 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32p4/schematic-checklist-esp32p4.html)
 

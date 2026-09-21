@@ -503,12 +503,13 @@ def build_sheets() -> list[Sheet]:
     ]))
 
     # 10 - Nano headers, GPIO assignments, indicators and test access.
-    p1_nets = [None, "NANO_5V", None, "NANO_5V", "BL_PWM", None, None, None, "CTP_RESET_N_NANO", "LCD_RESET_CMD_N", "LCD_PWR_EN", None, None, "CTP_INT_NANO", None, None, None, None, None, None, None, None, None, None, "GND", "GND"]
-    p1_names = ["UNUSED_1", "VCC_5V", "UNUSED_3", "VCC_5V", "GPIO23_BL_PWM", "UNUSED_6", "UNUSED_7", "UNUSED_8", "GPIO5_CTP_RST", "GPIO4_LCD_RST", "GPIO20_LCD_PWR_EN", "UNUSED_12", "GPIO21_ALT", "GPIO22_CTP_INT", "UNUSED_15", "UNUSED_16", "UNUSED_17", "UNUSED_18", "UNUSED_19", "UNUSED_20", "UNUSED_21", "UNUSED_22", "UNUSED_23", "UNUSED_24", "GND", "GND"]
+    p1_nets = [None, "NANO_5V", None, "NANO_5V", None, "GND", "BL_PWM", None, "GND", None, None, None, "LCD_PWR_EN", "GND", "LCD_RESET_CMD_N", "CTP_RESET_N_NANO", None, None, None, "GND", None, None, "CTP_INT_NANO", None, "GND", None]
+    p1_names = ["3V3", "5V", "GPIO7_I2C_SDA", "5V", "GPIO8_I2C_SCL", "GND", "GPIO23_BL_PWM", "GPIO37_UART0_TX_STRAP", "GND", "GPIO38_UART0_RX_STRAP", "GPIO5_JTAG", "GPIO4_JTAG", "GPIO20_LCD_PWR_EN", "GND", "GPIO21_LCD_RESET", "GPIO22_CTP_RESET", "3V3", "GPIO24_USB1P1_N0", "GPIO25_USB1P1_P0", "GND", "GPIO26_USB1P1_N1", "GPIO27_USB1P1_P1", "GPIO32_CTP_INT", "GPIO33", "GND", "GPIO36_STRAP"]
+    p2_names = ["5V", "ESP_LDO_VO4", "GND", "GND", "3V3", "GPIO0_XTAL32K_N", "GND", "GPIO1_XTAL32K_P", "GPIO3_JTAG_TOUCH1", "GND", "GPIO2_JTAG_TOUCH0", "GPIO6_TOUCH4", "GPIO54_ADC2_CH7", "GPIO53_ADC2_CH6", "GPIO47", "GPIO48", "GPIO46", "GND", "GPIO45", "C6_U0RXD", "C6_IO12", "C6_U0TXD", "C6_IO13", "C6_IO9", "GND", "GND"]
     p = [connector("J1001", "NANO P1 2x13", "Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical", p1_nets, 65, 80,
-                   mpn="SSW-113-02-G-D", manufacturer="Samtec", names=p1_names, description="Nano stack header; only source-confirmed used pins assigned"),
-         connector("J1002", "NANO P2 2x13", "Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical", [None]*24 + ["GND", "GND"], 190, 80,
-                   mpn="SSW-113-02-G-D", manufacturer="Samtec", names=[f"UNUSED_{i+1}" for i in range(24)] + ["GND", "GND"], description="Nano stack header; no signals required by this daughterboard"),
+                   mpn="SSW-113-02-G-D", manufacturer="Samtec", names=p1_names, description="Waveshare Nano P1 header; complete host pin functions shown"),
+         connector("J1002", "NANO P2 2x13", "Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical", [None]*26, 190, 80,
+                   mpn="SSW-113-02-G-D", manufacturer="Samtec", names=p2_names, description="Waveshare Nano P2 header; electrically unused by daughterboard"),
          passive("R1001", "100k", "Resistor_SMD:R_0603_1608Metric", "LCD_PWR_EN", "GND", 300, 35),
          passive("R1002", "100k", "Resistor_SMD:R_0603_1608Metric", "LCD_RESET_CMD_N", "GND", 300, 55),
          passive("R1003", "100k", "Resistor_SMD:R_0603_1608Metric", "BL_PWM", "GND", 300, 75),
@@ -525,9 +526,9 @@ def build_sheets() -> list[Sheet]:
          tp("TP1001", "LCD_PWR_EN", 505, 35), tp("TP1002", "LCD_RESET_CMD_N", 505, 55), tp("TP1003", "BL_PWM", 505, 75),
          tp("TP1004", "CTP_RESET_N_NANO", 505, 95), tp("TP1005", "CTP_INT_NANO", 505, 115), tp("TP1006", "GND", 560, 35)]
     s.append(Sheet("10_headers_debug.kicad_sch", "Nano Headers and Debug", 11, p, [
-        "Used P1 mapping: pin 5 GPIO23 BL_PWM; 9 GPIO5 touch reset; 10 GPIO4 LCD reset; 11 GPIO20 power enable; 14 GPIO22 touch INT.",
-        "P1 pins 2/4 are Nano 5 V. GPIO21/P1-13 is an unconnected documented alternate. GPIO24 remains untouched for USB Serial/JTAG.",
-        "Unused Nano header pins are intentionally no-connect in this design. Confirm physical header orientation before PCB placement freeze.",
+        "Corrected P1 controls: pin 7 GPIO23 BL PWM; 13 GPIO20 LCD power; 15 GPIO21 LCD reset; 16 GPIO22 touch reset; 23 GPIO32 touch INT.",
+        "P1 pins 2/4 are Nano 5 V; all five controls are non-strapping P1 GPIOs. P2 is electrically unused.",
+        "Unconnected Nano pins retain their actual host function names. Confirm physical header orientation before PCB placement freeze.",
     ]))
     return s
 

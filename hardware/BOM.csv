@@ -67,8 +67,8 @@ J701,NANO DSI 15P,Amphenol ICC,SFW15R-2STE1LF,Phase2:Amphenol_SFW15R-2STE1LF,POP
 J702,DISPLAYMAN LCD 40P,Molex,505110-4096,Phase2:Molex_505110-4096,POP,Interfaces & Nano,Exact Displayman-specified bottom-contact panel connector
 J801,GT9271 TOUCH 8P,Hirose,FH12-8S-0.5SH(55),Connector_FFC-FPC:Hirose_FH12-8S-0.5SH_1x08-1MP_P0.50mm_Horizontal,POP,Interfaces & Nano,Bottom-contact touch FPC connector
 J901,BL HARD DISABLE,,,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,POP,Display Power & Backlight,Normally fitted hardware backlight disable shunt
-J1001,NANO P1 2x13,Samtec,SSW-113-02-G-D,Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical,POP,Interfaces & Nano,Nano stack header; only source-confirmed used pins assigned
-J1002,NANO P2 2x13,Samtec,SSW-113-02-G-D,Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical,POP,Interfaces & Nano,Nano stack header; no signals required by this daughterboard
+J1001,NANO P1 2x13,Samtec,SSW-113-02-G-D,Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical,POP,Interfaces & Nano,P1 electrical stack header; SSW candidate suits side-stack but elevated overlap requires the documented ESW candidate and matching footprint review before placement
+J1002,NANO P2 2x13,Samtec,SSW-113-02-G-D,Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical,POP,Interfaces & Nano,Electrically unused optional mechanical stack header; final population and height depend on selected architecture
 J1003,DEBUG HEADER,Samtec,TSW-105-07-G-D,Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical,POP,Interfaces & Nano,Low-speed development/debug access
 L201,2.2uH 8A,Bourns,SRP1038A-2R2M,Phase2:L_Bourns_SRP1038A_10.0x10.0mm,POP,Power,Shielded AEC-Q200 input filter inductor
 L301,15uH,Coilcraft,XAL7070-153MEC,Inductor_SMD:L_Coilcraft_XAL7070-XXX,POP,Power,Shielded AEC-Q200 buck-boost inductor; 10.1 A saturation rating

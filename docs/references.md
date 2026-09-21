@@ -8,23 +8,25 @@ This index records source documents and manufacturer links used by the project. 
 |---|---|---|---|---|
 | S1 | Displayman (SZ) Technology Co., Ltd. | `KD068HDFID009-C009A` module datasheet | v1.0, 2024-11-25, 40 pages; SHA-256 `4c8394ac…03bcf` | External source; not committed |
 | S2 | Displayman | `KD068HDFID009 -2LANE.txt` initialization file | SHA-256 `81ec9ab8…e6872c` | External source; not committed |
-| S3 | Waveshare | `ESP32-P4-NANO-schematic.pdf` | PDF created 2024-10-25; SHA-256 `1e57b31f…10de1` | External source; not committed |
+| S3 | Waveshare | `ESP32-P4-NANO-schematic.pdf` | PDF created 2024-10-25; SHA-256 `1e57b31f…10de1` | Original manufacturer PDF committed under `hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/`; authoritative electrical cross-check |
 | S7 | Displayman, Anson Ho | Email reporting Displayman engineering confirmation that S2, including `RSOX(600)`, is correct for exact module | Received 2026-09-13 | External correspondence; summarized in PRD v0.2 |
 | S8 | Displayman, Anson Ho | Detailed engineering response covering IOVCC, sequence, DSI, backlight, mapping, FPCs, and GT9271 | Received 2026-09-14; SHA-256 `76a9e53303412ff29189debf72a1f4c5dcf495e249f0ce86e32092063407ed4d` | User deliberately committed [email-chain PDF](design-notes/Re-%20Displayman%20%7C%20Datasheet%20%26%20Evaluation%20Units%20for%20KD068HDFID009-C009A.pdf); analyzed in PRD v0.3 |
 | S9 | Displayman, Anson Ho | Follow-up email and reference LCD timing screenshot | Received 2026-09-15; email SHA-256 `8823097df6d8f23fd516d2b6e0f963860ce33b882156e1e74eb6324d2f1189f4`; screenshot SHA-256 `0e07dbbabf7c044b3f3cbf885d786e36a1ac6d44cc7af4ac6fe7aa517a8977d3` | User deliberately committed [email text](design-notes/email%20response%20from%20displayman%20on%209-15-2026.md) and [timing screenshot](design-notes/email%20response%20from%20displayman%20on%209-15-2026%20%5BIMAGE%5D.jpg) in `e98d2188f5f2b2ff797b6d45c06f2300e67c91f1`; analyzed in PRD v0.5 |
+| S10 | Waveshare | ESP32-P4-NANO Wiki GPIO/pinout chart, `ESP32-P4-NANO-details_inter.jpg` | SHA-256 `271259f8…b8f5d9` | Original manufacturer chart committed beside S3; primary source for physical P1/P2 pin positions and GPIO names |
+| S11 | Waveshare | ESP32-P4-NANO board image, `esp32-p4-nano.jpg` | SHA-256 `33af2c47…25f76` | Original Wiki image committed for visual orientation/corroboration only; not a precision dimensional source |
 
 Abbreviated hashes match `docs/PRD.md`. Full hashes should be retained in controlled project records if the source package is deliberately archived.
 
 ## Platform and board documentation
 
-Checked through 2026-09-15.
+Checked through 2026-09-21.
 
 | Manufacturer | Document | Revision / date | Source |
 |---|---|---|---|
 | Espressif Systems | ESP32-P4 Series Datasheet | v0.7, 2026-07-14 | [Manufacturer documentation](https://documentation.espressif.com/esp32-p4_datasheet_en.html) |
 | Espressif Systems | ESP32-P4 Hardware Design Guidelines | v1.9, 2026-07-21 | [Manufacturer PDF](https://documentation.espressif.com/esp-hardware-design-guidelines/en/latest/esp32p4/esp-hardware-design-guidelines-en-master-esp32p4.pdf) |
 | Espressif Systems | ESP-IDF MIPI DSI LCD API | Current online documentation | [Manufacturer documentation](https://docs.espressif.com/projects/esp-idf/en/stable/esp32p4/api-reference/peripherals/lcd/dsi_lcd.html) |
-| Waveshare | ESP32-P4-NANO product documentation | Current online documentation; S3 remains the electrical source | [Manufacturer documentation](https://www.waveshare.com/wiki/ESP32-P4-NANO) |
+| Waveshare | ESP32-P4-NANO product documentation | Current online documentation; S10 controls physical header mapping, S3 is the electrical cross-check, and the original PDF/DXF/STEP control dimensions | [Manufacturer documentation](https://www.waveshare.com/wiki/ESP32-P4-NANO) |
 
 ## Display-module corroboration and evidence limits
 
@@ -84,7 +86,7 @@ Checked through 2026-09-16. Automotive/AEC qualification of individual parts doe
 
 ## Connectors and cables
 
-Checked through 2026-09-20.
+Checked through 2026-09-21.
 
 | Manufacturer | Part number | Function | Documented configuration | Source |
 |---|---|---|---|---|
@@ -93,7 +95,8 @@ Checked through 2026-09-20.
 | Molex | `0150200431` | Conditional panel LCD extension candidate | 40 circuit, 0.50 mm, type A same-side contacts, 102 mm; not a direct mate between J702 and a bare panel flex tail | [Manufacturer page](https://www.molex.com/en-us/products/part-detail/150200431) |
 | Amphenol Communications Solutions | `SFW15R-2STE1LF` | Nano DSI connector candidate | ACTIVE; 15 position, 1.00 mm, top contact, side-entry SMT ZIF; project footprint and official manufacturer STEP checked against drawing 10172241 Rev. A | [Manufacturer page](https://www.amphenol-cs.com/product/sfw15r2ste1lf.html), [drawing](https://cdn.amphenol-cs.com/media/wysiwyg/files/drawing/10172241.pdf), [manufacturer STEP archive](https://cdn.amphenol-cs.com/media/wysiwyg/files/3d/ssfw15r_2_4stlf.zip) |
 | Hirose Electric | `FH12-8S-0.5SH(55)` | Touch connector candidate | 8 position, 0.50 mm, bottom contact, front ZIF, 2.0 mm height | [Manufacturer page](https://www.hirose.com/product/p/CL0586-0744-5-55) |
-| Samtec | `SSW-113-02-G-D` family/configuration | Nano stacking sockets | 2 x 13, 2.54 mm; exact tail/body option remains mechanical | [Manufacturer family/configuration page](https://www.samtec.com/products/ssw-113-02-g-d-ll) |
+| Samtec | `ESW-113-23-G-D` / `ESW-113-33-G-D` | Elevated Nano stacking sockets | 2 × 13, 2.54 mm, through-hole; 3.68–6.35 mm insertion range for 0.64 mm-square posts. Nominal daughterboard separations are approximately 16.09 mm and 18.63 mm respectively; `-33` is the preferred overlap prototype candidate. | [Manufacturer ESW family page](https://www.samtec.com/products/esw), [manufacturer drawing F-226](https://suddendocs.samtec.com/prints/esw-1xx-xx-xx-x-xx-xx-x-xx-mkt.pdf) |
+| Samtec | `SSW-113-02-G-D` | Low-profile Nano socket candidate | 2 × 13, 2.54 mm; remains suitable for the non-overlap P1-only side-stack concept, but does not clear the Nano's tall USB-A/RJ45 for full overlap | [Manufacturer product page](https://www.samtec.com/products/ssw-113-02-g-d-ll) |
 | Waveshare | ESP32-P4-NANO mechanical PDF/DXF/STEP dated 2026-03-31 | Nano outline, mounting holes, headers, component envelopes and stacking reference | Original files preserved under `hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/`; [manufacturer resources](https://docs.waveshare.com/ESP32-P4-NANO/Resources-And-Documents); validation in `docs/design-notes/mechanical-interface-verification.md` |
 
 Manufacturer electrical and mechanical documents control the design. Distributor availability is a procurement snapshot and must be rechecked before schematic freeze, prototype purchasing, and assembly release.

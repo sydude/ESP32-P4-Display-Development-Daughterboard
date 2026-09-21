@@ -130,16 +130,16 @@ Displayman confirms two lanes, RGB888, 600 × 1280 host-active timing, physical 
 
 - TMUX1574 isolates Nano I²C, touch INT and touch RESET unless both logic domains are valid.
 - Touch-side INT uses a 4.7 kΩ pull-up to `TOUCH_3V3`; RESET has a 100 kΩ pull-down.
-- GPIO mapping remains GPIO4 LCD reset command, GPIO5 touch reset, GPIO20 LCD power enable, GPIO22 touch INT, and GPIO23 backlight PWM.
-- GPIO24 remains unused to preserve the default USB Serial/JTAG function; GPIO21 remains unused alternate.
+- Corrected GPIO mapping is GPIO21 LCD reset command, GPIO22 touch reset, GPIO20 LCD power enable, GPIO32 touch INT, and GPIO23 backlight PWM, on P1 pins 15/16/13/23/7 respectively.
+- The choices avoid GPIO7/8 onboard I²C, GPIO2–5 pad JTAG, GPIO24–27 USB Serial/JTAG and GPIO36–38 strapping/UART0 groups. GPIO33/P1-24 is the spare alternate.
 - Nano DSI pins 14/15 are reference-only Nano 3.3 V inputs to the daughterboard logic and are never driven.
 - The published Waveshare schematic distinguishes Type-C `USB0_5V` from header `VCC_5V` and shows onboard power-path circuitry. It does not conclusively specify reverse current for every fitted component and transition, so TPS25947 remains and the four-quadrant prototype test remains required before unrestricted-laptop use.
 
 ## 8. Connector and mechanical status
 
-Electrical pin maps for J201, Nano headers, J701 DSI, J702 LCD and J801 touch are frozen and independently checked. The manufacturer-file audit in `mechanical-interface-verification.md` establishes the 50 × 50 mm Nano outline, Ø2.70 mm mounting pattern, exact 2×13 header grids, principal component envelopes and the selected board-side connector contact types. It also verifies the edited/rescaled KiCad `User.1` drawing as a visual working reference, not a placement authority.
+Electrical pin maps for J201, J701 DSI, J702 LCD and J801 touch remain checked. The Nano header mapping was subsequently corrected from the official Waveshare pinout chart and schematic; the complete P1/P2 baseline is in `nano-interface-floorplanning-study.md`. P2 is electrically unused and may be retained only as mechanical support. The manufacturer-file audit in `mechanical-interface-verification.md` establishes the 50 × 50 mm Nano outline, Ø2.70 mm mounting pattern, exact 2×13 header grids, principal component envelopes and selected board-side connector types. The edited/rescaled KiCad `User.1` drawing remains a visual working reference, not placement authority.
 
-Physical checks remaining before placement freeze are limited to Nano DSI/P1 physical pin-1 presentation and confirmation of the STEP-inferred bottom-contact DSI, the exact socket's mated height, and the delivered LCD/touch flex pin-1/stiffener/termination presentation. The stack requires cutouts/notches over the 14.45 mm USB-A and 13.60 mm RJ45 envelopes or a separately verified taller separation. The baseline underside J701 arrangement uses a Type-B/opposite-side-contact 15-way FFC with a non-creased service loop.
+Physical checks remaining before placement freeze are Nano DSI pin-1/contact-face presentation, exact socket height/insertion and standoff matching, Type-B pass-through mock-up, and delivered LCD/touch flex pin-1/stiffener/termination presentation. The recommended elevated overlap uses an ESW-113-33-G-D-class socket at about 18.63 mm separation, clearing the 14.45 mm USB-A by about 4.18 mm. J701 is reserved on top with a radiused slot; the preferred mouth-toward-slot S-bend uses an opposite-side-contact 15-way FFC.
 
 The removed RAPC722X footprint/model and 24 V plug-fit action no longer apply.
 

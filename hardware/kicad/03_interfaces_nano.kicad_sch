@@ -705,7 +705,7 @@
 					)
 				)
 			)
-			(property "Description" "Nano stack header; only source-confirmed used pins assigned"
+			(property "Description" "Waveshare Nano P1 header; complete host pin functions shown"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -733,7 +733,7 @@
 				(pin passive line
 					(at -12.7 15.24 0)
 					(length 2.54)
-					(name "UNUSED_1"
+					(name "3V3"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -751,7 +751,7 @@
 				(pin passive line
 					(at 12.7 15.24 180)
 					(length 2.54)
-					(name "VCC_5V"
+					(name "5V"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -769,7 +769,7 @@
 				(pin passive line
 					(at -12.7 12.7 0)
 					(length 2.54)
-					(name "UNUSED_3"
+					(name "GPIO7_I2C_SDA"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -787,7 +787,7 @@
 				(pin passive line
 					(at 12.7 12.7 180)
 					(length 2.54)
-					(name "VCC_5V"
+					(name "5V"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -805,7 +805,7 @@
 				(pin passive line
 					(at -12.7 10.16 0)
 					(length 2.54)
-					(name "GPIO23_BL_PWM"
+					(name "GPIO8_I2C_SCL"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -823,7 +823,7 @@
 				(pin passive line
 					(at 12.7 10.16 180)
 					(length 2.54)
-					(name "UNUSED_6"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -841,7 +841,7 @@
 				(pin passive line
 					(at -12.7 7.62 0)
 					(length 2.54)
-					(name "UNUSED_7"
+					(name "GPIO23_BL_PWM"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -859,7 +859,7 @@
 				(pin passive line
 					(at 12.7 7.62 180)
 					(length 2.54)
-					(name "UNUSED_8"
+					(name "GPIO37_UART0_TX_STRAP"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -877,7 +877,7 @@
 				(pin passive line
 					(at -12.7 5.08 0)
 					(length 2.54)
-					(name "GPIO5_CTP_RST"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -895,7 +895,7 @@
 				(pin passive line
 					(at 12.7 5.08 180)
 					(length 2.54)
-					(name "GPIO4_LCD_RST"
+					(name "GPIO38_UART0_RX_STRAP"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -913,7 +913,7 @@
 				(pin passive line
 					(at -12.7 2.54 0)
 					(length 2.54)
-					(name "GPIO20_LCD_PWR_EN"
+					(name "GPIO5_JTAG"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -931,7 +931,7 @@
 				(pin passive line
 					(at 12.7 2.54 180)
 					(length 2.54)
-					(name "UNUSED_12"
+					(name "GPIO4_JTAG"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -949,7 +949,7 @@
 				(pin passive line
 					(at -12.7 0 0)
 					(length 2.54)
-					(name "GPIO21_ALT"
+					(name "GPIO20_LCD_PWR_EN"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -967,7 +967,7 @@
 				(pin passive line
 					(at 12.7 0 180)
 					(length 2.54)
-					(name "GPIO22_CTP_INT"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -985,7 +985,7 @@
 				(pin passive line
 					(at -12.7 -2.54 0)
 					(length 2.54)
-					(name "UNUSED_15"
+					(name "GPIO21_LCD_RESET"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1003,7 +1003,7 @@
 				(pin passive line
 					(at 12.7 -2.54 180)
 					(length 2.54)
-					(name "UNUSED_16"
+					(name "GPIO22_CTP_RESET"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1021,7 +1021,7 @@
 				(pin passive line
 					(at -12.7 -5.08 0)
 					(length 2.54)
-					(name "UNUSED_17"
+					(name "3V3"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1039,7 +1039,7 @@
 				(pin passive line
 					(at 12.7 -5.08 180)
 					(length 2.54)
-					(name "UNUSED_18"
+					(name "GPIO24_USB1P1_N0"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1057,7 +1057,7 @@
 				(pin passive line
 					(at -12.7 -7.62 0)
 					(length 2.54)
-					(name "UNUSED_19"
+					(name "GPIO25_USB1P1_P0"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1075,7 +1075,7 @@
 				(pin passive line
 					(at 12.7 -7.62 180)
 					(length 2.54)
-					(name "UNUSED_20"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1093,7 +1093,7 @@
 				(pin passive line
 					(at -12.7 -10.16 0)
 					(length 2.54)
-					(name "UNUSED_21"
+					(name "GPIO26_USB1P1_N1"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1111,7 +1111,7 @@
 				(pin passive line
 					(at 12.7 -10.16 180)
 					(length 2.54)
-					(name "UNUSED_22"
+					(name "GPIO27_USB1P1_P1"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1129,7 +1129,7 @@
 				(pin passive line
 					(at -12.7 -12.7 0)
 					(length 2.54)
-					(name "UNUSED_23"
+					(name "GPIO32_CTP_INT"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1147,7 +1147,7 @@
 				(pin passive line
 					(at 12.7 -12.7 180)
 					(length 2.54)
-					(name "UNUSED_24"
+					(name "GPIO33"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1183,7 +1183,7 @@
 				(pin passive line
 					(at 12.7 -15.24 180)
 					(length 2.54)
-					(name "GND"
+					(name "GPIO36_STRAP"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1252,7 +1252,7 @@
 					)
 				)
 			)
-			(property "Description" "Nano stack header; no signals required by this daughterboard"
+			(property "Description" "Waveshare Nano P2 header; electrically unused by daughterboard"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1280,7 +1280,7 @@
 				(pin passive line
 					(at -12.7 15.24 0)
 					(length 2.54)
-					(name "UNUSED_1"
+					(name "5V"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1298,7 +1298,7 @@
 				(pin passive line
 					(at 12.7 15.24 180)
 					(length 2.54)
-					(name "UNUSED_2"
+					(name "ESP_LDO_VO4"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1316,7 +1316,7 @@
 				(pin passive line
 					(at -12.7 12.7 0)
 					(length 2.54)
-					(name "UNUSED_3"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1334,7 +1334,7 @@
 				(pin passive line
 					(at 12.7 12.7 180)
 					(length 2.54)
-					(name "UNUSED_4"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1352,7 +1352,7 @@
 				(pin passive line
 					(at -12.7 10.16 0)
 					(length 2.54)
-					(name "UNUSED_5"
+					(name "3V3"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1370,7 +1370,7 @@
 				(pin passive line
 					(at 12.7 10.16 180)
 					(length 2.54)
-					(name "UNUSED_6"
+					(name "GPIO0_XTAL32K_N"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1388,7 +1388,7 @@
 				(pin passive line
 					(at -12.7 7.62 0)
 					(length 2.54)
-					(name "UNUSED_7"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1406,7 +1406,7 @@
 				(pin passive line
 					(at 12.7 7.62 180)
 					(length 2.54)
-					(name "UNUSED_8"
+					(name "GPIO1_XTAL32K_P"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1424,7 +1424,7 @@
 				(pin passive line
 					(at -12.7 5.08 0)
 					(length 2.54)
-					(name "UNUSED_9"
+					(name "GPIO3_JTAG_TOUCH1"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1442,7 +1442,7 @@
 				(pin passive line
 					(at 12.7 5.08 180)
 					(length 2.54)
-					(name "UNUSED_10"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1460,7 +1460,7 @@
 				(pin passive line
 					(at -12.7 2.54 0)
 					(length 2.54)
-					(name "UNUSED_11"
+					(name "GPIO2_JTAG_TOUCH0"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1478,7 +1478,7 @@
 				(pin passive line
 					(at 12.7 2.54 180)
 					(length 2.54)
-					(name "UNUSED_12"
+					(name "GPIO6_TOUCH4"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1496,7 +1496,7 @@
 				(pin passive line
 					(at -12.7 0 0)
 					(length 2.54)
-					(name "UNUSED_13"
+					(name "GPIO54_ADC2_CH7"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1514,7 +1514,7 @@
 				(pin passive line
 					(at 12.7 0 180)
 					(length 2.54)
-					(name "UNUSED_14"
+					(name "GPIO53_ADC2_CH6"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1532,7 +1532,7 @@
 				(pin passive line
 					(at -12.7 -2.54 0)
 					(length 2.54)
-					(name "UNUSED_15"
+					(name "GPIO47"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1550,7 +1550,7 @@
 				(pin passive line
 					(at 12.7 -2.54 180)
 					(length 2.54)
-					(name "UNUSED_16"
+					(name "GPIO48"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1568,7 +1568,7 @@
 				(pin passive line
 					(at -12.7 -5.08 0)
 					(length 2.54)
-					(name "UNUSED_17"
+					(name "GPIO46"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1586,7 +1586,7 @@
 				(pin passive line
 					(at 12.7 -5.08 180)
 					(length 2.54)
-					(name "UNUSED_18"
+					(name "GND"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1604,7 +1604,7 @@
 				(pin passive line
 					(at -12.7 -7.62 0)
 					(length 2.54)
-					(name "UNUSED_19"
+					(name "GPIO45"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1622,7 +1622,7 @@
 				(pin passive line
 					(at 12.7 -7.62 180)
 					(length 2.54)
-					(name "UNUSED_20"
+					(name "C6_U0RXD"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1640,7 +1640,7 @@
 				(pin passive line
 					(at -12.7 -10.16 0)
 					(length 2.54)
-					(name "UNUSED_21"
+					(name "C6_IO12"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1658,7 +1658,7 @@
 				(pin passive line
 					(at 12.7 -10.16 180)
 					(length 2.54)
-					(name "UNUSED_22"
+					(name "C6_U0TXD"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1676,7 +1676,7 @@
 				(pin passive line
 					(at -12.7 -12.7 0)
 					(length 2.54)
-					(name "UNUSED_23"
+					(name "C6_IO13"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -1694,7 +1694,7 @@
 				(pin passive line
 					(at 12.7 -12.7 180)
 					(length 2.54)
-					(name "UNUSED_24"
+					(name "C6_IO9"
 						(effects
 							(font
 								(size 0.8 0.8)
@@ -7660,7 +7660,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Used P1 mapping: pin 5 GPIO23 BL_PWM; 9 GPIO5 touch reset; 10 GPIO4 LCD reset; 11 GPIO20 power enable; 14 GPIO22 touch INT."
+	(text "Corrected P1 controls: pin 7 GPIO23 BL PWM; 13 GPIO20 LCD power; 15 GPIO21 LCD reset; 16 GPIO22 touch reset; 23 GPIO32 touch INT."
 		(exclude_from_sim no)
 		(at 432.54 35.16 0)
 		(effects
@@ -8677,7 +8677,7 @@
 				)
 			)
 		)
-		(property "Description" "Nano stack header; only source-confirmed used pins assigned"
+		(property "Description" "Waveshare Nano P1 header; complete host pin functions shown"
 			(at 450.85 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -12028,7 +12028,7 @@
 				)
 			)
 		)
-		(property "Description" "Nano stack header; no signals required by this daughterboard"
+		(property "Description" "Waveshare Nano P2 header; electrically unused by daughterboard"
 			(at 539.75 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -13459,7 +13459,7 @@
 	)
 	(wire
 		(pts
-			(xy 438.15 318.77) (xy 435.61 318.77)
+			(xy 438.15 321.31) (xy 435.61 321.31)
 		)
 		(stroke
 			(width 0)
@@ -13469,7 +13469,7 @@
 	)
 	(global_label "BL_PWM"
 		(shape bidirectional)
-		(at 435.61 318.77 180)
+		(at 435.61 321.31 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13479,7 +13479,7 @@
 		)
 		(uuid "1d1df8fa-8910-4df9-b940-6ea3efc0604e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 434.34 318.77 180)
+			(at 434.34 321.31 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13493,7 +13493,7 @@
 	)
 	(wire
 		(pts
-			(xy 438.15 323.85) (xy 435.61 323.85)
+			(xy 438.15 328.93) (xy 435.61 328.93)
 		)
 		(stroke
 			(width 0)
@@ -13501,9 +13501,9 @@
 		)
 		(uuid "6ca353a5-d049-4f12-bfbe-bd562dd9dddb")
 	)
-	(global_label "CTP_RESET_N_NANO"
+	(global_label "LCD_PWR_EN"
 		(shape bidirectional)
-		(at 435.61 323.85 180)
+		(at 435.61 328.93 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13513,7 +13513,7 @@
 		)
 		(uuid "80b67370-4619-472b-a52c-ed9ef673df50")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 434.34 323.85 180)
+			(at 434.34 328.93 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13527,7 +13527,7 @@
 	)
 	(wire
 		(pts
-			(xy 463.55 323.85) (xy 466.09 323.85)
+			(xy 438.15 331.47) (xy 435.61 331.47)
 		)
 		(stroke
 			(width 0)
@@ -13537,41 +13537,7 @@
 	)
 	(global_label "LCD_RESET_CMD_N"
 		(shape bidirectional)
-		(at 466.09 323.85 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "59842c02-9304-46d0-b3fa-8ddfd0fce33d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 467.36 323.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 438.15 326.39) (xy 435.61 326.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "771a83ca-c66a-4397-9fdb-9624e164a0a0")
-	)
-	(global_label "LCD_PWR_EN"
-		(shape bidirectional)
-		(at 435.61 326.39 180)
+		(at 435.61 331.47 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13579,9 +13545,9 @@
 			)
 			(justify right)
 		)
-		(uuid "8bdd3e1f-46de-40d2-b318-53f31fb5a845")
+		(uuid "59842c02-9304-46d0-b3fa-8ddfd0fce33d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 434.34 326.39 180)
+			(at 434.34 331.47 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13595,7 +13561,41 @@
 	)
 	(wire
 		(pts
-			(xy 463.55 328.93) (xy 466.09 328.93)
+			(xy 463.55 331.47) (xy 466.09 331.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "771a83ca-c66a-4397-9fdb-9624e164a0a0")
+	)
+	(global_label "CTP_RESET_N_NANO"
+		(shape bidirectional)
+		(at 466.09 331.47 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "8bdd3e1f-46de-40d2-b318-53f31fb5a845")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 467.36 331.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 438.15 341.63) (xy 435.61 341.63)
 		)
 		(stroke
 			(width 0)
@@ -13605,17 +13605,17 @@
 	)
 	(global_label "CTP_INT_NANO"
 		(shape bidirectional)
-		(at 466.09 328.93 0)
+		(at 435.61 341.63 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1 1)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "51ec6474-653d-4f4f-aaa7-d6f73c744eaa")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 467.36 328.93 0)
+			(at 434.34 341.63 180)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13623,7 +13623,7 @@
 				(font
 					(size 1 1)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 	)
@@ -13663,7 +13663,7 @@
 	)
 	(wire
 		(pts
-			(xy 463.55 344.17) (xy 466.09 344.17)
+			(xy 463.55 318.77) (xy 466.09 318.77)
 		)
 		(stroke
 			(width 0)
@@ -13673,7 +13673,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 466.09 344.17 0)
+		(at 466.09 318.77 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13683,7 +13683,109 @@
 		)
 		(uuid "439e6f62-7bae-4501-ab75-7a1e2a877af4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 467.36 344.17 0)
+			(at 467.36 318.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 438.15 323.85) (xy 435.61 323.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f3df50b-6fe4-4a6f-8a20-9b3c08212431")
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 435.61 323.85 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "1a03ac18-903f-40e2-8e58-24cfd29bc922")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 434.34 323.85 180)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify right)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 463.55 328.93) (xy 466.09 328.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e3f11c3-1e42-4e5b-bf00-126723e19108")
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 466.09 328.93 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "0d147128-67a8-4372-b4da-368495d19155")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 467.36 328.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 463.55 336.55) (xy 466.09 336.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fab32747-e613-4095-801c-2283866711f9")
+	)
+	(global_label "GND"
+		(shape bidirectional)
+		(at 466.09 336.55 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "0f897593-ae37-4bc2-abe9-eb4bce21dd00")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 467.36 336.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17605,74 +17707,8 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 527.05 344.17) (xy 524.51 344.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eeeb17c5-c250-448a-9f61-a98d8b656685")
-	)
-	(global_label "GND"
-		(shape bidirectional)
-		(at 524.51 344.17 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "dcb0a86b-62fd-4418-b23f-7a22231ec8fe")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 523.24 344.17 180)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 552.45 344.17) (xy 554.99 344.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "db32b426-2f6b-40a3-81f1-7046dfb68f75")
-	)
-	(global_label "GND"
-		(shape bidirectional)
-		(at 554.99 344.17 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "fcd43e83-dfd1-416a-bdf1-638370c11ab3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 556.26 344.17 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
+
+
 	(wire
 		(pts
 			(xy 613.41 172.72) (xy 610.87 172.72)

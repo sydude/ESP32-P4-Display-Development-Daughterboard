@@ -45,7 +45,7 @@ There is no dedicated 24 V bench connector. Bench development uses J201 and exer
 | 13 | GND | Logic return |
 | 14–15 | `NANO_3V3_REF` | Nano-side sense/reference only; never driven |
 
-The Amphenol SFW15R-2STE1LF drawing confirms the daughterboard part is a 15-position, 1.00 mm, top-contact connector. A section through the Waveshare STEP shows the Nano connector is bottom-contact. With J701 mounted on the daughterboard underside and both mouths facing the same direction, the no-twist stack route uses a Type-B/opposite-side-contact FFC and a 180° service loop. The Waveshare mechanical files do not encode physical pin 1, so the actual Nano still requires one powered-off pin-1/continuity/contact-face check before orientation is frozen. See `mechanical-interface-verification.md`.
+The Amphenol SFW15R-2STE1LF drawing confirms the daughterboard part is a 15-position, 1.00 mm, top-contact connector. A section through the Waveshare STEP shows the Nano connector is bottom-contact. The current floorplanning concept mounts J701 on the daughterboard top and brings the FFC through a radiused opening. With J701's mouth facing that opening, the shortest untwisted S-bend uses a Type-B/opposite-side-contact FFC; a mouth-away Type-A route needs a larger 180° return loop. The Waveshare mechanical files do not encode physical DSI pin 1, so the actual Nano still requires one powered-off pin-1/continuity/contact-face check before orientation is frozen. See `nano-interface-floorplanning-study.md` and `mechanical-interface-verification.md`.
 
 ### 2.3 Displayman 40-pin LCD connector `J702`
 
@@ -93,15 +93,15 @@ The connector is the documented bottom-contact Hirose FH12-8S-0.5SH(55), matchin
 
 | Function | ESP32-P4 GPIO | Nano P1 pin | Schematic net |
 |---|---:|---:|---|
-| `LCD_RESET_CMD_N` | 4 | 10 | `LCD_RESET_CMD_N` |
-| `CTP_RESET_N` | 5 | 9 | `CTP_RESET_N_NANO` |
-| `LCD_PWR_EN` | 20 | 11 | `LCD_PWR_EN` |
-| `CTP_INT` | 22 | 14 | `CTP_INT_NANO` |
-| `BL_PWM` | 23 | 5 | `BL_PWM` |
+| `LCD_RESET_CMD_N` | 21 | 15 | `LCD_RESET_CMD_N` |
+| `CTP_RESET_N` | 22 | 16 | `CTP_RESET_N_NANO` |
+| `LCD_PWR_EN` | 20 | 13 | `LCD_PWR_EN` |
+| `CTP_INT` | 32 | 23 | `CTP_INT_NANO` |
+| `BL_PWM` | 23 | 7 | `BL_PWM` |
 
-GPIO21/P1-13 is intentionally unconnected. GPIO24 is not used, preserving its default USB Serial/JTAG role. `J1002` is mechanically present but no P2 signals are required by this daughterboard.
+The corrected choices are ordinary, non-strapping P1 GPIOs and avoid Nano `ESP_I2C` on GPIO7/8, pad JTAG on GPIO2–5, USB Serial/JTAG on GPIO24–27, and UART0/boot strapping on GPIO36–38. GPIO33/P1-24 is the spare alternate. `J1002` is electrically unused; it may remain populated only for alignment/support.
 
-The remaining header pins are captured explicitly: P1 pins 2 and 4 are `NANO_5V`; P1 pins 25 and 26 are GND; all other unused P1 pins are NC. P2 pins 1–24 are NC and pins 25–26 are GND. This preserves the Waveshare header numbering without inventing uses for unneeded pins.
+Every header pin now carries its actual Waveshare function name even when electrically open. P1 pins 2/4 feed `NANO_5V`; P1 pins 6/9/14/20/25 are GND. P1 pins 1/17 are identified as 3V3 but intentionally open, and P1-26 is correctly GPIO36 rather than ground. All P2 pins, including its ground pins, are electrically open on the daughterboard. See `nano-interface-floorplanning-study.md` for the complete audited tables.
 
 `J1003` is an internal 2×5 development header with this exact pin map:
 
@@ -196,9 +196,9 @@ No known electrical issue requires another schematic topology change before PCB 
 
 ### Before placement freeze
 
-- confirm the STEP-inferred Nano DSI bottom-contact face and physical pin 1; the baseline underside-J701 arrangement otherwise resolves to a Type-B cable;
+- confirm the STEP-inferred Nano DSI bottom-contact face and physical pin 1; the preferred top-side-J701, mouth-toward-slot S-bend resolves to a Type-B cable;
 - inspect delivered LCD/touch physical pin 1, bare-tail/receptacle termination, thickness, stiffener, insertion depth and relaxed bend direction; their bottom-contact requirement is confirmed;
-- measure the exact socket's mated PCB separation and approve either USB/RJ45 cutouts or taller spacing, standoff hardware and J201 harness clearance;
+- measure the exact elevated socket's mated PCB separation and insertion; the pre-layout recommendation is ESW-113-33-G-D at about 18.63 mm plus matched standoffs;
 - check the connector/flex samples at 1:1 as specified in `mechanical-interface-verification.md`; the PCB land-pattern and manufacturer-file geometry audits are complete.
 
 ### Prototype bring-up

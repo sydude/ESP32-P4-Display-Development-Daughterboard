@@ -10,7 +10,7 @@
 
 The Waveshare PDF, DXF and STEP agree on the Nano board outline, mounting pattern, header pitch and principal component arrangement. The derived drawing on the PCB `User.1` layer is correctly scaled and oriented for use as a visual working reference, but it is not accurate enough to become the sole source for holes, headers or connector placement. Authoritative coordinates shall be recreated from the dimensions in this note when layout is authorized.
 
-No electrical pin-map error was found. The stack-on concept is mechanically possible only if the daughterboard either clears the Nano's tall Ethernet/USB hardware with cutouts/notches or uses a verified board separation greater than those envelopes. The existing ordinary stack height must not be assumed adequate.
+This note's original mechanical pass did not attempt a chart-led, pin-by-pin Nano electrical audit. That later audit found and corrected P1 mapping errors; the complete controlling map is now in `nano-interface-floorplanning-study.md`. The stack-on concept is mechanically possible only if the daughterboard either clears the Nano's tall Ethernet/USB hardware with cutouts/notches or uses a verified board separation greater than those envelopes. The existing ordinary stack height must not be assumed adequate.
 
 The remaining sample checks are narrow: Nano DSI pin 1/contact presentation, the chosen socket's mated height, and the exact delivered panel/touch flex terminations and pin-1 presentation. They are marked **NEEDS PHYSICAL VERIFICATION** below.
 
@@ -21,12 +21,13 @@ The remaining sample checks are narrow: Nano DSI pin 1/contact presentation, the
 | Waveshare PDF | `ESP32-P4-NANO-20260331.pdf`, SHA-256 `ee1cf29a9aec2f7602889492a8fa8ded9dff3baa0776b8bc11dc2ef8e845204d` | Controlling published dimensions and orthographic presentation |
 | Waveshare DXF | `ESP32-P4-NANO-20260331.dxf`, SHA-256 `d18ef20385a438091bac0770b30785841a4677e949c99e6b69e870f0eac74184` | Controlling vector geometry and dimension objects |
 | Waveshare STEP | `ESP32-P4-NANO.stp`, SHA-256 `6515bce434b8a5542d99a801bd67a6f8c438cc12ef0ebad632d7e37ceb14fabe` | Controlling 3-D geometry, component envelopes and inferred connector presentation |
-| Waveshare Nano schematic | PRD source S3 | Electrical connector/header numbering and signal assignment; it does not define physical pin-1 presentation |
+| Waveshare Wiki pinout chart | PRD source S10 | Primary physical P1/P2 position and GPIO-name reference |
+| Waveshare Nano schematic | PRD source S3 | Authoritative electrical cross-check; not used to infer physical pins from crossing lines |
 | Displayman correspondence | PRD source S8, repository PDF | Manufacturer confirmation of bottom-contact 40-pin LCD and 8-pin touch flexes and their electrical pin assignments |
 | Connector drawings | Amphenol 10172241 Rev. A; Molex 5051101008-SD Rev. C; Hirose FH12 family drawing | Daughterboard connector contact configuration, numbering and insertion direction |
 | Derived KiCad reference | `ESP32-P4 Display Development Daughterboard.kicad_pcb`, pre-audit SHA-256 `dd884d6342e9c0552fbacd75f8469948aa95ae0a6cebc7b31f389cdb1510c910` | Edited/rescaled working drawing only; not a manufacturer source |
 
-The three files under `hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/` are preserved manufacturer references. The KiCad `User.1` drawing is an edited/rescaled derivative. In particular, the DXF header declares `$INSUNITS = 1` (inches) and `$MEASUREMENT = 0`, while its coordinate values and dimension values are millimetres. This metadata conflict explains why a direct unit-aware KiCad import is not authoritative.
+The original Waveshare PDF/DXF/STEP and the later schematic, pinout chart and board image under `hardware/mechanical/vendor/Waveshare/ESP32-P4-NANO/` are preserved manufacturer references. The KiCad `User.1` drawing is an edited/rescaled derivative. In particular, the DXF header declares `$INSUNITS = 1` (inches) and `$MEASUREMENT = 0`, while its coordinate values and dimension values are millimetres. This metadata conflict explains why a direct unit-aware KiCad import is not authoritative.
 
 ## 3. Nano datum system and dimensions
 
@@ -46,7 +47,7 @@ The following coordinate system is used only to state verified relative geometry
 | Header pin section | Approximately 0.64 mm square in the STEP | STEP inferred |
 | Fitted header Z envelope | Z = -3.00…+8.30 mm; modeled plastic envelope X = 0.21…5.29 and 44.71…49.79 mm, Y = 12.09…44.71 mm | STEP inferred |
 
-The mechanical sources do not label the two modeled 2×13 headers as P1 versus P2 and do not encode header pin numbers. Electrical P1/P2 numbering remains controlled by the Waveshare schematic. **NEEDS PHYSICAL VERIFICATION:** identify P1 pin 1 on the actual Nano by silkscreen/continuity before a daughterboard footprint is oriented. Do not infer it from the symmetric STEP header body.
+The symmetric STEP header bodies do not label P1/P2 or encode pin numbers. The official Waveshare pinout chart now resolves their physical identity, row/column numbering and GPIO names unambiguously, with the official schematic as an electrical cross-check. Daughterboard header orientation must follow that chart rather than the STEP body alone. The Nano DSI connector's physical pin 1 remains a separate sample check.
 
 ### 3.2 Derived KiCad `User.1` validation
 
@@ -88,9 +89,9 @@ The daughterboard's vertical Micro-Fit J201 is not yet placed. Its eventual keep
 | Mating grid | Two 2×13 interfaces, 2.54 mm pitch; reproduce the exact row/column centers in Section 3.1 | PASS |
 | Nano fitted side | STEP shows male 0.64 mm-square posts through the Nano, with approximately 8.30 mm above the component-side board plane and 3.00 mm below it | PASS, STEP inferred |
 | Daughterboard mate | Female 2×13, 2.54 mm sockets mounted on the daughterboard underside are required for a daughterboard above the Nano | PASS as architecture |
-| Exact socket | The schematic's generic `PinSocket_2x13` footprint and provisional Samtec `SSW-113-02-G-D` family do not, by themselves, freeze mounting side, tail option or mated height | NEEDS PHYSICAL VERIFICATION |
-| Pin 1 | Electrical P1/P2 mapping is correct, but physical P1/P2 and pin-1 presentation are not marked in PDF/DXF/STEP | NEEDS PHYSICAL VERIFICATION |
-| Separation | Must exceed every retained overlap envelope or be combined with cutouts; ordinary header-tip height is not adequate over USB-A/RJ45 | NEEDS PHYSICAL VERIFICATION after socket/cutout choice |
+| Exact socket | Samtec `ESW-113-23-G-D` gives about 16.09 mm nominal PCB separation; `ESW-113-33-G-D` gives about 18.63 mm and is preferred for an overlap prototype. Both accept the Nano's approximately 5.8 mm exposed 0.64 mm-square posts within the drawing's 3.68–6.35 mm insertion range. The generic schematic footprint does not freeze the final socket. | PASS concept; exact ordered sample to verify |
+| Pin 1 | The official Waveshare pinout chart resolves physical P1/P2 positions and header pin numbering; the schematic cross-check agrees | PASS |
+| Separation | The preferred `ESW-113-33-G-D` concept clears the 14.45 mm USB-A envelope by about 4.18 mm before tolerance; socket sample, solder tail and standoff fit remain to be measured | PASS concept; NEEDS PHYSICAL VERIFICATION before freeze |
 | Mounting holes | Four Ø2.70 holes can accept M2.5-class hardware. Matching daughterboard holes and spacers are practical, but the high-Y holes are close to the header end and require actual washer/standoff-envelope checking | PASS concept; hardware envelope to verify |
 | Orientation | A component-side-up Nano with the daughterboard above it is viable only with the clearances in Section 4 and with the DSI connector accessible from the inter-board gap or a board edge | Conditional PASS |
 
@@ -102,9 +103,8 @@ The daughterboard's vertical Micro-Fit J201 is not yet placed. Its eventual keep
 
 - The Nano connector identified as `J1` by its schematic/reference data is the STEP component at X = 6.450…11.522, Y = 27.100…49.500 mm. A section through the manufacturer STEP shows its spring beam rising from the PCB side to contact the underside of the inserted flex: **bottom contact**. This is an inference from the manufacturer STEP, not a written PDF callout.
 - The connector is side-entry and lies on the Nano component side. In the Section 3 coordinate system its slot opens toward +X, into the Nano interior and away from the adjacent left-side header; the inserted flex extends toward +X from the mouth before bending. Its latch and the full bend corridor must remain accessible in the inter-board gap.
-- `J701`, Amphenol `SFW15R-2STE1LF`, is a 15-way, 1.00 mm **top-contact** side-entry connector. In the native footprint orientation its body runs from Y = 0 to +6.5 mm and the cable/slider service side is +Y. It is mechanically appropriate when mounted on the daughterboard underside: its contact face then points into the inter-board gap in the required global direction even though its manufacturer contact designation differs from the Nano's.
-- For the baseline in which Nano `J1` and underside `J701` mouths face the same +X direction, a non-twisted 180° service loop uses a **Type B / opposite-side-contact** 15-way FFC. Mounting `J701` on the opposite board face or reversing its mouth changes this conclusion and shall not be done without re-deriving the cable presentation.
-- The loop must not be creased at the connector. Final length and bend radius require a mock-up after the stack height is measured.
+- `J701`, Amphenol `SFW15R-2STE1LF`, is a 15-way, 1.00 mm **top-contact** side-entry connector. In the native footprint orientation its body runs from Y = 0 to +6.5 mm and the cable/slider service side is +Y. The later floorplanning study supersedes the underside concept: J701 is reserved on the daughterboard top and the Nano FFC rises through a radiused routed opening.
+- With J701's mouth facing the slot, the shortest untwisted S-bend requires a **Type B / opposite-side-contact** 15-way FFC between the bottom-contact Nano connector and top-contact J701. A mouth-away arrangement can use a Type A cable only by adding a larger 180° return loop. Final mouth direction, cable length and bend radius require a mock-up after stack height is measured.
 
 ### 6.2 Pin numbering and electrical map
 
@@ -112,7 +112,7 @@ The schematic is straight-through by connector pin number: Nano 1/2 = D1 N/P, 4/
 
 The mechanical files do not identify which end of the Nano connector is physical pin 1. Therefore a 1-to-1 cable cannot be released solely from the STEP. **NEEDS PHYSICAL VERIFICATION:** with power removed, locate Nano J1 pin 1 using its silkscreen or continuity to a uniquely mapped pin (for example a ground/reference versus DSI signal), record the exposed-contact face when inserted, and orient `J701` pad 1 to preserve the documented straight-through map. This is a pin-orientation check, not an electrical redesign.
 
-**Overall J701 status: NEEDS PHYSICAL VERIFICATION for pin 1 and confirmation of the STEP-inferred Nano contact face; selected connector and baseline Type-B routing concept PASS.**
+**Overall J701 status: NEEDS PHYSICAL VERIFICATION for pin 1, confirmation of the STEP-inferred Nano contact face and the Type-B slot mock-up; selected top-contact connector and top-side pass-through concept PASS.**
 
 ## 7. J702 — 40-pin Displayman LCD interface
 
