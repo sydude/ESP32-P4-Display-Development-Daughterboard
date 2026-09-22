@@ -6,7 +6,7 @@ This directory contains the canonical KiCad project for the ESP32-P4 Displayman 
 
 The committed native three-sheet KiCad hierarchy is the authoritative editable design source. The earlier Python schematic generator is retained only as a blocked historical record: it exits before writing anything, so ordinary KiCad edits cannot diverge from or be overwritten by a second source of truth. The ten unreferenced legacy sheets are documented in `LEGACY_GENERATED_SHEETS.md` and are not part of the active project hierarchy.
 
-The schematic is populated for independent Phase 2 electrical review. The PCB remains unpopulated; its only added content is the locked, edited/rescaled Waveshare technical drawing on `User.1`. That derivative is a visual working reference, not production geometry. Placement and layout have not begun.
+The schematic is populated for independent Phase 2 electrical review. The PCB now contains the validated Nano/header datums, the preliminary 130 × 100 mm mechanical envelope, all BOM footprints and a first major-block placement. It remains explicitly unrouted: no tracks, copper zones, stackup decision, differential tuning or thermal-via design has begun. The locked, edited/rescaled Waveshare drawing on `User.1` is still a visual working reference rather than production geometry; the validated P1/P2 `F.Fab` datums control the two socket placements.
 
 ## Schematic organization
 
@@ -39,10 +39,10 @@ kicad-cli sch export pdf -o /tmp/phase2.pdf "hardware/kicad/ESP32-P4 Display Dev
 kicad-cli sch erc --severity-all -o hardware/kicad/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch"
 ```
 
-The committed ERC report records the last native KiCad run before the Nano-header correction: zero messages, errors or warnings, with `endpoint_off_grid` enabled as an error. The subsequent chart-led P1/P2 correction was checked structurally and by an explicit connector-pin/net audit in an environment without `kicad-cli`; regenerate the native ERC report in KiCad 10 before placement authorization. The historical comparison against `cfd665b0` found exactly 25 intentionally removed physical references and the documented rail renames to `SYS_24V`/`SYS24_PGOOD`; that hash is provenance, not the current design baseline.
+The committed ERC report records the last native KiCad run before the Nano-header correction: zero messages, errors or warnings, with `endpoint_off_grid` enabled as an error. The subsequent chart-led P1/P2 correction and SSQ metadata change were checked structurally and by explicit connector-pin/net audits in an environment without `kicad-cli`; regenerate the native ERC report and PCB DRC in KiCad 10 before routing authorization. The historical comparison against `cfd665b0` found exactly 25 intentionally removed physical references and the documented rail renames to `SYS_24V`/`SYS24_PGOOD`; that hash is provenance, not the current design baseline.
 
-See `docs/design-notes/maintainability-library-review.md` for the inventory and portability review, `docs/design-notes/project-local-footprint-verification.md` for the completed manufacturer land-pattern audit, `docs/design-notes/mechanical-interface-verification.md` for the Nano geometry and source validation, and `docs/design-notes/nano-interface-floorplanning-study.md` for the corrected header map, stacking comparison and preliminary area budget.
+See `docs/design-notes/maintainability-library-review.md` for the inventory and portability review, `docs/design-notes/project-local-footprint-verification.md` for the completed manufacturer land-pattern audit, `docs/design-notes/mechanical-interface-verification.md` for the original Nano geometry/source validation, and `docs/design-notes/preliminary-placement-mechanical-baseline.md` for the current SSQ stack, outline, clearance and real-placement baseline.
 
 ## Phase boundary
 
-Do not begin PCB placement or layout until the owner separately authorizes it. The project-local land-pattern audit and pre-layout manufacturer-file mechanical audit are complete. The narrow sample checks listed in `mechanical-interface-verification.md` remain prerequisites to placement/mechanical freeze.
+Preliminary placement is complete under owner authorization. Do not begin trace routing, pours, stackup freeze, differential tuning or thermal-via finalization without the next authorization. The sample checks in `preliminary-placement-mechanical-baseline.md` remain prerequisites to mechanical freeze.

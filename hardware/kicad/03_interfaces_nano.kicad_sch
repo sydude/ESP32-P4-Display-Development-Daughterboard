@@ -8645,7 +8645,7 @@
 				)
 			)
 		)
-		(property "Value" "NANO P1 2x13"
+		(property "Value" "SSQ-113-01-G-D"
 			(at 450.85 348.71 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8655,7 +8655,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical"
+		(property "Footprint" "Phase2:Samtec_SSQ-113-01-G-D_BottomMount"
 			(at 450.85 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -8666,7 +8666,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.samtec.com/products/ssq-113-01-g-d"
 			(at 450.85 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -8677,7 +8677,7 @@
 				)
 			)
 		)
-		(property "Description" "Waveshare Nano P1 header; complete host pin functions shown"
+		(property "Description" "Samtec 2x13 2.54 mm vertical socket on Waveshare Nano P1; complete host pin functions shown"
 			(at 450.85 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -8699,7 +8699,7 @@
 				)
 			)
 		)
-		(property "MPN" "SSW-113-02-G-D"
+		(property "MPN" "SSQ-113-01-G-D"
 			(at 450.85 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -11996,7 +11996,7 @@
 				)
 			)
 		)
-		(property "Value" "NANO P2 2x13"
+		(property "Value" "SSQ-113-01-G-D"
 			(at 539.75 348.71 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12006,7 +12006,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x13_P2.54mm_Vertical"
+		(property "Footprint" "Phase2:Samtec_SSQ-113-01-G-D_BottomMount"
 			(at 539.75 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -12017,7 +12017,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.samtec.com/products/ssq-113-01-g-d"
 			(at 539.75 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -12028,7 +12028,7 @@
 				)
 			)
 		)
-		(property "Description" "Waveshare Nano P2 header; electrically unused by daughterboard"
+		(property "Description" "Samtec 2x13 2.54 mm vertical socket on Waveshare Nano P2; electrically unused alignment interface"
 			(at 539.75 328.93 0)
 			(hide yes)
 			(show_name no)
@@ -12050,7 +12050,7 @@
 				)
 			)
 		)
-		(property "MPN" "SSW-113-02-G-D"
+		(property "MPN" "SSQ-113-01-G-D"
 			(at 539.75 328.93 0)
 			(hide yes)
 			(show_name no)

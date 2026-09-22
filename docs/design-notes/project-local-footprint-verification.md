@@ -25,6 +25,10 @@ For `J701` and `J702`, the PCB land patterns are verified independently of the s
 | `J702` | Molex `505110-4096`, FD19 40-way, 0.5 mm, bottom-contact/front-flip | **CORRECTED — PHYSICAL PIN-1/TAIL VERIFICATION REMAINS** | Molex product drawing 5051101008-SD Rev. C and exact `505110-4096` order-number row | The 40 signal lands, 0.50 mm pitch, 0.30 × 1.00 mm signal land, retention lands, numbering, and bottom-contact variant agree. The courtyard failed to enclose the outer edges of the 2.60 mm retention lands; expanded it and removed an overlapping silk edge. Corrected the drawing identifier and the official STEP rotation; the model had been mirrored through the board plane. Displayman confirms a bottom-contact panel flex; the delivered tail termination and physical pin 1 remain sample checks. |
 | `U901` | TI `TPS922053DYYR`, DYY0014A TSOT-23-14 | **CORRECTED** | TI TPS922053 datasheet Rev. B; DYY0014A drawing 4224643 Rev. D07 | The 14 pads, 0.50 mm pitch, 1.05 × 0.30 mm land dimensions, numbering, and symbol functions agree. The courtyard ended at the pad centers rather than outside the copper, and the body-side silk crossed the inner pad area. Enlarged the courtyard, clipped the silk to clear copper, and added a visible pin-1 cue. |
 
+### 2026-09-22 addendum — stack socket
+
+`Samtec_SSQ-113-01-G-D_BottomMount` was added after the ten-footprint audit when the exact stack socket was selected. It was independently checked against the Samtec SSQ drawing Rev. BH and recommended-footprint drawing: 2 × 13 contacts, 2.54 mm pitch/row spacing, odd/even numbering, 33.53 × 4.95 × 8.51 mm body, 2.64 mm `-01` tails and Ø1.02 mm plated holes. The local Ø1.80 mm lands provide a 0.39 mm radial annulus. The library geometry is intentionally pre-mirrored for KiCad back-side placement; after flipping to `B.Cu`, its pad coordinates and pin-1 marker match the validated Nano datums. The simplified STEP matches the body, grid and tail envelope and uses the corresponding bottom-side model transform. Exact placement and stack clearance are recorded in `preliminary-placement-mechanical-baseline.md`. **Status: PASS; physical mating/separation sample remains required.**
+
 ## Detailed checks
 
 ### Pad numbering and symbol correspondence
@@ -59,7 +63,7 @@ The committed Amphenol `J701` and Molex `J702` models are manufacturer STEP data
 - KiCad STEP export of each footprint/model pair confirmed that all ten bodies are above the PCB top surface; this check caught and verified the `J701`/`J702` rotation corrections.
 - The project PCB file remained byte-identical to the starting baseline; no placement or layout work was performed.
 
-## Required physical checks before placement freeze
+## Required physical checks before mechanical freeze
 
 1. Inspect the actual Waveshare Nano DSI connector to confirm the STEP-inferred bottom-contact face, physical pin 1, cable exit and bend direction for the top-side-J701/Type-B pass-through arrangement.
 2. Mate the exact Displayman panel flex to `J702` to confirm bottom-contact presentation, pin 1, stiffener thickness, insertion depth and cable exit/bend direction.

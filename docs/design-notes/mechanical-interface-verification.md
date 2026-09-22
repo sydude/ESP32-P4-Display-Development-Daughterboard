@@ -89,13 +89,13 @@ The daughterboard's vertical Micro-Fit J201 is not yet placed. Its eventual keep
 | Mating grid | Two 2×13 interfaces, 2.54 mm pitch; reproduce the exact row/column centers in Section 3.1 | PASS |
 | Nano fitted side | STEP shows male 0.64 mm-square posts through the Nano, with approximately 8.30 mm above the component-side board plane and 3.00 mm below it | PASS, STEP inferred |
 | Daughterboard mate | Female 2×13, 2.54 mm sockets mounted on the daughterboard underside are required for a daughterboard above the Nano | PASS as architecture |
-| Exact socket | Samtec `ESW-113-23-G-D` gives about 16.09 mm nominal PCB separation; `ESW-113-33-G-D` gives about 18.63 mm and is preferred for an overlap prototype. Both accept the Nano's approximately 5.8 mm exposed 0.64 mm-square posts within the drawing's 3.68–6.35 mm insertion range. The generic schematic footprint does not freeze the final socket. | PASS concept; exact ordered sample to verify |
+| Exact socket | Samtec `SSQ-113-01-G-D` is selected and placed. It accepts the Nano's approximately 5.8 mm exposed 0.64 mm-square posts within the 3.68–6.35 mm insertion range; its 8.51 mm body and 2.64 mm tails suit a 1.6 mm daughterboard. | PASS; exact ordered sample still to verify |
 | Pin 1 | The official Waveshare pinout chart resolves physical P1/P2 positions and header pin numbering; the schematic cross-check agrees | PASS |
-| Separation | The preferred `ESW-113-33-G-D` concept clears the 14.45 mm USB-A envelope by about 4.18 mm before tolerance; socket sample, solder tail and standoff fit remain to be measured | PASS concept; NEEDS PHYSICAL VERIFICATION before freeze |
+| Separation | SSQ plus the Nano's approximately 2.50 mm male-header body gives 11.01 mm nominal facing-PCB separation. USB-A/RJ45 exceed that plane and are handled by the validated local cutouts; the minimum solid-board clearance is 2.51 mm over the tallest auxiliary header. | PASS concept; NEEDS PHYSICAL VERIFICATION before freeze |
 | Mounting holes | Four Ø2.70 holes can accept M2.5-class hardware. Matching daughterboard holes and spacers are practical, but the high-Y holes are close to the header end and require actual washer/standoff-envelope checking | PASS concept; hardware envelope to verify |
 | Orientation | A component-side-up Nano with the daughterboard above it is viable only with the clearances in Section 4 and with the DSI connector accessible from the inter-board gap or a board edge | Conditional PASS |
 
-**Required measurement:** mate the exact proposed female socket to one Nano header and measure Nano top-plane to daughterboard bottom-plane and PCB-plane-to-PCB-plane separation. Record socket body position, insertion depth, tail protrusion and standoff length. This cannot be recovered from the Nano files because it depends on the purchased socket configuration.
+**Required measurement:** mate the exact `SSQ-113-01-G-D` sockets to one Nano and measure Nano top-plane to daughterboard bottom-plane separation against the 11.01 mm nominal calculation. Record simultaneous insertion, tail protrusion and standoff length. Placement, cutout and local-clearance details are in `preliminary-placement-mechanical-baseline.md`.
 
 ## 6. J701 — Nano DSI connector and cable
 

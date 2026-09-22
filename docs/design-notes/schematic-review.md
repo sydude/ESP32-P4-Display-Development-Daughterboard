@@ -180,7 +180,7 @@ All 197 physical BOM entries resolve to a footprint: 187 use standard KiCad libr
 | J702 | Molex 505110-4096 |
 | U901 | TI DYY TSOT-23-14 |
 
-The exact C601 selection is Nichicon `UHW1A682MHD`, using the standard KiCad 16 mm × 25 mm, 7.5 mm-pitch radial footprint. All mounted-body parts have resolving 3D models. The only 33 physical entries without a body model are 32 bare plated test pads and the J501 solder jumper, for which a 3D body is not appropriate. See `maintainability-library-review.md` for provenance and limitations. The ten project-local footprints completed their independent manufacturer-drawing/pad-number review on 2026-09-20; see `project-local-footprint-verification.md` for corrections and retained rationale.
+The exact C601 selection is Nichicon `UHW1A682MHD`, using the standard KiCad 16 mm × 25 mm, 7.5 mm-pitch radial footprint. All mounted-body parts have resolving 3D models. The only 33 physical entries without a body model are 32 bare plated test pads and the J501 solder jumper, for which a 3D body is not appropriate. See `maintainability-library-review.md` for provenance and limitations. The original ten project-local footprints completed their independent manufacturer-drawing/pad-number review on 2026-09-20; the subsequently selected Samtec SSQ socket was audited in the 2026-09-22 addendum. See `project-local-footprint-verification.md` for corrections and retained rationale.
 
 ## 7. Unresolved items by correct phase
 
@@ -198,7 +198,7 @@ No known electrical issue requires another schematic topology change before PCB 
 
 - confirm the STEP-inferred Nano DSI bottom-contact face and physical pin 1; the preferred top-side-J701, mouth-toward-slot S-bend resolves to a Type-B cable;
 - inspect delivered LCD/touch physical pin 1, bare-tail/receptacle termination, thickness, stiffener, insertion depth and relaxed bend direction; their bottom-contact requirement is confirmed;
-- measure the exact elevated socket's mated PCB separation and insertion; the pre-layout recommendation is ESW-113-33-G-D at about 18.63 mm plus matched standoffs;
+- mate the selected `SSQ-113-01-G-D` sockets and verify the calculated 11.01 mm facing-PCB separation, simultaneous insertion and matched standoffs;
 - check the connector/flex samples at 1:1 as specified in `mechanical-interface-verification.md`; the PCB land-pattern and manufacturer-file geometry audits are complete.
 
 ### Prototype bring-up

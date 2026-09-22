@@ -1,5 +1,7 @@
 # Nano interface correction and preliminary floorplanning study
 
+> Historical conceptual study: its P1/P2 mapping and GPIO decisions remain authoritative, but its generic rectangular outline and ESW socket/height recommendations were superseded by the real SSQ placement in `preliminary-placement-mechanical-baseline.md` on 2026-09-22.
+
 **Date:** 2026-09-21
 
 **Electrical baseline:** canonical `main` at `388b9dd` before this focused correction
