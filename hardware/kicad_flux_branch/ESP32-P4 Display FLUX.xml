@@ -1,0 +1,4226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/Users/saryeh/Documents/GitHub/Libraries/ESP32-P4 Display Development Daughterboard/hardware/kicad_flux_branch/ESP32-P4 Display FLUX.kicad_sch</source>
+    <date>2026-09-25T11:08:10</date>
+    <tool>Eeschema 10.0.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>ESP32-P4 Displayman Development Daughterboard</title>
+        <company>sydude/ESP32-P4-Display-Development-Daughterboard</company>
+        <rev>Phase 2 / single-source v0.4</rev>
+        <date>2026-09-19</date>
+        <source>ESP32-P4 Display FLUX.kicad_sch</source>
+        <comment number="1" value="© 2026 Sy Aryeh"/>
+        <comment number="2" value="Hardware license: see LICENSE.md"/>
+        <comment number="3" value="REV1 development hardware"/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C201">
+      <value>100nF 100V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C201_100nF_100V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d55c94da-bb17-481a-b199-2295f5eb2c78</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C202">
+      <value>22uF 50V X7R</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C202_22uF_50V_X7R" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7cdf34f5-9502-44ac-84ae-3d46d3efa258</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C203">
+      <value>100uF 50V</value>
+      <footprint>Capacitor_SMD:CP_Elec_10x10</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:CP_Elec_10x10</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C203_100uF_50V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7e3d6d41-ad00-49ff-a462-bd32e79c0199</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C204">
+      <value>10uF 50V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C204_10uF_50V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4a15fb4f-4f63-492b-b833-db6b6fabbc68</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C205">
+      <value>100nF 100V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C205_100nF_100V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1b62dddc-7138-458e-ae2c-9fced3f0587e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C206">
+      <value>100nF 100V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C206_100nF_100V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3cf73381-24ca-41eb-ac93-dceb44c45667</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C207">
+      <value>82nF 25V X7R</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>LM74800 HGATE dV/dt inrush-control capacitor</description>
+      <fields>
+        <field name="Manufacturer">KEMET</field>
+        <field name="MPN">C0603C823K3RACTU</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">LM74800 HGATE dV/dt inrush-control capacitor</field>
+      </fields>
+      <libsource lib="Phase2" part="C304_82nF_X7R" description=""/>
+      <property name="Manufacturer" value="KEMET"/>
+      <property name="MPN" value="C0603C823K3RACTU"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a3353ba0-785e-4881-a441-59c6768350a6</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C301">
+      <value>47pF C0G</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C301_47pF_C0G" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b0c829d1-a442-4e7e-a378-ab3c768e6109</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C302">
+      <value>270pF C0G</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C302_270pF_C0G" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ceacf4fb-2910-4fcf-a848-a02672ce13dc</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C303">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C303_100nF" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bcee8a44-3eda-4739-ade4-46e4d2383145</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C304">
+      <value>82nF X7R</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C304_82nF_X7R" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>efb45f5b-b947-4675-ad08-a4c6f8c750fd</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C305">
+      <value>270pF C0G</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C305_270pF_C0G" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>212ca56d-e053-40a8-9ec7-b1eced5978b1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C306">
+      <value>1uF 16V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C306_1uF_16V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>28a59ffc-7b3d-4e44-9683-b5947dc829eb</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C307">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C307_100nF" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bf0c06aa-93c6-422e-ae13-54e9ded73aaa</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C308">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C308_100nF" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5a3f29e4-5936-4a26-9a1f-0e97f4b62b81</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C309">
+      <value>220uF 35V</value>
+      <footprint>Capacitor_SMD:CP_Elec_10x12.5</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:CP_Elec_10x12.5</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C309_220uF_35V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6f670ce3-8b25-4941-8410-b569b5002ae5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C310">
+      <value>22uF 50V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C310_22uF_50V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b37f22c1-a955-47b9-bdef-da8f03cf884d</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C311">
+      <value>220uF 35V</value>
+      <footprint>Capacitor_SMD:CP_Elec_10x12.5</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:CP_Elec_10x12.5</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C311_220uF_35V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>be021352-a715-45e0-b466-2a8a4c610f87</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C312">
+      <value>22uF 50V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C312_22uF_50V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>205d9aeb-eae1-406c-a3ad-020ca9158570</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C313">
+      <value>22uF 50V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C313_22uF_50V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>76a634eb-2cf3-4fa4-859c-bf8009b55a5f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C501">
+      <value>470nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C501_470nF" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8ca50a3c-d381-4f61-b485-6cf8cf1a5a2f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C502">
+      <value>2.2uF 10V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C502_2.2uF_10V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>18d28f5f-8c1d-4e54-9725-a8222c35d13a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C503">
+      <value>1uF 10V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C503_1uF_10V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>31016563-7208-450c-b9fb-a5e61b7cec4c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C504">
+      <value>22nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C504_22nF" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a2874880-354c-4bda-8f85-d8584a6567c8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C505">
+      <value>4.7uF 100V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C505_4.7uF_100V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>02b5e81e-c27e-477a-b80a-091ad7cb31b4</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C506">
+      <value>4.7uF 100V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C506_4.7uF_100V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a6bd7285-1cb2-4c35-8799-13f288d884c5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C507">
+      <value>47nF 100V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C507_47nF_100V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e8dddeaa-56f1-4112-bed5-dede31f44ed5</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C508">
+      <value>22uF 10V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C508_22uF_10V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>adf3784f-1ed4-45ca-80e5-e0807f739e58</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C509">
+      <value>22uF 10V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C509_22uF_10V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3749afeb-dcfc-455a-a17f-42ec19cf190b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C510">
+      <value>22uF 10V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C510_22uF_10V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>26e1639a-5c18-44da-9671-c07b9aa8d38e</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C511">
+      <value>22uF 10V</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="C511_22uF_10V" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d1b4fccc-a8c7-4631-83a8-7c6407888110</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C512">
+      <value>10nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>About 5 ms 5 V output rise</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">About 5 ms 5 V output rise</field>
+      </fields>
+      <libsource lib="Phase2" part="C512_10nF" description="About 5 ms 5 V output rise"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>68037a85-9f2c-4bdf-8ea4-f4f765c354f7</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C513">
+      <value>1uF 10V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Local TPS25947 input bypass</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Local TPS25947 input bypass</field>
+      </fields>
+      <libsource lib="Phase2" part="C513_1uF_10V" description="Local TPS25947 input bypass"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>918a7dda-64b6-4a8d-b534-cb52d85fbb27</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C514">
+      <value>1uF 10V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Local TPS25947 controlled output capacitance</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Local TPS25947 controlled output capacitance</field>
+      </fields>
+      <libsource lib="Phase2" part="C514_1uF_10V" description="Local TPS25947 controlled output capacitance"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0dfda4f1-64e4-4ff2-bdd0-40ee4fb377fe</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D201">
+      <value>SM8S24CA-Q</value>
+      <footprint>Phase2:Bourns_DO-218AB</footprint>
+      <description>6.6 kW bidirectional vehicle TVS</description>
+      <fields>
+        <field name="Manufacturer">Bourns</field>
+        <field name="MPN">SM8S24CA-Q</field>
+        <field name="Footprint">Phase2:Bourns_DO-218AB</field>
+        <field name="Datasheet"/>
+        <field name="Description">6.6 kW bidirectional vehicle TVS</field>
+      </fields>
+      <libsource lib="Phase2" part="D201_SM8S24CA-Q" description="6.6 kW bidirectional vehicle TVS"/>
+      <property name="Manufacturer" value="Bourns"/>
+      <property name="MPN" value="SM8S24CA-Q"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>065b6ee3-b830-439d-8f17-5d19d6ebe759</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D301">
+      <value>BAT46W-E3-08</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <description>100 V Schottky bootstrap diode for buck-side high gate</description>
+      <fields>
+        <field name="Manufacturer">Vishay</field>
+        <field name="MPN">BAT46W-E3-08</field>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet"/>
+        <field name="Description">100 V Schottky bootstrap diode for buck-side high gate</field>
+      </fields>
+      <libsource lib="Phase2" part="D301_BAT46W-E3-08" description="100 V Schottky bootstrap diode for buck-side high gate"/>
+      <property name="Manufacturer" value="Vishay"/>
+      <property name="MPN" value="BAT46W-E3-08"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1b2009db-faf6-41d6-86d1-b6b0180f84d2</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="D302">
+      <value>BAT46W-E3-08</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <description>100 V Schottky bootstrap diode for boost-side high gate</description>
+      <fields>
+        <field name="Manufacturer">Vishay</field>
+        <field name="MPN">BAT46W-E3-08</field>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet"/>
+        <field name="Description">100 V Schottky bootstrap diode for boost-side high gate</field>
+      </fields>
+      <libsource lib="Phase2" part="D302_BAT46W-E3-08" description="100 V Schottky bootstrap diode for boost-side high gate"/>
+      <property name="Manufacturer" value="Vishay"/>
+      <property name="MPN" value="BAT46W-E3-08"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>061247ec-31a0-4620-9abb-ef101e9a548b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="F201">
+      <value>5A TIME DELAY</value>
+      <footprint>Fuse:Fuseholder_Blade_Mini_Keystone_3568</footprint>
+      <description>5 A MINI blade fuse in Keystone 3568 holder</description>
+      <fields>
+        <field name="Manufacturer">Littelfuse / Keystone</field>
+        <field name="MPN">0297005.WXNV / 3568</field>
+        <field name="Footprint">Fuse:Fuseholder_Blade_Mini_Keystone_3568</field>
+        <field name="Datasheet"/>
+        <field name="Description">5 A MINI blade fuse in Keystone 3568 holder</field>
+      </fields>
+      <libsource lib="Phase2" part="F201_5A_TIME_DELAY" description="5 A MINI blade fuse in Keystone 3568 holder"/>
+      <property name="Manufacturer" value="Littelfuse / Keystone"/>
+      <property name="MPN" value="0297005.WXNV / 3568"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>dfae9d2e-6fb5-4127-bec2-c8fee4d7a671</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J201">
+      <value>VEHICLE 12V</value>
+      <footprint>Phase2:CONN_SD-43045-007_02_MOL</footprint>
+      <description>2-circuit vertical Micro-Fit 3.0 SMT header; sealing not claimed</description>
+      <fields>
+        <field name="Manufacturer">Molex</field>
+        <field name="MPN">43045-0218</field>
+        <field name="Footprint">Phase2:CONN_SD-43045-007_02_MOL</field>
+        <field name="Datasheet"/>
+        <field name="Description">2-circuit vertical Micro-Fit 3.0 SMT header; sealing not claimed</field>
+      </fields>
+      <libsource lib="Phase2" part="J201_VEHICLE_12V" description="2-circuit vertical Micro-Fit 3.0 SMT header; sealing not claimed"/>
+      <property name="Manufacturer" value="Molex"/>
+      <property name="MPN" value="43045-0218"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>725cb9b8-5451-483c-8087-aed3428621b3</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="J501">
+      <value>SERVICE LINK 5V</value>
+      <footprint>Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm</footprint>
+      <description>Normally closed service/current-measure disconnect</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Normally closed service/current-measure disconnect</field>
+      </fields>
+      <libsource lib="Phase2" part="J501_SERVICE_LINK_5V" description="Normally closed service/current-measure disconnect"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6692b73e-222b-4bb0-ab48-9f91ef767c75</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="L201">
+      <value>2.2uH 8A</value>
+      <footprint>Phase2:L_Bourns_SRP1038A_10.0x10.0mm</footprint>
+      <description>Shielded AEC-Q200 input filter inductor</description>
+      <fields>
+        <field name="Manufacturer">Bourns</field>
+        <field name="MPN">SRP1038A-2R2M</field>
+        <field name="Footprint">Phase2:L_Bourns_SRP1038A_10.0x10.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Shielded AEC-Q200 input filter inductor</field>
+      </fields>
+      <libsource lib="Phase2" part="L201_2.2uH_8A" description="Shielded AEC-Q200 input filter inductor"/>
+      <property name="Manufacturer" value="Bourns"/>
+      <property name="MPN" value="SRP1038A-2R2M"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>979d54f3-c4cc-49c4-a122-182b24e5add9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="L301">
+      <value>15uH</value>
+      <footprint>Inductor_SMD:L_Coilcraft_XAL7070-XXX</footprint>
+      <description>Shielded AEC-Q200 buck-boost inductor; 10.1 A saturation rating</description>
+      <fields>
+        <field name="Manufacturer">Coilcraft</field>
+        <field name="MPN">XAL7070-153MEC</field>
+        <field name="Footprint">Inductor_SMD:L_Coilcraft_XAL7070-XXX</field>
+        <field name="Datasheet"/>
+        <field name="Description">Shielded AEC-Q200 buck-boost inductor; 10.1 A saturation rating</field>
+      </fields>
+      <libsource lib="Phase2" part="L301_15uH" description="Shielded AEC-Q200 buck-boost inductor; 10.1 A saturation rating"/>
+      <property name="Manufacturer" value="Coilcraft"/>
+      <property name="MPN" value="XAL7070-153MEC"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>60beea0e-a25a-40e2-b44a-694ded33df27</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="L501">
+      <value>10uH</value>
+      <footprint>Inductor_SMD:L_Coilcraft_XAL7070-XXX</footprint>
+      <description>Isat &gt;=5.5 A shielded inductor</description>
+      <fields>
+        <field name="Manufacturer">Coilcraft</field>
+        <field name="MPN">XAL7070-103MEC</field>
+        <field name="Footprint">Inductor_SMD:L_Coilcraft_XAL7070-XXX</field>
+        <field name="Datasheet"/>
+        <field name="Description">Isat &gt;=5.5 A shielded inductor</field>
+      </fields>
+      <libsource lib="Phase2" part="L501_10uH" description="Isat &gt;=5.5 A shielded inductor"/>
+      <property name="Manufacturer" value="Coilcraft"/>
+      <property name="MPN" value="XAL7070-103MEC"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>42f83643-88cb-49a1-b6df-30484ac697b2</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="PWR101">
+      <value>PWR_FLAG</value>
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <libsource lib="Phase2" part="PWR101_PWR_FLAG" description="ERC power-source marker"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="exclude_from_board"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9f949b98-0a6f-4d93-915f-e29bd6d9782b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="PWR201">
+      <value>PWR_FLAG</value>
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <libsource lib="Phase2" part="PWR201_PWR_FLAG" description="ERC power-source marker"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="exclude_from_board"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6d000008-4f61-473b-9617-a3bcce89f62c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="PWR301">
+      <value>PWR_FLAG</value>
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <libsource lib="Phase2" part="PWR301_PWR_FLAG" description="ERC power-source marker"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="exclude_from_board"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f0a6ae4f-2628-412a-8165-3efafe78749f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="PWR501">
+      <value>PWR_FLAG</value>
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <libsource lib="Phase2" part="PWR501_PWR_FLAG" description="ERC power-source marker"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <property name="exclude_from_bom"/>
+      <property name="exclude_from_board"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5f40a062-8b5b-4778-9537-9aa625d93f57</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q201">
+      <value>CSD19531Q5A</value>
+      <footprint>Phase2:Texas_DQJ0008A_VSONP-8</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</datasheet>
+      <description>100 V N-channel MOSFET</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">CSD19531Q5A</field>
+        <field name="Footprint">Phase2:Texas_DQJ0008A_VSONP-8</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</field>
+        <field name="Description">100 V N-channel MOSFET</field>
+      </fields>
+      <libsource lib="Phase2" part="CSD19531Q5A" description="100 V N-channel MOSFET"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="CSD19531Q5A"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1f29dbc3-6bfc-411d-bf85-e87478a3888c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q202">
+      <value>CSD19531Q5A</value>
+      <footprint>Phase2:Texas_DQJ0008A_VSONP-8</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</datasheet>
+      <description>100 V N-channel MOSFET</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">CSD19531Q5A</field>
+        <field name="Footprint">Phase2:Texas_DQJ0008A_VSONP-8</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</field>
+        <field name="Description">100 V N-channel MOSFET</field>
+      </fields>
+      <libsource lib="Phase2" part="CSD19531Q5A" description="100 V N-channel MOSFET"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="CSD19531Q5A"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>96a4fda6-6e41-4c10-8539-c291d07041ca</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q301">
+      <value>CSD19531Q5A</value>
+      <footprint>Phase2:Texas_DQJ0008A_VSONP-8</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</datasheet>
+      <description>100 V N-channel MOSFET</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">CSD19531Q5A</field>
+        <field name="Footprint">Phase2:Texas_DQJ0008A_VSONP-8</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</field>
+        <field name="Description">100 V N-channel MOSFET</field>
+      </fields>
+      <libsource lib="Phase2" part="CSD19531Q5A" description="100 V N-channel MOSFET"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="CSD19531Q5A"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>278a1eb4-0622-4e07-8818-66c28b61516a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q302">
+      <value>CSD19531Q5A</value>
+      <footprint>Phase2:Texas_DQJ0008A_VSONP-8</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</datasheet>
+      <description>100 V N-channel MOSFET</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">CSD19531Q5A</field>
+        <field name="Footprint">Phase2:Texas_DQJ0008A_VSONP-8</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</field>
+        <field name="Description">100 V N-channel MOSFET</field>
+      </fields>
+      <libsource lib="Phase2" part="CSD19531Q5A" description="100 V N-channel MOSFET"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="CSD19531Q5A"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4e287929-adbc-4fa7-931c-4778b2aa9fc1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q303">
+      <value>CSD19531Q5A</value>
+      <footprint>Phase2:Texas_DQJ0008A_VSONP-8</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</datasheet>
+      <description>100 V N-channel MOSFET</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">CSD19531Q5A</field>
+        <field name="Footprint">Phase2:Texas_DQJ0008A_VSONP-8</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</field>
+        <field name="Description">100 V N-channel MOSFET</field>
+      </fields>
+      <libsource lib="Phase2" part="CSD19531Q5A" description="100 V N-channel MOSFET"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="CSD19531Q5A"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1c4584a5-9ae1-4c5c-b6ff-27886c49bbfb</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="Q304">
+      <value>CSD19531Q5A</value>
+      <footprint>Phase2:Texas_DQJ0008A_VSONP-8</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</datasheet>
+      <description>100 V N-channel MOSFET</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">CSD19531Q5A</field>
+        <field name="Footprint">Phase2:Texas_DQJ0008A_VSONP-8</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</field>
+        <field name="Description">100 V N-channel MOSFET</field>
+      </fields>
+      <libsource lib="Phase2" part="CSD19531Q5A" description="100 V N-channel MOSFET"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="CSD19531Q5A"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>13e462ec-bac1-4a3f-a8c9-f329cf70f287</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R201">
+      <value>1.0R 2W</value>
+      <footprint>Resistor_SMD:R_2512_6332Metric</footprint>
+      <description>Series damping leg</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_2512_6332Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Series damping leg</field>
+      </fields>
+      <libsource lib="Phase2" part="R201_1.0R_2W" description="Series damping leg"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2f0f61c1-a83c-4dac-9f95-cdc5b5d85c37</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R202">
+      <value>56.2k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R202_56.2k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>22e41299-429c-4437-a924-0cc83580c891</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R203">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R203_10.0k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f45d7417-fc0e-4553-a625-6fa1f1dbfc71</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R204">
+      <value>100k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R204_100k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c69f15ba-ea27-4551-8dce-7e6198d93a5f</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R205">
+      <value>6.49k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R205_6.49k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>877fb0b9-9510-4e81-af0e-f6a684a2af58</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R206">
+      <value>10.0k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <description>LM74800 HGATE dV/dt turn-off resistor</description>
+      <fields>
+        <field name="Manufacturer">Panasonic</field>
+        <field name="MPN">ERJ-3EKF1002V</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">LM74800 HGATE dV/dt turn-off resistor</field>
+      </fields>
+      <libsource lib="Phase2" part="R203_10.0k_1%" description=""/>
+      <property name="Manufacturer" value="Panasonic"/>
+      <property name="MPN" value="ERJ-3EKF1002V"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5a09212d-dc11-48c1-b583-1b269d0ff356</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R301">
+      <value>20mR 1% 2W</value>
+      <footprint>Resistor_SMD:R_2512_6332Metric</footprint>
+      <description>Current-limit shunt, 6 A nominal boost peak limit</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_2512_6332Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Current-limit shunt, 6 A nominal boost peak limit</field>
+      </fields>
+      <libsource lib="Phase2" part="R301_20mR_1%_2W" description="Current-limit shunt, 6 A nominal boost peak limit"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>72e95460-3849-491d-9309-2259d95e07f0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R302">
+      <value>100R</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R302_100R" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bee46370-bd81-4808-a74d-eb6459e392f9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R303">
+      <value>27.4k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R303_27.4k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9bc56636-4346-40a6-ae91-c2056b898645</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R304">
+      <value>93.1k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R304_93.1k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>06009697-035c-4e5c-bddf-5333a113fa50</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R305">
+      <value>15.0k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R305_15.0k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d076c54a-fb98-482b-adeb-b70e7bc84cb4</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R306">
+      <value>580k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R306_580k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9a6f392f-895e-4818-8d67-d6a6e7d05879</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R307">
+      <value>20.0k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R307_20.0k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>683fa0c5-8564-427f-977c-e6efb96f9c85</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R308">
+      <value>47k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R308_47k" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>271bb288-9511-4b01-89d8-6b4e45da3c28</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R309">
+      <value>100R</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R309_100R" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9154c968-4b29-439a-ad50-17a180703680</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R501">
+      <value>100k 0.1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R501_100k_0.1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2b2a99cf-cc5a-47a9-aa20-9f7c702e04df</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R502">
+      <value>24.9k 0.1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R502_24.9k_0.1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f20cdd38-6157-412f-b350-b2cfc021a0dc</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R503">
+      <value>1.00M 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R503_1.00M_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a5e4cf50-af81-45a3-922e-233d03ad5518</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R504">
+      <value>68.1k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R504_68.1k_1%" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0af9512b-c497-4959-a108-f221bc308fb9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R505">
+      <value>549R 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <description>DNP 6.07 A laboratory option only</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">DNP 6.07 A laboratory option only</field>
+      </fields>
+      <libsource lib="Phase2" part="R505_549R_1%" description="DNP 6.07 A laboratory option only"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <property name="dnp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>54ef2014-a4b6-465d-8228-a186de77a83a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R506">
+      <value>1.05k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <description>Populated current limit resistor: about 3.18 A</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Populated current limit resistor: about 3.18 A</field>
+      </fields>
+      <libsource lib="Phase2" part="R506_1.05k_1%" description="Populated current limit resistor: about 3.18 A"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a8ee4e6d-cb56-409b-a1fa-6d935d0a8a80</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R507">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R507_100k" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9243916c-ac33-41c7-847b-5561c2ebc7d8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R508">
+      <value>26.7k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R508_26.7k" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a024b614-3484-4798-83ec-dc9de1b45f10</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R509">
+      <value>47k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R509_47k" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ffc0a503-1e7d-4d84-82f4-661c856ccf6a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R510">
+      <value>47k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R510_47k" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>277b5e4c-0dfa-419a-abf8-940a288508fd</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R511">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R511_100k" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1982f3a8-f128-4f90-b2fd-39823fbd58dc</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="R512">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Phase2" part="R512_100k" description=""/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b4f3480c-4178-4a75-aeab-8ad6ceca02c1</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP103">
+      <value>GND</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP103_GND" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2f9150be-dd95-4946-a9c0-acf1202df865</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP201">
+      <value>VEH_12V_RAW</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP201_VEH_12V_RAW" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>167175e0-8d7c-48b4-b4dd-aa82b82f11f9</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP202">
+      <value>VEH_PROT</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP202_VEH_PROT" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ec3c8480-8d19-4fb7-8ace-ee8fe0a620d8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP301">
+      <value>SYS_24V</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP301_SYS_24V" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>78616da9-c723-42e6-a0e1-a446b33b78f0</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP302">
+      <value>SYS24_PGOOD</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP302_SYS24_PGOOD" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a5a79561-446c-4115-adca-1811745a80a8</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP501">
+      <value>SYS_5V_3A</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP501_SYS_5V_3A" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a8d7f5cc-3814-4af4-8a35-8ec8378146fe</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP502">
+      <value>NANO_5V</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP502_NANO_5V" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8655c8be-ab5c-4b26-b3a7-8a44e0a853ec</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP503">
+      <value>SYS5_PGOOD</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP503_SYS5_PGOOD" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9828ed9c-43e7-45c7-aad2-6861a2df0e1b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="TP504">
+      <value>NANO_EFUSE_FLT</value>
+      <footprint>TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</footprint>
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Manufacturer"/>
+        <field name="MPN"/>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <libsource lib="Phase2" part="TP504_NANO_EFUSE_FLT" description="Labeled test point"/>
+      <property name="Manufacturer" value=""/>
+      <property name="MPN" value=""/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f5adb78d-5b19-43a5-b440-baa903e6014c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U201">
+      <value>LM74800QDRRRQ1</value>
+      <footprint>Phase2:Texas_DRR0012E_WSON-12_3x3mm_P0.5mm_EP1.3x2.5mm</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/lm7480-q1.pdf</datasheet>
+      <description>Reverse-battery, ideal-diode, OV and back-to-back disconnect controller</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">LM74800QDRRRQ1</field>
+        <field name="Footprint">Phase2:Texas_DRR0012E_WSON-12_3x3mm_P0.5mm_EP1.3x2.5mm</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/lm7480-q1.pdf</field>
+        <field name="Description">Reverse-battery, ideal-diode, OV and back-to-back disconnect controller</field>
+      </fields>
+      <libsource lib="Phase2" part="U201_LM74800QDRRRQ1" description="Reverse-battery, ideal-diode, OV and back-to-back disconnect controller"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="LM74800QDRRRQ1"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5771c142-a0f0-40c2-8727-fb3df028795c</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U301">
+      <value>LM5176QPWPRQ1</value>
+      <footprint>Phase2:Texas_PWP0028V_TSSOP-28-1EP_4.4x9.7mm_P0.65mm_EP3.4x9.7mm_Mask2.94x5.62mm_ThermalVias</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/lm5176-q1.pdf</datasheet>
+      <description>300 kHz four-switch buck-boost controller, 24 V/30 W</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">LM5176QPWPRQ1</field>
+        <field name="Footprint">Phase2:Texas_PWP0028V_TSSOP-28-1EP_4.4x9.7mm_P0.65mm_EP3.4x9.7mm_Mask2.94x5.62mm_ThermalVias</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/lm5176-q1.pdf</field>
+        <field name="Description">300 kHz four-switch buck-boost controller, 24 V/30 W</field>
+      </fields>
+      <libsource lib="Phase2" part="U301_LM5176QPWPRQ1" description="300 kHz four-switch buck-boost controller, 24 V/30 W"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="LM5176QPWPRQ1"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6401b04e-e7be-4481-9350-007770fbc83a</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+            <pin num="14"/>
+            <pin num="15"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="21"/>
+            <pin num="22"/>
+            <pin num="23"/>
+            <pin num="24"/>
+            <pin num="25"/>
+            <pin num="26"/>
+            <pin num="27"/>
+            <pin num="28"/>
+            <pin num="29"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U501">
+      <value>LM76003RNPR</value>
+      <footprint>Phase2:Texas_RNP0030B_WQFN-30-1EP_4x6mm_P0.5mm_EP1.8x4.5mm_ThermalVias</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/lm76003.pdf</datasheet>
+      <description>500 kHz 5 V/3 A synchronous buck</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">LM76003RNPR</field>
+        <field name="Footprint">Phase2:Texas_RNP0030B_WQFN-30-1EP_4x6mm_P0.5mm_EP1.8x4.5mm_ThermalVias</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/lm76003.pdf</field>
+        <field name="Description">500 kHz 5 V/3 A synchronous buck</field>
+      </fields>
+      <libsource lib="Phase2" part="U501_LM76003RNPR" description="500 kHz 5 V/3 A synchronous buck"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="LM76003RNPR"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>51907c76-09dc-40ba-b466-0abff7a7d299</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+            <pin num="11"/>
+            <pin num="12"/>
+            <pin num="13"/>
+            <pin num="14"/>
+            <pin num="15"/>
+            <pin num="16"/>
+            <pin num="17"/>
+            <pin num="18"/>
+            <pin num="19"/>
+            <pin num="20"/>
+            <pin num="21"/>
+            <pin num="22"/>
+            <pin num="23"/>
+            <pin num="24"/>
+            <pin num="25"/>
+            <pin num="26"/>
+            <pin num="27"/>
+            <pin num="28"/>
+            <pin num="29"/>
+            <pin num="30"/>
+            <pin num="31"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="U502">
+      <value>TPS259470ARPWR</value>
+      <footprint>Phase2:RPW0010A-MFG</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/tps25947.pdf</datasheet>
+      <description>True reverse-current blocking Nano feed eFuse</description>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="MPN">TPS259470ARPWR</field>
+        <field name="Footprint">Phase2:RPW0010A-MFG</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/tps25947.pdf</field>
+        <field name="Description">True reverse-current blocking Nano feed eFuse</field>
+      </fields>
+      <libsource lib="Phase2" part="U502_TPS259470ARPWR" description="True reverse-current blocking Nano feed eFuse"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="MPN" value="TPS259470ARPWR"/>
+      <property name="Sheetname" value="ESP32-P4 Display FLUX"/>
+      <property name="Sheetfile" value="ESP32-P4 Display FLUX.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2a9a3483-327b-4c00-882c-d269fea9b2ac</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+            <pin num="3"/>
+            <pin num="4"/>
+            <pin num="5"/>
+            <pin num="6"/>
+            <pin num="7"/>
+            <pin num="8"/>
+            <pin num="9"/>
+            <pin num="10"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Phase2" part="C201_100nF_100V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF 100V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C202_22uF_50V_X7R">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 50V X7R</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C203_100uF_50V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100uF 50V</field>
+        <field name="Footprint">Capacitor_SMD:CP_Elec_10x10</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C204_10uF_50V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">10uF 50V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C205_100nF_100V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF 100V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C206_100nF_100V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF 100V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C301_47pF_C0G">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">47pF C0G</field>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C302_270pF_C0G">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">270pF C0G</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C303_100nF">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C304_82nF_X7R">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">82nF X7R</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C305_270pF_C0G">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">270pF C0G</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C306_1uF_16V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">1uF 16V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C307_100nF">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C308_100nF">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">100nF</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C309_220uF_35V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">220uF 35V</field>
+        <field name="Footprint">Capacitor_SMD:CP_Elec_10x12.5</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C310_22uF_50V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 50V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C311_220uF_35V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">220uF 35V</field>
+        <field name="Footprint">Capacitor_SMD:CP_Elec_10x12.5</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C312_22uF_50V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 50V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C313_22uF_50V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 50V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C501_470nF">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">470nF</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C502_2.2uF_10V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">2.2uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C503_1uF_10V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">1uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C504_22nF">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22nF</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C505_4.7uF_100V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">4.7uF 100V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C506_4.7uF_100V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">4.7uF 100V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C507_47nF_100V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">47nF 100V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C508_22uF_10V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C509_22uF_10V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C510_22uF_10V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C511_22uF_10V">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">22uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C512_10nF">
+      <description>About 5 ms 5 V output rise</description>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">10nF</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">About 5 ms 5 V output rise</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C513_1uF_10V">
+      <description>Local TPS25947 input bypass</description>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">1uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Local TPS25947 input bypass</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="C514_1uF_10V">
+      <description>Local TPS25947 controlled output capacitance</description>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">1uF 10V</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Local TPS25947 controlled output capacitance</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="CSD19531Q5A">
+      <description>100 V N-channel MOSFET</description>
+      <docs>https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">CSD19531Q5A</field>
+        <field name="Footprint">Phase2:Texas_DQJ0008A_VSONP-8</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/csd19531q5a.pdf</field>
+        <field name="Description">100 V N-channel MOSFET</field>
+      </fields>
+      <pins>
+        <pin num="1" name="S" type="passive"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="S" type="passive"/>
+        <pin num="4" name="G" type="input"/>
+        <pin num="5" name="D" type="passive"/>
+        <pin num="6" name="D" type="passive"/>
+        <pin num="7" name="D" type="passive"/>
+        <pin num="8" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="D201_SM8S24CA-Q">
+      <description>6.6 kW bidirectional vehicle TVS</description>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">SM8S24CA-Q</field>
+        <field name="Footprint">Phase2:Bourns_DO-218AB</field>
+        <field name="Datasheet"/>
+        <field name="Description">6.6 kW bidirectional vehicle TVS</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="D301_BAT46W-E3-08">
+      <description>100 V Schottky bootstrap diode for buck-side high gate</description>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">BAT46W-E3-08</field>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet"/>
+        <field name="Description">100 V Schottky bootstrap diode for buck-side high gate</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="D302_BAT46W-E3-08">
+      <description>100 V Schottky bootstrap diode for boost-side high gate</description>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">BAT46W-E3-08</field>
+        <field name="Footprint">Diode_SMD:D_SOD-123</field>
+        <field name="Datasheet"/>
+        <field name="Description">100 V Schottky bootstrap diode for boost-side high gate</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="F201_5A_TIME_DELAY">
+      <description>5 A MINI blade fuse in Keystone 3568 holder</description>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">5A TIME DELAY</field>
+        <field name="Footprint">Fuse:Fuseholder_Blade_Mini_Keystone_3568</field>
+        <field name="Datasheet"/>
+        <field name="Description">5 A MINI blade fuse in Keystone 3568 holder</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="J201_VEHICLE_12V">
+      <description>2-circuit vertical Micro-Fit 3.0 SMT header; sealing not claimed</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">VEHICLE 12V</field>
+        <field name="Footprint">Phase2:CONN_SD-43045-007_02_MOL</field>
+        <field name="Datasheet"/>
+        <field name="Description">2-circuit vertical Micro-Fit 3.0 SMT header; sealing not claimed</field>
+      </fields>
+      <pins>
+        <pin num="1" name="BATT+" type="passive"/>
+        <pin num="2" name="BATT-" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="J501_SERVICE_LINK_5V">
+      <description>Normally closed service/current-measure disconnect</description>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">SERVICE LINK 5V</field>
+        <field name="Footprint">Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Normally closed service/current-measure disconnect</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="L201_2.2uH_8A">
+      <description>Shielded AEC-Q200 input filter inductor</description>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">2.2uH 8A</field>
+        <field name="Footprint">Phase2:L_Bourns_SRP1038A_10.0x10.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Shielded AEC-Q200 input filter inductor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="L301_15uH">
+      <description>Shielded AEC-Q200 buck-boost inductor; 10.1 A saturation rating</description>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">15uH</field>
+        <field name="Footprint">Inductor_SMD:L_Coilcraft_XAL7070-XXX</field>
+        <field name="Datasheet"/>
+        <field name="Description">Shielded AEC-Q200 buck-boost inductor; 10.1 A saturation rating</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="L501_10uH">
+      <description>Isat &gt;=5.5 A shielded inductor</description>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">10uH</field>
+        <field name="Footprint">Inductor_SMD:L_Coilcraft_XAL7070-XXX</field>
+        <field name="Datasheet"/>
+        <field name="Description">Isat &gt;=5.5 A shielded inductor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="PWR101_PWR_FLAG">
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Reference">PWR</field>
+        <field name="Value">PWR_FLAG</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PWR_FLAG" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="PWR201_PWR_FLAG">
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Reference">PWR</field>
+        <field name="Value">PWR_FLAG</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PWR_FLAG" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="PWR301_PWR_FLAG">
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Reference">PWR</field>
+        <field name="Value">PWR_FLAG</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PWR_FLAG" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="PWR501_PWR_FLAG">
+      <description>ERC power-source marker</description>
+      <fields>
+        <field name="Reference">PWR</field>
+        <field name="Value">PWR_FLAG</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description">ERC power-source marker</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PWR_FLAG" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R201_1.0R_2W">
+      <description>Series damping leg</description>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">1.0R 2W</field>
+        <field name="Footprint">Resistor_SMD:R_2512_6332Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Series damping leg</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R202_56.2k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">56.2k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R203_10.0k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">10.0k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R204_100k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R205_6.49k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">6.49k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R301_20mR_1%_2W">
+      <description>Current-limit shunt, 6 A nominal boost peak limit</description>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">20mR 1% 2W</field>
+        <field name="Footprint">Resistor_SMD:R_2512_6332Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Current-limit shunt, 6 A nominal boost peak limit</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R302_100R">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100R</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R303_27.4k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">27.4k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R304_93.1k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">93.1k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R305_15.0k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">15.0k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R306_580k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">580k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R307_20.0k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">20.0k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R308_47k">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">47k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R309_100R">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100R</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R501_100k_0.1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100k 0.1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R502_24.9k_0.1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">24.9k 0.1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R503_1.00M_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">1.00M 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R504_68.1k_1%">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">68.1k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R505_549R_1%">
+      <description>DNP 6.07 A laboratory option only</description>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">549R 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">DNP 6.07 A laboratory option only</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R506_1.05k_1%">
+      <description>Populated current limit resistor: about 3.18 A</description>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">1.05k 1%</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Populated current limit resistor: about 3.18 A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R507_100k">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R508_26.7k">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">26.7k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R509_47k">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">47k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R510_47k">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">47k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R511_100k">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="R512_100k">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP103_GND">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">GND</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP201_VEH_12V_RAW">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">VEH_12V_RAW</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VEH_12V_RAW" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP202_VEH_PROT">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">VEH_PROT</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VEH_PROT" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP301_SYS_24V">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">SYS_24V</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SYS_24V" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP302_SYS24_PGOOD">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">SYS24_PGOOD</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SYS24_PGOOD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP501_SYS_5V_3A">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">SYS_5V_3A</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SYS_5V_3A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP502_NANO_5V">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">NANO_5V</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="NANO_5V" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP503_SYS5_PGOOD">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">SYS5_PGOOD</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SYS5_PGOOD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="TP504_NANO_EFUSE_FLT">
+      <description>Labeled test point</description>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">NANO_EFUSE_FLT</field>
+        <field name="Footprint">TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Labeled test point</field>
+      </fields>
+      <pins>
+        <pin num="1" name="NANO_EFUSE_FLT" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="U201_LM74800QDRRRQ1">
+      <description>Reverse-battery, ideal-diode, OV and back-to-back disconnect controller</description>
+      <docs>https://www.ti.com/lit/ds/symlink/lm7480-q1.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM74800QDRRRQ1</field>
+        <field name="Footprint">Phase2:Texas_DRR0012E_WSON-12_3x3mm_P0.5mm_EP1.3x2.5mm</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/lm7480-q1.pdf</field>
+        <field name="Description">Reverse-battery, ideal-diode, OV and back-to-back disconnect controller</field>
+      </fields>
+      <pins>
+        <pin num="1" name="DGATE" type="output"/>
+        <pin num="2" name="A" type="input"/>
+        <pin num="3" name="VSNS" type="input"/>
+        <pin num="4" name="SW" type="input"/>
+        <pin num="5" name="OV" type="input"/>
+        <pin num="6" name="EN/UVLO" type="input"/>
+        <pin num="7" name="GND" type="power_in"/>
+        <pin num="8" name="HGATE" type="output"/>
+        <pin num="9" name="OUT" type="input"/>
+        <pin num="10" name="VS" type="input"/>
+        <pin num="11" name="CAP" type="power_out"/>
+        <pin num="12" name="C" type="input"/>
+        <pin num="13" name="RTN_EP" type="no_connect"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="U301_LM5176QPWPRQ1">
+      <description>300 kHz four-switch buck-boost controller, 24 V/30 W</description>
+      <docs>https://www.ti.com/lit/ds/symlink/lm5176-q1.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM5176QPWPRQ1</field>
+        <field name="Footprint">Phase2:Texas_PWP0028V_TSSOP-28-1EP_4.4x9.7mm_P0.65mm_EP3.4x9.7mm_Mask2.94x5.62mm_ThermalVias</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/lm5176-q1.pdf</field>
+        <field name="Description">300 kHz four-switch buck-boost controller, 24 V/30 W</field>
+      </fields>
+      <pins>
+        <pin num="1" name="EN/UVLO" type="input"/>
+        <pin num="2" name="VIN" type="power_in"/>
+        <pin num="3" name="VISNS" type="input"/>
+        <pin num="4" name="MODE" type="input"/>
+        <pin num="5" name="DITH" type="input"/>
+        <pin num="6" name="RT/SYNC" type="input"/>
+        <pin num="7" name="SLOPE" type="input"/>
+        <pin num="8" name="SS" type="input"/>
+        <pin num="9" name="COMP" type="output"/>
+        <pin num="10" name="AGND" type="power_in"/>
+        <pin num="11" name="FB" type="input"/>
+        <pin num="12" name="VOSNS" type="input"/>
+        <pin num="13" name="ISNS-" type="input"/>
+        <pin num="14" name="ISNS+" type="input"/>
+        <pin num="15" name="CSG" type="input"/>
+        <pin num="16" name="CS" type="input"/>
+        <pin num="17" name="PGOOD" type="open_collector"/>
+        <pin num="18" name="SW2" type="passive"/>
+        <pin num="19" name="HDRV2" type="output"/>
+        <pin num="20" name="BOOT2" type="passive"/>
+        <pin num="21" name="LDRV2" type="output"/>
+        <pin num="22" name="PGND" type="power_in"/>
+        <pin num="23" name="VCC" type="power_out"/>
+        <pin num="24" name="BIAS" type="power_in"/>
+        <pin num="25" name="LDRV1" type="output"/>
+        <pin num="26" name="BOOT1" type="passive"/>
+        <pin num="27" name="HDRV1" type="output"/>
+        <pin num="28" name="SW1" type="passive"/>
+        <pin num="29" name="EP" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="U501_LM76003RNPR">
+      <description>500 kHz 5 V/3 A synchronous buck</description>
+      <docs>https://www.ti.com/lit/ds/symlink/lm76003.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM76003RNPR</field>
+        <field name="Footprint">Phase2:Texas_RNP0030B_WQFN-30-1EP_4x6mm_P0.5mm_EP1.8x4.5mm_ThermalVias</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/lm76003.pdf</field>
+        <field name="Description">500 kHz 5 V/3 A synchronous buck</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SW" type="power_out"/>
+        <pin num="2" name="SW" type="passive"/>
+        <pin num="3" name="SW" type="passive"/>
+        <pin num="4" name="SW" type="passive"/>
+        <pin num="5" name="SW" type="passive"/>
+        <pin num="6" name="BOOT" type="passive"/>
+        <pin num="7" name="NC_GND" type="passive"/>
+        <pin num="8" name="VCC" type="power_out"/>
+        <pin num="9" name="BIAS" type="power_in"/>
+        <pin num="10" name="RT" type="input"/>
+        <pin num="11" name="SS/TRK" type="input"/>
+        <pin num="12" name="FB" type="input"/>
+        <pin num="13" name="AGND" type="power_in"/>
+        <pin num="14" name="AGND" type="passive"/>
+        <pin num="15" name="AGND" type="passive"/>
+        <pin num="16" name="PGOOD" type="open_collector"/>
+        <pin num="17" name="SYNC/MODE" type="input"/>
+        <pin num="18" name="EN" type="input"/>
+        <pin num="19" name="NC_GND" type="passive"/>
+        <pin num="20" name="PVIN" type="power_in"/>
+        <pin num="21" name="PVIN" type="passive"/>
+        <pin num="22" name="PVIN" type="passive"/>
+        <pin num="23" name="NC_GND" type="passive"/>
+        <pin num="24" name="PGND" type="power_in"/>
+        <pin num="25" name="PGND" type="passive"/>
+        <pin num="26" name="PGND" type="passive"/>
+        <pin num="27" name="NC_GND" type="passive"/>
+        <pin num="28" name="NC_GND" type="passive"/>
+        <pin num="29" name="NC_GND" type="passive"/>
+        <pin num="30" name="NC_GND" type="passive"/>
+        <pin num="31" name="EP" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Phase2" part="U502_TPS259470ARPWR">
+      <description>True reverse-current blocking Nano feed eFuse</description>
+      <docs>https://www.ti.com/lit/ds/symlink/tps25947.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TPS259470ARPWR</field>
+        <field name="Footprint">Phase2:RPW0010A-MFG</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/tps25947.pdf</field>
+        <field name="Description">True reverse-current blocking Nano feed eFuse</field>
+      </fields>
+      <pins>
+        <pin num="1" name="EN/UVLO" type="input"/>
+        <pin num="2" name="OVLO" type="input"/>
+        <pin num="3" name="AUXOFF" type="no_connect"/>
+        <pin num="4" name="FLT" type="open_collector"/>
+        <pin num="5" name="IN" type="power_in"/>
+        <pin num="6" name="OUT" type="power_out"/>
+        <pin num="7" name="DVDT" type="output"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="ILM" type="output"/>
+        <pin num="10" name="ITIMER" type="no_connect"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Phase2">
+      <uri>${KIPRJMOD}/Phase2.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="BOOT1" class="Default">
+      <node ref="C307" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D301" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="U301" pin="26" pinfunction="BOOT1_26" pintype="passive"/>
+    </net>
+    <net code="2" name="BOOT2" class="Default">
+      <node ref="C308" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D302" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="U301" pin="20" pinfunction="BOOT2_20" pintype="passive"/>
+    </net>
+    <net code="3" name="BUCK_SHUNT_HI" class="Default">
+      <node ref="Q302" pin="1" pinfunction="S_1" pintype="passive"/>
+      <node ref="Q302" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q302" pin="3" pinfunction="S_3" pintype="passive"/>
+      <node ref="R301" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R302" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="4" name="COMP_RC" class="Default">
+      <node ref="C304" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R305" pin="2" pinfunction="2_2" pintype="passive"/>
+    </net>
+    <net code="5" name="EFUSE_DVDT" class="Default">
+      <node ref="C512" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U502" pin="7" pinfunction="DVDT_7" pintype="output"/>
+    </net>
+    <net code="6" name="EFUSE_EN" class="Default">
+      <node ref="R511" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R512" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U502" pin="1" pinfunction="EN/UVLO_1" pintype="input"/>
+    </net>
+    <net code="7" name="EFUSE_ILM" class="Default">
+      <node ref="R505" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R506" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U502" pin="9" pinfunction="ILM_9" pintype="output"/>
+    </net>
+    <net code="8" name="EFUSE_OV" class="Default">
+      <node ref="R507" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R508" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U502" pin="2" pinfunction="OVLO_2" pintype="input"/>
+    </net>
+    <net code="9" name="GND" class="Default">
+      <node ref="C201" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C202" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C203" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C204" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C206" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C302" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C303" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C304" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C305" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C306" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C309" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C310" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C311" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C312" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C313" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C502" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C503" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C504" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C505" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C506" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C507" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C508" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C509" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C510" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C511" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C512" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C513" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C514" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="D201" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="J201" pin="2" pinfunction="BATT-_2" pintype="passive"/>
+      <node ref="PWR101" pin="1" pinfunction="PWR_FLAG_1" pintype="power_out"/>
+      <node ref="Q304" pin="1" pinfunction="S_1" pintype="passive"/>
+      <node ref="Q304" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q304" pin="3" pinfunction="S_3" pintype="passive"/>
+      <node ref="R203" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R205" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R301" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R303" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R304" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R307" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R309" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R502" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R504" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R505" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R506" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R508" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R512" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="TP103" pin="1" pinfunction="GND_1" pintype="passive"/>
+      <node ref="U201" pin="7" pinfunction="GND_7" pintype="power_in"/>
+      <node ref="U301" pin="10" pinfunction="AGND_10" pintype="power_in"/>
+      <node ref="U301" pin="22" pinfunction="PGND_22" pintype="power_in"/>
+      <node ref="U301" pin="29" pinfunction="EP_29" pintype="power_in"/>
+      <node ref="U301" pin="5" pinfunction="DITH_5" pintype="input"/>
+      <node ref="U501" pin="13" pinfunction="AGND_13" pintype="power_in"/>
+      <node ref="U501" pin="14" pinfunction="AGND_14" pintype="passive"/>
+      <node ref="U501" pin="15" pinfunction="AGND_15" pintype="passive"/>
+      <node ref="U501" pin="17" pinfunction="SYNC/MODE_17" pintype="input"/>
+      <node ref="U501" pin="19" pinfunction="NC_GND_19" pintype="passive"/>
+      <node ref="U501" pin="23" pinfunction="NC_GND_23" pintype="passive"/>
+      <node ref="U501" pin="24" pinfunction="PGND_24" pintype="power_in"/>
+      <node ref="U501" pin="25" pinfunction="PGND_25" pintype="passive"/>
+      <node ref="U501" pin="26" pinfunction="PGND_26" pintype="passive"/>
+      <node ref="U501" pin="27" pinfunction="NC_GND_27" pintype="passive"/>
+      <node ref="U501" pin="28" pinfunction="NC_GND_28" pintype="passive"/>
+      <node ref="U501" pin="29" pinfunction="NC_GND_29" pintype="passive"/>
+      <node ref="U501" pin="30" pinfunction="NC_GND_30" pintype="passive"/>
+      <node ref="U501" pin="31" pinfunction="EP_31" pintype="power_in"/>
+      <node ref="U501" pin="7" pinfunction="NC_GND_7" pintype="passive"/>
+      <node ref="U502" pin="8" pinfunction="GND_8" pintype="power_in"/>
+    </net>
+    <net code="10" name="HDRV1" class="Default">
+      <node ref="Q301" pin="4" pinfunction="G_4" pintype="input"/>
+      <node ref="U301" pin="27" pinfunction="HDRV1_27" pintype="output"/>
+    </net>
+    <net code="11" name="HDRV2" class="Default">
+      <node ref="Q303" pin="4" pinfunction="G_4" pintype="input"/>
+      <node ref="U301" pin="19" pinfunction="HDRV2_19" pintype="output"/>
+    </net>
+    <net code="12" name="LDRV1" class="Default">
+      <node ref="Q302" pin="4" pinfunction="G_4" pintype="input"/>
+      <node ref="U301" pin="25" pinfunction="LDRV1_25" pintype="output"/>
+    </net>
+    <net code="13" name="LDRV2" class="Default">
+      <node ref="Q304" pin="4" pinfunction="G_4" pintype="input"/>
+      <node ref="U301" pin="21" pinfunction="LDRV2_21" pintype="output"/>
+    </net>
+    <net code="14" name="LM760_BOOT" class="Default">
+      <node ref="C501" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U501" pin="6" pinfunction="BOOT_6" pintype="passive"/>
+    </net>
+    <net code="15" name="LM760_EN" class="Default">
+      <node ref="R503" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R504" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U501" pin="18" pinfunction="EN_18" pintype="input"/>
+    </net>
+    <net code="16" name="LM760_FB" class="Default">
+      <node ref="R501" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R502" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U501" pin="12" pinfunction="FB_12" pintype="input"/>
+    </net>
+    <net code="17" name="LM760_SS" class="Default">
+      <node ref="C504" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U501" pin="11" pinfunction="SS/TRK_11" pintype="input"/>
+    </net>
+    <net code="18" name="LM760_SW" class="Default">
+      <node ref="C501" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="L501" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U501" pin="1" pinfunction="SW_1" pintype="power_out"/>
+      <node ref="U501" pin="2" pinfunction="SW_2" pintype="passive"/>
+      <node ref="U501" pin="3" pinfunction="SW_3" pintype="passive"/>
+      <node ref="U501" pin="4" pinfunction="SW_4" pintype="passive"/>
+      <node ref="U501" pin="5" pinfunction="SW_5" pintype="passive"/>
+    </net>
+    <net code="19" name="LM760_VCC" class="Default">
+      <node ref="C502" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U501" pin="8" pinfunction="VCC_8" pintype="power_out"/>
+    </net>
+    <net code="20" name="LM5176_COMP" class="Default">
+      <node ref="C305" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R305" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U301" pin="9" pinfunction="COMP_9" pintype="output"/>
+    </net>
+    <net code="21" name="LM5176_CS" class="Default">
+      <node ref="C301" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R302" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U301" pin="16" pinfunction="CS_16" pintype="input"/>
+    </net>
+    <net code="22" name="LM5176_CSG" class="Default">
+      <node ref="C301" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R309" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="U301" pin="15" pinfunction="CSG_15" pintype="input"/>
+    </net>
+    <net code="23" name="LM5176_MODE" class="Default">
+      <node ref="R304" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U301" pin="4" pinfunction="MODE_4" pintype="input"/>
+    </net>
+    <net code="24" name="LM5176_RT" class="Default">
+      <node ref="R303" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U301" pin="6" pinfunction="RT/SYNC_6" pintype="input"/>
+    </net>
+    <net code="25" name="LM5176_SLOPE" class="Default">
+      <node ref="C302" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U301" pin="7" pinfunction="SLOPE_7" pintype="input"/>
+    </net>
+    <net code="26" name="LM5176_SS" class="Default">
+      <node ref="C303" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U301" pin="8" pinfunction="SS_8" pintype="input"/>
+    </net>
+    <net code="27" name="LM5176_VCC" class="Default">
+      <node ref="C306" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D301" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="D302" pin="2" pinfunction="A_2" pintype="passive"/>
+      <node ref="U301" pin="23" pinfunction="VCC_23" pintype="power_out"/>
+    </net>
+    <net code="28" name="NANO_5V" class="Default">
+      <node ref="J501" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="TP502" pin="1" pinfunction="NANO_5V_1" pintype="passive"/>
+    </net>
+    <net code="29" name="NANO_5V_EFUSED" class="Default">
+      <node ref="C514" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J501" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U502" pin="6" pinfunction="OUT_6" pintype="power_out"/>
+    </net>
+    <net code="30" name="NANO_EFUSE_FLT" class="Default">
+      <node ref="R509" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP504" pin="1" pinfunction="NANO_EFUSE_FLT_1" pintype="passive"/>
+      <node ref="U502" pin="4" pinfunction="FLT_4" pintype="open_collector"/>
+    </net>
+    <net code="31" name="SW1" class="Default">
+      <node ref="C307" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="L301" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="Q301" pin="1" pinfunction="S_1" pintype="passive"/>
+      <node ref="Q301" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q301" pin="3" pinfunction="S_3" pintype="passive"/>
+      <node ref="Q302" pin="5" pinfunction="D_5" pintype="passive"/>
+      <node ref="Q302" pin="6" pinfunction="D_6" pintype="passive"/>
+      <node ref="Q302" pin="7" pinfunction="D_7" pintype="passive"/>
+      <node ref="Q302" pin="8" pinfunction="D_8" pintype="passive"/>
+      <node ref="U301" pin="28" pinfunction="SW1_28" pintype="passive"/>
+    </net>
+    <net code="32" name="SW2" class="Default">
+      <node ref="C308" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="L301" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="Q303" pin="1" pinfunction="S_1" pintype="passive"/>
+      <node ref="Q303" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q303" pin="3" pinfunction="S_3" pintype="passive"/>
+      <node ref="Q304" pin="5" pinfunction="D_5" pintype="passive"/>
+      <node ref="Q304" pin="6" pinfunction="D_6" pintype="passive"/>
+      <node ref="Q304" pin="7" pinfunction="D_7" pintype="passive"/>
+      <node ref="Q304" pin="8" pinfunction="D_8" pintype="passive"/>
+      <node ref="U301" pin="18" pinfunction="SW2_18" pintype="passive"/>
+    </net>
+    <net code="33" name="SYS5_PGOOD" class="Default">
+      <node ref="R510" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP503" pin="1" pinfunction="SYS5_PGOOD_1" pintype="passive"/>
+      <node ref="U501" pin="16" pinfunction="PGOOD_16" pintype="open_collector"/>
+    </net>
+    <net code="34" name="SYS24_PGOOD" class="Default">
+      <node ref="R308" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP302" pin="1" pinfunction="SYS24_PGOOD_1" pintype="passive"/>
+      <node ref="U301" pin="17" pinfunction="PGOOD_17" pintype="open_collector"/>
+    </net>
+    <net code="35" name="SYS_5V_3A" class="Default">
+      <node ref="C503" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C508" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C509" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C510" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C511" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C513" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="L501" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="PWR501" pin="1" pinfunction="PWR_FLAG_1" pintype="power_out"/>
+      <node ref="R308" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R501" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R507" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R509" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R510" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R511" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP501" pin="1" pinfunction="SYS_5V_3A_1" pintype="passive"/>
+      <node ref="U501" pin="9" pinfunction="BIAS_9" pintype="power_in"/>
+      <node ref="U502" pin="5" pinfunction="IN_5" pintype="power_in"/>
+    </net>
+    <net code="36" name="SYS_24V" class="Default">
+      <node ref="C311" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C312" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C313" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C505" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C506" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C507" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="PWR301" pin="1" pinfunction="PWR_FLAG_1" pintype="power_out"/>
+      <node ref="Q303" pin="5" pinfunction="D_5" pintype="passive"/>
+      <node ref="Q303" pin="6" pinfunction="D_6" pintype="passive"/>
+      <node ref="Q303" pin="7" pinfunction="D_7" pintype="passive"/>
+      <node ref="Q303" pin="8" pinfunction="D_8" pintype="passive"/>
+      <node ref="R306" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R503" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="TP301" pin="1" pinfunction="SYS_24V_1" pintype="passive"/>
+      <node ref="U301" pin="12" pinfunction="VOSNS_12" pintype="input"/>
+      <node ref="U301" pin="13" pinfunction="ISNS-_13" pintype="input"/>
+      <node ref="U301" pin="14" pinfunction="ISNS+_14" pintype="input"/>
+      <node ref="U301" pin="24" pinfunction="BIAS_24" pintype="power_in"/>
+      <node ref="U501" pin="20" pinfunction="PVIN_20" pintype="power_in"/>
+      <node ref="U501" pin="21" pinfunction="PVIN_21" pintype="passive"/>
+      <node ref="U501" pin="22" pinfunction="PVIN_22" pintype="passive"/>
+    </net>
+    <net code="37" name="VEH_12V_RAW" class="Default">
+      <node ref="F201" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="J201" pin="1" pinfunction="BATT+_1" pintype="passive"/>
+      <node ref="TP201" pin="1" pinfunction="VEH_12V_RAW_1" pintype="passive"/>
+    </net>
+    <net code="38" name="VEH_CAP" class="Default">
+      <node ref="C205" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U201" pin="11" pinfunction="CAP_11" pintype="power_out"/>
+    </net>
+    <net code="39" name="VEH_DAMP" class="Default">
+      <node ref="C204" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R201" pin="2" pinfunction="2_2" pintype="passive"/>
+    </net>
+    <net code="40" name="VEH_DGATE" class="Default">
+      <node ref="Q201" pin="4" pinfunction="G_4" pintype="input"/>
+      <node ref="U201" pin="1" pinfunction="DGATE_1" pintype="output"/>
+    </net>
+    <net code="41" name="VEH_FB" class="Default">
+      <node ref="R306" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R307" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U301" pin="11" pinfunction="FB_11" pintype="input"/>
+    </net>
+    <net code="42" name="VEH_FET_MID" class="Default">
+      <node ref="C205" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C206" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="Q201" pin="5" pinfunction="D_5" pintype="passive"/>
+      <node ref="Q201" pin="6" pinfunction="D_6" pintype="passive"/>
+      <node ref="Q201" pin="7" pinfunction="D_7" pintype="passive"/>
+      <node ref="Q201" pin="8" pinfunction="D_8" pintype="passive"/>
+      <node ref="Q202" pin="5" pinfunction="D_5" pintype="passive"/>
+      <node ref="Q202" pin="6" pinfunction="D_6" pintype="passive"/>
+      <node ref="Q202" pin="7" pinfunction="D_7" pintype="passive"/>
+      <node ref="Q202" pin="8" pinfunction="D_8" pintype="passive"/>
+      <node ref="U201" pin="10" pinfunction="VS_10" pintype="input"/>
+      <node ref="U201" pin="12" pinfunction="C_12" pintype="input"/>
+    </net>
+    <net code="43" name="VEH_FILTER" class="Default">
+      <node ref="C201" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C202" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="D201" pin="1" pinfunction="K_1" pintype="passive"/>
+      <node ref="L201" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="Q201" pin="1" pinfunction="S_1" pintype="passive"/>
+      <node ref="Q201" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q201" pin="3" pinfunction="S_3" pintype="passive"/>
+      <node ref="R201" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R202" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U201" pin="2" pinfunction="A_2" pintype="input"/>
+      <node ref="U201" pin="3" pinfunction="VSNS_3" pintype="input"/>
+    </net>
+    <net code="44" name="VEH_FUSED" class="Default">
+      <node ref="F201" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="L201" pin="1" pinfunction="1_1" pintype="passive"/>
+    </net>
+    <net code="45" name="VEH_HGATE" class="Default">
+      <node ref="Q202" pin="4" pinfunction="G_4" pintype="input"/>
+      <node ref="R206" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U201" pin="8" pinfunction="HGATE_8" pintype="output"/>
+    </net>
+    <net code="46" name="VEH_HGATE_DVDT" class="Default">
+      <node ref="C207" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="R206" pin="2" pinfunction="2_2" pintype="passive"/>
+    </net>
+    <net code="47" name="VEH_OV" class="Default">
+      <node ref="R204" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R205" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U201" pin="5" pinfunction="OV_5" pintype="input"/>
+    </net>
+    <net code="48" name="VEH_OV_TOP" class="Default">
+      <node ref="R204" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U201" pin="4" pinfunction="SW_4" pintype="input"/>
+    </net>
+    <net code="49" name="VEH_PROT" class="Default">
+      <node ref="C203" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C207" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="C309" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="C310" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="PWR201" pin="1" pinfunction="PWR_FLAG_1" pintype="power_out"/>
+      <node ref="Q202" pin="1" pinfunction="S_1" pintype="passive"/>
+      <node ref="Q202" pin="2" pinfunction="S_2" pintype="passive"/>
+      <node ref="Q202" pin="3" pinfunction="S_3" pintype="passive"/>
+      <node ref="Q301" pin="5" pinfunction="D_5" pintype="passive"/>
+      <node ref="Q301" pin="6" pinfunction="D_6" pintype="passive"/>
+      <node ref="Q301" pin="7" pinfunction="D_7" pintype="passive"/>
+      <node ref="Q301" pin="8" pinfunction="D_8" pintype="passive"/>
+      <node ref="TP202" pin="1" pinfunction="VEH_PROT_1" pintype="passive"/>
+      <node ref="U201" pin="9" pinfunction="OUT_9" pintype="input"/>
+      <node ref="U301" pin="1" pinfunction="EN/UVLO_1" pintype="input"/>
+      <node ref="U301" pin="2" pinfunction="VIN_2" pintype="power_in"/>
+      <node ref="U301" pin="3" pinfunction="VISNS_3" pintype="input"/>
+    </net>
+    <net code="50" name="VEH_UVLO" class="Default">
+      <node ref="R202" pin="2" pinfunction="2_2" pintype="passive"/>
+      <node ref="R203" pin="1" pinfunction="1_1" pintype="passive"/>
+      <node ref="U201" pin="6" pinfunction="EN/UVLO_6" pintype="input"/>
+    </net>
+    <net code="51" name="unconnected-(U201-RTN_EP-Pad13)" class="Default">
+      <node ref="U201" pin="13" pinfunction="RTN_EP_13" pintype="no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(U501-RT-Pad10)" class="Default">
+      <node ref="U501" pin="10" pinfunction="RT_10" pintype="input+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(U502-AUXOFF-Pad3)" class="Default">
+      <node ref="U502" pin="3" pinfunction="AUXOFF_3" pintype="no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(U502-ITIMER-Pad10)" class="Default">
+      <node ref="U502" pin="10" pinfunction="ITIMER_10" pintype="no_connect"/>
+    </net>
+  </nets>
+</export>

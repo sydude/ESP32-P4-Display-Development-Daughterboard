@@ -472,7 +472,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "ESP32-P4 Display Development Daughterboard.kicad_pro",
+    "filename": "ESP32-P4 Display FLUX.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -672,18 +672,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "ESP32-P4 Display Development Daughterboard.kicad_sch",
-        "name": "Root",
+        "filename": "ESP32-P4 Display FLUX.kicad_sch",
+        "name": "ESP32-P4 Display FLUX",
         "uuid": "95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
       }
     ],
-    "used_designators": "PWR101,PWR201,PWR301,PWR501,PWR601,U201,U301,U501-502,U601-608,U701,U801-803,U901-902,TP103,TP201-202,TP301-302,TP501-504,TP601-607,TP801-805,TP901-905,TP1001-1006,F201,R201-206,R301-309,R501-512,R601-611,R701-706,R801-804,R901-910,R1001-1007,J201,J501,J701-702,J801,J901,J1001-1003,Q201-202,Q301-304,Q801,C201-207,C301-313,C501-514,C601-607,C801-803,C901-908,FB901,D201,D301-302,D601-602,D901,D1001-1002,L201,L301,L501,L901",
+    "used_designators": "R201-206,R301-309,R501-512,PWR101,PWR201,PWR301,PWR501,L201,L301,L501,J201,J501,U201,U301,U501-502,F201,TP103,TP201-202,TP301-302,TP501-504,Q201-202,Q301-304,D201,D301-302,C201-207,C301-313,C501-514",
     "variants": []
   },
   "sheets": [
     [
       "95ed5eda-07d0-4bd1-9d8d-498592ee8d01",
-      "Root"
+      "ESP32-P4 Display FLUX"
     ]
   ],
   "text_variables": {},
