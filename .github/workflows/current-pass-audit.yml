@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download KiCad 10 portable
         run: |
+          set -o pipefail
           curl -fsSL --retry 3 -o /tmp/kicad.tar https://kicad-downloads.s3.cern.ch/appimage/stable/kicad-10.0.6-x86_64-lite.AppImage.tar
           mkdir -p /tmp/kicad
           tar -xf /tmp/kicad.tar -C /tmp/kicad
@@ -18,29 +19,32 @@ jobs:
           cd /tmp/kicad
           ./kicad-10.0.6-x86_64-lite.AppImage --appimage-extract >/dev/null
       - name: Apply focused schematic corrections
-        env:
-          KICAD_SYMBOL_DIR: /tmp/kicad/squashfs-root/usr/share/kicad/symbols
         run: |
+          set -o pipefail
           python -m pip install -q kicad-sch-api
           mkdir -p audit-output
-          python tools/apply_current_pass.py schematic | tee audit-output/schematic-apply.log
+          python tools/apply_current_pass.py schematic 2>&1 | tee audit-output/schematic-apply.log
       - name: Apply KiCad-native parked-block placement
         run: |
-          /tmp/kicad/squashfs-root/AppRun python3.11 tools/apply_current_pass.py pcb | tee audit-output/pcb-apply.log
+          set -o pipefail
+          /tmp/kicad/squashfs-root/AppRun python3.11 tools/apply_current_pass.py pcb 2>&1 | tee audit-output/pcb-apply.log
       - name: Native KiCad checks
         continue-on-error: true
         run: |
+          set -o pipefail
           K=/tmp/kicad/squashfs-root/AppRun
-          "$K" kicad-cli sch erc --severity-all -o audit-output/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" | tee audit-output/erc-console.txt
-          "$K" kicad-cli pcb drc --severity-all --format json -o audit-output/drc-report.json "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" | tee audit-output/drc-console.txt
+          "$K" kicad-cli sch erc --severity-all -o audit-output/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" 2>&1 | tee audit-output/erc-console.txt
+          "$K" kicad-cli pcb drc --severity-all --format json -o audit-output/drc-report.json "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" 2>&1 | tee audit-output/drc-console.txt
       - name: Audit resulting design
         run: |
-          /tmp/kicad/squashfs-root/AppRun python3.11 tools/current_pass_audit.py | tee audit-output/result-audit.txt
+          set -o pipefail
+          /tmp/kicad/squashfs-root/AppRun python3.11 tools/current_pass_audit.py 2>&1 | tee audit-output/result-audit.txt
           git diff --check
           git diff --stat | tee audit-output/diff-stat.txt
           git status --short | tee audit-output/status.txt
           git diff --binary > audit-output/result.patch
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: current-pass-result
           path: |
