@@ -19,6 +19,7 @@ jobs:
           ./kicad-10.0.6-x86_64-lite.AppImage --appimage-extract >/dev/null
       - name: Audit current design
         run: |
+          mkdir -p audit-output
           /tmp/kicad/squashfs-root/AppRun python3.11 tools/current_pass_audit.py | tee audit-output/workflow-log.txt
       - uses: actions/upload-artifact@v4
         with:
