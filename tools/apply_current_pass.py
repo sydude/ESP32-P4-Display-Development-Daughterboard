@@ -224,13 +224,16 @@ def run_schematic():
         rows.append({"Reference":ref,"Value":str(c.value),"Manufacturer":prop(c,"Manufacturer"),"MPN":prop(c,"MPN"),
                      "Footprint":footprint,"DNP":"DNP" if ref in DNP else "POP","Sheet":sheet_name(ref),"Description":prop(c,"Description")})
     rows.sort(key=lambda row:natural_key(row["Reference"])); refs={r["Reference"] for r in rows}
-    if len(rows) != 167: raise RuntimeError(f"Expected 167 BOM rows, found {len(rows)}")
+    # The PCB has 167 footprints after deletion: 165 schematic components plus
+    # board-only mounting holes H101/H102, which correctly do not appear in BOM.csv.
+    if len(rows) != 165: raise RuntimeError(f"Expected 165 BOM rows plus two board-only mounting holes, found {len(rows)}")
     if refs & set(TESTPOINTS): raise RuntimeError("Test points remain in BOM")
     if not DNP <= refs: raise RuntimeError(f"Missing retained DNP parts: {sorted(DNP-refs)}")
     with BOM.open("w", newline="") as f:
         w=csv.DictWriter(f, fieldnames=["Reference","Value","Manufacturer","MPN","Footprint","DNP","Sheet","Description"])
         w.writeheader(); w.writerows(rows)
     report={"removed":TESTPOINTS,"component_count_before":len(before),"component_count_after":len(after),"bom_rows":len(rows),
+            "board_only_footprints":["H101","H102"],
             "j801":{k:prop(check.components.get("J801"),k) for k in ("Value","Manufacturer","MPN","Datasheet","Description","Footprint")},
             "mosfets":{r:{k:prop(check.components.get(r),k) for k in ("Value","Manufacturer","MPN","Datasheet","Description","Footprint")} for r in MOSFETS}}
     out=ROOT/"audit-output"; out.mkdir(exist_ok=True); (out/"schematic-apply.json").write_text(json.dumps(report,indent=2,ensure_ascii=False))
