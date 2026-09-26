@@ -23,11 +23,13 @@ jobs:
           set -o pipefail
           python -m pip install -q kicad-sch-api
           mkdir -p audit-output
-          python tools/apply_current_pass.py schematic 2>&1 | tee audit-output/schematic-apply.log
+          python -u tools/apply_current_pass.py schematic 2>&1 | tee audit-output/schematic-apply.log
       - name: Apply KiCad-native parked-block placement
+        env:
+          PYTHONFAULTHANDLER: "1"
         run: |
           set -o pipefail
-          /tmp/kicad/squashfs-root/AppRun python3.11 tools/apply_current_pass.py pcb 2>&1 | tee audit-output/pcb-apply.log
+          /tmp/kicad/squashfs-root/AppRun python3.11 -u -X faulthandler tools/apply_current_pass.py pcb 2>&1 | tee audit-output/pcb-apply.log
       - name: Native KiCad checks
         continue-on-error: true
         run: |
