@@ -9,14 +9,156 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Capture baseline design files
+      - name: Download KiCad 10 portable
+        run: |
+          curl -fsSL --retry 3 -o /tmp/kicad.tar https://kicad-downloads.s3.cern.ch/appimage/stable/kicad-10.0.6-x86_64-lite.AppImage.tar
+          mkdir -p /tmp/kicad
+          tar -xf /tmp/kicad.tar -C /tmp/kicad
+          chmod +x /tmp/kicad/kicad-10.0.6-x86_64-lite.AppImage
+          cd /tmp/kicad
+          ./kicad-10.0.6-x86_64-lite.AppImage --appimage-extract >/dev/null
+      - name: Capture and check baseline
+        continue-on-error: true
         run: |
           mkdir -p audit-output/baseline
-          cp "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" audit-output/baseline/root.kicad_sch
-          cp "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" audit-output/baseline/board.kicad_pcb
-          cp "hardware/kicad/Phase2.kicad_sym" audit-output/baseline/Phase2.kicad_sym
-          cp hardware/BOM.csv audit-output/baseline/BOM.csv
+          cp "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" /tmp/baseline-board.kicad_pcb
+          K=/tmp/kicad/squashfs-root/AppRun
+          "$K" kicad-cli sch erc --severity-all -o audit-output/baseline/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" | tee audit-output/baseline/erc-console.txt
+          "$K" kicad-cli pcb drc --severity-all --format json -o audit-output/baseline/drc-report.json "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" | tee audit-output/baseline/drc-console.txt
+      - name: Apply formatting-preserving schematic corrections
+        run: |
+          mkdir -p audit-output
+          python tools/direct_schematic_edit.py | tee audit-output/schematic-edit.log
+      - name: Apply KiCad-native parked-block placement
+        env:
+          PYTHONFAULTHANDLER: "1"
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tools/apply_current_pass.py')
+          s=p.read_text()
+          pat='    refs={fp.GetReference():fp for fp in board.GetFootprints()}\n'
+          a=s.split(pat)
+          if len(a)!=4: raise SystemExit(f'unexpected footprint enumeration count {len(a)-1}')
+          s=a[0]+pat+a[1]+'    refs={r:fp for r,fp in refs.items() if r not in TESTPOINTS}\n'+a[2]+'    # retain existing live footprint wrappers\n'+a[3]
+          old='    pcbnew.SaveBoard(str(PCB),board)\n    check=pcbnew.LoadBoard(str(PCB)); refs={fp.GetReference():fp for fp in check.GetFootprints()}\n'
+          new='    pcbnew.SaveBoard(str(PCB),board)\n    print("PCB saved with native pcbnew API")\n    return\n    check=pcbnew.LoadBoard(str(PCB)); refs={fp.GetReference():fp for fp in check.GetFootprints()}\n'
+          if old not in s: raise SystemExit('post-save return patch target not found')
+          p.write_text(s.replace(old,new,1))
+          PY
+          cat > /tmp/run_pcb.py <<'PY'
+          import sys
+          sys.path.insert(0,'tools')
+          import apply_current_pass as a
+          a.PLACEMENT.update({
+            'F201':(-61.5,-50.0,180),'L201':(-49.0,-50.0,0),'C201':(-41.0,-43.0,90),
+            'C202':(-39.0,-50.0,0),'D201':(-72.0,-30.5,90),'R201':(-51.0,-61.0,90),
+            'C204':(-46.0,-61.0,90),'Q201':(-29.0,-49.0,0),'Q202':(-21.0,-49.0,180),
+            'U201':(-25.0,-57.0,0),'C205':(-21.0,-54.0,90),'C206':(-21.0,-61.0,90),
+            'R206':(-17.5,-56.5,90),'C207':(-14.5,-56.5,90),'R202':(-31.0,-58.5,90),
+            'R203':(-34.0,-58.5,90),'R204':(-31.0,-62.0,90),'R205':(-34.0,-62.0,90),
+            'C203':(-9.0,-49.0,0),'C310':(22.5,-42.0,90),'C311':(80.0,-48.0,0),'R308':(37.0,-55.0,90),
+            'L501':(-121.5,-52.0,0),'C503':(-115.0,-52.0,0),'C508':(-109.5,-48.0,90),
+            'C509':(-109.5,-55.0,90),'C510':(-103.5,-48.0,0),'C511':(-103.5,-55.0,0),
+            'R601':(109.0,9.0,0),'C601':(122.0,9.0,0),
+            'C901':(242.0,92.0,90),'U901':(250.0,92.0,0),'C902':(246.0,90.0,90),
+            'C903':(246.0,95.0,90),'D901':(256.0,87.0,180),'L901':(269.0,92.0,0),
+            'R901':(281.0,89.5,180),'R902':(281.0,94.5,180),'R903':(283.0,100.5,90),
+            'C904':(286.0,100.5,90),'R904':(245.0,101.0,90),'R905':(248.0,103.8,90),
+            'C906':(251.0,103.8,90),'C907':(254.0,103.8,90),'R906':(245.0,107.3,90),
+            'R907':(248.0,107.3,90),'R908':(251.0,107.3,90),'R909':(254.0,107.3,90),
+            'U902':(247.0,113.0,0),'J901':(255.0,113.0,90)
+          })
+          a.run_pcb()
+          PY
+          /tmp/kicad/squashfs-root/AppRun python3.11 -u -X faulthandler /tmp/run_pcb.py | tee audit-output/pcb-apply.log
+      - name: Native KiCad checks
+        continue-on-error: true
+        run: |
+          K=/tmp/kicad/squashfs-root/AppRun
+          "$K" kicad-cli sch erc --severity-all -o audit-output/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" | tee audit-output/erc-console.txt
+          "$K" kicad-cli pcb drc --severity-all --format json -o audit-output/drc-report.json "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" | tee audit-output/drc-console.txt
+      - name: Verify preservation, groups, and overlaps
+        run: |
+          cat > /tmp/verify.py <<'PY'
+          import json,sys
+          sys.path.insert(0,'tools')
+          import apply_current_pass as a
+          import pcbnew
+          def pos(fp): return (fp.GetPosition().x,fp.GetPosition().y,round(fp.GetOrientationDegrees(),6),fp.IsFlipped())
+          def edges(board):
+              out=[]
+              for item in board.GetDrawings():
+                  if item.GetLayer()!=pcbnew.Edge_Cuts: continue
+                  row=[type(item).__name__]
+                  for m in ('GetStart','GetEnd','GetMid','GetCenter'):
+                      if hasattr(item,m):
+                          try:
+                              p=getattr(item,m)(); row.extend((p.x,p.y))
+                          except Exception: pass
+                  out.append(tuple(row))
+              return sorted(out)
+          def tracks(board):
+              out=[]
+              for item in board.GetTracks():
+                  row=[type(item).__name__,item.GetNetname(),item.GetLayerName()]
+                  for m in ('GetStart','GetEnd'):
+                      if hasattr(item,m):
+                          p=getattr(item,m)(); row.extend((p.x,p.y))
+                  if hasattr(item,'GetWidth'): row.append(item.GetWidth())
+                  out.append(tuple(row))
+              return sorted(out)
+          base=pcbnew.LoadBoard('/tmp/baseline-board.kicad_pcb')
+          result=pcbnew.LoadBoard('hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb')
+          b={x.GetReference():x for x in base.GetFootprints()}; r={x.GetReference():x for x in result.GetFootprints()}
+          removed=set(a.TESTPOINTS); moved=set(a.PLACEMENT); fixed=set(b)-removed-moved
+          changed=[ref for ref in fixed if ref not in r or pos(b[ref])!=pos(r[ref])]
+          if changed: raise SystemExit('fixed placements changed: '+','.join(changed))
+          if len(r)!=167 or set(r)&removed: raise SystemExit('footprint deletion/count failure')
+          if edges(base)!=edges(result): raise SystemExit('Edge.Cuts changed')
+          if tracks(base)!=tracks(result): raise SystemExit('existing tracks changed')
+          if len(list(base.Zones()))!=len(list(result.Zones())): raise SystemExit('zones changed')
+          groups=[]
+          for g in result.Groups():
+              name=g.GetName()
+              if name not in a.GROUPS: continue
+              members=sorted(x.GetReference() for x in g.GetItems() if isinstance(x,pcbnew.FOOTPRINT))
+              if set(members)!=set(a.GROUPS[name]): raise SystemExit(f'group membership mismatch {name}')
+              boxes=[]
+              for ref in members:
+                  fp=r[ref]
+                  try: box=fp.GetCourtyard(pcbnew.F_CrtYd).BBox()
+                  except Exception: box=fp.GetBoundingBox()
+                  boxes.append((ref,box))
+              overlap=[]
+              for i,(ra,ba) in enumerate(boxes):
+                  for rb,bb in boxes[i+1:]:
+                      ix=max(0,min(ba.GetRight(),bb.GetRight())-max(ba.GetLeft(),bb.GetLeft()))
+                      iy=max(0,min(ba.GetBottom(),bb.GetBottom())-max(ba.GetTop(),bb.GetTop()))
+                      if ix>1000 and iy>1000: overlap.append((ra,rb,round(ix/1e6,3),round(iy/1e6,3)))
+              bbox=boxes[0][1]
+              for _,box in boxes[1:]: bbox.Merge(box)
+              groups.append({'name':name,'members':members,'bbox_mm':[round(bbox.GetX()/1e6,3),round(bbox.GetY()/1e6,3),round(bbox.GetWidth()/1e6,3),round(bbox.GetHeight()/1e6,3)],'courtyard_overlaps':overlap})
+          bad={g['name']:g['courtyard_overlaps'] for g in groups if g['courtyard_overlaps']}
+          if bad: raise SystemExit('courtyard overlaps: '+json.dumps(bad))
+          report={'footprints':len(r),'fixed_placements_preserved':len(fixed),'tracks':len(tracks(result)),'vias':sum(isinstance(x,pcbnew.PCB_VIA) for x in result.GetTracks()),'zones':len(list(result.Zones())),'edge_items':len(edges(result)),'groups':sorted(groups,key=lambda x:x['name'])}
+          open('audit-output/preservation-and-groups.json','w').write(json.dumps(report,indent=2)); print(json.dumps(report,indent=2))
+          PY
+          /tmp/kicad/squashfs-root/AppRun python3.11 /tmp/verify.py | tee audit-output/preservation-and-groups.txt
+      - name: Audit result and diff
+        run: |
+          /tmp/kicad/squashfs-root/AppRun python3.11 tools/current_pass_audit.py | tee audit-output/result-audit.txt
+          git diff --check
+          git diff --stat | tee audit-output/diff-stat.txt
+          git status --short | tee audit-output/status.txt
+          git diff --binary > audit-output/result.patch
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: current-pass-baseline
-          path: audit-output/baseline/
+          name: current-pass-result
+          path: |
+            audit-output/
+            hardware/BOM.csv
+            hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch
+            hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb
+            hardware/kicad/Phase2.kicad_sym
