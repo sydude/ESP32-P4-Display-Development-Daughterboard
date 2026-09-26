@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import inspect
 import json
 from pathlib import Path
 
@@ -13,7 +14,7 @@ TPS = "TP103 TP201 TP202 TP301 TP302 TP501 TP502 TP503 TP504 TP601 TP602 TP603 T
 
 
 def serial(value, depth=0):
-    if depth > 4:
+    if depth > 6:
         return repr(value)
     if value is None or isinstance(value, (str, int, float, bool)):
         return value
@@ -22,7 +23,7 @@ def serial(value, depth=0):
     if isinstance(value, dict):
         return {str(k): serial(v, depth + 1) for k, v in value.items()}
     if hasattr(value, "__dict__"):
-        return {"class": type(value).__name__, **{k: serial(v, depth + 1) for k, v in vars(value).items() if not k.startswith("_")}}
+        return {"class": type(value).__name__, **{k: serial(v, depth + 1) for k, v in vars(value).items()}}
     return repr(value)
 
 
@@ -31,8 +32,20 @@ report = {
     "schematic_class": type(sch).__name__,
     "schematic_attrs": sorted(a for a in dir(sch) if not a.startswith("_")),
     "collection_attrs": {},
+    "method_signatures": {},
+    "method_sources": {},
     "testpoints": {},
 }
+for meth in ("get_component_pin_position", "list_component_pins", "get_net_for_pin"):
+    fn = getattr(sch, meth)
+    try:
+        report["method_signatures"][meth] = str(inspect.signature(fn))
+    except Exception as exc:
+        report["method_signatures"][meth] = repr(exc)
+    try:
+        report["method_sources"][meth] = inspect.getsource(fn)
+    except Exception as exc:
+        report["method_sources"][meth] = repr(exc)
 for name in ("wires", "labels", "global_labels", "hierarchical_labels", "junctions", "components"):
     obj = getattr(sch, name, None)
     if obj is not None:
@@ -40,33 +53,31 @@ for name in ("wires", "labels", "global_labels", "hierarchical_labels", "junctio
 
 for ref in TPS:
     comp = sch.components.get(ref)
-    rec = {"component": serial(comp)}
+    rec = {
+        "component": serial(comp),
+        "component_dir": sorted(a for a in dir(comp) if not a.startswith("_")) if comp else [],
+    }
     try:
-        pos = sch.get_component_pin_position(ref, "1")
+        rec["listed_pins"] = serial(sch.list_component_pins(ref))
     except Exception as exc:
-        pos = None
-        rec["pin_error"] = repr(exc)
-    rec["pin_position"] = serial(pos)
-    if pos is not None:
+        rec["listed_pins_error"] = repr(exc)
+    for pin_arg in ("1", 1):
+        key = f"pin_position_{type(pin_arg).__name__}"
         try:
-            wires = list(sch.wires.get_by_point((pos.x, pos.y), tolerance=0.02))
+            pos = sch.get_component_pin_position(ref, pin_arg)
         except Exception as exc:
-            wires = []
-            rec["wire_error"] = repr(exc)
-        rec["wires"] = [serial(w) for w in wires]
-        for name in ("labels", "global_labels", "hierarchical_labels", "junctions"):
-            collection = getattr(sch, name, None)
-            if collection is None:
-                continue
-            matches = []
+            pos = None
+            rec[key + "_error"] = repr(exc)
+        rec[key] = serial(pos)
+        if pos is not None:
             try:
-                for item in collection:
-                    ipos = getattr(item, "position", None)
-                    if ipos is not None and abs(float(ipos.x)-float(pos.x)) < 0.03 and abs(float(ipos.y)-float(pos.y)) < 0.03:
-                        matches.append(serial(item))
+                rec[key + "_wires_by_point"] = serial(sch.wires.get_by_point((pos.x, pos.y), tolerance=0.02))
             except Exception as exc:
-                rec[name + "_error"] = repr(exc)
-            rec[name] = matches
+                rec[key + "_wire_error"] = repr(exc)
+    try:
+        rec["net"] = serial(sch.get_net_for_pin(ref, "1"))
+    except Exception as exc:
+        rec["net_error"] = repr(exc)
     report["testpoints"][ref] = rec
 
 OUT.parent.mkdir(exist_ok=True)
