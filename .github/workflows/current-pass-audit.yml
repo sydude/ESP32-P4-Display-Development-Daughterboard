@@ -29,6 +29,30 @@ jobs:
           PYTHONFAULTHANDLER: "1"
         run: |
           set -o pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('tools/apply_current_pass.py')
+          s=p.read_text()
+          old='''    for ref in TESTPOINTS: board.Remove(refs[ref])
+    refs={fp.GetReference():fp for fp in board.GetFootprints()}
+'''
+          new='''    for ref in TESTPOINTS: board.Remove(refs[ref])
+    # Keep the live wrappers already obtained; asking SWIG for a new footprint
+    # container immediately after deletion triggers a KiCad 10 Python crash.
+    refs={r:fp for r,fp in refs.items() if r not in TESTPOINTS}
+'''
+          if old not in s: raise SystemExit('first pcbnew patch target not found')
+          s=s.replace(old,new,1)
+          old='''        if name in GROUPS: board.Remove(group)
+    refs={fp.GetReference():fp for fp in board.GetFootprints()}
+'''
+          new='''        if name in GROUPS: board.Remove(group)
+    # Existing live footprint wrappers remain valid; do not rebuild the SWIG
+    # footprint container after removing group objects.
+'''
+          if old not in s: raise SystemExit('second pcbnew patch target not found')
+          p.write_text(s.replace(old,new,1))
+          PY
           /tmp/kicad/squashfs-root/AppRun python3.11 -u -X faulthandler tools/apply_current_pass.py pcb 2>&1 | tee audit-output/pcb-apply.log
       - name: Native KiCad checks
         continue-on-error: true
