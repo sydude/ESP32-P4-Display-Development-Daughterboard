@@ -52,10 +52,14 @@ def footprint_record(board, fp):
             "orientation": float(pad.GetOrientationDegrees()),
             "attribute": int(pad.GetAttribute()),
         })
+    fpid_obj = fp.GetFPID()
+    nickname = str(fpid_obj.GetLibNickname())
+    item_name = str(fpid_obj.GetLibItemName())
+    fpid = f"{nickname}:{item_name}" if nickname else item_name
     return {
         "reference": fp.GetReference(),
         "value": fp.GetValue(),
-        "fpid": fp.GetFPID().Format(),
+        "fpid": fpid,
         "position": point(fp.GetPosition()),
         "orientation": float(fp.GetOrientationDegrees()),
         "layer": board.GetLayerName(fp.GetLayer()),
@@ -112,7 +116,6 @@ def group_summary(board):
 
 
 def parse_schematic_symbols(text):
-    # Extract top-level symbol blocks with balanced parentheses. This is diagnostic only.
     blocks = []
     token = "\n\t(symbol"
     cursor = 0
