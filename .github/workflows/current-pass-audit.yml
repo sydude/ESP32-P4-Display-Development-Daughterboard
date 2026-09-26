@@ -1,0 +1,26 @@
+name: current-pass-audit
+on:
+  push:
+    branches: [work/current-pass-audit]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download KiCad 10 portable
+        run: |
+          curl -fsSL --retry 3 -o /tmp/kicad.tar https://kicad-downloads.s3.cern.ch/appimage/stable/kicad-10.0.6-x86_64-lite.AppImage.tar
+          mkdir -p /tmp/kicad
+          tar -xf /tmp/kicad.tar -C /tmp/kicad
+          chmod +x /tmp/kicad/kicad-10.0.6-x86_64-lite.AppImage
+          cd /tmp/kicad
+          ./kicad-10.0.6-x86_64-lite.AppImage --appimage-extract >/dev/null
+      - name: Audit current design
+        run: |
+          /tmp/kicad/squashfs-root/AppRun python3.11 tools/current_pass_audit.py | tee audit-output/workflow-log.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: current-pass-audit
+          path: audit-output/
