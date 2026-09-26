@@ -1,0 +1,42 @@
+name: phase2-native-placement
+
+on:
+  push:
+    branches:
+      - work/phase2-native-placement
+
+permissions:
+  contents: write
+
+jobs:
+  native-placement:
+    if: ${{ !contains(github.event.head_commit.message, '[skip placement-ci]') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install KiCad 10
+        run: |
+          sudo add-apt-repository --yes ppa:kicad/kicad-10.0-releases
+          sudo apt-get update
+          sudo apt-get install --yes kicad python3-matplotlib python3-yaml
+      - name: Run native diagnostic or placement pass
+        env:
+          PLACEMENT_MODE: ${{ vars.PLACEMENT_MODE || 'diagnostic' }}
+        run: |
+          python3 hardware/kicad/tools/native_phase2_pass.py
+      - name: Upload diagnostic artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase2-placement-artifacts
+          path: |
+            placement-artifacts/**
+      - name: Commit generated placement when requested
+        if: env.PLACEMENT_MODE == 'apply'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add hardware docs placement-artifacts
+          git commit -m "Apply native Phase 2 block placement [skip placement-ci]" || exit 0
+          git push origin HEAD:work/phase2-native-placement
