@@ -17,6 +17,21 @@ jobs:
           chmod +x /tmp/kicad/kicad-10.0.6-x86_64-lite.AppImage
           cd /tmp/kicad
           ./kicad-10.0.6-x86_64-lite.AppImage --appimage-extract >/dev/null
+      - name: Inspect schematic API
+        run: |
+          python -m pip install -q kicad-sch-api
+          python - <<'PY'
+          import inspect
+          from kicad_sch_api import Schematic
+          print('Schematic methods:', [x for x in dir(Schematic) if not x.startswith('_')])
+          s=Schematic.load('hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch')
+          print('instance methods:', [x for x in dir(s) if not x.startswith('_')])
+          print('components type', type(s.components), [x for x in dir(s.components) if not x.startswith('_')])
+          print('component count', len(s.components))
+          c=next(iter(s.components))
+          print('component type', type(c), [x for x in dir(c) if not x.startswith('_')])
+          print('sample', c.reference, c.__dict__)
+          PY
       - name: Audit current design
         run: |
           mkdir -p audit-output
