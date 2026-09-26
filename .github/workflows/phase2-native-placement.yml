@@ -26,14 +26,14 @@ jobs:
         env:
           PLACEMENT_MODE: ${{ vars.PLACEMENT_MODE || 'diagnostic' }}
         run: |
+          mkdir -p placement-artifacts/source
+          cp "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" placement-artifacts/source/root.kicad_sch
+          cp "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" placement-artifacts/source/board.kicad_pcb
+          cp hardware/kicad/Phase2.kicad_sym placement-artifacts/source/Phase2.kicad_sym
+          cp hardware/BOM.csv placement-artifacts/source/BOM.csv
           python3 hardware/kicad/tools/native_phase2_pass.py
           if [ "$PLACEMENT_MODE" = "diagnostic" ]; then
-            python3 hardware/kicad/tools/schematic_tp_diag.py
-            mkdir -p placement-artifacts/source
-            cp "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" placement-artifacts/source/root.kicad_sch
-            cp "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" placement-artifacts/source/board.kicad_pcb
-            cp hardware/kicad/Phase2.kicad_sym placement-artifacts/source/Phase2.kicad_sym
-            cp hardware/BOM.csv placement-artifacts/source/BOM.csv
+            timeout 90s python3 hardware/kicad/tools/schematic_tp_diag.py || true
           fi
       - name: Upload diagnostic artifacts
         uses: actions/upload-artifact@v4
