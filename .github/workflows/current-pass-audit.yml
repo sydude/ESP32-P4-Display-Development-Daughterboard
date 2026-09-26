@@ -17,26 +17,35 @@ jobs:
           chmod +x /tmp/kicad/kicad-10.0.6-x86_64-lite.AppImage
           cd /tmp/kicad
           ./kicad-10.0.6-x86_64-lite.AppImage --appimage-extract >/dev/null
-      - name: Inspect schematic API
+      - name: Apply focused schematic corrections
+        env:
+          KICAD_SYMBOL_DIR: /tmp/kicad/squashfs-root/usr/share/kicad/symbols
         run: |
           python -m pip install -q kicad-sch-api
-          python - <<'PY'
-          import inspect
-          from kicad_sch_api import Schematic
-          print('Schematic methods:', [x for x in dir(Schematic) if not x.startswith('_')])
-          s=Schematic.load('hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch')
-          print('instance methods:', [x for x in dir(s) if not x.startswith('_')])
-          print('components type', type(s.components), [x for x in dir(s.components) if not x.startswith('_')])
-          print('component count', len(s.components))
-          c=next(iter(s.components))
-          print('component type', type(c), [x for x in dir(c) if not x.startswith('_')])
-          print('sample', c.reference, c.__dict__)
-          PY
-      - name: Audit current design
-        run: |
           mkdir -p audit-output
-          /tmp/kicad/squashfs-root/AppRun python3.11 tools/current_pass_audit.py | tee audit-output/workflow-log.txt
+          python tools/apply_current_pass.py schematic | tee audit-output/schematic-apply.log
+      - name: Apply KiCad-native parked-block placement
+        run: |
+          /tmp/kicad/squashfs-root/AppRun python3.11 tools/apply_current_pass.py pcb | tee audit-output/pcb-apply.log
+      - name: Native KiCad checks
+        continue-on-error: true
+        run: |
+          K=/tmp/kicad/squashfs-root/AppRun
+          "$K" kicad-cli sch erc --severity-all -o audit-output/erc-report.txt "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch" | tee audit-output/erc-console.txt
+          "$K" kicad-cli pcb drc --severity-all --format json -o audit-output/drc-report.json "hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb" | tee audit-output/drc-console.txt
+      - name: Audit resulting design
+        run: |
+          /tmp/kicad/squashfs-root/AppRun python3.11 tools/current_pass_audit.py | tee audit-output/result-audit.txt
+          git diff --check
+          git diff --stat | tee audit-output/diff-stat.txt
+          git status --short | tee audit-output/status.txt
+          git diff --binary > audit-output/result.patch
       - uses: actions/upload-artifact@v4
         with:
-          name: current-pass-audit
-          path: audit-output/
+          name: current-pass-result
+          path: |
+            audit-output/
+            hardware/BOM.csv
+            hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_sch
+            hardware/kicad/ESP32-P4 Display Development Daughterboard.kicad_pcb
+            hardware/kicad/Phase2.kicad_sym
