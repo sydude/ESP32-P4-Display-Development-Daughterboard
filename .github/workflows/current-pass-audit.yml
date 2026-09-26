@@ -29,8 +29,7 @@ jobs:
           PYTHONFAULTHANDLER: "1"
         run: |
           set -o pipefail
-          sed -i '0,/^    refs={fp.GetReference():fp for fp in board.GetFootprints()}$/s//    refs={r:fp for r,fp in refs.items() if r not in TESTPOINTS}/' tools/apply_current_pass.py
-          sed -i '0,/^    refs={fp.GetReference():fp for fp in board.GetFootprints()}$/s//    # retain existing live footprint wrappers/' tools/apply_current_pass.py
+          python -c "from pathlib import Path; p=Path('tools/apply_current_pass.py'); s=p.read_text(); pat='    refs={fp.GetReference():fp for fp in board.GetFootprints()}\n'; a=s.split(pat); assert len(a)==4, len(a); p.write_text(a[0]+pat+a[1]+'    refs={r:fp for r,fp in refs.items() if r not in TESTPOINTS}\n'+a[2]+'    # retain existing live footprint wrappers\n'+a[3])"
           /tmp/kicad/squashfs-root/AppRun python3.11 -u -X faulthandler tools/apply_current_pass.py pcb 2>&1 | tee audit-output/pcb-apply.log
       - name: Native KiCad checks
         continue-on-error: true
