@@ -8985,265 +8985,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Phase2:J1003_DEBUG_HEADER"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 9.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "DEBUG HEADER"
-				(at 0 -9.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Low-speed development/debug access"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "J1003_DEBUG_HEADER_0_1"
-				(rectangle
-					(start -10.16 7.62)
-					(end 10.16 -7.62)
-					(stroke
-						(width 0.25)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "J1003_DEBUG_HEADER_1_1"
-				(pin passive line
-					(at -12.7 5.08 0)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 5.08 180)
-					(length 2.54)
-					(name "5V"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 2.54 0)
-					(length 2.54)
-					(name "VIN_GOOD"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 2.54 180)
-					(length 2.54)
-					(name "SEQ1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 0 0)
-					(length 2.54)
-					(name "SEQ2"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 0 180)
-					(length 2.54)
-					(name "SEQ3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -2.54 0)
-					(length 2.54)
-					(name "LCD_RST"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -2.54 180)
-					(length 2.54)
-					(name "BL_FAULT"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 -5.08 0)
-					(length 2.54)
-					(name "5V_FAULT"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 -5.08 180)
-					(length 2.54)
-					(name "SYS24_PGOOD"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Phase2:J201_VEHICLE_12V"
 			(pin_names
 				(offset 0.8)
@@ -19292,3110 +19033,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Phase2:TP1001_LCD_PWR_EN"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LCD_PWR_EN"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP1001_LCD_PWR_EN_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP1001_LCD_PWR_EN_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "LCD_PWR_EN"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP1002_LCD_RESET_CMD_N"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LCD_RESET_CMD_N"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP1002_LCD_RESET_CMD_N_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP1002_LCD_RESET_CMD_N_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "LCD_RESET_CMD_N"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP1003_BL_PWM"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "BL_PWM"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP1003_BL_PWM_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP1003_BL_PWM_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "BL_PWM"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP1004_CTP_RESET_N_NANO"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CTP_RESET_N_NANO"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP1004_CTP_RESET_N_NANO_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP1004_CTP_RESET_N_NANO_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "CTP_RESET_N_NANO"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP1005_CTP_INT_NANO"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CTP_INT_NANO"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP1005_CTP_INT_NANO_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP1005_CTP_INT_NANO_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "CTP_INT_NANO"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP1006_GND"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP1006_GND_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP1006_GND_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP103_GND"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP103_GND_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP103_GND_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP201_VEH_12V_RAW"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "VEH_12V_RAW"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP201_VEH_12V_RAW_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP201_VEH_12V_RAW_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "VEH_12V_RAW"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP202_VEH_PROT"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "VEH_PROT"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP202_VEH_PROT_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP202_VEH_PROT_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "VEH_PROT"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP301_SYS_24V"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SYS_24V"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP301_SYS_24V_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP301_SYS_24V_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "SYS_24V"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP302_SYS24_PGOOD"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SYS24_PGOOD"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP302_SYS24_PGOOD_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP302_SYS24_PGOOD_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "SYS24_PGOOD"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP501_SYS_5V_3A"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SYS_5V_3A"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP501_SYS_5V_3A_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP501_SYS_5V_3A_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "SYS_5V_3A"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP502_NANO_5V"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "NANO_5V"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP502_NANO_5V_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP502_NANO_5V_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "NANO_5V"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP503_SYS5_PGOOD"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SYS5_PGOOD"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP503_SYS5_PGOOD_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP503_SYS5_PGOOD_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "SYS5_PGOOD"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP504_NANO_EFUSE_FLT"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "NANO_EFUSE_FLT"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP504_NANO_EFUSE_FLT_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP504_NANO_EFUSE_FLT_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "NANO_EFUSE_FLT"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP601_VIN_GOOD"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "VIN_GOOD"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP601_VIN_GOOD_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP601_VIN_GOOD_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "VIN_GOOD"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP602_SEQ_FLAG1"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SEQ_FLAG1"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP602_SEQ_FLAG1_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP602_SEQ_FLAG1_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "SEQ_FLAG1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP603_SEQ_FLAG2"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SEQ_FLAG2"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP603_SEQ_FLAG2_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP603_SEQ_FLAG2_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "SEQ_FLAG2"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP604_SEQ_FLAG3"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SEQ_FLAG3"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP604_SEQ_FLAG3_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP604_SEQ_FLAG3_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "SEQ_FLAG3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP605_LCD_IOVCC"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LCD_IOVCC"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP605_LCD_IOVCC_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP605_LCD_IOVCC_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "LCD_IOVCC"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP606_LCD_VCI"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LCD_VCI"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP606_LCD_VCI_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP606_LCD_VCI_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "LCD_VCI"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP607_LCD_RESET_N"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LCD_RESET_N"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP607_LCD_RESET_N_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP607_LCD_RESET_N_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "LCD_RESET_N"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP801_TOUCH_3V3"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TOUCH_3V3"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP801_TOUCH_3V3_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP801_TOUCH_3V3_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "TOUCH_3V3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP802_CTP_SCL"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CTP_SCL"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP802_CTP_SCL_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP802_CTP_SCL_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "CTP_SCL"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP803_CTP_SDA"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CTP_SDA"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP803_CTP_SDA_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP803_CTP_SDA_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "CTP_SDA"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP804_CTP_INT"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CTP_INT"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP804_CTP_INT_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP804_CTP_INT_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "CTP_INT"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP805_CTP_RESET_N"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CTP_RESET_N"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP805_CTP_RESET_N_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP805_CTP_RESET_N_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "CTP_RESET_N"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP901_BL_PWM"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "BL_PWM"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP901_BL_PWM_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP901_BL_PWM_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "BL_PWM"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP902_BL_DIM"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "BL_DIM"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP902_BL_DIM_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP902_BL_DIM_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "BL_DIM"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP903_LED_A"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LED_A"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP903_LED_A_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP903_LED_A_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "LED_A"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP904_LED_K"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LED_K"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP904_LED_K_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP904_LED_K_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "LED_K"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Phase2:TP905_BL_FAULT_N"
-			(pin_names
-				(offset 0.8)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "BL_FAULT_N"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(property "Description" "Labeled test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1 1)
-					)
-				)
-			)
-			(symbol "TP905_BL_FAULT_N_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 0.35)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TP905_BL_FAULT_N_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "BL_FAULT_N"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Phase2:U201_LM74800QDRRRQ1"
 			(pin_names
 				(offset 0.8)
@@ -27587,8 +24224,8 @@
 		(uuid "262e312a-3c45-4cfa-80b9-a2fe53dddaef")
 	)
 	(rectangle
-		(start 835.66 325.628)
-		(end 1139.952 558.546)
+		(start 826.77 442.468)
+		(end 1131.062 675.386)
 		(stroke
 			(width 0)
 			(type default)
@@ -27809,7 +24446,7 @@
 	)
 	(text "P1 pins 2/4 are Nano 5 V. GPIO21/P1-13 is an unconnected documented alternate. GPIO24 remains untouched for USB Serial/JTAG."
 		(exclude_from_sim no)
-		(at 841.48 343.96 0)
+		(at 832.59 460.8 0)
 		(effects
 			(font
 				(size 1 1)
@@ -27966,7 +24603,7 @@
 	)
 	(text "Corrected P1 controls: pin 7 GPIO23 BL PWM; 13 GPIO20 LCD power; 15 GPIO21 LCD reset; 16 GPIO22 touch reset; 23 GPIO32 touch INT."
 		(exclude_from_sim no)
-		(at 841.48 339.96 0)
+		(at 832.59 456.8 0)
 		(effects
 			(font
 				(size 1 1)
@@ -27977,7 +24614,7 @@
 	)
 	(text "10: NANO HEADERS AND DEBUG"
 		(exclude_from_sim no)
-		(at 841.48 334.88 0)
+		(at 832.59 451.72 0)
 		(effects
 			(font
 				(size 1.8 1.8)
@@ -27999,11 +24636,11 @@
 		(uuid "fdf8bc62-9b3a-4c88-abf7-bc6178871160")
 	)
 	(no_connect
-		(at 899.16 468.63)
+		(at 890.27 585.47)
 		(uuid "1daff14c-4b4c-4abf-a5cb-50126b2f0a0d")
 	)
 	(no_connect
-		(at 899.16 443.23)
+		(at 890.27 560.07)
 		(uuid "1dc02d65-0496-484e-998f-c9deb82039f9")
 	)
 	(no_connect
@@ -28011,11 +24648,11 @@
 		(uuid "1f6c83d4-90ab-435e-b82a-c097aa9deb94")
 	)
 	(no_connect
-		(at 924.56 455.93)
+		(at 915.67 572.77)
 		(uuid "2ad7c7f9-9c02-4894-99a9-9d0c329b890a")
 	)
 	(no_connect
-		(at 899.16 445.77)
+		(at 890.27 562.61)
 		(uuid "307f9f19-2485-4a79-9b04-df4ffba77cdf")
 	)
 	(no_connect
@@ -28023,23 +24660,23 @@
 		(uuid "3b532594-4bd6-47b2-9606-8c9ea0131d9f")
 	)
 	(no_connect
-		(at 971.55 469.9)
+		(at 962.66 586.74)
 		(uuid "3fe05b96-d80e-4215-9e7b-b1e9f3eb07a4")
 	)
 	(no_connect
-		(at 971.55 464.82)
+		(at 962.66 581.66)
 		(uuid "41299386-4dc4-4dfc-8555-849641dfe8a1")
 	)
 	(no_connect
-		(at 996.95 459.74)
+		(at 988.06 576.58)
 		(uuid "41cdf4cc-9644-40c1-bb1f-62fa501749a4")
 	)
 	(no_connect
-		(at 996.95 454.66)
+		(at 988.06 571.5)
 		(uuid "42738536-3d3e-41d8-8f56-4291139dce71")
 	)
 	(no_connect
-		(at 924.56 450.85)
+		(at 915.67 567.69)
 		(uuid "4769eb14-a7e1-4264-b984-3ba002386abb")
 	)
 	(no_connect
@@ -28059,11 +24696,11 @@
 		(uuid "4d74d9df-7a9d-48f2-a1ff-ce97ebf5de3e")
 	)
 	(no_connect
-		(at 996.95 464.82)
+		(at 988.06 581.66)
 		(uuid "5283b6ff-eef4-4b03-aa80-e4ca875eebff")
 	)
 	(no_connect
-		(at 924.56 473.71)
+		(at 915.67 590.55)
 		(uuid "5751101c-1e34-4aa6-91f6-f778797e7bbc")
 	)
 	(no_connect
@@ -28071,7 +24708,7 @@
 		(uuid "5e7bcc81-1d7f-4aac-b638-de852c9cb5a6")
 	)
 	(no_connect
-		(at 971.55 459.74)
+		(at 962.66 576.58)
 		(uuid "5f307e89-1f9c-49f9-ad1f-8c90411e104b")
 	)
 	(no_connect
@@ -28083,23 +24720,23 @@
 		(uuid "6b523cc2-580f-41db-9f7c-bb8e72ee4473")
 	)
 	(no_connect
-		(at 996.95 467.36)
+		(at 988.06 584.2)
 		(uuid "6dd5e09c-f6a1-47f7-b097-f440b20de0b2")
 	)
 	(no_connect
-		(at 924.56 453.39)
+		(at 915.67 570.23)
 		(uuid "6f421e7e-5aa9-4e3e-8eb5-d94f0d266b10")
 	)
 	(no_connect
-		(at 899.16 455.93)
+		(at 890.27 572.77)
 		(uuid "6f7b45c3-a557-4c79-a226-8a488db1a860")
 	)
 	(no_connect
-		(at 996.95 469.9)
+		(at 988.06 586.74)
 		(uuid "7416444d-7f8c-409b-81f2-b0b9d1af7fcb")
 	)
 	(no_connect
-		(at 971.55 462.28)
+		(at 962.66 579.12)
 		(uuid "746bede2-c721-42b1-b42b-95124df01638")
 	)
 	(no_connect
@@ -28107,19 +24744,19 @@
 		(uuid "77419fc4-b48f-45b1-8e43-9100a06bae61")
 	)
 	(no_connect
-		(at 971.55 454.66)
+		(at 962.66 571.5)
 		(uuid "799bdc97-2bb7-4930-8f89-cf99e8f1d635")
 	)
 	(no_connect
-		(at 996.95 447.04)
+		(at 988.06 563.88)
 		(uuid "7d4ace80-f69a-4193-84b5-d47603ae5ee2")
 	)
 	(no_connect
-		(at 899.16 448.31)
+		(at 890.27 565.15)
 		(uuid "85044d5b-0051-4bf1-a5db-293c159f18a6")
 	)
 	(no_connect
-		(at 996.95 462.28)
+		(at 988.06 579.12)
 		(uuid "852d70f6-8b77-4010-afe8-1bc029e77a0b")
 	)
 	(no_connect
@@ -28127,15 +24764,15 @@
 		(uuid "85ac6b5e-66b7-4f04-82d5-5f7f7ee3f0d8")
 	)
 	(no_connect
-		(at 996.95 449.58)
+		(at 988.06 566.42)
 		(uuid "8db571ee-594e-4742-be9e-16e9d30e4f73")
 	)
 	(no_connect
-		(at 899.16 466.09)
+		(at 890.27 582.93)
 		(uuid "9088b3bc-c1db-4dca-b818-c489d68ca02f")
 	)
 	(no_connect
-		(at 996.95 472.44)
+		(at 988.06 589.28)
 		(uuid "935a15b0-6064-4b3a-8e85-6088fe454869")
 	)
 	(no_connect
@@ -28143,7 +24780,7 @@
 		(uuid "9654e801-6057-461f-aad1-c252c62728d0")
 	)
 	(no_connect
-		(at 971.55 452.12)
+		(at 962.66 568.96)
 		(uuid "a5aff6fd-426b-4f7a-8673-974f61a7c9b4")
 	)
 	(no_connect
@@ -28151,27 +24788,27 @@
 		(uuid "a85d6069-fc0a-46d4-aa7d-7e21d7023ab2")
 	)
 	(no_connect
-		(at 971.55 467.36)
+		(at 962.66 584.2)
 		(uuid "aa563a42-7e52-43a5-a37b-35920f43718f")
 	)
 	(no_connect
-		(at 971.55 449.58)
+		(at 962.66 566.42)
 		(uuid "abec79cf-b615-45fa-a822-a3e004c782f2")
 	)
 	(no_connect
-		(at 971.55 444.5)
+		(at 962.66 561.34)
 		(uuid "ac9a9cde-75e4-4ffe-97aa-357b546197a7")
 	)
 	(no_connect
-		(at 996.95 444.5)
+		(at 988.06 561.34)
 		(uuid "af7d47a0-0f2e-45c4-910b-dadbb0c56aae")
 	)
 	(no_connect
-		(at 899.16 463.55)
+		(at 890.27 580.39)
 		(uuid "b09208b7-f9e1-43b7-a8c9-0a5c1a4dc6c1")
 	)
 	(no_connect
-		(at 996.95 452.12)
+		(at 988.06 568.96)
 		(uuid "b796d58d-7731-4622-94e4-5389e1f973a1")
 	)
 	(no_connect
@@ -28179,11 +24816,11 @@
 		(uuid "bd9785ed-9190-4e68-bc33-0afef82f141d")
 	)
 	(no_connect
-		(at 971.55 447.04)
+		(at 962.66 563.88)
 		(uuid "c4735409-c381-4917-88aa-c6a4eb7429ce")
 	)
 	(no_connect
-		(at 996.95 457.2)
+		(at 988.06 574.04)
 		(uuid "c74ddbbf-8cf6-4b6e-b06e-367accbc9ab1")
 	)
 	(no_connect
@@ -28195,15 +24832,15 @@
 		(uuid "c8591f9f-9d73-4fd8-bc6c-bf5f0cba7dfb")
 	)
 	(no_connect
-		(at 924.56 463.55)
+		(at 915.67 580.39)
 		(uuid "d111f00d-ac99-4ae4-9700-078b374457c5")
 	)
 	(no_connect
-		(at 971.55 472.44)
+		(at 962.66 589.28)
 		(uuid "dd592da1-1725-45d6-823d-17fc2798e2de")
 	)
 	(no_connect
-		(at 971.55 457.2)
+		(at 962.66 574.04)
 		(uuid "dd5d357f-4130-4e13-86ef-8d21024cbcc5")
 	)
 	(no_connect
@@ -28211,11 +24848,11 @@
 		(uuid "e86c00b6-3d16-42cb-965c-6c2e206eca8c")
 	)
 	(no_connect
-		(at 924.56 468.63)
+		(at 915.67 585.47)
 		(uuid "f29c86c3-ecb1-49ab-ae0e-4c8bd70cc5d5")
 	)
 	(no_connect
-		(at 924.56 471.17)
+		(at 915.67 588.01)
 		(uuid "fb609833-c5a9-47ca-ada7-82372e510632")
 	)
 	(wire
@@ -28257,16 +24894,6 @@
 			(type default)
 		)
 		(uuid "01641180-0e32-4c4d-b5f2-e4d77010018b")
-	)
-	(wire
-		(pts
-			(xy 85.09 524.51) (xy 82.55 524.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "018a4455-5bdb-4f9b-b947-7ed3462e8ced")
 	)
 	(wire
 		(pts
@@ -28380,17 +25007,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 133.35) (xy 201.93 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "04b68819-eef7-44d6-b1e5-12d2d7873a69")
-	)
-	(wire
-		(pts
-			(xy 872.49 414.02) (xy 869.95 414.02)
+			(xy 863.6 530.86) (xy 861.06 530.86)
 		)
 		(stroke
 			(width 0)
@@ -28407,16 +25024,6 @@
 			(type default)
 		)
 		(uuid "065ed6de-9454-449f-b1d7-6320bed51ee5")
-	)
-	(wire
-		(pts
-			(xy 607.06 171.45) (xy 608.33 171.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "076e765e-d7f4-446b-94ed-bf32f964489b")
 	)
 	(wire
 		(pts
@@ -28517,16 +25124,6 @@
 			(type default)
 		)
 		(uuid "0c6e6125-225d-4829-b213-ba8af0492993")
-	)
-	(wire
-		(pts
-			(xy 204.47 118.11) (xy 201.93 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ca3e457-3153-4ea2-8f12-5ecaea20b451")
 	)
 	(wire
 		(pts
@@ -28640,16 +25237,6 @@
 	)
 	(wire
 		(pts
-			(xy 1010.92 397.51) (xy 1008.38 397.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "11a93333-dad8-48de-86cc-7ff0697f2ba8")
-	)
-	(wire
-		(pts
 			(xy 134.62 215.9) (xy 132.08 215.9)
 		)
 		(stroke
@@ -28720,16 +25307,6 @@
 	)
 	(wire
 		(pts
-			(xy 951.23 381) (xy 948.69 381)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "177c4816-ff14-4c79-a2c7-d54887ff0312")
-	)
-	(wire
-		(pts
 			(xy 68.58 388.62) (xy 66.04 388.62)
 		)
 		(stroke
@@ -28757,16 +25334,6 @@
 			(type default)
 		)
 		(uuid "18114a56-cb24-4502-a844-84fa4d3bbbc3")
-	)
-	(wire
-		(pts
-			(xy 85.09 549.91) (xy 82.55 549.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "185a83d2-0e6c-4ff8-bfba-d4161ea27cbc")
 	)
 	(wire
 		(pts
@@ -28807,6 +25374,16 @@
 			(type default)
 		)
 		(uuid "191f4f83-6ae2-4474-ae75-e72e7a39865b")
+	)
+	(wire
+		(pts
+			(xy 350.52 146.05) (xy 354.33 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1927a9af-e168-4116-b9bc-f6450f868f78")
 	)
 	(wire
 		(pts
@@ -28937,16 +25514,6 @@
 			(type default)
 		)
 		(uuid "1e50720c-69ab-4423-aa99-066e2613a319")
-	)
-	(wire
-		(pts
-			(xy 572.77 222.25) (xy 576.58 222.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1e71a877-2b63-45e6-904a-b4202c32b31c")
 	)
 	(wire
 		(pts
@@ -29110,16 +25677,6 @@
 	)
 	(wire
 		(pts
-			(xy 721.36 716.28) (xy 718.82 716.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2338a6a6-abd9-409c-9a77-7bdf76e19c1f")
-	)
-	(wire
-		(pts
 			(xy 401.32 231.14) (xy 403.86 231.14)
 		)
 		(stroke
@@ -29170,7 +25727,7 @@
 	)
 	(wire
 		(pts
-			(xy 873.76 397.51) (xy 876.3 397.51)
+			(xy 864.87 514.35) (xy 867.41 514.35)
 		)
 		(stroke
 			(width 0)
@@ -29240,7 +25797,7 @@
 	)
 	(wire
 		(pts
-			(xy 924.56 461.01) (xy 927.1 461.01)
+			(xy 915.67 577.85) (xy 918.21 577.85)
 		)
 		(stroke
 			(width 0)
@@ -29410,16 +25967,6 @@
 	)
 	(wire
 		(pts
-			(xy 608.33 222.25) (xy 607.06 222.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "316e3629-17bb-40c7-9906-8c43e49ffab3")
-	)
-	(wire
-		(pts
 			(xy 652.78 377.19) (xy 650.24 377.19)
 		)
 		(stroke
@@ -29477,16 +26024,6 @@
 			(type default)
 		)
 		(uuid "353247b7-d437-4412-81db-627322b9517e")
-	)
-	(wire
-		(pts
-			(xy 951.23 375.92) (xy 948.69 375.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "35db297f-2ce8-4404-80b1-44f2badd8ac4")
 	)
 	(wire
 		(pts
@@ -29630,17 +26167,7 @@
 	)
 	(wire
 		(pts
-			(xy 350.52 146.05) (xy 353.06 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e51125c-ae39-4c34-bb61-6984653801ed")
-	)
-	(wire
-		(pts
-			(xy 899.16 473.71) (xy 896.62 473.71)
+			(xy 890.27 590.55) (xy 887.73 590.55)
 		)
 		(stroke
 			(width 0)
@@ -29780,7 +26307,7 @@
 	)
 	(wire
 		(pts
-			(xy 899.16 458.47) (xy 896.62 458.47)
+			(xy 890.27 575.31) (xy 887.73 575.31)
 		)
 		(stroke
 			(width 0)
@@ -29990,16 +26517,6 @@
 	)
 	(wire
 		(pts
-			(xy 1047.75 408.94) (xy 1045.21 408.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4e67da91-04e5-4de7-90bb-b1eed97702b2")
-	)
-	(wire
-		(pts
 			(xy 638.81 660.4) (xy 636.27 660.4)
 		)
 		(stroke
@@ -30017,16 +26534,6 @@
 			(type default)
 		)
 		(uuid "4ec7d4c8-0406-4dcf-83bb-66791025d126")
-	)
-	(wire
-		(pts
-			(xy 71.12 289.56) (xy 68.58 289.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4f040e38-3b8e-4d7d-9122-5c69d7a844ef")
 	)
 	(wire
 		(pts
@@ -30057,6 +26564,16 @@
 			(type default)
 		)
 		(uuid "50358022-544e-4aee-ba87-aba7261abb55")
+	)
+	(wire
+		(pts
+			(xy 90.17 191.77) (xy 90.17 194.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50b90e07-b37b-44be-ac18-124f459adf11")
 	)
 	(wire
 		(pts
@@ -30160,17 +26677,7 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 511.81) (xy 82.55 511.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "570aa523-221c-4f18-b8ea-c8be1df04a46")
-	)
-	(wire
-		(pts
-			(xy 877.57 377.19) (xy 880.11 377.19)
+			(xy 868.68 494.03) (xy 871.22 494.03)
 		)
 		(stroke
 			(width 0)
@@ -30270,16 +26777,6 @@
 	)
 	(wire
 		(pts
-			(xy 951.23 378.46) (xy 948.69 378.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5a542d28-620f-4504-80c5-8b9b463e2fab")
-	)
-	(wire
-		(pts
 			(xy 401.32 212.09) (xy 403.86 212.09)
 		)
 		(stroke
@@ -30330,16 +26827,6 @@
 	)
 	(wire
 		(pts
-			(xy 976.63 378.46) (xy 979.17 378.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b1966ba-a538-40b9-b6f2-17b7e0ecc7c0")
-	)
-	(wire
-		(pts
 			(xy 326.39 628.65) (xy 323.85 628.65)
 		)
 		(stroke
@@ -30380,16 +26867,6 @@
 	)
 	(wire
 		(pts
-			(xy 681.99 629.92) (xy 679.45 629.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c3a1b33-bc09-4966-95f6-ce0fe652c4c4")
-	)
-	(wire
-		(pts
 			(xy 556.26 621.03) (xy 553.72 621.03)
 		)
 		(stroke
@@ -30397,16 +26874,6 @@
 			(type default)
 		)
 		(uuid "5c54e00a-5b10-4983-a585-bee513fefd7a")
-	)
-	(wire
-		(pts
-			(xy 325.12 731.52) (xy 322.58 731.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5d4ca0e9-9cf5-411c-a466-7fd88f62cb2c")
 	)
 	(wire
 		(pts
@@ -30490,16 +26957,6 @@
 	)
 	(wire
 		(pts
-			(xy 1047.75 397.51) (xy 1045.21 397.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f66f36f-484e-476a-ab53-df5fc8febb13")
-	)
-	(wire
-		(pts
 			(xy 582.93 127) (xy 580.39 127)
 		)
 		(stroke
@@ -30580,16 +27037,6 @@
 	)
 	(wire
 		(pts
-			(xy 378.46 707.39) (xy 375.92 707.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "62f05f57-e73a-40df-be25-4f97595eb70f")
-	)
-	(wire
-		(pts
 			(xy 913.13 77.47) (xy 910.59 77.47)
 		)
 		(stroke
@@ -30597,16 +27044,6 @@
 			(type default)
 		)
 		(uuid "6344dc9f-e4b1-49fd-9299-8bcd8b306f86")
-	)
-	(wire
-		(pts
-			(xy 664.21 716.28) (xy 661.67 716.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "636f5118-7c1f-45b6-9f3b-0acd343a6201")
 	)
 	(wire
 		(pts
@@ -30710,7 +27147,7 @@
 	)
 	(wire
 		(pts
-			(xy 899.16 461.01) (xy 896.62 461.01)
+			(xy 890.27 577.85) (xy 887.73 577.85)
 		)
 		(stroke
 			(width 0)
@@ -30730,7 +27167,7 @@
 	)
 	(wire
 		(pts
-			(xy 996.95 474.98) (xy 999.49 474.98)
+			(xy 988.06 591.82) (xy 990.6 591.82)
 		)
 		(stroke
 			(width 0)
@@ -30960,16 +27397,6 @@
 	)
 	(wire
 		(pts
-			(xy 693.42 716.28) (xy 690.88 716.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "743681ec-7b0e-40d5-90c3-abe61b1c34cb")
-	)
-	(wire
-		(pts
 			(xy 1033.78 101.6) (xy 1031.24 101.6)
 		)
 		(stroke
@@ -31010,7 +27437,7 @@
 	)
 	(wire
 		(pts
-			(xy 924.56 443.23) (xy 927.1 443.23)
+			(xy 915.67 560.07) (xy 918.21 560.07)
 		)
 		(stroke
 			(width 0)
@@ -31050,16 +27477,6 @@
 	)
 	(wire
 		(pts
-			(xy 976.63 373.38) (xy 979.17 373.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "781b672c-1b7d-4091-9e59-7766554e475d")
-	)
-	(wire
-		(pts
 			(xy 109.22 627.38) (xy 111.76 627.38)
 		)
 		(stroke
@@ -31070,7 +27487,7 @@
 	)
 	(wire
 		(pts
-			(xy 927.1 412.75) (xy 929.64 412.75)
+			(xy 918.21 529.59) (xy 920.75 529.59)
 		)
 		(stroke
 			(width 0)
@@ -31410,7 +27827,7 @@
 	)
 	(wire
 		(pts
-			(xy 916.94 412.75) (xy 914.4 412.75)
+			(xy 908.05 529.59) (xy 905.51 529.59)
 		)
 		(stroke
 			(width 0)
@@ -31420,7 +27837,7 @@
 	)
 	(wire
 		(pts
-			(xy 899.16 450.85) (xy 896.62 450.85)
+			(xy 890.27 567.69) (xy 887.73 567.69)
 		)
 		(stroke
 			(width 0)
@@ -31450,7 +27867,7 @@
 	)
 	(wire
 		(pts
-			(xy 971.55 474.98) (xy 969.01 474.98)
+			(xy 962.66 591.82) (xy 960.12 591.82)
 		)
 		(stroke
 			(width 0)
@@ -31500,16 +27917,6 @@
 	)
 	(wire
 		(pts
-			(xy 976.63 370.84) (xy 979.17 370.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8cfef119-85ee-4c1d-bf80-dfde2f8d7692")
-	)
-	(wire
-		(pts
 			(xy 62.23 220.98) (xy 59.69 220.98)
 		)
 		(stroke
@@ -31540,7 +27947,7 @@
 	)
 	(wire
 		(pts
-			(xy 1115.06 354.33) (xy 1112.52 354.33)
+			(xy 1106.17 471.17) (xy 1103.63 471.17)
 		)
 		(stroke
 			(width 0)
@@ -31630,16 +28037,6 @@
 	)
 	(wire
 		(pts
-			(xy 1085.85 397.51) (xy 1083.31 397.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "90745ef7-4b42-40b4-b108-96bc147ec13f")
-	)
-	(wire
-		(pts
 			(xy 134.62 273.05) (xy 132.08 273.05)
 		)
 		(stroke
@@ -31710,7 +28107,7 @@
 	)
 	(wire
 		(pts
-			(xy 863.6 397.51) (xy 861.06 397.51)
+			(xy 854.71 514.35) (xy 852.17 514.35)
 		)
 		(stroke
 			(width 0)
@@ -31800,16 +28197,6 @@
 	)
 	(wire
 		(pts
-			(xy 951.23 373.38) (xy 948.69 373.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9e72d00b-3b35-43d3-a98c-ff259b566b61")
-	)
-	(wire
-		(pts
 			(xy 589.28 402.59) (xy 591.82 402.59)
 		)
 		(stroke
@@ -31817,16 +28204,6 @@
 			(type default)
 		)
 		(uuid "9e9dafc9-7a92-4315-93ae-067bd89da702")
-	)
-	(wire
-		(pts
-			(xy 379.73 655.32) (xy 377.19 655.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9ed1b550-a569-4499-95f0-3016a846e616")
 	)
 	(wire
 		(pts
@@ -31867,16 +28244,6 @@
 			(type default)
 		)
 		(uuid "9fde8bec-5791-4e7d-8d7b-db78629f9502")
-	)
-	(wire
-		(pts
-			(xy 576.58 190.5) (xy 574.04 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a03a5408-27d9-42bc-9163-4606ff390c88")
 	)
 	(wire
 		(pts
@@ -31940,7 +28307,7 @@
 	)
 	(wire
 		(pts
-			(xy 913.13 356.87) (xy 910.59 356.87)
+			(xy 904.24 473.71) (xy 901.7 473.71)
 		)
 		(stroke
 			(width 0)
@@ -32020,7 +28387,7 @@
 	)
 	(wire
 		(pts
-			(xy 867.41 377.19) (xy 864.87 377.19)
+			(xy 858.52 494.03) (xy 855.98 494.03)
 		)
 		(stroke
 			(width 0)
@@ -32067,16 +28434,6 @@
 			(type default)
 		)
 		(uuid "a8a96cba-9408-4e81-91eb-751f88101aec")
-	)
-	(wire
-		(pts
-			(xy 71.12 273.05) (xy 68.58 273.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a8c63cc8-5506-48c4-b099-8e649e6d198f")
 	)
 	(wire
 		(pts
@@ -32190,16 +28547,6 @@
 	)
 	(wire
 		(pts
-			(xy 951.23 370.84) (xy 948.69 370.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af556eec-b994-4966-bfab-af17dc95a558")
-	)
-	(wire
-		(pts
 			(xy 68.58 445.77) (xy 66.04 445.77)
 		)
 		(stroke
@@ -32277,16 +28624,6 @@
 			(type default)
 		)
 		(uuid "b25bb661-7a3f-4e9d-8ba9-5d79018b4c15")
-	)
-	(wire
-		(pts
-			(xy 572.77 207.01) (xy 576.58 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2ad9686-269e-4d97-9983-3d0133c9f8c1")
 	)
 	(wire
 		(pts
@@ -32470,7 +28807,7 @@
 	)
 	(wire
 		(pts
-			(xy 914.4 377.19) (xy 911.86 377.19)
+			(xy 905.51 494.03) (xy 902.97 494.03)
 		)
 		(stroke
 			(width 0)
@@ -32600,16 +28937,6 @@
 	)
 	(wire
 		(pts
-			(xy 976.63 375.92) (xy 979.17 375.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be57b854-b5ce-4177-8628-7b300814afc8")
-	)
-	(wire
-		(pts
 			(xy 563.88 463.55) (xy 561.34 463.55)
 		)
 		(stroke
@@ -32620,7 +28947,7 @@
 	)
 	(wire
 		(pts
-			(xy 866.14 356.87) (xy 863.6 356.87)
+			(xy 857.25 473.71) (xy 854.71 473.71)
 		)
 		(stroke
 			(width 0)
@@ -32680,7 +29007,7 @@
 	)
 	(wire
 		(pts
-			(xy 924.56 377.19) (xy 927.1 377.19)
+			(xy 915.67 494.03) (xy 918.21 494.03)
 		)
 		(stroke
 			(width 0)
@@ -32770,7 +29097,7 @@
 	)
 	(wire
 		(pts
-			(xy 910.59 397.51) (xy 908.05 397.51)
+			(xy 901.7 514.35) (xy 899.16 514.35)
 		)
 		(stroke
 			(width 0)
@@ -32780,7 +29107,7 @@
 	)
 	(wire
 		(pts
-			(xy 876.3 356.87) (xy 878.84 356.87)
+			(xy 867.41 473.71) (xy 869.95 473.71)
 		)
 		(stroke
 			(width 0)
@@ -32837,16 +29164,6 @@
 			(type default)
 		)
 		(uuid "c4aefc04-e2a4-4e2a-be77-d29c44d1a2a4")
-	)
-	(wire
-		(pts
-			(xy 638.81 716.28) (xy 636.27 716.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4bbc3c3-733a-4420-8bcc-83b600e49ca5")
 	)
 	(wire
 		(pts
@@ -32960,7 +29277,7 @@
 	)
 	(wire
 		(pts
-			(xy 924.56 448.31) (xy 927.1 448.31)
+			(xy 915.67 565.15) (xy 918.21 565.15)
 		)
 		(stroke
 			(width 0)
@@ -33030,17 +29347,7 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 537.21) (xy 82.55 537.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cf3d817f-0b1c-4e86-9cbb-436add74fae6")
-	)
-	(wire
-		(pts
-			(xy 924.56 466.09) (xy 927.1 466.09)
+			(xy 915.67 582.93) (xy 918.21 582.93)
 		)
 		(stroke
 			(width 0)
@@ -33070,7 +29377,7 @@
 	)
 	(wire
 		(pts
-			(xy 924.56 458.47) (xy 927.1 458.47)
+			(xy 915.67 575.31) (xy 918.21 575.31)
 		)
 		(stroke
 			(width 0)
@@ -33080,7 +29387,7 @@
 	)
 	(wire
 		(pts
-			(xy 1078.23 354.33) (xy 1080.77 354.33)
+			(xy 1069.34 471.17) (xy 1071.88 471.17)
 		)
 		(stroke
 			(width 0)
@@ -33107,16 +29414,6 @@
 			(type default)
 		)
 		(uuid "d20a56b5-1674-49bb-8b9c-1832fcc877b6")
-	)
-	(wire
-		(pts
-			(xy 608.33 189.23) (xy 605.79 189.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d219e8ec-1ec8-4e44-9fc0-bb8216358609")
 	)
 	(wire
 		(pts
@@ -33147,16 +29444,6 @@
 			(type default)
 		)
 		(uuid "d4df1f89-07f4-4cdd-8aef-4b4df8bc1f16")
-	)
-	(wire
-		(pts
-			(xy 1010.92 408.94) (xy 1008.38 408.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d4fd4133-4126-4959-a36a-48ad732095de")
 	)
 	(wire
 		(pts
@@ -33380,26 +29667,6 @@
 	)
 	(wire
 		(pts
-			(xy 378.46 681.99) (xy 375.92 681.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dedce129-b89e-4842-bd2f-b83ea9b4784d")
-	)
-	(wire
-		(pts
-			(xy 379.73 628.65) (xy 377.19 628.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "def43cd8-a3df-4738-89f9-659d389059e4")
-	)
-	(wire
-		(pts
 			(xy 1059.18 97.79) (xy 1061.72 97.79)
 		)
 		(stroke
@@ -33420,7 +29687,7 @@
 	)
 	(wire
 		(pts
-			(xy 1068.07 354.33) (xy 1065.53 354.33)
+			(xy 1059.18 471.17) (xy 1056.64 471.17)
 		)
 		(stroke
 			(width 0)
@@ -33450,7 +29717,7 @@
 	)
 	(wire
 		(pts
-			(xy 899.16 453.39) (xy 896.62 453.39)
+			(xy 890.27 570.23) (xy 887.73 570.23)
 		)
 		(stroke
 			(width 0)
@@ -33760,7 +30027,7 @@
 	)
 	(wire
 		(pts
-			(xy 924.56 445.77) (xy 927.1 445.77)
+			(xy 915.67 562.61) (xy 918.21 562.61)
 		)
 		(stroke
 			(width 0)
@@ -33860,7 +30127,7 @@
 	)
 	(wire
 		(pts
-			(xy 920.75 397.51) (xy 923.29 397.51)
+			(xy 911.86 514.35) (xy 914.4 514.35)
 		)
 		(stroke
 			(width 0)
@@ -33940,7 +30207,7 @@
 	)
 	(wire
 		(pts
-			(xy 923.29 356.87) (xy 925.83 356.87)
+			(xy 914.4 473.71) (xy 916.94 473.71)
 		)
 		(stroke
 			(width 0)
@@ -33980,7 +30247,7 @@
 	)
 	(wire
 		(pts
-			(xy 899.16 471.17) (xy 896.62 471.17)
+			(xy 890.27 588.01) (xy 887.73 588.01)
 		)
 		(stroke
 			(width 0)
@@ -34040,7 +30307,7 @@
 	)
 	(wire
 		(pts
-			(xy 1125.22 354.33) (xy 1127.76 354.33)
+			(xy 1116.33 471.17) (xy 1118.87 471.17)
 		)
 		(stroke
 			(width 0)
@@ -34097,16 +30364,6 @@
 			(type default)
 		)
 		(uuid "fc45c0e3-2117-4230-911c-8e664bec47ff")
-	)
-	(wire
-		(pts
-			(xy 976.63 381) (xy 979.17 381)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fc5b3d47-02ec-4f80-8ff0-680ef31e87ad")
 	)
 	(wire
 		(pts
@@ -34280,75 +30537,6 @@
 			)
 		)
 	)
-	(global_label "CTP_INT_NANO"
-		(shape bidirectional)
-		(at 1008.38 408.94 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "01a49dfc-168a-4992-83d9-c3b5d0a14a86")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1007.11 408.94 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "SEQ_FLAG2"
-		(shape bidirectional)
-		(at 948.69 375.92 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "01af6e5f-cc66-43d5-a881-e2927d1915cd")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 947.42 375.92 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "VEH_PROT"
-		(shape bidirectional)
-		(at 353.06 146.05 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "01df7949-41ab-4aa2-b027-92924e2d6356")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 354.33 146.05 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "MIPI_CLKN"
 		(shape bidirectional)
 		(at 591.82 455.93 0)
@@ -34397,7 +30585,7 @@
 	)
 	(global_label "CTP_RESET_N_NANO"
 		(shape bidirectional)
-		(at 927.1 461.01 0)
+		(at 918.21 577.85 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -34407,7 +30595,7 @@
 		)
 		(uuid "02ca744d-61c2-443c-8247-f4220f8b9b1b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 928.37 461.01 0)
+			(at 919.48 577.85 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -34415,29 +30603,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "CTP_RESET_N"
-		(shape bidirectional)
-		(at 690.88 716.28 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "0376e68c-7ef8-47b7-850b-b7867d73e8c4")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 689.61 716.28 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -34615,29 +30780,6 @@
 		(uuid "0746d842-5a70-478d-a6ff-2767b73f321a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 281.94 681.99 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
-	(global_label "SYS_24V"
-		(shape bidirectional)
-		(at 90.17 191.77 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "07dcda46-aabb-4087-a6fc-31efaa121494")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 91.44 191.77 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -34901,6 +31043,29 @@
 			)
 		)
 	)
+	(global_label "GND"
+		(shape input)
+		(at 354.33 146.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+			(justify left)
+		)
+		(uuid "0ca74c11-dc1d-4885-bbe3-cec8ffd9403b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 358.4437 146.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "BOOT1"
 		(shape bidirectional)
 		(at 90.17 224.79 0)
@@ -35062,29 +31227,6 @@
 			)
 		)
 	)
-	(global_label "SEQ_FLAG3"
-		(shape bidirectional)
-		(at 979.17 375.92 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "10e66fa4-bdcb-496b-89ec-4f4411294444")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 980.44 375.92 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "TOUCH_3V3"
 		(shape bidirectional)
 		(at 636.27 646.43 180)
@@ -35110,7 +31252,7 @@
 	)
 	(global_label "LCD_PWR_EN"
 		(shape bidirectional)
-		(at 863.6 356.87 180)
+		(at 854.71 473.71 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -35120,7 +31262,7 @@
 		)
 		(uuid "13ce6eb2-7ee6-403a-9796-58da209621de")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 862.33 356.87 180)
+			(at 853.44 473.71 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -35522,29 +31664,6 @@
 			)
 		)
 	)
-	(global_label "LCD_VCI"
-		(shape bidirectional)
-		(at 607.06 222.25 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "1d13a099-6727-456d-9bbe-ab68c849fb2c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 605.79 222.25 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "SW2"
 		(shape bidirectional)
 		(at 162.56 276.86 0)
@@ -35846,7 +31965,7 @@
 	)
 	(global_label "LED5_R"
 		(shape bidirectional)
-		(at 908.05 397.51 180)
+		(at 899.16 514.35 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -35856,7 +31975,7 @@
 		)
 		(uuid "1fa0f7bb-9055-4fc4-8f36-a4b63c5ef714")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 906.78 397.51 180)
+			(at 897.89 514.35 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -36329,30 +32448,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 948.69 370.84 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "2a83e3b1-db4f-4402-84ce-b5cd99bf823c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 947.42 370.84 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "GND"
-		(shape bidirectional)
-		(at 896.62 453.39 180)
+		(at 887.73 570.23 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -36362,7 +32458,7 @@
 		)
 		(uuid "2c1329d2-5bf3-463a-8b9a-1f244ab272c5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 895.35 453.39 180)
+			(at 886.46 570.23 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -36421,7 +32517,7 @@
 	)
 	(global_label "CTP_INT_NANO"
 		(shape bidirectional)
-		(at 896.62 471.17 180)
+		(at 887.73 588.01 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -36431,7 +32527,7 @@
 		)
 		(uuid "2dd48d1c-89ae-462e-969d-9b3ee3341097")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 895.35 471.17 180)
+			(at 886.46 588.01 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -36467,7 +32563,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 927.1 448.31 0)
+		(at 918.21 565.15 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -36477,7 +32573,7 @@
 		)
 		(uuid "2e34cec5-1260-4909-a27a-a4f69b69df10")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 928.37 448.31 0)
+			(at 919.48 565.15 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -36577,29 +32673,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "CTP_SDA"
-		(shape bidirectional)
-		(at 636.27 716.28 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "2f1339fc-cd24-4f37-910e-65401520c81c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 635 716.28 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -36835,7 +32908,7 @@
 	)
 	(global_label "BL_PWM"
 		(shape bidirectional)
-		(at 896.62 450.85 180)
+		(at 887.73 567.69 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -36845,7 +32918,7 @@
 		)
 		(uuid "34ca4489-230e-4662-bcbb-804c009882cc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 895.35 450.85 180)
+			(at 886.46 567.69 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -36904,7 +32977,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 927.1 466.09 0)
+		(at 918.21 582.93 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -36914,7 +32987,7 @@
 		)
 		(uuid "35449851-8a17-43f4-8c3d-4ec72d7f6d16")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 928.37 466.09 0)
+			(at 919.48 582.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -37318,7 +33391,7 @@
 	)
 	(global_label "LCD_RESET_CMD_N"
 		(shape bidirectional)
-		(at 896.62 461.01 180)
+		(at 887.73 577.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -37328,7 +33401,7 @@
 		)
 		(uuid "3cf456f4-2243-4309-a364-a421f941346e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 895.35 461.01 180)
+			(at 886.46 577.85 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -37477,29 +33550,6 @@
 			)
 		)
 	)
-	(global_label "SYS24_PGOOD"
-		(shape bidirectional)
-		(at 979.17 381 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "40f3b858-e187-4863-a462-6265d1f1c0ba")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 980.44 381 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "LM5176_SLOPE"
 		(shape bidirectional)
 		(at 59.69 213.36 180)
@@ -37640,7 +33690,7 @@
 	)
 	(global_label "LED24_R"
 		(shape bidirectional)
-		(at 911.86 377.19 180)
+		(at 902.97 494.03 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -37650,7 +33700,7 @@
 		)
 		(uuid "483e10cc-91a3-4b92-894e-d4464b8634a0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 910.59 377.19 180)
+			(at 901.7 494.03 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -37663,7 +33713,7 @@
 	)
 	(global_label "GND"
 		(shape input)
-		(at 999.49 474.98 0)
+		(at 990.6 591.82 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -37673,7 +33723,7 @@
 		)
 		(uuid "48550538-1c64-479c-a503-ca4d26d33f68")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1003.6037 474.98 0)
+			(at 994.7137 591.82 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -38121,29 +34171,6 @@
 			)
 		)
 	)
-	(global_label "SYS_5V_3A"
-		(shape bidirectional)
-		(at 82.55 511.81 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "524fe7d2-2d7d-4396-bcff-6fb67fdb650c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 81.28 511.81 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "TOUCH_3V3"
 		(shape bidirectional)
 		(at 584.2 622.3 0)
@@ -38164,29 +34191,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "VIN_GOOD"
-		(shape bidirectional)
-		(at 948.69 373.38 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "528d878a-fa41-499b-bd8f-d6abbc4f205c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 947.42 373.38 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -38376,7 +34380,7 @@
 	)
 	(global_label "NANO_5V"
 		(shape bidirectional)
-		(at 927.1 443.23 0)
+		(at 918.21 560.07 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -38386,7 +34390,7 @@
 		)
 		(uuid "5678c48c-411a-4d20-ba8c-7b752ce6cea9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 928.37 443.23 0)
+			(at 919.48 560.07 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -38558,29 +34562,6 @@
 			)
 		)
 	)
-	(global_label "VIN_GOOD"
-		(shape bidirectional)
-		(at 574.04 190.5 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "5976d854-8017-4257-9efa-afa17557a2fa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 572.77 190.5 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "BUS_SENSE"
 		(shape bidirectional)
 		(at 676.91 76.2 0)
@@ -38606,7 +34587,7 @@
 	)
 	(global_label "LCD_RESET_CMD_N"
 		(shape bidirectional)
-		(at 864.87 377.19 180)
+		(at 855.98 494.03 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -38616,7 +34597,7 @@
 		)
 		(uuid "5a9b1f17-8adb-47de-b813-d8127b5f02f4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 863.6 377.19 180)
+			(at 854.71 494.03 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -38765,29 +34746,6 @@
 			)
 		)
 	)
-	(global_label "BL_PWM"
-		(shape bidirectional)
-		(at 1008.38 397.51 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "5f93530d-f870-4357-b91e-cc37992f595a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1007.11 397.51 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "LED_K_RAW"
 		(shape bidirectional)
 		(at 337.82 707.39 0)
@@ -38926,29 +34884,6 @@
 			)
 		)
 	)
-	(global_label "CTP_INT"
-		(shape bidirectional)
-		(at 718.82 716.28 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "636a5366-7736-4cfd-8416-d77a3de89c1c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 717.55 716.28 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "VEH_DAMP"
 		(shape bidirectional)
 		(at 436.88 69.85 180)
@@ -38997,7 +34932,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 1127.76 354.33 0)
+		(at 1118.87 471.17 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -39007,7 +34942,7 @@
 		)
 		(uuid "648f360d-6d46-47f3-88a1-9a5746f0b24e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1129.03 354.33 0)
+			(at 1120.14 471.17 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -39181,7 +35116,7 @@
 	)
 	(global_label "CTP_RESET_N_NANO"
 		(shape bidirectional)
-		(at 1065.53 354.33 180)
+		(at 1056.64 471.17 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -39191,7 +35126,7 @@
 		)
 		(uuid "6b30acef-e0a6-4eec-a962-7bef7787eee2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1064.26 354.33 180)
+			(at 1055.37 471.17 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -39475,29 +35410,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "BL_DIM"
-		(shape bidirectional)
-		(at 377.19 655.32 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "6f1cbbf3-3a93-40d3-bdb5-3f90c2d4776d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 375.92 655.32 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -39800,29 +35712,6 @@
 			)
 		)
 	)
-	(global_label "SEQ_FLAG1"
-		(shape bidirectional)
-		(at 979.17 373.38 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "7467fb1a-8bd0-4436-ba00-cc2960ee450d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 980.44 373.38 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "LM5176_MODE"
 		(shape bidirectional)
 		(at 59.69 205.74 180)
@@ -39836,29 +35725,6 @@
 		(uuid "74ad573e-9bd1-4e75-a59b-bbeb9185049a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 58.42 205.74 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "VEH_12V_RAW"
-		(shape bidirectional)
-		(at 201.93 118.11 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "758fe601-b225-4df9-a570-790e07f2c69f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 200.66 118.11 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -39938,29 +35804,6 @@
 			)
 		)
 	)
-	(global_label "BL_FAULT_N"
-		(shape bidirectional)
-		(at 979.17 378.46 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "770f42c0-ee91-4459-97d8-2c0447b7c06b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 980.44 378.46 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "EFUSE_DVDT"
 		(shape bidirectional)
 		(at 359.41 420.37 180)
@@ -40030,29 +35873,6 @@
 			)
 		)
 	)
-	(global_label "NANO_EFUSE_FLT"
-		(shape bidirectional)
-		(at 82.55 549.91 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "7a034608-67f6-4248-92e7-c1406d5c98e1")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 81.28 549.91 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "VIN_GOOD"
 		(shape bidirectional)
 		(at 553.72 623.57 180)
@@ -40073,75 +35893,6 @@
 					(size 1 1)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "SYS24_PGOOD"
-		(shape bidirectional)
-		(at 68.58 289.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "7ae85787-8581-4a37-8d0c-336bad0046b3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 67.31 289.56 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "SEQ_FLAG2"
-		(shape bidirectional)
-		(at 608.33 208.28 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "7b005415-08a3-48d4-b38b-fb41b617ef3b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 607.06 208.28 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "SYS_24V"
-		(shape bidirectional)
-		(at 90.17 194.31 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "7b03ddf7-9e33-4a6c-a28d-35e884b772d3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 91.44 194.31 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
 			)
 		)
 	)
@@ -40584,7 +36335,7 @@
 	)
 	(global_label "SYS_24V"
 		(shape bidirectional)
-		(at 925.83 356.87 0)
+		(at 916.94 473.71 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -40594,7 +36345,7 @@
 		)
 		(uuid "81a57d69-6087-4d38-95e6-1519f140eca2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 927.1 356.87 0)
+			(at 918.21 473.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -40651,29 +36402,6 @@
 			)
 		)
 	)
-	(global_label "CTP_SCL"
-		(shape bidirectional)
-		(at 661.67 716.28 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "83247c06-d786-4aa1-97ad-590dcaa57896")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 660.4 716.28 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "HDRV1"
 		(shape bidirectional)
 		(at 132.08 196.85 180)
@@ -40722,7 +36450,7 @@
 	)
 	(global_label "CTP_INT_NANO"
 		(shape bidirectional)
-		(at 914.4 412.75 180)
+		(at 905.51 529.59 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -40732,7 +36460,7 @@
 		)
 		(uuid "84d695df-f47c-49a9-93a5-2334637ae04b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 913.13 412.75 180)
+			(at 904.24 529.59 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -41226,29 +36954,6 @@
 			)
 		)
 	)
-	(global_label "LED_K"
-		(shape bidirectional)
-		(at 375.92 707.39 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "8e65f0b2-f0ed-49aa-bb4a-46447dab621e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 374.65 707.39 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "TPS922_COMP_C"
 		(shape bidirectional)
 		(at 265.43 707.39 180)
@@ -41453,29 +37158,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "CTP_RESET_N_NANO"
-		(shape bidirectional)
-		(at 1083.31 397.51 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "9617eecf-54a0-447d-b542-10524cba87f8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1082.04 397.51 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -41826,7 +37508,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 896.62 473.71 180)
+		(at 887.73 590.55 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -41836,7 +37518,7 @@
 		)
 		(uuid "9c637048-b0a9-4fff-9969-9e5ca550e8b1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 895.35 473.71 180)
+			(at 886.46 590.55 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -42079,7 +37761,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 927.1 458.47 0)
+		(at 918.21 575.31 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -42089,7 +37771,7 @@
 		)
 		(uuid "9ee2333a-c6b2-431c-bf22-9db6b5fd90a7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 928.37 458.47 0)
+			(at 919.48 575.31 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -42238,29 +37920,6 @@
 			)
 		)
 	)
-	(global_label "LCD_RESET_N"
-		(shape bidirectional)
-		(at 572.77 222.25 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "a3497ccb-f5a1-4dcf-b6be-60eca90c540b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 571.5 222.25 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "SYS_24V"
 		(shape bidirectional)
 		(at 154.94 655.32 180)
@@ -42307,32 +37966,9 @@
 			)
 		)
 	)
-	(global_label "LCD_RESET_N"
-		(shape bidirectional)
-		(at 948.69 378.46 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "a4930d9f-0052-46eb-a45d-ca5bba4624af")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 947.42 378.46 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "BL_PWM"
 		(shape bidirectional)
-		(at 861.06 397.51 180)
+		(at 852.17 514.35 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -42342,7 +37978,7 @@
 		)
 		(uuid "a4b35f20-d824-4d07-b2b2-89ca0fc3d88a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 859.79 397.51 180)
+			(at 850.9 514.35 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -42412,52 +38048,6 @@
 		(uuid "a525a2df-800a-4fe7-9a34-96b8eb370119")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 551.18 713.74 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "BL_PWM"
-		(shape bidirectional)
-		(at 377.19 628.65 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "a5b4aea6-ce95-4a86-9331-b2fc9dc66494")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 375.92 628.65 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "GND"
-		(shape bidirectional)
-		(at 869.95 414.02 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "a5b588f2-da25-4e45-aa4e-54351a006139")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 868.68 414.02 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -42792,7 +38382,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 1080.77 354.33 0)
+		(at 1071.88 471.17 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -42802,7 +38392,7 @@
 		)
 		(uuid "ab29e005-3298-4530-86ca-60553769ca60")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1082.04 354.33 0)
+			(at 1073.15 471.17 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -43137,7 +38727,7 @@
 	)
 	(global_label "NANO_5V"
 		(shape bidirectional)
-		(at 927.1 445.77 0)
+		(at 918.21 562.61 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -43147,7 +38737,7 @@
 		)
 		(uuid "aeb955cd-95c9-4fd8-b28f-2678786ae9cc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 928.37 445.77 0)
+			(at 919.48 562.61 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -43229,7 +38819,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 878.84 356.87 0)
+		(at 869.95 473.71 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -43239,7 +38829,7 @@
 		)
 		(uuid "b07324cc-4f01-4db1-9b6f-6c22bc7475c0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 880.11 356.87 0)
+			(at 871.22 473.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -43413,7 +39003,7 @@
 	)
 	(global_label "SYS_5V_3A"
 		(shape bidirectional)
-		(at 923.29 397.51 0)
+		(at 914.4 514.35 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -43423,7 +39013,7 @@
 		)
 		(uuid "b47b5bc9-4fd5-49ad-8dd3-018d7caac558")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 924.56 397.51 0)
+			(at 915.67 514.35 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -43986,52 +39576,6 @@
 			)
 		)
 	)
-	(global_label "LCD_PWR_EN"
-		(shape bidirectional)
-		(at 1045.21 397.51 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "bccaa138-bd9d-457e-b83c-fb922b9ca44f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1043.94 397.51 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "NANO_5V"
-		(shape bidirectional)
-		(at 82.55 524.51 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "bccac540-fb54-48fc-ae90-d6b8ab5373df")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 81.28 524.51 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "NANO_I2C_SDA"
 		(shape bidirectional)
 		(at 594.36 377.19 0)
@@ -44446,32 +39990,9 @@
 			)
 		)
 	)
-	(global_label "VEH_PROT"
-		(shape bidirectional)
-		(at 201.93 133.35 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "c2d4d798-c385-46cc-b145-5b285b0250ac")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 200.66 133.35 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "LED24_R"
 		(shape bidirectional)
-		(at 910.59 356.87 180)
+		(at 901.7 473.71 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -44481,7 +40002,7 @@
 		)
 		(uuid "c3ad805e-a6c4-426b-9f39-b934468ffe32")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 909.32 356.87 180)
+			(at 900.43 473.71 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -44538,29 +40059,6 @@
 			)
 		)
 	)
-	(global_label "SYS_24V"
-		(shape bidirectional)
-		(at 68.58 273.05 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "c5713f9e-9500-443b-a7e3-40801a7ff246")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 67.31 273.05 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "BL_DIM"
 		(shape bidirectional)
 		(at 111.76 698.5 0)
@@ -44581,29 +40079,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "NANO_EFUSE_FLT"
-		(shape bidirectional)
-		(at 948.69 381 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "c644b32d-9bc6-43ba-9dbc-261b3f3ad3e3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 947.42 381 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -44632,7 +40107,7 @@
 	)
 	(global_label "LED5_R"
 		(shape bidirectional)
-		(at 1112.52 354.33 180)
+		(at 1103.63 471.17 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -44642,7 +40117,7 @@
 		)
 		(uuid "c699bc29-99dd-4330-9f42-44dfece6fc28")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1111.25 354.33 180)
+			(at 1102.36 471.17 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -44655,7 +40130,7 @@
 	)
 	(global_label "LCD_PWR_EN"
 		(shape bidirectional)
-		(at 896.62 458.47 180)
+		(at 887.73 575.31 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -44665,7 +40140,7 @@
 		)
 		(uuid "c6b2cff8-13a2-450a-8268-95744712f7d0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 895.35 458.47 180)
+			(at 886.46 575.31 180)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -44678,7 +40153,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 929.64 412.75 0)
+		(at 920.75 529.59 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -44688,7 +40163,7 @@
 		)
 		(uuid "c6e564dc-94ba-480a-8a79-7d0765dce2f4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 930.91 412.75 0)
+			(at 922.02 529.59 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -44747,7 +40222,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 876.3 397.51 0)
+		(at 867.41 514.35 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -44757,7 +40232,7 @@
 		)
 		(uuid "c815274b-539a-434b-ad82-4276d6b2d539")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 877.57 397.51 0)
+			(at 868.68 514.35 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -44770,7 +40245,7 @@
 	)
 	(global_label "GND"
 		(shape input)
-		(at 969.01 474.98 180)
+		(at 960.12 591.82 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -44780,7 +40255,7 @@
 		)
 		(uuid "c85e5475-22b1-4c49-874f-35cb9df98fe3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 964.8963 474.98 0)
+			(at 956.0063 591.82 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -44926,29 +40401,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "SEQ_FLAG3"
-		(shape bidirectional)
-		(at 572.77 207.01 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "cd81c550-d497-4dca-b7c6-047016ece9e4")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 571.5 207.01 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -45133,29 +40585,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "SYS5_PGOOD"
-		(shape bidirectional)
-		(at 82.55 537.21 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "d3d45fc7-21b3-471d-9b9e-940eaec1b750")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 81.28 537.21 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -45688,29 +41117,6 @@
 			)
 		)
 	)
-	(global_label "SEQ_FLAG1"
-		(shape bidirectional)
-		(at 607.06 171.45 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "dadfa6d7-044a-4207-a7d5-767e28cf13a5")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 605.79 171.45 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "GND"
 		(shape bidirectional)
 		(at 374.65 420.37 0)
@@ -45943,7 +41349,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 880.11 377.19 0)
+		(at 871.22 494.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -45953,7 +41359,7 @@
 		)
 		(uuid "e2656a11-241a-47ff-80b4-f73d1f9153b6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 881.38 377.19 0)
+			(at 872.49 494.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -46099,29 +41505,6 @@
 					(size 1 1)
 				)
 				(justify right)
-			)
-		)
-	)
-	(global_label "SYS_5V_3A"
-		(shape bidirectional)
-		(at 979.17 370.84 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify left)
-		)
-		(uuid "e4968c5a-43a3-44cc-b404-9d3fa834349d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 980.44 370.84 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
 			)
 		)
 	)
@@ -46286,29 +41669,6 @@
 			)
 		)
 	)
-	(global_label "LCD_IOVCC"
-		(shape bidirectional)
-		(at 605.79 189.23 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "e597ad49-5319-4271-99fd-5c95e099e213")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 604.52 189.23 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "DISP_HOLD_5V"
 		(shape bidirectional)
 		(at 595.63 111.76 0)
@@ -46352,29 +41712,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "BL_FAULT_N"
-		(shape bidirectional)
-		(at 322.58 731.52 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "e6504acf-1e3e-4e25-9ebd-5715ce94ba45")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 321.31 731.52 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -46976,29 +42313,6 @@
 			)
 		)
 	)
-	(global_label "TOUCH_3V3"
-		(shape bidirectional)
-		(at 679.45 629.92 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "ef466dd1-3b20-4112-adbc-96296aac737b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 678.18 629.92 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "LCD_VCI"
 		(shape bidirectional)
 		(at 941.07 125.73 0)
@@ -47091,29 +42405,6 @@
 			)
 		)
 	)
-	(global_label "LCD_RESET_CMD_N"
-		(shape bidirectional)
-		(at 1045.21 408.94 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "f29ff1a2-1f16-46bc-8d4f-ddf9c99630b4")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 1043.94 408.94 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "GND"
 		(shape bidirectional)
 		(at 281.94 452.12 0)
@@ -47162,7 +42453,7 @@
 	)
 	(global_label "GND"
 		(shape bidirectional)
-		(at 927.1 377.19 0)
+		(at 918.21 494.03 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -47172,7 +42463,7 @@
 		)
 		(uuid "f393fa1a-6bb0-45c9-be04-56b9e4f646f2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 928.37 377.19 0)
+			(at 919.48 494.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -47525,29 +42816,6 @@
 					(size 1 1)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "LED_A"
-		(shape bidirectional)
-		(at 375.92 681.99 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1 1)
-			)
-			(justify right)
-		)
-		(uuid "f89852a1-4113-437b-9ee1-a92ede7e5e2b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 374.65 681.99 180)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -47916,104 +43184,6 @@
 					(size 1 1)
 				)
 				(justify right)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP804_CTP_INT")
-		(at 726.44 716.28 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "0079c63f-7827-489c-a1f5-eaa884f7e82a")
-		(property "Reference" "TP804"
-			(at 726.44 712.47 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CTP_INT"
-			(at 726.44 720.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 726.44 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 726.44 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 726.44 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 726.44 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 726.44 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f7ef3971-f265-4447-8cd8-ddb75c97cf4c")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP804")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -49089,131 +44259,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:J1003_DEBUG_HEADER")
-		(at 963.93 375.92 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "1405deb5-3108-4c0c-8ffc-49095d87fb84")
-		(property "Reference" "J1003"
-			(at 963.93 366.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "DEBUG HEADER"
-			(at 963.93 385.54 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical"
-			(at 963.93 375.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 963.93 375.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Low-speed development/debug access"
-			(at 963.93 375.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" "Samtec"
-			(at 963.93 375.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" "TSW-105-07-G-D"
-			(at 963.93 375.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "fec21fd1-10b3-45fa-8fc7-46c94701ff95")
-		)
-		(pin "3"
-			(uuid "04d84cc0-ed17-436b-8ae0-c4835555e619")
-		)
-		(pin "5"
-			(uuid "0ae60667-025d-4067-88ea-164f143c1eb6")
-		)
-		(pin "7"
-			(uuid "7846e769-d8f2-4871-8c9c-64fcf179999d")
-		)
-		(pin "9"
-			(uuid "d8963794-d173-4b1f-b797-2bb42c73bba9")
-		)
-		(pin "2"
-			(uuid "f5af4642-78d8-425c-ade7-c74c5d4c732a")
-		)
-		(pin "4"
-			(uuid "41e0f703-98d2-4c90-b711-c6e89d5f3d6d")
-		)
-		(pin "6"
-			(uuid "f30a1a74-11c0-4e35-bbcc-a1ca1f1b3af7")
-		)
-		(pin "8"
-			(uuid "f6a620fb-f038-462a-a50b-1c8c99db376f")
-		)
-		(pin "10"
-			(uuid "d8606796-3ef6-460c-8ae7-97bc37390274")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "J1003")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:Q801_MMBT3904")
 		(at 568.96 643.89 0)
 		(unit 1)
@@ -50228,7 +45273,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:J1001_NANO_P1_2x13")
-		(at 911.86 458.47 0)
+		(at 902.97 575.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -50238,7 +45283,7 @@
 		(dnp no)
 		(uuid "24e35e4a-a6b7-498a-aa32-d2bee3100d7d")
 		(property "Reference" "J1001"
-			(at 911.86 438.69 0)
+			(at 902.97 555.53 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -50248,7 +45293,7 @@
 			)
 		)
 		(property "Value" "SSQ-113-01-G-D"
-			(at 911.86 478.25 0)
+			(at 902.97 595.09 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -50258,7 +45303,7 @@
 			)
 		)
 		(property "Footprint" "Phase2:Samtec_SSQ-113-01-G-D_BottomMount"
-			(at 911.86 458.47 0)
+			(at 902.97 575.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -50269,7 +45314,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.samtec.com/products/ssq-113-01-g-d"
-			(at 911.86 458.47 0)
+			(at 902.97 575.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -50280,7 +45325,7 @@
 			)
 		)
 		(property "Description" "Samtec 2x13 2.54 mm vertical socket on Waveshare Nano P1; complete host pin functions shown"
-			(at 911.86 458.47 0)
+			(at 902.97 575.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -50291,7 +45336,7 @@
 			)
 		)
 		(property "Manufacturer" "Samtec"
-			(at 911.86 458.47 0)
+			(at 902.97 575.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -50302,7 +45347,7 @@
 			)
 		)
 		(property "MPN" "SSQ-113-01-G-D"
-			(at 911.86 458.47 0)
+			(at 902.97 575.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -51004,104 +46049,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP301_SYS_24V")
-		(at 76.2 273.05 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "2b881361-8043-4873-9a02-2cb3892ccf03")
-		(property "Reference" "TP301"
-			(at 76.2 269.24 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SYS_24V"
-			(at 76.2 276.86 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 76.2 273.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 76.2 273.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 76.2 273.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 76.2 273.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 76.2 273.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "14ff0551-827d-4231-b13c-9fd7433e089d")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP301")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:J201_VEHICLE_12V")
 		(at 209.55 72.39 0)
 		(unit 1)
@@ -51633,7 +46580,7 @@
 				)
 			)
 		)
-		(property "Value" "82nF 25V X7R"
+		(property "Value" "82nF 100V X7R"
 			(at 345.44 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -51687,7 +46634,7 @@
 				)
 			)
 		)
-		(property "MPN" "C0603C823K3RACTU"
+		(property "MPN" "C0603C823K1RACAUTO"
 			(at 345.44 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -52017,104 +46964,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP607_LCD_RESET_N")
-		(at 581.66 222.25 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "346c5d32-deb4-4232-a6c6-f1d54cf7449c")
-		(property "Reference" "TP607"
-			(at 581.66 218.44 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LCD_RESET_N"
-			(at 581.66 226.06 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 581.66 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 581.66 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 581.66 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 581.66 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 581.66 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c022e9c1-a6a0-4087-b111-5e208508b3af")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP607")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:CSD19531Q5A")
 		(at 147.32 247.65 0)
 		(unit 1)
@@ -52235,7 +47084,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:D1001_GREEN")
-		(at 918.21 356.87 0)
+		(at 909.32 473.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -52245,7 +47094,7 @@
 		(dnp no)
 		(uuid "3998e220-1bb8-4347-bf38-71cef730fcd6")
 		(property "Reference" "D1001"
-			(at 918.21 353.06 0)
+			(at 909.32 469.9 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -52255,7 +47104,7 @@
 			)
 		)
 		(property "Value" "GREEN"
-			(at 918.21 360.68 0)
+			(at 909.32 477.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -52265,7 +47114,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 918.21 356.87 0)
+			(at 909.32 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -52276,7 +47125,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 918.21 356.87 0)
+			(at 909.32 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -52287,7 +47136,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 918.21 356.87 0)
+			(at 909.32 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -52298,7 +47147,7 @@
 			)
 		)
 		(property "Manufacturer" "Lite-On"
-			(at 918.21 356.87 0)
+			(at 909.32 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -52309,7 +47158,7 @@
 			)
 		)
 		(property "MPN" "LTST-C191KGKT"
-			(at 918.21 356.87 0)
+			(at 909.32 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -52430,104 +47279,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "R908")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP503_SYS5_PGOOD")
-		(at 90.17 537.21 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "3be70f27-ae6e-4e20-8e3d-646227267518")
-		(property "Reference" "TP503"
-			(at 90.17 533.4 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SYS5_PGOOD"
-			(at 90.17 541.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 90.17 537.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 90.17 537.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 90.17 537.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 90.17 537.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 90.17 537.21 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "030fb7ba-b5f9-42df-9a25-21d345cef7e6")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP503")
 					(unit 1)
 				)
 			)
@@ -53045,104 +47796,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "C308")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP904_LED_K")
-		(at 383.54 707.39 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "43f732d1-66a5-4be3-a2ff-208165e196f4")
-		(property "Reference" "TP904"
-			(at 383.54 703.58 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LED_K"
-			(at 383.54 711.2 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 383.54 707.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 383.54 707.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 383.54 707.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 383.54 707.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 383.54 707.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a7159392-24cc-4363-9a41-182a43ff29e5")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP904")
 					(unit 1)
 				)
 			)
@@ -53669,104 +48322,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP802_CTP_SCL")
-		(at 669.29 716.28 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "4b4fdbba-c2c9-4ba6-a84d-7e409a5a24e8")
-		(property "Reference" "TP802"
-			(at 669.29 712.47 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CTP_SCL"
-			(at 669.29 720.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 669.29 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 669.29 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 669.29 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 669.29 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 669.29 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d0a8cdd0-26d8-48d2-9c28-8994a2eb72cd")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP802")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:R504_68.1k_1%")
 		(at 274.32 355.6 0)
 		(unit 1)
@@ -54272,104 +48827,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP1003_BL_PWM")
-		(at 1016 397.51 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "500fe9d8-748e-4e95-9852-d29e0e97bc32")
-		(property "Reference" "TP1003"
-			(at 1016 393.7 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BL_PWM"
-			(at 1016 401.32 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 1016 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 1016 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 1016 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 1016 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 1016 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "7476f064-d398-4f5a-aff0-17bd997fee86")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP1003")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:R610_10k")
 		(at 1108.71 76.2 0)
 		(unit 1)
@@ -54578,104 +49035,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "U605")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP501_SYS_5V_3A")
-		(at 90.17 511.81 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "51ede773-8ccf-475d-8250-9ab49eff19b7")
-		(property "Reference" "TP501"
-			(at 90.17 508 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SYS_5V_3A"
-			(at 90.17 515.62 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 90.17 511.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 90.17 511.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 90.17 511.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 90.17 511.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 90.17 511.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "960ea97d-052f-4064-883d-0c65d4c2f34d")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP501")
 					(unit 1)
 				)
 			)
@@ -54979,104 +49338,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "C509")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP903_LED_A")
-		(at 383.54 681.99 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "572b56bc-e8e2-48f2-8b8c-1ba32255f804")
-		(property "Reference" "TP903"
-			(at 383.54 678.18 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LED_A"
-			(at 383.54 685.8 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 383.54 681.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 383.54 681.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 383.54 681.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 383.54 681.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 383.54 681.99 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a590e383-be09-49bc-84ea-de665c595fa0")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP903")
 					(unit 1)
 				)
 			)
@@ -55490,7 +49751,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:R1001_100k")
-		(at 871.22 356.87 0)
+		(at 862.33 473.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -55500,7 +49761,7 @@
 		(dnp no)
 		(uuid "61a125d1-ea6a-4be1-a5e5-fd4c868ca0a7")
 		(property "Reference" "R1001"
-			(at 871.22 353.06 0)
+			(at 862.33 469.9 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -55510,7 +49771,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 871.22 360.68 0)
+			(at 862.33 477.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -55520,7 +49781,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 871.22 356.87 0)
+			(at 862.33 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -55531,7 +49792,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 871.22 356.87 0)
+			(at 862.33 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -55542,7 +49803,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 871.22 356.87 0)
+			(at 862.33 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -55553,7 +49814,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 871.22 356.87 0)
+			(at 862.33 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -55564,7 +49825,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 871.22 356.87 0)
+			(at 862.33 473.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -56395,104 +50656,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP1006_GND")
-		(at 877.57 414.02 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "6b10d415-6ae9-4a5f-8c07-6def5c014a31")
-		(property "Reference" "TP1006"
-			(at 877.57 410.21 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 877.57 417.83 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 877.57 414.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 877.57 414.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 877.57 414.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 877.57 414.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 877.57 414.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "29c5fcc9-f3ad-4930-8a9e-eecf982d1a57")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP1006")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:R905_100R")
 		(at 273.05 681.99 0)
 		(unit 1)
@@ -56715,7 +50878,7 @@
 				)
 			)
 		)
-		(property "Value" "10.0k 1%"
+		(property "Value" "100R 1%"
 			(at 443.23 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -56747,7 +50910,7 @@
 				)
 			)
 		)
-		(property "Description" "LM74800 HGATE dV/dt turn-off resistor"
+		(property "Description" "LM74800 HGATE dV/dt capacitor discharge/damping resistor"
 			(at 443.23 130.81 0)
 			(hide yes)
 			(show_name no)
@@ -56769,7 +50932,7 @@
 				)
 			)
 		)
-		(property "MPN" "ERJ-3EKF1002V"
+		(property "MPN" "ERJ-3EKF1000V"
 			(at 443.23 130.81 0)
 			(hide yes)
 			(show_name no)
@@ -57444,104 +51607,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP1004_CTP_RESET_N_NANO")
-		(at 1090.93 397.51 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "7a025d15-9eb8-41b7-a755-661588a277a2")
-		(property "Reference" "TP1004"
-			(at 1090.93 393.7 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CTP_RESET_N_NANO"
-			(at 1090.93 401.32 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 1090.93 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 1090.93 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 1090.93 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 1090.93 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 1090.93 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d4357aa2-b36f-4210-ad31-1cec567c04cc")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP1004")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:C904_1nF_50V")
 		(at 210.82 707.39 0)
 		(unit 1)
@@ -57644,7 +51709,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:R1005_47k")
-		(at 922.02 412.75 0)
+		(at 913.13 529.59 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -57654,7 +51719,7 @@
 		(dnp yes)
 		(uuid "7cbe05cb-54aa-4fcf-9273-afda06ec481d")
 		(property "Reference" "R1005"
-			(at 922.02 408.94 0)
+			(at 913.13 525.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -57664,7 +51729,7 @@
 			)
 		)
 		(property "Value" "47k"
-			(at 922.02 416.56 0)
+			(at 913.13 533.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -57674,7 +51739,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 922.02 412.75 0)
+			(at 913.13 529.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -57685,7 +51750,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 922.02 412.75 0)
+			(at 913.13 529.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -57696,7 +51761,7 @@
 			)
 		)
 		(property "Description" "DNP weak default; firmware drives address strap"
-			(at 922.02 412.75 0)
+			(at 913.13 529.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -57707,7 +51772,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 922.02 412.75 0)
+			(at 913.13 529.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -57718,7 +51783,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 922.02 412.75 0)
+			(at 913.13 529.59 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -57738,104 +51803,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "R1005")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP805_CTP_RESET_N")
-		(at 698.5 716.28 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "80952522-175a-41d6-8cad-75a3cd792fd9")
-		(property "Reference" "TP805"
-			(at 698.5 712.47 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CTP_RESET_N"
-			(at 698.5 720.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 698.5 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 698.5 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 698.5 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 698.5 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 698.5 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e02bb6a2-ba04-4cf0-9bec-109a4dde6213")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP805")
 					(unit 1)
 				)
 			)
@@ -58038,104 +52005,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "C302")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP1002_LCD_RESET_CMD_N")
-		(at 1052.83 408.94 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "81b974b1-312c-4ca6-a8ae-7e18ebd7798f")
-		(property "Reference" "TP1002"
-			(at 1052.83 405.13 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LCD_RESET_CMD_N"
-			(at 1052.83 412.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 1052.83 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 1052.83 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 1052.83 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 1052.83 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 1052.83 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "906466f5-a4ac-4edd-ae05-dcc74adedde0")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP1002")
 					(unit 1)
 				)
 			)
@@ -58858,104 +52727,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP803_CTP_SDA")
-		(at 643.89 716.28 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "87e1553e-0c2f-4316-acdf-ba9187a301f4")
-		(property "Reference" "TP803"
-			(at 643.89 712.47 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CTP_SDA"
-			(at 643.89 720.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 643.89 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 643.89 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 643.89 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 643.89 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 643.89 716.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a9b8b315-9796-4fe4-89bf-1e87e689704c")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP803")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:R702_0R_0201")
 		(at 657.86 377.19 0)
 		(unit 1)
@@ -59159,7 +52930,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:D1002_GREEN")
-		(at 915.67 397.51 0)
+		(at 906.78 514.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -59169,7 +52940,7 @@
 		(dnp no)
 		(uuid "8a2ea3e5-cf94-4fcc-b031-cc263d0cd011")
 		(property "Reference" "D1002"
-			(at 915.67 393.7 0)
+			(at 906.78 510.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -59179,7 +52950,7 @@
 			)
 		)
 		(property "Value" "GREEN"
-			(at 915.67 401.32 0)
+			(at 906.78 518.16 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -59189,7 +52960,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 915.67 397.51 0)
+			(at 906.78 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -59200,7 +52971,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 915.67 397.51 0)
+			(at 906.78 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -59211,7 +52982,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 915.67 397.51 0)
+			(at 906.78 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -59222,7 +52993,7 @@
 			)
 		)
 		(property "Manufacturer" "Lite-On"
-			(at 915.67 397.51 0)
+			(at 906.78 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -59233,7 +53004,7 @@
 			)
 		)
 		(property "MPN" "LTST-C191KGKT"
-			(at 915.67 397.51 0)
+			(at 906.78 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -59354,104 +53125,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "R202")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP202_VEH_PROT")
-		(at 209.55 133.35 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "8b524f76-aa23-43c5-bf86-cd02803dd9e6")
-		(property "Reference" "TP202"
-			(at 209.55 129.54 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VEH_PROT"
-			(at 209.55 137.16 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 209.55 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 209.55 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 209.55 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 209.55 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 209.55 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "657bf3aa-8ea8-4788-a4a9-ac278ae480d3")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP202")
 					(unit 1)
 				)
 			)
@@ -60219,106 +53892,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP602_SEQ_FLAG1")
-		(at 613.41 171.45 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "953c65fd-76a6-4475-afac-973428d4e022")
-		(property "Reference" "TP602"
-			(at 613.41 167.64 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SEQ_FLAG1"
-			(at 613.41 175.26 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 613.41 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 613.41 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 613.41 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 613.41 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 613.41 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d564c7d4-b867-445e-aaa3-29cd9d9e94e5")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP602")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:R1004_100k")
-		(at 1073.15 354.33 0)
+		(at 1064.26 471.17 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -60328,7 +53903,7 @@
 		(dnp no)
 		(uuid "979ae7e7-4702-43c1-9322-b972d446eadc")
 		(property "Reference" "R1004"
-			(at 1073.15 350.52 0)
+			(at 1064.26 467.36 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -60338,7 +53913,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 1073.15 358.14 0)
+			(at 1064.26 474.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -60348,7 +53923,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 1073.15 354.33 0)
+			(at 1064.26 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -60359,7 +53934,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 1073.15 354.33 0)
+			(at 1064.26 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -60370,7 +53945,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 1073.15 354.33 0)
+			(at 1064.26 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -60381,7 +53956,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 1073.15 354.33 0)
+			(at 1064.26 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -60392,7 +53967,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 1073.15 354.33 0)
+			(at 1064.26 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -60727,104 +54302,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP504_NANO_EFUSE_FLT")
-		(at 90.17 549.91 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "a16cbe0e-a3c5-49df-8ccd-f24ec2679fe5")
-		(property "Reference" "TP504"
-			(at 90.17 546.1 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "NANO_EFUSE_FLT"
-			(at 90.17 553.72 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 90.17 549.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 90.17 549.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 90.17 549.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 90.17 549.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 90.17 549.91 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "62b078ef-375e-4852-948e-4678c61aa442")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP504")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:C903_1uF_10V")
 		(at 161.29 681.99 0)
 		(unit 1)
@@ -61046,7 +54523,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:R1007_2.2k")
-		(at 1120.14 354.33 0)
+		(at 1111.25 471.17 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -61056,7 +54533,7 @@
 		(dnp no)
 		(uuid "a51f8b6d-6d98-4c4c-bf53-ba8cc29bab1a")
 		(property "Reference" "R1007"
-			(at 1120.14 350.52 0)
+			(at 1111.25 467.36 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -61066,7 +54543,7 @@
 			)
 		)
 		(property "Value" "2.2k"
-			(at 1120.14 358.14 0)
+			(at 1111.25 474.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -61076,7 +54553,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 1120.14 354.33 0)
+			(at 1111.25 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -61087,7 +54564,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 1120.14 354.33 0)
+			(at 1111.25 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -61098,7 +54575,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 1120.14 354.33 0)
+			(at 1111.25 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -61109,7 +54586,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 1120.14 354.33 0)
+			(at 1111.25 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -61120,7 +54597,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 1120.14 354.33 0)
+			(at 1111.25 471.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -62097,104 +55574,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP801_TOUCH_3V3")
-		(at 687.07 629.92 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b5282095-6bc8-4a52-98dc-ef60a5ab16ce")
-		(property "Reference" "TP801"
-			(at 687.07 626.11 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TOUCH_3V3"
-			(at 687.07 633.73 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 687.07 629.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 687.07 629.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 687.07 629.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 687.07 629.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 687.07 629.92 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ed6b4938-e1cd-4cd9-8657-bc1cbc5e5bd8")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP801")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:R303_27.4k_1%")
 		(at 274.32 191.77 0)
 		(unit 1)
@@ -62290,104 +55669,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "R303")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP601_VIN_GOOD")
-		(at 581.66 190.5 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b63785ee-81e6-4402-bb66-0745562766e5")
-		(property "Reference" "TP601"
-			(at 581.66 186.69 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VIN_GOOD"
-			(at 581.66 194.31 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 581.66 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 581.66 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 581.66 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 581.66 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 581.66 190.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a3bc0721-1c5e-4579-a9cb-250b1e704775")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP601")
 					(unit 1)
 				)
 			)
@@ -62722,7 +56003,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:J1002_NANO_P2_2x13")
-		(at 984.25 459.74 0)
+		(at 975.36 576.58 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -62732,7 +56013,7 @@
 		(dnp no)
 		(uuid "b8775024-a170-482c-ba27-74f0224bf9a6")
 		(property "Reference" "J1002"
-			(at 984.25 439.96 0)
+			(at 975.36 556.8 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -62742,7 +56023,7 @@
 			)
 		)
 		(property "Value" "SSQ-113-01-G-D"
-			(at 984.25 479.52 0)
+			(at 975.36 596.36 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -62752,7 +56033,7 @@
 			)
 		)
 		(property "Footprint" "Phase2:Samtec_SSQ-113-01-G-D_BottomMount"
-			(at 984.25 459.74 0)
+			(at 975.36 576.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -62763,7 +56044,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.samtec.com/products/ssq-113-01-g-d"
-			(at 984.25 459.74 0)
+			(at 975.36 576.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -62774,7 +56055,7 @@
 			)
 		)
 		(property "Description" "Samtec 2x13 2.54 mm vertical socket on Waveshare Nano P2; electrically unused alignment interface"
-			(at 984.25 459.74 0)
+			(at 975.36 576.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -62785,7 +56066,7 @@
 			)
 		)
 		(property "Manufacturer" "Samtec"
-			(at 984.25 459.74 0)
+			(at 975.36 576.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -62796,7 +56077,7 @@
 			)
 		)
 		(property "MPN" "SSQ-113-01-G-D"
-			(at 984.25 459.74 0)
+			(at 975.36 576.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -62888,104 +56169,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "J1002")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP201_VEH_12V_RAW")
-		(at 209.55 118.11 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b8e979a5-8ac1-47b0-a28b-d250bdf7a6bf")
-		(property "Reference" "TP201"
-			(at 209.55 114.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VEH_12V_RAW"
-			(at 209.55 121.92 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 209.55 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 209.55 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 209.55 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 209.55 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 209.55 118.11 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "5ead35f8-6eca-4fca-aee8-8615850966e0")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP201")
 					(unit 1)
 				)
 			)
@@ -63188,104 +56371,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "C205")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP1005_CTP_INT_NANO")
-		(at 1016 408.94 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "bb238970-76ed-4d91-a4b7-2b8238091900")
-		(property "Reference" "TP1005"
-			(at 1016 405.13 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CTP_INT_NANO"
-			(at 1016 412.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 1016 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 1016 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 1016 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 1016 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 1016 408.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "6bc0394d-5bab-4a05-939c-a3ac333a4b57")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP1005")
 					(unit 1)
 				)
 			)
@@ -63500,104 +56585,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "U602")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP604_SEQ_FLAG3")
-		(at 581.66 207.01 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "bfb5e904-0e9a-499c-b05b-7d9793aeb401")
-		(property "Reference" "TP604"
-			(at 581.66 203.2 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SEQ_FLAG3"
-			(at 581.66 210.82 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 581.66 207.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 581.66 207.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 581.66 207.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 581.66 207.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 581.66 207.01 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a68e9527-3c12-4972-b975-dbcf7c7b23b7")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP604")
 					(unit 1)
 				)
 			)
@@ -64567,106 +57554,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP901_BL_PWM")
-		(at 384.81 628.65 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "ce447e81-8004-4046-9a04-24fef92ccbcd")
-		(property "Reference" "TP901"
-			(at 384.81 624.84 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BL_PWM"
-			(at 384.81 632.46 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 384.81 628.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 384.81 628.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 384.81 628.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 384.81 628.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 384.81 628.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d1df077f-a682-4d25-bf37-bd5ec33bf37a")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP901")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:R1003_100k")
-		(at 868.68 397.51 0)
+		(at 859.79 514.35 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -64676,7 +57565,7 @@
 		(dnp no)
 		(uuid "ce9d50ec-442e-4d1e-9b90-d5cbab1569a5")
 		(property "Reference" "R1003"
-			(at 868.68 393.7 0)
+			(at 859.79 510.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -64686,7 +57575,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 868.68 401.32 0)
+			(at 859.79 518.16 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -64696,7 +57585,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 868.68 397.51 0)
+			(at 859.79 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -64707,7 +57596,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 868.68 397.51 0)
+			(at 859.79 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -64718,7 +57607,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 868.68 397.51 0)
+			(at 859.79 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -64729,7 +57618,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 868.68 397.51 0)
+			(at 859.79 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -64740,7 +57629,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 868.68 397.51 0)
+			(at 859.79 514.35 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -64760,300 +57649,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "R1003")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP302_SYS24_PGOOD")
-		(at 76.2 289.56 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "d1f87192-defd-42d5-995a-534c7adac7d4")
-		(property "Reference" "TP302"
-			(at 76.2 285.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SYS24_PGOOD"
-			(at 76.2 293.37 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 76.2 289.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 76.2 289.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 76.2 289.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 76.2 289.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 76.2 289.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "913e67b3-9816-4337-8b62-2d15458bfbf9")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP302")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP502_NANO_5V")
-		(at 90.17 524.51 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "d2d02640-5635-4eea-be70-35693734ada2")
-		(property "Reference" "TP502"
-			(at 90.17 520.7 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "NANO_5V"
-			(at 90.17 528.32 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 90.17 524.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 90.17 524.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 90.17 524.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 90.17 524.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 90.17 524.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "478980cd-72ce-4419-9f32-0368cc4e56dc")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP502")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP606_LCD_VCI")
-		(at 613.41 222.25 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "d46f0cf1-bf27-484e-b3d6-d2a53a9b0a45")
-		(property "Reference" "TP606"
-			(at 613.41 218.44 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LCD_VCI"
-			(at 613.41 226.06 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 613.41 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 613.41 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 613.41 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 613.41 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 613.41 222.25 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a2ebd037-bff4-478e-982a-301388c44de2")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP606")
 					(unit 1)
 				)
 			)
@@ -65563,7 +58158,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:R1006_10k")
-		(at 919.48 377.19 0)
+		(at 910.59 494.03 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -65573,7 +58168,7 @@
 		(dnp no)
 		(uuid "df6d0962-2c87-41bb-9dcb-afe23964aac4")
 		(property "Reference" "R1006"
-			(at 919.48 373.38 0)
+			(at 910.59 490.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -65583,7 +58178,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 919.48 381 0)
+			(at 910.59 497.84 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -65593,7 +58188,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 919.48 377.19 0)
+			(at 910.59 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -65604,7 +58199,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 919.48 377.19 0)
+			(at 910.59 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -65615,7 +58210,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 919.48 377.19 0)
+			(at 910.59 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -65626,7 +58221,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 919.48 377.19 0)
+			(at 910.59 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -65637,7 +58232,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 919.48 377.19 0)
+			(at 910.59 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -66174,104 +58769,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "C501")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP1001_LCD_PWR_EN")
-		(at 1052.83 397.51 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e7286a6e-e8e6-4016-9941-e2e4f432b83a")
-		(property "Reference" "TP1001"
-			(at 1052.83 393.7 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LCD_PWR_EN"
-			(at 1052.83 401.32 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 1052.83 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 1052.83 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 1052.83 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 1052.83 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 1052.83 397.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "5c406d5b-dae7-4f2c-8d8a-f8c78360e5a6")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP1001")
 					(unit 1)
 				)
 			)
@@ -67216,7 +59713,7 @@
 	)
 	(symbol
 		(lib_id "Phase2:R1002_100k")
-		(at 872.49 377.19 0)
+		(at 863.6 494.03 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -67226,7 +59723,7 @@
 		(dnp no)
 		(uuid "ee259b16-51a0-4feb-abe5-f50398a74327")
 		(property "Reference" "R1002"
-			(at 872.49 373.38 0)
+			(at 863.6 490.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -67236,7 +59733,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 872.49 381 0)
+			(at 863.6 497.84 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -67246,7 +59743,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 872.49 377.19 0)
+			(at 863.6 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -67257,7 +59754,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 872.49 377.19 0)
+			(at 863.6 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -67268,7 +59765,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 872.49 377.19 0)
+			(at 863.6 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -67279,7 +59776,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 872.49 377.19 0)
+			(at 863.6 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -67290,7 +59787,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 872.49 377.19 0)
+			(at 863.6 494.03 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -67512,104 +60009,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "J901")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP605_LCD_IOVCC")
-		(at 613.41 189.23 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f0680cd8-1119-4f6f-bf6b-4ad671cd304e")
-		(property "Reference" "TP605"
-			(at 613.41 185.42 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LCD_IOVCC"
-			(at 613.41 193.04 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 613.41 189.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 613.41 189.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 613.41 189.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 613.41 189.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 613.41 189.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "7890d3c4-4ce0-4b69-b526-5bca996b8a2e")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP605")
 					(unit 1)
 				)
 			)
@@ -68029,104 +60428,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Phase2:TP603_SEQ_FLAG2")
-		(at 613.41 208.28 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f900d8c9-d272-452d-b196-65acffff3ce7")
-		(property "Reference" "TP603"
-			(at 613.41 204.47 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SEQ_FLAG2"
-			(at 613.41 212.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 613.41 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 613.41 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 613.41 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 613.41 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 613.41 208.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c64a4221-3bce-4b57-a098-1e5bc993a3fb")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP603")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Phase2:C801_1uF_10V")
 		(at 643.89 660.4 0)
 		(unit 1)
@@ -68222,104 +60523,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "C801")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP905_BL_FAULT_N")
-		(at 330.2 731.52 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f9ced3b6-1d65-44d9-92ac-4c4dd2dfb987")
-		(property "Reference" "TP905"
-			(at 330.2 727.71 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BL_FAULT_N"
-			(at 330.2 735.33 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 330.2 731.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 330.2 731.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 330.2 731.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 330.2 731.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 330.2 731.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "7d15f763-96a9-402c-b83a-73205412e259")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP905")
 					(unit 1)
 				)
 			)
@@ -68724,202 +60927,6 @@
 			(project "ESP32-P4 Display Development Daughterboard"
 				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
 					(reference "R203")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP902_BL_DIM")
-		(at 384.81 655.32 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "fe9bee3f-c2c6-4c26-93c4-721f3025b478")
-		(property "Reference" "TP902"
-			(at 384.81 651.51 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BL_DIM"
-			(at 384.81 659.13 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 384.81 655.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 384.81 655.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 384.81 655.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 384.81 655.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 384.81 655.32 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ffc7bbfe-2868-4dd5-913c-1bafabf5b839")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP902")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Phase2:TP103_GND")
-		(at 62.23 86.36 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "fec0cd11-e97f-46fa-9cbd-b203bdd14253")
-		(property "Reference" "TP103"
-			(at 62.23 82.55 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 62.23 90.17 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.0mm_Drill0.5mm"
-			(at 62.23 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 62.23 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Description" "Labeled test point"
-			(at 62.23 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 62.23 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "MPN" ""
-			(at 62.23 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "cb8fbfe4-4faa-480d-9f6f-0807c625605f")
-		)
-		(instances
-			(project "ESP32-P4 Display Development Daughterboard"
-				(path "/95ed5eda-07d0-4bd1-9d8d-498592ee8d01"
-					(reference "TP103")
 					(unit 1)
 				)
 			)
