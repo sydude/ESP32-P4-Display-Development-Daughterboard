@@ -1,0 +1,5 @@
+dependencies:
+  idf: "==6.1.0"
+  waveshare/esp_lcd_dsi: "==2.0.0"
+  espressif/cmake_utilities: "==0.5.3"
+  espressif/i2c_bus: "==1.5.2"

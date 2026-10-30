@@ -1,0 +1,8 @@
+/build*/
+/managed_components/
+/sdkconfig.old
+/.pio/
+/.cache/
+/compile_commands.json
+.DS_Store
+*.log
